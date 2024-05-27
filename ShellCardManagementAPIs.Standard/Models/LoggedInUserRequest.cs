@@ -1,0 +1,245 @@
+// <copyright file="LoggedInUserRequest.cs" company="APIMatic">
+// Copyright (c) APIMatic. All rights reserved.
+// </copyright>
+namespace ShellCardManagementAPIs.Standard.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using APIMatic.Core.Utilities.Converters;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+    using ShellCardManagementAPIs.Standard;
+    using ShellCardManagementAPIs.Standard.Utilities;
+
+    /// <summary>
+    /// LoggedInUserRequest.
+    /// </summary>
+    public class LoggedInUserRequest
+    {
+        private string requestedAPIName;
+        private int? payerId;
+        private string payerNumber;
+        private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
+        {
+            { "RequestedAPIName", false },
+            { "PayerId", false },
+            { "PayerNumber", false },
+        };
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggedInUserRequest"/> class.
+        /// </summary>
+        public LoggedInUserRequest()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggedInUserRequest"/> class.
+        /// </summary>
+        /// <param name="includePayerGroup">IncludePayerGroup.</param>
+        /// <param name="includeEIDDetails">IncludeEIDDetails.</param>
+        /// <param name="requestedAPIName">RequestedAPIName.</param>
+        /// <param name="payerId">PayerId.</param>
+        /// <param name="payerNumber">PayerNumber.</param>
+        public LoggedInUserRequest(
+            bool? includePayerGroup = false,
+            bool? includeEIDDetails = false,
+            string requestedAPIName = null,
+            int? payerId = null,
+            string payerNumber = null)
+        {
+            this.IncludePayerGroup = includePayerGroup;
+            this.IncludeEIDDetails = includeEIDDetails;
+            if (requestedAPIName != null)
+            {
+                this.RequestedAPIName = requestedAPIName;
+            }
+
+            if (payerId != null)
+            {
+                this.PayerId = payerId;
+            }
+
+            if (payerNumber != null)
+            {
+                this.PayerNumber = payerNumber;
+            }
+
+        }
+
+        /// <summary>
+        /// True/False. The output will include the payer group information only when true is passed.
+        /// </summary>
+        [JsonProperty("IncludePayerGroup", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IncludePayerGroup { get; set; }
+
+        /// <summary>
+        /// True/False. The output will include the EID (Electronic Invoice data) information only when true is passed..
+        /// </summary>
+        [JsonProperty("IncludeEIDDetails", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? IncludeEIDDetails { get; set; }
+
+        /// <summary>
+        /// Name of the API on which user access needs to be validated
+        /// Optional.
+        /// </summary>
+        [JsonProperty("RequestedAPIName")]
+        public string RequestedAPIName
+        {
+            get
+            {
+                return this.requestedAPIName;
+            }
+
+            set
+            {
+                this.shouldSerialize["RequestedAPIName"] = true;
+                this.requestedAPIName = value;
+            }
+        }
+
+        /// <summary>
+        /// <![CDATA[
+        /// Payer id of the customer.</br>
+        /// Optional.</br>
+        /// This input is a search criterion.</br>
+        /// Note: If PayerId or PayerNumber is provided in the input, the given payer will be available in the output if the user has access to the given payer.
+        /// ]]>
+        /// </summary>
+        [JsonProperty("PayerId")]
+        public int? PayerId
+        {
+            get
+            {
+                return this.payerId;
+            }
+
+            set
+            {
+                this.shouldSerialize["PayerId"] = true;
+                this.payerId = value;
+            }
+        }
+
+        /// <summary>
+        /// <![CDATA[
+        /// PayerNumber of the customer.</br>
+        /// Optional</br>
+        /// This input is a search criterion.</br>
+        /// Note: If Payerid or PayerNumber is provided in the input, the given payer will be available in the output if the user has access to the given payer.
+        /// ]]>
+        /// </summary>
+        [JsonProperty("PayerNumber")]
+        public string PayerNumber
+        {
+            get
+            {
+                return this.payerNumber;
+            }
+
+            set
+            {
+                this.shouldSerialize["PayerNumber"] = true;
+                this.payerNumber = value;
+            }
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            var toStringOutput = new List<string>();
+
+            this.ToString(toStringOutput);
+
+            return $"LoggedInUserRequest : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetRequestedAPIName()
+        {
+            this.shouldSerialize["RequestedAPIName"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetPayerId()
+        {
+            this.shouldSerialize["PayerId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetPayerNumber()
+        {
+            this.shouldSerialize["PayerNumber"] = false;
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeRequestedAPIName()
+        {
+            return this.shouldSerialize["RequestedAPIName"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializePayerId()
+        {
+            return this.shouldSerialize["PayerId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializePayerNumber()
+        {
+            return this.shouldSerialize["PayerNumber"];
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (obj == this)
+            {
+                return true;
+            }
+            return obj is LoggedInUserRequest other &&                ((this.IncludePayerGroup == null && other.IncludePayerGroup == null) || (this.IncludePayerGroup?.Equals(other.IncludePayerGroup) == true)) &&
+                ((this.IncludeEIDDetails == null && other.IncludeEIDDetails == null) || (this.IncludeEIDDetails?.Equals(other.IncludeEIDDetails) == true)) &&
+                ((this.RequestedAPIName == null && other.RequestedAPIName == null) || (this.RequestedAPIName?.Equals(other.RequestedAPIName) == true)) &&
+                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
+                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true));
+        }
+        
+        /// <summary>
+        /// ToString overload.
+        /// </summary>
+        /// <param name="toStringOutput">List of strings.</param>
+        protected void ToString(List<string> toStringOutput)
+        {
+            toStringOutput.Add($"this.IncludePayerGroup = {(this.IncludePayerGroup == null ? "null" : this.IncludePayerGroup.ToString())}");
+            toStringOutput.Add($"this.IncludeEIDDetails = {(this.IncludeEIDDetails == null ? "null" : this.IncludeEIDDetails.ToString())}");
+            toStringOutput.Add($"this.RequestedAPIName = {(this.RequestedAPIName == null ? "null" : this.RequestedAPIName)}");
+            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+        }
+    }
+}
