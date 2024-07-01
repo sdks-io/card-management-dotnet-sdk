@@ -34,7 +34,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="products">Products.</param>
         /// <param name="productGroups">ProductGroups.</param>
         public SearchProductRestriction(
-            List<Models.ProductAllOf0> products = null,
+            List<Models.RestrictionProduct> products = null,
             List<Models.ProductGroup> productGroups = null)
         {
             this.Products = products;
@@ -45,7 +45,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Gets or sets Products.
         /// </summary>
         [JsonProperty("Products", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Models.ProductAllOf0> Products { get; set; }
+        public List<Models.RestrictionProduct> Products { get; set; }
 
         /// <summary>
         /// Gets or sets ProductGroups.

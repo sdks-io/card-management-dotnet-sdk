@@ -83,7 +83,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? notifyCaller = null,
             bool? notifyCallerOnSync = null,
             bool? orderCardReplacement = null,
-            Models.ReplaceCardSettings cardSettings = null,
+            Models.CardSettings cardSettings = null,
             int? reasonId = null,
             string reasonText = null,
             int? targetStatus = null,
@@ -232,10 +232,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool? OrderCardReplacement { get; set; }
 
         /// <summary>
-        /// Request entity object for ReplaceCardSettings
+        /// Gets or sets CardSettings.
         /// </summary>
         [JsonProperty("CardSettings", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.ReplaceCardSettings CardSettings { get; set; }
+        public Models.CardSettings CardSettings { get; set; }
 
         /// <summary>
         /// <![CDATA[

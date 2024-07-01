@@ -145,10 +145,10 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? isNewCardGroup = null,
             bool? embossCardGroup = null,
             int? cardDeliveryType = null,
-            Models.CardDeliveryContact cardContact = null,
+            Models.CardContact cardContact = null,
             int? pINDeliveryAddressType = null,
             int? pINAdviceType = null,
-            Models.PINDeliveryContact pINContact = null,
+            Models.PINContact pINContact = null,
             bool? notifyCaller = null,
             string caller = null,
             bool? notifyCallerOnSync = null,
@@ -685,11 +685,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public int? CardDeliveryType { get; set; }
 
         /// <summary>
-        /// Request entity object for CardDeliveryContact
-        /// Mandatory when CardDeliveryType is 2 else ignored.
+        /// Gets or sets CardContact.
         /// </summary>
         [JsonProperty("CardContact", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.CardDeliveryContact CardContact { get; set; }
+        public Models.CardContact CardContact { get; set; }
 
         /// <summary>
         /// PIN delivery address type selection.<br />
@@ -727,11 +726,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public int? PINAdviceType { get; set; }
 
         /// <summary>
-        /// Request entity object for PINDeliveryContact
-        /// Mandatory when PINDeliveryAddressType is ‘3’ (New delivery address). Else, ignored.
+        /// Gets or sets PINContact.
         /// </summary>
         [JsonProperty("PINContact", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.PINDeliveryContact PINContact { get; set; }
+        public Models.PINContact PINContact { get; set; }
 
         /// <summary>
         /// True/False.<br />
@@ -943,11 +941,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Whether to reissue card automatically when nearing the expiry.
-        /// Allowed values: -
-        /// 1.    As per card type setting (Default).
-        /// 2.    Card will be Reissued when nearing its expiry date.
-        /// 3.    Card will not be Reissued.
+        /// Gets or sets AutoRenew.
         /// </summary>
         [JsonProperty("AutoRenew", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailAutoRenewEnum? AutoRenew { get; set; }

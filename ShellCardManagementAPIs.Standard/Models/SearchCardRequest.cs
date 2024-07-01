@@ -35,7 +35,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="pageSize">PageSize.</param>
         /// <param name="page">Page.</param>
         public SearchCardRequest(
-            Models.SearchRequest filters = null,
+            Models.Filters filters = null,
             string pageSize = null,
             string page = null)
         {
@@ -45,10 +45,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Encapsulate the Search details request.
+        /// Gets or sets Filters.
         /// </summary>
         [JsonProperty("Filters", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.SearchRequest Filters { get; set; }
+        public Models.Filters Filters { get; set; }
 
         /// <summary>
         /// Page Size – Number of records to show on a page

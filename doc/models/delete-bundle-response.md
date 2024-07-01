@@ -10,14 +10,17 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `RequestId` | `string` | Optional | API Request Id |
-| `Status` | `string` | Optional | API Response Status |
+| `Error` | [`ErrorStatus`](../../doc/models/error-status.md) | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
   "RequestId": "RequestId4",
-  "Status": "Status0"
+  "Error": {
+    "Code": "Code4",
+    "Description": "Description2"
+  }
 }
 ```
 

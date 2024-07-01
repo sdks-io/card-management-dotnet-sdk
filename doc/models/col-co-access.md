@@ -12,7 +12,7 @@
 | `ColCoId` | `string` | Optional | Collecting company ID. |
 | `ColCoCode` | `string` | Optional | Collecting company code. |
 | `ColCoCountryName` | `string` | Optional | Collecting company’s Country name. ex: United Kingdom |
-| `IssuingCountryNumber` | `string` | Optional | Issuing Country Number.<br>ex: 032 - Czech Republic |
+| `IssuingCountryNumber` | `string` | Optional | Issuing Country Number.<br><br>ex: 032 - Czech Republic |
 
 ## Example (as JSON)
 

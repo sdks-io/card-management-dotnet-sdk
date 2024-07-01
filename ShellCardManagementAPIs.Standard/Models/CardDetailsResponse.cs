@@ -30,7 +30,6 @@ namespace ShellCardManagementAPIs.Standard.Models
         private string localCurrencyCode;
         private string localCurrencySymbol;
         private string pAN;
-        private Models.CardDetailsResponseReissueSettingEnum? reissueSetting;
         private string cardTypeCode;
         private int? cardTypeId;
         private string cardTypeName;
@@ -64,7 +63,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "LocalCurrencyCode", false },
             { "LocalCurrencySymbol", false },
             { "PAN", false },
-            { "ReissueSetting", false },
             { "CardTypeCode", false },
             { "CardTypeId", false },
             { "CardTypeName", false },
@@ -192,11 +190,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? unblockAllowed = null,
             bool? permanentBlockAllowed = null,
             int? issueNumber = null,
-            Models.CardDetailsResponseReissueSettingEnum? reissueSetting = null,
+            object reissueSetting = null,
             Models.CardDetailsResponseInternationalPOSLanguageIDEnum? internationalPOSLanguageID = null,
             Models.CardDetailsResponseInternationalPOSLanguageCodeEnum? internationalPOSLanguageCode = null,
-            Models.CardDetailsResponseLocalPOSLanguageIDEnum? localPOSLanguageID = null,
-            Models.CardDetailsResponseLocalPOSLanguageCodeEnum? localPOSLanguageCode = null,
+            Models.CardDetailsResponseInternationalPOSLanguageIDEnum? localPOSLanguageID = null,
+            Models.CardDetailsResponseInternationalPOSLanguageCodeEnum? localPOSLanguageCode = null,
             string cardTypeCode = null,
             int? cardTypeId = null,
             string cardTypeName = null,
@@ -237,8 +235,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             string effectiveDate = null,
             string lastModifiedDate = null,
             string bundleId = null,
-            Models.CardDetailsResponseCardDeliveryAddress cardDeliveryAddress = null,
-            Models.CardDetailsResponsePINDeliveryAddress pINDeliveryAddress = null,
+            Models.CardDeliveryAddress cardDeliveryAddress = null,
+            Models.PINDeliveryAddress pINDeliveryAddress = null,
             List<Models.CardDetailsResponseCardBlockSchedulesItemsAllOf0> cardBlockSchedules = null,
             Models.ErrorStatus error = null,
             string requestId = null)
@@ -300,11 +298,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.UnblockAllowed = unblockAllowed;
             this.PermanentBlockAllowed = permanentBlockAllowed;
             this.IssueNumber = issueNumber;
-            if (reissueSetting != null)
-            {
-                this.ReissueSetting = reissueSetting;
-            }
-
+            this.ReissueSetting = reissueSetting;
             this.InternationalPOSLanguageID = internationalPOSLanguageID;
             this.InternationalPOSLanguageCode = internationalPOSLanguageCode;
             this.LocalPOSLanguageID = localPOSLanguageID;
@@ -613,30 +607,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// <![CDATA[
-        /// Possible Id’s and description:
-        /// * 1  Active
-        /// * 7  Blocked Card
-        /// * 8  Expired
-        /// * 9  Cancelled
-        /// * 10  New
-        /// * 23  Pending Renewal
-        /// * 31  Replaced
-        /// * 41  Temporary Block (Customer)
-        /// * 42  Temporary Block (Shell)
-        /// * 43  Fraud
-        /// * 101 Active (Block in progress) *
-        /// * 102 Blocked Card (Unblock in progress) *
-        /// * 103 Active (Cancel in progress) *
-        /// * 104 Active (Marked as damaged) *
-        /// * 105 New (Cancel as damaged) *
-        /// * 106 Active(Scheduled for block) ”#
-        /// * 107 Blocked Card(Scheduled for unblock)*#
-        /// * 108 Blocked Card (Cancel in progress) *
-        /// > Note:
-        /// •  Items marked with * are intermediate statuses  to indicate that there are pending requests in progress. , The response can contain these intermediate statuses only if the IncludeIntermediateStatus flag is true.
-        /// •  The placeholder “<Shell Card Platform Status>” in the items marked with # will be replaced with the Shell Card Platform status description. E.g., “Active (Scheduled for block)”
-        /// ]]>
+        /// Gets or sets StatusId.
         /// </summary>
         [JsonProperty("StatusId", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseStatusIdEnum? StatusId { get; set; }
@@ -683,9 +654,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool? FleetIdPrompt { get; set; }
 
         /// <summary>
-        /// PIN type:
-        ///   * `Card` - Card PIN
-        ///   * `Fleet` - Fleet PIN
+        /// Gets or sets PINType.
         /// </summary>
         [JsonProperty("PINType", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponsePINTypeEnum? PINType { get; set; }
@@ -727,172 +696,34 @@ namespace ShellCardManagementAPIs.Standard.Models
         public int? IssueNumber { get; set; }
 
         /// <summary>
-        /// Reissue setting of the card. If the card is superseded (i.e. a replacement/new card is issued) then reissue setting of the latest card issued. Reissue setting:
-        ///   * `True` - Card will be Reissued when nearing its expiry date
-        ///   * `False` - Card will not be Reissued
+        /// Gets or sets ReissueSetting.
         /// </summary>
-        [JsonProperty("ReissueSetting")]
-        public Models.CardDetailsResponseReissueSettingEnum? ReissueSetting
-        {
-            get
-            {
-                return this.reissueSetting;
-            }
-
-            set
-            {
-                this.shouldSerialize["ReissueSetting"] = true;
-                this.reissueSetting = value;
-            }
-        }
+        [JsonProperty("ReissueSetting", NullValueHandling = NullValueHandling.Ignore)]
+        public object ReissueSetting { get; set; }
 
         /// <summary>
-        /// POS language identifier. Language Id:
-        ///   * `1` - German
-        ///   * `2` - French
-        ///   * `3` - Bulgarian
-        ///   * `4` - Croatian
-        ///   * `5` - Czech
-        ///   * `6` - Danish
-        ///   * `7` - Finnish
-        ///   * `8` - English
-        ///   * `9` - Greek
-        ///   * `10` - Chinese
-        ///   * `11` - Hungarian
-        ///   * `12` - Italian
-        ///   * `13` - Luxembourgish
-        ///   * `14` - Malay
-        ///   * `15` - Dutch
-        ///   * `16` - Norwegian, Bokmal
-        ///   * `17` - Urdu
-        ///   * `18` - Polish
-        ///   * `19` - Portuguese
-        ///   * `20` - Romanian
-        ///   * `21` - Russian
-        ///   * `22` - Slovak
-        ///   * `23` - Slovenian
-        ///   * `24` - Spanish
-        ///   * `25` - Swedish
-        ///   * `26` - Turkish
-        ///   * `27` - Thai
-        ///   * `28` - Filipino
-        ///   * `29` - Estonian
-        ///   * `30` - Latvian
-        ///   * `31` - Lithuanian
+        /// Gets or sets InternationalPOSLanguageID.
         /// </summary>
         [JsonProperty("InternationalPOSLanguageID", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseInternationalPOSLanguageIDEnum? InternationalPOSLanguageID { get; set; }
 
         /// <summary>
-        /// POS language code. Language code:
-        ///   * `deu` - German
-        ///   * `fra` - French
-        ///   * `bul` - Bulgarian
-        ///   * `hrv` - Croatian
-        ///   * `ces` - Czech
-        ///   * `dan` - Danish
-        ///   * `fin` - Finnish
-        ///   * `eng` - English
-        ///   * `ell` - Greek
-        ///   * `zho` - Chinese
-        ///   * `hun` - Hungarian
-        ///   * `ita` - Italian
-        ///   * `ltz` - Luxembourgish
-        ///   * `msa` - Malay
-        ///   * `nld` - Dutch
-        ///   * `nob` - Norwegian, Bokmal
-        ///   * `urd` - Urdu
-        ///   * `pol` - Polish
-        ///   * `por` - Portuguese
-        ///   * `ron` - Romanian
-        ///   * `rus` - Russian
-        ///   * `slk` - Slovak
-        ///   * `slv` - Slovenian
-        ///   * `spa` - Spanish
-        ///   * `swe` - Swedish
-        ///   * `tur` - Turkish
-        ///   * `tha` - Thai
-        ///   * `fil` - Filipino
-        ///   * `est` - Estonian
-        ///   * `lav` - Latvian
-        ///   * `lit` - Lithuanian
+        /// Gets or sets InternationalPOSLanguageCode.
         /// </summary>
         [JsonProperty("InternationalPOSLanguageCode", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseInternationalPOSLanguageCodeEnum? InternationalPOSLanguageCode { get; set; }
 
         /// <summary>
-        /// POS language identifier. Language Id:
-        ///   * `1` - German
-        ///   * `2` - French
-        ///   * `3` - Bulgarian
-        ///   * `4` - Croatian
-        ///   * `5` - Czech
-        ///   * `6` - Danish
-        ///   * `7` - Finnish
-        ///   * `8` - English
-        ///   * `9` - Greek
-        ///   * `10` - Chinese
-        ///   * `11` - Hungarian
-        ///   * `12` - Italian
-        ///   * `13` - Luxembourgish
-        ///   * `14` - Malay
-        ///   * `15` - Dutch
-        ///   * `16` - Norwegian, Bokmal
-        ///   * `17` - Urdu
-        ///   * `18` - Polish
-        ///   * `19` - Portuguese
-        ///   * `20` - Romanian
-        ///   * `21` - Russian
-        ///   * `22` - Slovak
-        ///   * `23` - Slovenian
-        ///   * `24` - Spanish
-        ///   * `25` - Swedish
-        ///   * `26` - Turkish
-        ///   * `27` - Thai
-        ///   * `28` - Filipino
-        ///   * `29` - Estonian
-        ///   * `30` - Latvian
-        ///   * `31` - Lithuanian
+        /// Gets or sets LocalPOSLanguageID.
         /// </summary>
         [JsonProperty("LocalPOSLanguageID", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.CardDetailsResponseLocalPOSLanguageIDEnum? LocalPOSLanguageID { get; set; }
+        public Models.CardDetailsResponseInternationalPOSLanguageIDEnum? LocalPOSLanguageID { get; set; }
 
         /// <summary>
-        /// POS language code. Language code:
-        ///   * `deu` - German
-        ///   * `fra` - French
-        ///   * `bul` - Bulgarian
-        ///   * `hrv` - Croatian
-        ///   * `ces` - Czech
-        ///   * `dan` - Danish
-        ///   * `fin` - Finnish
-        ///   * `eng` - English
-        ///   * `ell` - Greek
-        ///   * `zho` - Chinese
-        ///   * `hun` - Hungarian
-        ///   * `ita` - Italian
-        ///   * `ltz` - Luxembourgish
-        ///   * `msa` - Malay
-        ///   * `nld` - Dutch
-        ///   * `nob` - Norwegian, Bokmal
-        ///   * `urd` - Urdu
-        ///   * `pol` - Polish
-        ///   * `por` - Portuguese
-        ///   * `ron` - Romanian
-        ///   * `rus` - Russian
-        ///   * `slk` - Slovak
-        ///   * `slv` - Slovenian
-        ///   * `spa` - Spanish
-        ///   * `swe` - Swedish
-        ///   * `tur` - Turkish
-        ///   * `tha` - Thai
-        ///   * `fil` - Filipino
-        ///   * `est` - Estonian
-        ///   * `lav` - Latvian
-        ///   * `lit` - Lithuanian
+        /// Gets or sets LocalPOSLanguageCode.
         /// </summary>
         [JsonProperty("LocalPOSLanguageCode", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.CardDetailsResponseLocalPOSLanguageCodeEnum? LocalPOSLanguageCode { get; set; }
+        public Models.CardDetailsResponseInternationalPOSLanguageCodeEnum? LocalPOSLanguageCode { get; set; }
 
         /// <summary>
         /// ISO code of the card i.e. first 7 digits of the PAN.
@@ -1313,9 +1144,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Reissue setting of the renewed new card. Reissue Setting:
-        ///   * `True` - Card will be sent to production
-        ///   * `False` - Parent Card is Dormant or the Card is not to be produced
+        /// Gets or sets RenewedCardReissueSetting.
         /// </summary>
         [JsonProperty("RenewedCardReissueSetting", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseRenewedCardReissueSettingEnum? RenewedCardReissueSetting { get; set; }
@@ -1393,16 +1222,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Delivery address.
+        /// Gets or sets CardDeliveryAddress.
         /// </summary>
         [JsonProperty("CardDeliveryAddress", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.CardDetailsResponseCardDeliveryAddress CardDeliveryAddress { get; set; }
+        public Models.CardDeliveryAddress CardDeliveryAddress { get; set; }
 
         /// <summary>
-        /// Delivery address.
+        /// Gets or sets PINDeliveryAddress.
         /// </summary>
         [JsonProperty("PINDeliveryAddress", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.CardDetailsResponsePINDeliveryAddress PINDeliveryAddress { get; set; }
+        public Models.PINDeliveryAddress PINDeliveryAddress { get; set; }
 
         /// <summary>
         /// Gets or sets CardBlockSchedules.
@@ -1514,14 +1343,6 @@ namespace ShellCardManagementAPIs.Standard.Models
         public void UnsetPAN()
         {
             this.shouldSerialize["PAN"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetReissueSetting()
-        {
-            this.shouldSerialize["ReissueSetting"] = false;
         }
 
         /// <summary>
@@ -1779,15 +1600,6 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool ShouldSerializePAN()
         {
             return this.shouldSerialize["PAN"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeReissueSetting()
-        {
-            return this.shouldSerialize["ReissueSetting"];
         }
 
         /// <summary>
@@ -2100,7 +1912,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.UnblockAllowed = {(this.UnblockAllowed == null ? "null" : this.UnblockAllowed.ToString())}");
             toStringOutput.Add($"this.PermanentBlockAllowed = {(this.PermanentBlockAllowed == null ? "null" : this.PermanentBlockAllowed.ToString())}");
             toStringOutput.Add($"this.IssueNumber = {(this.IssueNumber == null ? "null" : this.IssueNumber.ToString())}");
-            toStringOutput.Add($"this.ReissueSetting = {(this.ReissueSetting == null ? "null" : this.ReissueSetting.ToString())}");
+            toStringOutput.Add($"ReissueSetting = {(this.ReissueSetting == null ? "null" : this.ReissueSetting.ToString())}");
             toStringOutput.Add($"this.InternationalPOSLanguageID = {(this.InternationalPOSLanguageID == null ? "null" : this.InternationalPOSLanguageID.ToString())}");
             toStringOutput.Add($"this.InternationalPOSLanguageCode = {(this.InternationalPOSLanguageCode == null ? "null" : this.InternationalPOSLanguageCode.ToString())}");
             toStringOutput.Add($"this.LocalPOSLanguageID = {(this.LocalPOSLanguageID == null ? "null" : this.LocalPOSLanguageID.ToString())}");

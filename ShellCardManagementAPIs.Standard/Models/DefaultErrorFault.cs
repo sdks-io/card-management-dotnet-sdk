@@ -35,7 +35,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="detail">detail.</param>
         public DefaultErrorFault(
             string faultstring = null,
-            Models.DefaultErrorFaultDetail detail = null)
+            Models.Detail detail = null)
         {
             this.Faultstring = faultstring;
             this.Detail = detail;
@@ -48,10 +48,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public string Faultstring { get; set; }
 
         /// <summary>
-        /// Details about the error
+        /// Gets or sets Detail.
         /// </summary>
         [JsonProperty("detail", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.DefaultErrorFaultDetail Detail { get; set; }
+        public Models.Detail Detail { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

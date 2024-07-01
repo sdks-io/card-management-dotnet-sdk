@@ -33,16 +33,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// </summary>
         /// <param name="filters">Filters.</param>
         public OrderCardEnquiryRequest(
-            Models.OrderCardEnquiryReq filters = null)
+            Models.Filters2 filters = null)
         {
             this.Filters = filters;
         }
 
         /// <summary>
-        /// This class holds Order Card Enquiry list based on which the Order Card Enquiry need to be filtered.
+        /// Gets or sets Filters.
         /// </summary>
         [JsonProperty("Filters", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.OrderCardEnquiryReq Filters { get; set; }
+        public Models.Filters2 Filters { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

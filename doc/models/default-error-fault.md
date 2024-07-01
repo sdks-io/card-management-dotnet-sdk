@@ -12,7 +12,7 @@ Error object
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `Faultstring` | `string` | Optional | Error Description |
-| `Detail` | [`DefaultErrorFaultDetail`](../../doc/models/default-error-fault-detail.md) | Optional | Details about the error |
+| `Detail` | [`Detail`](../../doc/models/detail.md) | Optional | - |
 
 ## Example (as JSON)
 

@@ -42,9 +42,9 @@ This entity models the data that is sent in the https
 | `SyncRequestedDate` | `string` | Optional | SyncRequestedDate<br /><br>Date and time (in cutomers local time) when the sync card request is submitted.<br /><br>Format: yyyyMMdd HH:mm:ss <br /><br>Note: The client application to convert the string to appropriate date/time type. |
 | `VRN` | `string` | Optional | Vehicle registration number |
 | `OrderRequestId` | `string` | Optional | Unique Id of the Original Order card request, the status of which is enquired by this API. <br /><br>This is returned for end to end traceability of a request based on the original Order Card request. |
-| `ExpiryDate` | `string` | Optional | Expiry date of the card.<br /><br>Format: MMyy<br /><br>(Clients to convert this to appropriate DateTime type.)<br /><br>Note: This is the Expiry Date saved.<br /><br>If the Order Card request is still not processed, i.e.PAN is not yet issued, this field will be null or empty. <br /><br>For a Card Order with a custom Expiry Date passed in the request, this value will be returned after it is updated successfully. |
+| `ExpiryDate` | `string` | Optional | Expiry date of the card.<br>Format: yyyymmdd hh:mm:ss<br>(Clients to convert this to appropriate DateTime type.)<br>Note: This is the Expiry Date saved DB.<br>If the Order Card request is still not processed, i.e. PAN is not yet issued, this field will be null or empty.<br>For a Card Order with a custom Expiry Date passed in the request, this value will be returned after it is updated successfully in GFN by the background process. |
 | `ClientReferenceId` | `string` | Optional | This is the Client Reference Id of card in the order which needs to be passed by the client. |
-| `StatusDescription` | `string` | Optional | Order status.<br /><br>Possible values<br /><br>Success<br /><br>Failed<br /><br>InProgress<br /> |
+| `StatusDescription` | `string` | Optional | Order status.<br /><br>Possible values<br /><br><br>Success<br /><br><br>Failed<br /><br><br>InProgress<br /> |
 | `ColCoId` | `int?` | Optional | Colcoid |
 
 ## Example (as JSON)

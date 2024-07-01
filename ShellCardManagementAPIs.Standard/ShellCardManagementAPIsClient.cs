@@ -25,10 +25,17 @@ namespace ShellCardManagementAPIs.Standard
             new Dictionary<Environment, Dictionary<Enum, string>>
         {
             {
+                Environment.SIT, new Dictionary<Enum, string>
+                {
+                    { Server.OAuthServer, "https://api-test.shell.com" },
+                    { Server.Shell, "https://api-test.shell.com/test" },
+                }
+            },
+            {
                 Environment.Production, new Dictionary<Enum, string>
                 {
-                    { Server.Default, "https://{url}" },
-                    { Server.AccessTokenServer, "https://api-test.shell.com/v1/oauth" },
+                    { Server.OAuthServer, "https://api.shell.com" },
+                    { Server.Shell, "https://api.shell.com" },
                 }
             },
         };
@@ -42,13 +49,11 @@ namespace ShellCardManagementAPIs.Standard
 
         private ShellCardManagementAPIsClient(
             Environment environment,
-            Models.UrlEnum url,
             BasicAuthModel basicAuthModel,
             BearerTokenModel bearerTokenModel,
             IHttpClientConfiguration httpClientConfiguration)
         {
             this.Environment = environment;
-            this.Url = url;
             this.HttpClientConfiguration = httpClientConfiguration;
             BasicAuthModel = basicAuthModel;
             var basicAuthManager = new BasicAuthManager(basicAuthModel);
@@ -61,9 +66,7 @@ namespace ShellCardManagementAPIs.Standard
                     {"BearerToken", bearerTokenManager},
                 })
                 .HttpConfiguration(httpClientConfiguration)
-                .ServerUrls(EnvironmentsMap[environment], Server.Default)
-                .Parameters(globalParameter => globalParameter
-                    .Template(templateParameter => templateParameter.Setup("url", ApiHelper.JsonSerialize(this.Url).Trim('\"'))))
+                .ServerUrls(EnvironmentsMap[environment], Server.Shell)
                 .UserAgent(userAgent)
                 .Build();
 
@@ -111,12 +114,6 @@ namespace ShellCardManagementAPIs.Standard
         /// </summary>
         public Environment Environment { get; }
 
-        /// <summary>
-        /// Gets Url.
-        /// This variable specifies the type of environment. Environments:   * `api.shell.com` - Production   * `api-test.shell.com` - SIT.
-        /// </summary>
-        public Models.UrlEnum Url { get; }
-
 
         /// <summary>
         /// Gets the credentials to use with BasicAuth.
@@ -142,9 +139,9 @@ namespace ShellCardManagementAPIs.Standard
         /// Gets the URL for a particular alias in the current environment and appends
         /// it with template parameters.
         /// </summary>
-        /// <param name="alias">Default value:DEFAULT.</param>
+        /// <param name="alias">Default value:SHELL.</param>
         /// <returns>Returns the baseurl.</returns>
-        public string GetBaseUri(Server alias = Server.Default)
+        public string GetBaseUri(Server alias = Server.Shell)
         {
             return globalConfiguration.ServerUrl(alias);
         }
@@ -157,7 +154,6 @@ namespace ShellCardManagementAPIs.Standard
         {
             Builder builder = new Builder()
                 .Environment(this.Environment)
-                .Url(this.Url)
                 .HttpClientConfig(config => config.Build());
 
             if (BasicAuthModel != null)
@@ -178,7 +174,6 @@ namespace ShellCardManagementAPIs.Standard
         {
             return
                 $"Environment = {this.Environment}, " +
-                $"Url = {this.Url}, " +
                 $"HttpClientConfiguration = {this.HttpClientConfiguration}, ";
         }
 
@@ -191,7 +186,6 @@ namespace ShellCardManagementAPIs.Standard
             var builder = new Builder();
 
             string environment = System.Environment.GetEnvironmentVariable("SHELL_CARD_MANAGEMENT_AP_IS_STANDARD_ENVIRONMENT");
-            string url = System.Environment.GetEnvironmentVariable("SHELL_CARD_MANAGEMENT_AP_IS_STANDARD_URL");
             string username = System.Environment.GetEnvironmentVariable("SHELL_CARD_MANAGEMENT_AP_IS_STANDARD_USERNAME");
             string password = System.Environment.GetEnvironmentVariable("SHELL_CARD_MANAGEMENT_AP_IS_STANDARD_PASSWORD");
             string oAuthClientId = System.Environment.GetEnvironmentVariable("SHELL_CARD_MANAGEMENT_AP_IS_STANDARD_O_AUTH_CLIENT_ID");
@@ -200,11 +194,6 @@ namespace ShellCardManagementAPIs.Standard
             if (environment != null)
             {
                 builder.Environment(ApiHelper.JsonDeserialize<Environment>($"\"{environment}\""));
-            }
-
-            if (url != null)
-            {
-                builder.Url(ApiHelper.JsonDeserialize<Models.UrlEnum>($"\"{url}\""));
             }
 
             if (username != null && password != null)
@@ -229,8 +218,7 @@ namespace ShellCardManagementAPIs.Standard
         /// </summary>
         public class Builder
         {
-            private Environment environment = ShellCardManagementAPIs.Standard.Environment.Production;
-            private Models.UrlEnum url = Models.UrlEnum.EnumApitestshellcomtest;
+            private Environment environment = ShellCardManagementAPIs.Standard.Environment.SIT;
             private BasicAuthModel basicAuthModel = new BasicAuthModel();
             private BearerTokenModel bearerTokenModel = new BearerTokenModel();
             private HttpClientConfiguration.Builder httpClientConfig = new HttpClientConfiguration.Builder();
@@ -279,17 +267,6 @@ namespace ShellCardManagementAPIs.Standard
             }
 
             /// <summary>
-            /// Sets Url.
-            /// </summary>
-            /// <param name="url"> Url. </param>
-            /// <returns> Builder. </returns>
-            public Builder Url(Models.UrlEnum url)
-            {
-                this.url = url;
-                return this;
-            }
-
-            /// <summary>
             /// Sets HttpClientConfig.
             /// </summary>
             /// <param name="action"> Action. </param>
@@ -324,7 +301,6 @@ namespace ShellCardManagementAPIs.Standard
                 }
                 return new ShellCardManagementAPIsClient(
                     environment,
-                    url,
                     basicAuthModel,
                     bearerTokenModel,
                     httpClientConfig.Build());

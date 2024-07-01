@@ -58,10 +58,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: requestbody.</param>
         /// <returns>Returns the Models.CardSearchResponse response from the API call.</returns>
-        public Models.CardSearchResponse SearchCard(
+        public Models.CardSearchResponse Searchcard(
                 string requestId,
                 Models.SearchCardRequest body = null)
-            => CoreHelper.RunTask(SearchCardAsync(requestId, body));
+            => CoreHelper.RunTask(SearchcardAsync(requestId, body));
 
         /// <summary>
         /// This API allows to search for Shell Cards in the Shell Card Platform. It provides flexible search criteria and supports paging.
@@ -89,7 +89,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: requestbody.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardSearchResponse response from the API call.</returns>
-        public async Task<Models.CardSearchResponse> SearchCardAsync(
+        public async Task<Models.CardSearchResponse> SearchcardAsync(
                 string requestId,
                 Models.SearchCardRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -102,11 +102,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ErrorObjectException(_reason, _context)))
                   .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ErrorObjectException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -127,10 +127,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: summary request body.</param>
         /// <returns>Returns the Models.CardSummaryResponse response from the API call.</returns>
-        public Models.CardSummaryResponse CardSummary(
+        public Models.CardSummaryResponse Cardsummary(
                 string requestId,
                 Models.CardSummaryRequest body = null)
-            => CoreHelper.RunTask(CardSummaryAsync(requestId, body));
+            => CoreHelper.RunTask(CardsummaryAsync(requestId, body));
 
         /// <summary>
         /// This API allows to search for fuel cards in the Shell Card Platform and returns a high-level summary count. It provides flexible search criteria.
@@ -151,7 +151,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: summary request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardSummaryResponse response from the API call.</returns>
-        public async Task<Models.CardSummaryResponse> CardSummaryAsync(
+        public async Task<Models.CardSummaryResponse> CardsummaryAsync(
                 string requestId,
                 Models.CardSummaryRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -164,11 +164,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ErrorObjectException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -204,10 +204,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Order card request body.</param>
         /// <returns>Returns the Models.OrderCardResponse response from the API call.</returns>
-        public Models.OrderCardResponse OrderCard(
+        public Models.OrderCardResponse Cardordercard(
                 string requestId,
-                Models.OrderCardRequest body = null)
-            => CoreHelper.RunTask(OrderCardAsync(requestId, body));
+                Models.CardManagementV1OrdercardRequest body = null)
+            => CoreHelper.RunTask(CardordercardAsync(requestId, body));
 
         /// <summary>
         /// <![CDATA[
@@ -243,9 +243,9 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Order card request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.OrderCardResponse response from the API call.</returns>
-        public async Task<Models.OrderCardResponse> OrderCardAsync(
+        public async Task<Models.OrderCardResponse> CardordercardAsync(
                 string requestId,
-                Models.OrderCardRequest body = null,
+                Models.CardManagementV1OrdercardRequest body = null,
                 CancellationToken cancellationToken = default)
             => await CreateApiCall<Models.OrderCardResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
@@ -256,11 +256,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -276,10 +276,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Order Card Enquiry request body.</param>
         /// <returns>Returns the Models.OrderCardEnquiryResponse response from the API call.</returns>
-        public Models.OrderCardEnquiryResponse OrderCardEnquiry(
+        public Models.OrderCardEnquiryResponse Cardordercardenquiry(
                 string requestId,
                 Models.OrderCardEnquiryRequest body = null)
-            => CoreHelper.RunTask(OrderCardEnquiryAsync(requestId, body));
+            => CoreHelper.RunTask(CardordercardenquiryAsync(requestId, body));
 
         /// <summary>
         /// This API retrieves the card order status from the Shell Card Platform based on the given reference numbers.
@@ -295,7 +295,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Order Card Enquiry request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.OrderCardEnquiryResponse response from the API call.</returns>
-        public async Task<Models.OrderCardEnquiryResponse> OrderCardEnquiryAsync(
+        public async Task<Models.OrderCardEnquiryResponse> CardordercardenquiryAsync(
                 string requestId,
                 Models.OrderCardEnquiryRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -308,11 +308,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -343,10 +343,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <returns>Returns the Models.CancelCardResponse response from the API call.</returns>
-        public Models.CancelCardResponse CardCancel(
+        public Models.CancelCardResponse Cardcancel(
                 string requestId,
-                Models.CancelCardRequest body = null)
-            => CoreHelper.RunTask(CardCancelAsync(requestId, body));
+                Models.CardManagementV1CancelRequest body = null)
+            => CoreHelper.RunTask(CardcancelAsync(requestId, body));
 
         /// <summary>
         /// This API allows cancelling one or multiple cards (up to 500) within a single API call. This API allows updating of.
@@ -377,9 +377,9 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CancelCardResponse response from the API call.</returns>
-        public async Task<Models.CancelCardResponse> CardCancelAsync(
+        public async Task<Models.CancelCardResponse> CardcancelAsync(
                 string requestId,
-                Models.CancelCardRequest body = null,
+                Models.CardManagementV1CancelRequest body = null,
                 CancellationToken cancellationToken = default)
             => await CreateApiCall<Models.CancelCardResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
@@ -390,11 +390,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -437,10 +437,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <returns>Returns the Models.UpdateCardStatusResponse response from the API call.</returns>
-        public Models.UpdateCardStatusResponse CardUpdateStatus(
+        public Models.UpdateCardStatusResponse Cardupdatestatus(
                 string requestId,
-                Models.UpdateCardStatusRequest body = null)
-            => CoreHelper.RunTask(CardUpdateStatusAsync(requestId, body));
+                Models.CardManagementV1UpdatestatusRequest body = null)
+            => CoreHelper.RunTask(CardupdatestatusAsync(requestId, body));
 
         /// <summary>
         /// This API allows updating of the card status for one or more cards (up to 500) within a single API call.  If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing. .
@@ -483,9 +483,9 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.UpdateCardStatusResponse response from the API call.</returns>
-        public async Task<Models.UpdateCardStatusResponse> CardUpdateStatusAsync(
+        public async Task<Models.UpdateCardStatusResponse> CardupdatestatusAsync(
                 string requestId,
-                Models.UpdateCardStatusRequest body = null,
+                Models.CardManagementV1UpdatestatusRequest body = null,
                 CancellationToken cancellationToken = default)
             => await CreateApiCall<Models.UpdateCardStatusResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
@@ -496,11 +496,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -540,18 +540,18 @@ namespace ShellCardManagementAPIs.Standard.Controllers
             => await CreateApiCall<Models.PurchaseCategoryResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
                   .Setup(HttpMethod.Post, "/fleetmanagement/v1/master/purchasecategory")
-                  .WithAuth("BasicAuth")
+                  .WithAuth("BearerToken")
                   .Parameters(_parameters => _parameters
                       .Body(_bodyParameter => _bodyParameter.Setup(body))
                       .Header(_header => _header.Setup("apikey", apikey))
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.\r\n", (_reason, _context) => new ErrorUserAccessError1Exception(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -563,11 +563,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Card details request body.</param>
         /// <returns>Returns the Models.CardDetailsResponse response from the API call.</returns>
-        public Models.CardDetailsResponse CardDetails(
+        public Models.CardDetailsResponse Carddetails(
                 string apikey,
                 string requestId,
                 Models.CardDetailsRequest body = null)
-            => CoreHelper.RunTask(CardDetailsAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(CarddetailsAsync(apikey, requestId, body));
 
         /// <summary>
         /// This API allows to fetch details of a single fuel card from the Shell Card Platform. If a **CardId** request parameter is provided, this will return a single card.  If a **PAN** request parameter is provided, this may result in multiple fuel cards matching the search criteria. The card details of the most recently issued card will be returned.
@@ -579,7 +579,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Card details request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardDetailsResponse response from the API call.</returns>
-        public async Task<Models.CardDetailsResponse> CardDetailsAsync(
+        public async Task<Models.CardDetailsResponse> CarddetailsAsync(
                 string apikey,
                 string requestId,
                 Models.CardDetailsRequest body = null,
@@ -587,18 +587,18 @@ namespace ShellCardManagementAPIs.Standard.Controllers
             => await CreateApiCall<Models.CardDetailsResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
                   .Setup(HttpMethod.Post, "/fleetmanagement/v1/card/card")
-                  .WithAuth("BasicAuth")
+                  .WithAuth("BearerToken")
                   .Parameters(_parameters => _parameters
                       .Body(_bodyParameter => _bodyParameter.Setup(body))
                       .Header(_header => _header.Setup("apikey", apikey))
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.\r\n", (_reason, _context) => new ErrorUserAccessError1Exception(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -662,18 +662,18 @@ namespace ShellCardManagementAPIs.Standard.Controllers
             => await CreateApiCall<Models.CardMoveResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
                   .Setup(HttpMethod.Post, "/fleetmanagement/v1/card/move")
-                  .WithAuth("BasicAuth")
+                  .WithAuth("BearerToken")
                   .Parameters(_parameters => _parameters
                       .Body(_bodyParameter => _bodyParameter.Setup(body))
                       .Header(_header => _header.Setup("apikey", apikey))
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.\r\n", (_reason, _context) => new ErrorUserAccessError1Exception(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -698,10 +698,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: PIN reminder request body.</param>
         /// <returns>Returns the Models.PINReminderResponse response from the API call.</returns>
-        public Models.PINReminderResponse CardPinReminder(
+        public Models.PINReminderResponse Cardpinreminder(
                 string requestId,
-                Models.PINReminderRequest body = null)
-            => CoreHelper.RunTask(CardPinReminderAsync(requestId, body));
+                Models.CardManagementV1PinreminderRequest body = null)
+            => CoreHelper.RunTask(CardpinreminderAsync(requestId, body));
 
         /// <summary>
         /// This API allows requesting a PIN reminder for a fuel card. If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing. .
@@ -726,9 +726,9 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: PIN reminder request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.PINReminderResponse response from the API call.</returns>
-        public async Task<Models.PINReminderResponse> CardPinReminderAsync(
+        public async Task<Models.PINReminderResponse> CardpinreminderAsync(
                 string requestId,
-                Models.PINReminderRequest body = null,
+                Models.CardManagementV1PinreminderRequest body = null,
                 CancellationToken cancellationToken = default)
             => await CreateApiCall<Models.PINReminderResponse>()
               .RequestBuilder(_requestBuilder => _requestBuilder
@@ -739,11 +739,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\r\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\r\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ErrorObjectException(_reason, _context)))
                   .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\r\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\r\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ErrorObjectException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -817,11 +817,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -841,10 +841,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Auto renew request body.</param>
         /// <returns>Returns the Models.AutoRenewCardResponse response from the API call.</returns>
-        public Models.AutoRenewCardResponse AutoRenew(
+        public Models.AutoRenewCardResponse Autorenew(
                 string requestId,
                 Models.AutoRenewCardRequest body = null)
-            => CoreHelper.RunTask(AutoRenewAsync(requestId, body));
+            => CoreHelper.RunTask(AutorenewAsync(requestId, body));
 
         /// <summary>
         /// This API allows to update the reissue indicator of a single card. If the API call succeeds, the API will return a reference number for tracking purposes and queue the request for asynchronous processing.
@@ -864,7 +864,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Auto renew request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.AutoRenewCardResponse response from the API call.</returns>
-        public async Task<Models.AutoRenewCardResponse> AutoRenewAsync(
+        public async Task<Models.AutoRenewCardResponse> AutorenewAsync(
                 string requestId,
                 Models.AutoRenewCardRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -877,11 +877,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -893,10 +893,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Request body.</param>
         /// <returns>Returns the Models.UpdateMPayRegStatusResponse response from the API call.</returns>
-        public Models.UpdateMPayRegStatusResponse UpdateMobilePaymentRegistrationStatus(
+        public Models.UpdateMPayRegStatusResponse Updatemobilepaymentregistrationstatus(
                 string requestId,
                 Models.UpdateMPayRegStatusRequest body = null)
-            => CoreHelper.RunTask(UpdateMobilePaymentRegistrationStatusAsync(requestId, body));
+            => CoreHelper.RunTask(UpdatemobilepaymentregistrationstatusAsync(requestId, body));
 
         /// <summary>
         /// This operation allows  update the approval status of Mobile Payment Registration requests requiring for Fleet Manager approval.
@@ -908,7 +908,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.UpdateMPayRegStatusResponse response from the API call.</returns>
-        public async Task<Models.UpdateMPayRegStatusResponse> UpdateMobilePaymentRegistrationStatusAsync(
+        public async Task<Models.UpdateMPayRegStatusResponse> UpdatemobilepaymentregistrationstatusAsync(
                 string requestId,
                 Models.UpdateMPayRegStatusRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -921,11 +921,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\n", (_reason, _context) => new ErrorObjectException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.\n", (_reason, _context) => new ErrorObjectException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).", (_reason, _context) => new ErrorObjectException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("Forbidden", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition that  prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -934,10 +934,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="fleet">Optional parameter: If the public key will be used a long time for multiple files this parameter will be true. If the parameter is true then public Key will be valid for 90 days. If the parameter is false then the key will be valid for one time. default value will be false..</param>
         /// <returns>Returns the Models.GeneratePINKeyResponse response from the API call.</returns>
-        public Models.GeneratePINKeyResponse GetKey(
+        public Models.GeneratePINKeyResponse Getkey(
                 string requestId,
                 bool? fleet = null)
-            => CoreHelper.RunTask(GetKeyAsync(requestId, fleet));
+            => CoreHelper.RunTask(GetkeyAsync(requestId, fleet));
 
         /// <summary>
         /// Get a new public key that will be used to encrypt data for selected PIN process when ordering new Shell Card. This encrypted data is used for further processing.
@@ -946,7 +946,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="fleet">Optional parameter: If the public key will be used a long time for multiple files this parameter will be true. If the parameter is true then public Key will be valid for 90 days. If the parameter is false then the key will be valid for one time. default value will be false..</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.GeneratePINKeyResponse response from the API call.</returns>
-        public async Task<Models.GeneratePINKeyResponse> GetKeyAsync(
+        public async Task<Models.GeneratePINKeyResponse> GetkeyAsync(
                 string requestId,
                 bool? fleet = null,
                 CancellationToken cancellationToken = default)
@@ -958,11 +958,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("RequestId", requestId))
                       .Query(_query => _query.Setup("fleet", fleet))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.\r\n", (_reason, _context) => new ErrorUserAccessError1Exception(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
 
         /// <summary>
@@ -973,10 +973,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="apikey">Required parameter: This is the API key of the specific environment which needs to be passed by the client..</param>
         /// <param name="body">Optional parameter: Delivery Address Update Request Body.</param>
         /// <returns>Returns the Models.DeliveryAddressUpdateResponse response from the API call.</returns>
-        public Models.DeliveryAddressUpdateResponse DeliveryAddressUpdate(
+        public Models.DeliveryAddressUpdateResponse Deliveryaddressupdate(
                 string apikey,
                 Models.DeliveryAddressUpdateRequest body = null)
-            => CoreHelper.RunTask(DeliveryAddressUpdateAsync(apikey, body));
+            => CoreHelper.RunTask(DeliveryaddressupdateAsync(apikey, body));
 
         /// <summary>
         /// This API allows users to update the card’s delivery addresses (card delivery address used for card re-issue and PIN delivery address used when PIN reminder is requested).
@@ -987,7 +987,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Delivery Address Update Request Body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.DeliveryAddressUpdateResponse response from the API call.</returns>
-        public async Task<Models.DeliveryAddressUpdateResponse> DeliveryAddressUpdateAsync(
+        public async Task<Models.DeliveryAddressUpdateResponse> DeliveryaddressupdateAsync(
                 string apikey,
                 Models.DeliveryAddressUpdateRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -1000,11 +1000,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                       .Header(_header => _header.Setup("apikey", apikey))
                       .Header(_header => _header.Setup("Content-Type", "application/json"))))
               .ResponseHandler(_responseHandler => _responseHandler
-                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.\r\n", (_reason, _context) => new ErrorUserAccessError1Exception(_reason, _context)))
-                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context)))
-                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.\r\n", (_reason, _context) => new DefaultErrorException(_reason, _context))))
+                  .ErrorCase("400", CreateErrorCase("The server cannot or will not process the request  due to something that is perceived to be a client\r\n error (e.g., malformed request syntax, invalid \r\n request message framing, or deceptive request routing).", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("401", CreateErrorCase("The request has not been applied because it lacks valid  authentication credentials for the target resource.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("403", CreateErrorCase("The server understood the request but refuses to authorize it.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("404", CreateErrorCase("The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists.", (_reason, _context) => new ApiException(_reason, _context)))
+                  .ErrorCase("500", CreateErrorCase("The server encountered an unexpected condition the prevented it from fulfilling the request.", (_reason, _context) => new ApiException(_reason, _context))))
               .ExecuteAsync(cancellationToken).ConfigureAwait(false);
     }
 }

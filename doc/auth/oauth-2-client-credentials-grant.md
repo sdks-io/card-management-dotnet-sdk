@@ -12,6 +12,9 @@ Documentation for accessing and setting credentials for BearerToken.
 | OAuthClientId | `string` | OAuth 2 Client ID | `OAuthClientId` | `OAuthClientId` |
 | OAuthClientSecret | `string` | OAuth 2 Client Secret | `OAuthClientSecret` | `OAuthClientSecret` |
 | OAuthToken | `Models.OAuthToken` | Object for storing information about the OAuth token | `OAuthToken` | `OAuthToken` |
+| OAuthClockSkew | `TimeSpan?` | Clock skew time in seconds applied while checking the OAuth Token expiry. | `OAuthClockSkew` | `OAuthClockSkew` |
+| OAuthTokenProvider | `Func<BearerTokenManager, OAuthToken, Task<OAuthToken>>` | Registers a callback for oAuth Token Provider used for automatic token fetching/refreshing. | `OAuthTokenProvider` | `OAuthTokenProvider` |
+| OAuthOnTokenUpdate | `Action<OAuthToken>` | Registers a callback for token update event. | `OAuthOnTokenUpdate` | `OAuthOnTokenUpdate` |
 
 
 
@@ -21,7 +24,7 @@ Documentation for accessing and setting credentials for BearerToken.
 
 ### Client Initialization
 
-You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet.
+You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* autentication, are called.
 
 ```csharp
 ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient.Builder()
@@ -36,124 +39,47 @@ ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new Shel
 
 
 
-Your application must obtain user authorization before it can execute an endpoint call in case this SDK chooses to use *OAuth 2.0 Client Credentials Grant*. This authorization includes the following steps.
+Your application can also manually provide an OAuthToken using the setter `oAuthToken` in `BearerTokenModel` object. This function takes in an instance of OAuthToken containing information for authorizing client requests and refreshing the token itself.
 
-The `FetchToken()` method will exchange the OAuth client credentials for an *access token*. The access token is an object containing information for authorizing client requests and refreshing the token itself.
+### Adding OAuth Token Update Callback
 
-```csharp
-var authManager = client.BearerToken;
-
-try
-{
-    OAuthToken token = authManager.FetchToken();
-    // re-instantiate the client with OAuth token
-    client = client.ToBuilder()
-        .BearerTokenCredentials(
-            client.BearerTokenModel.ToBuilder()
-                .OAuthToken(token)
-                .Build())
-        .Build();
-}
-catch (ApiException e)
-{
-    // TODO Handle exception
-}
-```
-
-The client can now make authorized endpoint calls.
-
-### Storing an access token for reuse
-
-It is recommended that you store the access token for reuse.
+Whenever the OAuth Token gets updated, the provided callback implementation will be executed. For instance, you may use it to store your access token whenever it gets updated.
 
 ```csharp
-// store token
-SaveTokenToDatabase(client.BearerTokenCredentials.OAuthToken);
-```
-
-### Creating a client from a stored token
-
-To authorize a client from a stored access token, just set the access token in Configuration along with the other configuration parameters before creating the client:
-
-```csharp
-// load token later
-OAuthToken token = LoadTokenFromDatabase();
-
-// re-instantiate the client with OAuth token
-ShellCardManagementAPIsClient client = client.ToBuilder()
+ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient.Builder()
     .BearerTokenCredentials(
-        client.BearerTokenModel.ToBuilder()
-            .OAuthToken(token)
-            .Build())
+        new BearerTokenModel.Builder(
+            "OAuthClientId",
+            "OAuthClientSecret"
+        )
+        .oAuthOnTokenUpdate(token -> 
+        {
+            // It will be triggered whenever the token gets updated
+            SaveTokenToDatabase(token);
+        })
+        .Build())
     .Build();
 ```
 
-### Complete example
+### Adding Custom OAuth Token Provider
 
-
+To authorize a client using a stored access token, set up the `oAuthTokenProvider` in `BearerTokenModel` builder along with the other auth parameters before creating the client:
 
 ```csharp
-using ShellCardManagementAPIs.Standard;
-using ShellCardManagementAPIs.Standard.Models;
-using ShellCardManagementAPIs.Standard.Exceptions;
-using ShellCardManagementAPIs.Standard.Authentication;
-using System.Collections.Generic;
-namespace OAuthTestApplication
-{
-    class Program
-    {
-        static void Main(string[] args)
+ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient.Builder()
+    .BearerTokenCredentials(
+        new BearerTokenModel.Builder(
+            "OAuthClientId",
+            "OAuthClientSecret"
+        )
+        .oAuthTokenProvider(async (token, credentialsManager) =>
         {
-            ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient.Builder()
-                .BearerTokenCredentials(
-                    new BearerTokenModel.Builder(
-                        "OAuthClientId",
-                        "OAuthClientSecret"
-                    )
-                    .Build())
-                .Environment(ShellCardManagementAPIs.Standard.Environment.Production)
-                .Build();
-            try
-            {
-                OAuthToken token = LoadTokenFromDatabase();
-
-                // Set the token if it is not set before
-                if (token == null)
-                {
-                    var authManager = client.BearerTokenCredentials;
-                    token = authManager.FetchToken();
-                }
-
-                SaveTokenToDatabase(token);
-                // re-instantiate the client with OAuth token
-                client = client.ToBuilder()
-                    .BearerTokenCredentials(
-                        client.BearerTokenModel.ToBuilder()
-                            .OAuthToken(token)
-                            .Build())
-                    .Build();
-            }
-            catch (OAuthProviderException e)
-            {
-                // TODO Handle exception
-            }
-        }
-
-        static void SaveTokenToDatabase(OAuthToken token)
-        {
-            //Save token here
-        }
-
-        static OAuthToken LoadTokenFromDatabase()
-        {
-            OAuthToken token = null;
-            //token = Get token here
-            return token;
-        }
-    }
-}
-
-// the client is now authorized and you can use controllers to make endpoint calls
+            // Add the callback handler to provide a new OAuth token
+            // It will be triggered whenever the lastOAuthToken is undefined or expired
+            return LoadTokenFromDatabase() ?? await FetchTokenAsync()
+        })
+        .Build())
+    .Build();
 ```
 
 

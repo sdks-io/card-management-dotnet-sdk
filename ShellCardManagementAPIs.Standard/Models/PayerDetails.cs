@@ -416,7 +416,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? hasActiveVolBasedPricing = null,
             bool? hasActiveVolBasedBonus = null,
             bool? hasActiveVolBasedAssociationBonus = null,
-            Models.FinanceCurrency financeCurrency = null,
+            Models.FinanceCurrency2 financeCurrency = null,
             string tollsCustomerId = null,
             string tollsColcoCountryTypeId = null,
             List<Models.CustomerContract> contracts = null)
@@ -2543,10 +2543,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool? HasActiveVolBasedAssociationBonus { get; set; }
 
         /// <summary>
-        /// This entity will not be present in the response if the ‘IncludeFinanceCurrency’ flag in the request is ‘false’
+        /// Gets or sets FinanceCurrency.
         /// </summary>
         [JsonProperty("FinanceCurrency", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.FinanceCurrency FinanceCurrency { get; set; }
+        public Models.FinanceCurrency2 FinanceCurrency { get; set; }
 
         /// <summary>
         /// Customer id in e-TM system

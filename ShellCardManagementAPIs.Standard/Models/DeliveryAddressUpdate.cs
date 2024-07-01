@@ -41,7 +41,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? cardId = null,
             string pAN = null,
             string cardExpiryDate = null,
-            Models.UpdateCardRenewalAddress updateCardRenewalAddress = null)
+            Models.UpdateCardRenewalAddress2 updateCardRenewalAddress = null)
         {
             this.CardId = cardId;
             this.PAN = pAN;
@@ -86,11 +86,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool UseCustomerDefaultAddress { get; set; }
 
         /// <summary>
-        /// Delivery address of card. This address will be used for card reissue and PIN reminders in future.
-        /// Note: Mandatory when ‘UseCustomerDefaultAddress’ is set to ‘false’. The field is ignored otherwise.
+        /// Gets or sets UpdateCardRenewalAddress.
         /// </summary>
         [JsonProperty("UpdateCardRenewalAddress", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.UpdateCardRenewalAddress UpdateCardRenewalAddress { get; set; }
+        public Models.UpdateCardRenewalAddress2 UpdateCardRenewalAddress { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

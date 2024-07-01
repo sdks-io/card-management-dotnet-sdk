@@ -21,6 +21,18 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class BundleRestriction
     {
+        private string dayTimeRestrictionAction;
+        private string locationRestrictionAction;
+        private Models.UsageRestrictionsCard usageRestrictions;
+        private Models.ProductRestrictionCard productRestrictions;
+        private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
+        {
+            { "DayTimeRestrictionAction", false },
+            { "LocationRestrictionAction", false },
+            { "UsageRestrictions", false },
+            { "ProductRestrictions", false },
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BundleRestriction"/> class.
         /// </summary>
@@ -31,95 +43,135 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="BundleRestriction"/> class.
         /// </summary>
-        /// <param name="resetDayTimeRestriction">ResetDayTimeRestriction.</param>
-        /// <param name="resetLocationRestriction">ResetLocationRestriction.</param>
-        /// <param name="resetProductRestriction">ResetProductRestriction.</param>
+        /// <param name="dayTimeRestrictionAction">DayTimeRestrictionAction.</param>
+        /// <param name="locationRestrictionAction">LocationRestrictionAction.</param>
         /// <param name="usageRestrictions">UsageRestrictions.</param>
         /// <param name="dayTimeRestrictions">DayTimeRestrictions.</param>
-        /// <param name="productRestriction">ProductRestriction.</param>
-        /// <param name="locationRestrictionProfileId">LocationRestrictionProfileId.</param>
+        /// <param name="productRestrictions">ProductRestrictions.</param>
         /// <param name="locationRestrictions">LocationRestrictions.</param>
         public BundleRestriction(
-            bool? resetDayTimeRestriction = false,
-            bool? resetLocationRestriction = false,
-            bool? resetProductRestriction = false,
-            Models.UsageRestrictions usageRestrictions = null,
-            Models.DayTimeRestrictions dayTimeRestrictions = null,
-            Models.ProductRestrictions productRestriction = null,
-            string locationRestrictionProfileId = null,
-            Models.LocationRestrictions locationRestrictions = null)
+            string dayTimeRestrictionAction = null,
+            string locationRestrictionAction = null,
+            Models.UsageRestrictionsCard usageRestrictions = null,
+            Models.DayTimeRestriction dayTimeRestrictions = null,
+            Models.ProductRestrictionCard productRestrictions = null,
+            Models.LocationRestriction locationRestrictions = null)
         {
-            this.ResetDayTimeRestriction = resetDayTimeRestriction;
-            this.ResetLocationRestriction = resetLocationRestriction;
-            this.ResetProductRestriction = resetProductRestriction;
-            this.UsageRestrictions = usageRestrictions;
+            if (dayTimeRestrictionAction != null)
+            {
+                this.DayTimeRestrictionAction = dayTimeRestrictionAction;
+            }
+
+            if (locationRestrictionAction != null)
+            {
+                this.LocationRestrictionAction = locationRestrictionAction;
+            }
+
+            if (usageRestrictions != null)
+            {
+                this.UsageRestrictions = usageRestrictions;
+            }
+
             this.DayTimeRestrictions = dayTimeRestrictions;
-            this.ProductRestriction = productRestriction;
-            this.LocationRestrictionProfileId = locationRestrictionProfileId;
+            if (productRestrictions != null)
+            {
+                this.ProductRestrictions = productRestrictions;
+            }
+
             this.LocationRestrictions = locationRestrictions;
         }
 
         /// <summary>
-        /// True/False
-        /// A value indicates if the day/time restriction is to be reset for card bundle.
-        /// Optional
-        /// Default value is False.
+        /// The value indicates what actions to be performed with respect to day time restriction.
+        /// Mandatory
+        /// Allowed values –
+        /// •	Add: Apply the given restriction on the bundle.
+        /// •	Default: No Day/Time restriction will be applied on the bundle in Gateway.
         /// </summary>
-        [JsonProperty("ResetDayTimeRestriction", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? ResetDayTimeRestriction { get; set; }
+        [JsonProperty("DayTimeRestrictionAction")]
+        public string DayTimeRestrictionAction
+        {
+            get
+            {
+                return this.dayTimeRestrictionAction;
+            }
+
+            set
+            {
+                this.shouldSerialize["DayTimeRestrictionAction"] = true;
+                this.dayTimeRestrictionAction = value;
+            }
+        }
 
         /// <summary>
-        /// True/False
-        /// A value indicates if the location restriction is to be reset for card bundle.
-        /// Optional
-        /// Default value is False.
+        /// The value indicates what actions to be performed with respect to location restriction.
+        /// Mandatory
+        /// Allowed values –
+        /// •	Add: Apply the given restriction on the bundle.
+        /// •	Default: No location restriction will be applied on the bundle in Gateway.
         /// </summary>
-        [JsonProperty("ResetLocationRestriction", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? ResetLocationRestriction { get; set; }
+        [JsonProperty("LocationRestrictionAction")]
+        public string LocationRestrictionAction
+        {
+            get
+            {
+                return this.locationRestrictionAction;
+            }
 
-        /// <summary>
-        /// True/False
-        /// A value indicates if the product restriction is to be reset for card bundle.
-        /// Optional
-        /// Default value is False.
-        /// </summary>
-        [JsonProperty("ResetProductRestriction", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? ResetProductRestriction { get; set; }
+            set
+            {
+                this.shouldSerialize["LocationRestrictionAction"] = true;
+                this.locationRestrictionAction = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets UsageRestrictions.
         /// </summary>
-        [JsonProperty("UsageRestrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.UsageRestrictions UsageRestrictions { get; set; }
+        [JsonProperty("UsageRestrictions")]
+        public Models.UsageRestrictionsCard UsageRestrictions
+        {
+            get
+            {
+                return this.usageRestrictions;
+            }
+
+            set
+            {
+                this.shouldSerialize["UsageRestrictions"] = true;
+                this.usageRestrictions = value;
+            }
+        }
 
         /// <summary>
-        /// Day/time restrictions such as weekdays and time range to be applied on the bundle.
-        /// Mandatory if respective action is set as “Add”.
-        /// The details of DayTimeRestriction entity is given below.
+        /// Details of the day/time restrictions such as weekdays and time range in which transactions should be allowed on the card.
         /// </summary>
         [JsonProperty("DayTimeRestrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.DayTimeRestrictions DayTimeRestrictions { get; set; }
+        public Models.DayTimeRestriction DayTimeRestrictions { get; set; }
 
         /// <summary>
-        /// Gets or sets ProductRestriction.
+        /// Gets or sets ProductRestrictions.
         /// </summary>
-        [JsonProperty("ProductRestriction", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.ProductRestrictions ProductRestriction { get; set; }
+        [JsonProperty("ProductRestrictions")]
+        public Models.ProductRestrictionCard ProductRestrictions
+        {
+            get
+            {
+                return this.productRestrictions;
+            }
+
+            set
+            {
+                this.shouldSerialize["ProductRestrictions"] = true;
+                this.productRestrictions = value;
+            }
+        }
 
         /// <summary>
-        /// Identifier of the location restriction profile to be updated for the bundle in Gateway.
-        /// Optional
-        /// </summary>
-        [JsonProperty("LocationRestrictionProfileId", NullValueHandling = NullValueHandling.Ignore)]
-        public string LocationRestrictionProfileId { get; set; }
-
-        /// <summary>
-        /// Location restrictions to be applied on the bundle which either allows or restricts using the cards, which are under the bundle, in the specified locations.
-        /// Mandatory if respective action is set as “Add”.
-        /// Details of location restrictions are given below.
+        /// Gets or sets LocationRestrictions.
         /// </summary>
         [JsonProperty("LocationRestrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.LocationRestrictions LocationRestrictions { get; set; }
+        public Models.LocationRestriction LocationRestrictions { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -129,6 +181,74 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.ToString(toStringOutput);
 
             return $"BundleRestriction : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetDayTimeRestrictionAction()
+        {
+            this.shouldSerialize["DayTimeRestrictionAction"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetLocationRestrictionAction()
+        {
+            this.shouldSerialize["LocationRestrictionAction"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetUsageRestrictions()
+        {
+            this.shouldSerialize["UsageRestrictions"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetProductRestrictions()
+        {
+            this.shouldSerialize["ProductRestrictions"] = false;
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeDayTimeRestrictionAction()
+        {
+            return this.shouldSerialize["DayTimeRestrictionAction"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeLocationRestrictionAction()
+        {
+            return this.shouldSerialize["LocationRestrictionAction"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeUsageRestrictions()
+        {
+            return this.shouldSerialize["UsageRestrictions"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeProductRestrictions()
+        {
+            return this.shouldSerialize["ProductRestrictions"];
         }
 
         /// <inheritdoc/>
@@ -143,13 +263,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 return true;
             }
-            return obj is BundleRestriction other &&                ((this.ResetDayTimeRestriction == null && other.ResetDayTimeRestriction == null) || (this.ResetDayTimeRestriction?.Equals(other.ResetDayTimeRestriction) == true)) &&
-                ((this.ResetLocationRestriction == null && other.ResetLocationRestriction == null) || (this.ResetLocationRestriction?.Equals(other.ResetLocationRestriction) == true)) &&
-                ((this.ResetProductRestriction == null && other.ResetProductRestriction == null) || (this.ResetProductRestriction?.Equals(other.ResetProductRestriction) == true)) &&
+            return obj is BundleRestriction other &&                ((this.DayTimeRestrictionAction == null && other.DayTimeRestrictionAction == null) || (this.DayTimeRestrictionAction?.Equals(other.DayTimeRestrictionAction) == true)) &&
+                ((this.LocationRestrictionAction == null && other.LocationRestrictionAction == null) || (this.LocationRestrictionAction?.Equals(other.LocationRestrictionAction) == true)) &&
                 ((this.UsageRestrictions == null && other.UsageRestrictions == null) || (this.UsageRestrictions?.Equals(other.UsageRestrictions) == true)) &&
                 ((this.DayTimeRestrictions == null && other.DayTimeRestrictions == null) || (this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true)) &&
-                ((this.ProductRestriction == null && other.ProductRestriction == null) || (this.ProductRestriction?.Equals(other.ProductRestriction) == true)) &&
-                ((this.LocationRestrictionProfileId == null && other.LocationRestrictionProfileId == null) || (this.LocationRestrictionProfileId?.Equals(other.LocationRestrictionProfileId) == true)) &&
+                ((this.ProductRestrictions == null && other.ProductRestrictions == null) || (this.ProductRestrictions?.Equals(other.ProductRestrictions) == true)) &&
                 ((this.LocationRestrictions == null && other.LocationRestrictions == null) || (this.LocationRestrictions?.Equals(other.LocationRestrictions) == true));
         }
         
@@ -159,13 +277,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ResetDayTimeRestriction = {(this.ResetDayTimeRestriction == null ? "null" : this.ResetDayTimeRestriction.ToString())}");
-            toStringOutput.Add($"this.ResetLocationRestriction = {(this.ResetLocationRestriction == null ? "null" : this.ResetLocationRestriction.ToString())}");
-            toStringOutput.Add($"this.ResetProductRestriction = {(this.ResetProductRestriction == null ? "null" : this.ResetProductRestriction.ToString())}");
+            toStringOutput.Add($"this.DayTimeRestrictionAction = {(this.DayTimeRestrictionAction == null ? "null" : this.DayTimeRestrictionAction)}");
+            toStringOutput.Add($"this.LocationRestrictionAction = {(this.LocationRestrictionAction == null ? "null" : this.LocationRestrictionAction)}");
             toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
             toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
-            toStringOutput.Add($"this.ProductRestriction = {(this.ProductRestriction == null ? "null" : this.ProductRestriction.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictionProfileId = {(this.LocationRestrictionProfileId == null ? "null" : this.LocationRestrictionProfileId)}");
+            toStringOutput.Add($"this.ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
             toStringOutput.Add($"this.LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
         }
     }

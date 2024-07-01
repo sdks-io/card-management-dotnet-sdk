@@ -21,26 +21,6 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class AccountVelocityLimit
     {
-        private string type;
-        private string period;
-        private double? limit;
-        private double? accumulation;
-        private double? balance;
-        private bool? mOverride;
-        private string productGroup;
-        private double? threshold;
-        private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
-        {
-            { "Type", false },
-            { "Period", false },
-            { "Limit", false },
-            { "Accumulation", false },
-            { "Balance", false },
-            { "Override", false },
-            { "ProductGroup", false },
-            { "Threshold", false },
-        };
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountVelocityLimit"/> class.
         /// </summary>
@@ -69,195 +49,73 @@ namespace ShellCardManagementAPIs.Standard.Models
             string productGroup = null,
             double? threshold = null)
         {
-            if (type != null)
-            {
-                this.Type = type;
-            }
-
-            if (period != null)
-            {
-                this.Period = period;
-            }
-
-            if (limit != null)
-            {
-                this.Limit = limit;
-            }
-
-            if (accumulation != null)
-            {
-                this.Accumulation = accumulation;
-            }
-
-            if (balance != null)
-            {
-                this.Balance = balance;
-            }
-
-            if (mOverride != null)
-            {
-                this.MOverride = mOverride;
-            }
-
-            if (productGroup != null)
-            {
-                this.ProductGroup = productGroup;
-            }
-
-            if (threshold != null)
-            {
-                this.Threshold = threshold;
-            }
-
+            this.Type = type;
+            this.Period = period;
+            this.Limit = limit;
+            this.Accumulation = accumulation;
+            this.Balance = balance;
+            this.MOverride = mOverride;
+            this.ProductGroup = productGroup;
+            this.Threshold = threshold;
         }
 
         /// <summary>
         /// Type of velocity (COUNT type is not present for limits of PERTRX period
         /// Possible Values: VALUE, VOLUME, COUNT
         /// </summary>
-        [JsonProperty("Type")]
-        public string Type
-        {
-            get
-            {
-                return this.type;
-            }
-
-            set
-            {
-                this.shouldSerialize["Type"] = true;
-                this.type = value;
-            }
-        }
+        [JsonProperty("Type", NullValueHandling = NullValueHandling.Ignore)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Duration of the velocity or threshold alert.
         /// Possible Values: DAILY, WEEKLY, MONTHLY, ANNUAL, LIFETIME, PERTRX
         /// </summary>
-        [JsonProperty("Period")]
-        public string Period
-        {
-            get
-            {
-                return this.period;
-            }
-
-            set
-            {
-                this.shouldSerialize["Period"] = true;
-                this.period = value;
-            }
-        }
+        [JsonProperty("Period", NullValueHandling = NullValueHandling.Ignore)]
+        public string Period { get; set; }
 
         /// <summary>
-        /// The limit associated with this velocity with the correct number of digits after the decimal point according to the minor denomination of the currency of the card issuer (except for COUNT type velocity).
+        /// The limit associated with this velocity with the correct number of digits after the decimal point according to the minor denomination of the currency of the card issuer.
+        /// Example: 1500.55
         /// </summary>
-        [JsonProperty("Limit")]
-        public double? Limit
-        {
-            get
-            {
-                return this.limit;
-            }
-
-            set
-            {
-                this.shouldSerialize["Limit"] = true;
-                this.limit = value;
-            }
-        }
+        [JsonProperty("Limit", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Limit { get; set; }
 
         /// <summary>
         /// The transaction accumulation during the current period with the correct number of digits after the decimal point according to the minor denomination of the currency of the card issuer (except for COUNT type velocity). Not present for PERTRX period.
+        /// Example: 1100.55
         /// </summary>
-        [JsonProperty("Accumulation")]
-        public double? Accumulation
-        {
-            get
-            {
-                return this.accumulation;
-            }
-
-            set
-            {
-                this.shouldSerialize["Accumulation"] = true;
-                this.accumulation = value;
-            }
-        }
+        [JsonProperty("Accumulation", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Accumulation { get; set; }
 
         /// <summary>
         /// The remaining/available balance at this point in time with the correct number of digits after the decimal point according to the minor denomination of the currency of the card issuer (except for COUNT type velocity). Not present for PERTRX period.
+        /// Example: 400.55
         /// </summary>
-        [JsonProperty("Balance")]
-        public double? Balance
-        {
-            get
-            {
-                return this.balance;
-            }
-
-            set
-            {
-                this.shouldSerialize["Balance"] = true;
-                this.balance = value;
-            }
-        }
+        [JsonProperty("Balance", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Balance { get; set; }
 
         /// <summary>
         /// Indicate if the limit is overridden or default. (false for default).
+        /// Example: false
         /// </summary>
-        [JsonProperty("Override")]
-        public bool? MOverride
-        {
-            get
-            {
-                return this.mOverride;
-            }
-
-            set
-            {
-                this.shouldSerialize["Override"] = true;
-                this.mOverride = value;
-            }
-        }
+        [JsonProperty("Override", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? MOverride { get; set; }
 
         /// <summary>
         /// The reference group name for product differentiated velocities. This field cannot be used with Volume type velocity.
         /// Example: RoadSvc
         /// This is an optional output field.
         /// </summary>
-        [JsonProperty("ProductGroup")]
-        public string ProductGroup
-        {
-            get
-            {
-                return this.productGroup;
-            }
-
-            set
-            {
-                this.shouldSerialize["ProductGroup"] = true;
-                this.productGroup = value;
-            }
-        }
+        [JsonProperty("ProductGroup", NullValueHandling = NullValueHandling.Ignore)]
+        public string ProductGroup { get; set; }
 
         /// <summary>
         /// The limit to trigger an alert if the balance after a transaction reaches it or below. 0 indicates no alerts will be sent. Not present if not set (issuer value threshold limit applies if available). Not present for COUNT type velocity.
+        /// Example: 50.55
+        /// This is an optional output field.
         /// </summary>
-        [JsonProperty("Threshold")]
-        public double? Threshold
-        {
-            get
-            {
-                return this.threshold;
-            }
-
-            set
-            {
-                this.shouldSerialize["Threshold"] = true;
-                this.threshold = value;
-            }
-        }
+        [JsonProperty("Threshold", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Threshold { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -267,142 +125,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.ToString(toStringOutput);
 
             return $"AccountVelocityLimit : ({string.Join(", ", toStringOutput)})";
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetType()
-        {
-            this.shouldSerialize["Type"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetPeriod()
-        {
-            this.shouldSerialize["Period"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetLimit()
-        {
-            this.shouldSerialize["Limit"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetAccumulation()
-        {
-            this.shouldSerialize["Accumulation"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetBalance()
-        {
-            this.shouldSerialize["Balance"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetOverride()
-        {
-            this.shouldSerialize["Override"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetProductGroup()
-        {
-            this.shouldSerialize["ProductGroup"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetThreshold()
-        {
-            this.shouldSerialize["Threshold"] = false;
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeType()
-        {
-            return this.shouldSerialize["Type"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializePeriod()
-        {
-            return this.shouldSerialize["Period"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeLimit()
-        {
-            return this.shouldSerialize["Limit"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeAccumulation()
-        {
-            return this.shouldSerialize["Accumulation"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeBalance()
-        {
-            return this.shouldSerialize["Balance"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeOverride()
-        {
-            return this.shouldSerialize["Override"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeProductGroup()
-        {
-            return this.shouldSerialize["ProductGroup"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeThreshold()
-        {
-            return this.shouldSerialize["Threshold"];
         }
 
         /// <inheritdoc/>

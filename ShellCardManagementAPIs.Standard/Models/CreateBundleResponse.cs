@@ -21,6 +21,12 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class CreateBundleResponse
     {
+        private string requestId;
+        private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
+        {
+            { "RequestId", false },
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBundleResponse"/> class.
         /// </summary>
@@ -32,44 +38,123 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Initializes a new instance of the <see cref="CreateBundleResponse"/> class.
         /// </summary>
         /// <param name="requestId">RequestId.</param>
-        /// <param name="status">Status.</param>
-        /// <param name="data">Data.</param>
-        /// <param name="errors">Errors.</param>
+        /// <param name="bundleCreationStatus">BundleCreationStatus.</param>
+        /// <param name="bundleId">BundleId.</param>
+        /// <param name="dayTimeRestrictionStatus">DayTimeRestrictionStatus.</param>
+        /// <param name="dayTimeRestrictionProfileId">DayTimeRestrictionProfileId.</param>
+        /// <param name="locationRestrictionStatus">LocationRestrictionStatus.</param>
+        /// <param name="locationRestrictionProfileId">LocationRestrictionProfileId.</param>
+        /// <param name="usageRestrictionStatus">UsageRestrictionStatus.</param>
+        /// <param name="productRestrictionStatus">ProductRestrictionStatus.</param>
+        /// <param name="cards">Cards.</param>
+        /// <param name="error">Error.</param>
         public CreateBundleResponse(
             string requestId = null,
-            string status = null,
-            List<Models.CreateBundleResponseDataItems> data = null,
-            List<Models.ErrorDetails> errors = null)
+            Models.ErrorStatus bundleCreationStatus = null,
+            string bundleId = null,
+            Models.ErrorStatus dayTimeRestrictionStatus = null,
+            string dayTimeRestrictionProfileId = null,
+            Models.ErrorStatus locationRestrictionStatus = null,
+            string locationRestrictionProfileId = null,
+            Models.ErrorStatus usageRestrictionStatus = null,
+            Models.ErrorStatus productRestrictionStatus = null,
+            Models.BundleCardRestrictionStatus cards = null,
+            Models.ErrorStatus error = null)
         {
-            this.RequestId = requestId;
-            this.Status = status;
-            this.Data = data;
-            this.Errors = errors;
+            if (requestId != null)
+            {
+                this.RequestId = requestId;
+            }
+
+            this.BundleCreationStatus = bundleCreationStatus;
+            this.BundleId = bundleId;
+            this.DayTimeRestrictionStatus = dayTimeRestrictionStatus;
+            this.DayTimeRestrictionProfileId = dayTimeRestrictionProfileId;
+            this.LocationRestrictionStatus = locationRestrictionStatus;
+            this.LocationRestrictionProfileId = locationRestrictionProfileId;
+            this.UsageRestrictionStatus = usageRestrictionStatus;
+            this.ProductRestrictionStatus = productRestrictionStatus;
+            this.Cards = cards;
+            this.Error = error;
         }
 
         /// <summary>
-        /// Request Id
+        /// Request Id of the API call
         /// </summary>
-        [JsonProperty("RequestId", NullValueHandling = NullValueHandling.Ignore)]
-        public string RequestId { get; set; }
+        [JsonProperty("RequestId")]
+        public string RequestId
+        {
+            get
+            {
+                return this.requestId;
+            }
+
+            set
+            {
+                this.shouldSerialize["RequestId"] = true;
+                this.requestId = value;
+            }
+        }
 
         /// <summary>
-        /// Response status
+        /// Gets or sets BundleCreationStatus.
         /// </summary>
-        [JsonProperty("Status", NullValueHandling = NullValueHandling.Ignore)]
-        public string Status { get; set; }
+        [JsonProperty("BundleCreationStatus", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus BundleCreationStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets Data.
+        /// Identifier of the newly created bundle
         /// </summary>
-        [JsonProperty("Data", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Models.CreateBundleResponseDataItems> Data { get; set; }
+        [JsonProperty("BundleId", NullValueHandling = NullValueHandling.Ignore)]
+        public string BundleId { get; set; }
 
         /// <summary>
-        /// Gets or sets Errors.
+        /// Gets or sets DayTimeRestrictionStatus.
         /// </summary>
-        [JsonProperty("Errors", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Models.ErrorDetails> Errors { get; set; }
+        [JsonProperty("DayTimeRestrictionStatus", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus DayTimeRestrictionStatus { get; set; }
+
+        /// <summary>
+        /// Identifier of the day/time restriction profile created
+        /// </summary>
+        [JsonProperty("DayTimeRestrictionProfileId", NullValueHandling = NullValueHandling.Ignore)]
+        public string DayTimeRestrictionProfileId { get; set; }
+
+        /// <summary>
+        /// Gets or sets LocationRestrictionStatus.
+        /// </summary>
+        [JsonProperty("LocationRestrictionStatus", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus LocationRestrictionStatus { get; set; }
+
+        /// <summary>
+        /// Identifier of the location restriction profile created
+        /// </summary>
+        [JsonProperty("LocationRestrictionProfileId", NullValueHandling = NullValueHandling.Ignore)]
+        public string LocationRestrictionProfileId { get; set; }
+
+        /// <summary>
+        /// Gets or sets UsageRestrictionStatus.
+        /// </summary>
+        [JsonProperty("UsageRestrictionStatus", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus UsageRestrictionStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets ProductRestrictionStatus.
+        /// </summary>
+        [JsonProperty("ProductRestrictionStatus", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus ProductRestrictionStatus { get; set; }
+
+        /// <summary>
+        /// Gets or sets Cards.
+        /// </summary>
+        [JsonProperty("Cards", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.BundleCardRestrictionStatus Cards { get; set; }
+
+        /// <summary>
+        /// Gets or sets Error.
+        /// </summary>
+        [JsonProperty("Error", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus Error { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -79,6 +164,23 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.ToString(toStringOutput);
 
             return $"CreateBundleResponse : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetRequestId()
+        {
+            this.shouldSerialize["RequestId"] = false;
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeRequestId()
+        {
+            return this.shouldSerialize["RequestId"];
         }
 
         /// <inheritdoc/>
@@ -94,9 +196,16 @@ namespace ShellCardManagementAPIs.Standard.Models
                 return true;
             }
             return obj is CreateBundleResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.Data == null && other.Data == null) || (this.Data?.Equals(other.Data) == true)) &&
-                ((this.Errors == null && other.Errors == null) || (this.Errors?.Equals(other.Errors) == true));
+                ((this.BundleCreationStatus == null && other.BundleCreationStatus == null) || (this.BundleCreationStatus?.Equals(other.BundleCreationStatus) == true)) &&
+                ((this.BundleId == null && other.BundleId == null) || (this.BundleId?.Equals(other.BundleId) == true)) &&
+                ((this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null) || (this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true)) &&
+                ((this.DayTimeRestrictionProfileId == null && other.DayTimeRestrictionProfileId == null) || (this.DayTimeRestrictionProfileId?.Equals(other.DayTimeRestrictionProfileId) == true)) &&
+                ((this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null) || (this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true)) &&
+                ((this.LocationRestrictionProfileId == null && other.LocationRestrictionProfileId == null) || (this.LocationRestrictionProfileId?.Equals(other.LocationRestrictionProfileId) == true)) &&
+                ((this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null) || (this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true)) &&
+                ((this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null) || (this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true)) &&
+                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
+                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
         }
         
         /// <summary>
@@ -106,9 +215,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
-            toStringOutput.Add($"this.Data = {(this.Data == null ? "null" : $"[{string.Join(", ", this.Data)} ]")}");
-            toStringOutput.Add($"this.Errors = {(this.Errors == null ? "null" : $"[{string.Join(", ", this.Errors)} ]")}");
+            toStringOutput.Add($"this.BundleCreationStatus = {(this.BundleCreationStatus == null ? "null" : this.BundleCreationStatus.ToString())}");
+            toStringOutput.Add($"this.BundleId = {(this.BundleId == null ? "null" : this.BundleId)}");
+            toStringOutput.Add($"this.DayTimeRestrictionStatus = {(this.DayTimeRestrictionStatus == null ? "null" : this.DayTimeRestrictionStatus.ToString())}");
+            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {(this.DayTimeRestrictionProfileId == null ? "null" : this.DayTimeRestrictionProfileId)}");
+            toStringOutput.Add($"this.LocationRestrictionStatus = {(this.LocationRestrictionStatus == null ? "null" : this.LocationRestrictionStatus.ToString())}");
+            toStringOutput.Add($"this.LocationRestrictionProfileId = {(this.LocationRestrictionProfileId == null ? "null" : this.LocationRestrictionProfileId)}");
+            toStringOutput.Add($"this.UsageRestrictionStatus = {(this.UsageRestrictionStatus == null ? "null" : this.UsageRestrictionStatus.ToString())}");
+            toStringOutput.Add($"this.ProductRestrictionStatus = {(this.ProductRestrictionStatus == null ? "null" : this.ProductRestrictionStatus.ToString())}");
+            toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : this.Cards.ToString())}");
+            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

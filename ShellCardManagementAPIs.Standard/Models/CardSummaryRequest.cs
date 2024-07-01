@@ -33,17 +33,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// </summary>
         /// <param name="filters">Filters.</param>
         public CardSummaryRequest(
-            Models.SummaryRequest filters = null)
+            Models.Filters1 filters = null)
         {
             this.Filters = filters;
         }
 
         /// <summary>
-        /// Encapsulates the details of a Summary Request.
-        /// Summary Request fields are same as the Search Request base class and no new fields are required.
+        /// Gets or sets Filters.
         /// </summary>
         [JsonProperty("Filters", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.SummaryRequest Filters { get; set; }
+        public Models.Filters1 Filters { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

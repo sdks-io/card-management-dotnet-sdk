@@ -60,9 +60,9 @@ namespace ShellCardManagementAPIs.Standard.Controllers
                 Dictionary<string, object> fieldParameters = null,
                 CancellationToken cancellationToken = default)
             => await CreateApiCall<Models.OAuthToken>()
-              .Server(Server.AccessTokenServer)
+              .Server(Server.OAuthServer)
               .RequestBuilder(_requestBuilder => _requestBuilder
-                  .Setup(HttpMethod.Post, "/token")
+                  .Setup(HttpMethod.Post, "/v1/oauth/token")
                   .Parameters(_parameters => _parameters
                       .AdditionalForms(_additionalForms => _additionalForms.Setup(fieldParameters))
                       .Form(_form => _form.Setup("grant_type", "client_credentials"))

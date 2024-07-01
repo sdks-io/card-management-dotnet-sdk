@@ -897,12 +897,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Expiry date of the card.<br />
-        /// Format: MMyy<br />
-        /// (Clients to convert this to appropriate DateTime type.)<br />
-        /// Note: This is the Expiry Date saved.<br />
-        /// If the Order Card request is still not processed, i.e.PAN is not yet issued, this field will be null or empty. <br />
-        /// For a Card Order with a custom Expiry Date passed in the request, this value will be returned after it is updated successfully.
+        /// Expiry date of the card.
+        /// Format: yyyymmdd hh:mm:ss
+        /// (Clients to convert this to appropriate DateTime type.)
+        /// Note: This is the Expiry Date saved DB.
+        /// If the Order Card request is still not processed, i.e. PAN is not yet issued, this field will be null or empty.
+        /// For a Card Order with a custom Expiry Date passed in the request, this value will be returned after it is updated successfully in GFN by the background process.
         /// </summary>
         [JsonProperty("ExpiryDate")]
         public string ExpiryDate

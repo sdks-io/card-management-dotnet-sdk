@@ -21,6 +21,12 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class SearchAccountLimitResponse
     {
+        private string requestId;
+        private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
+        {
+            { "RequestId", false },
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchAccountLimitResponse"/> class.
         /// </summary>
@@ -32,35 +38,90 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Initializes a new instance of the <see cref="SearchAccountLimitResponse"/> class.
         /// </summary>
         /// <param name="requestId">RequestId.</param>
-        /// <param name="status">Status.</param>
-        /// <param name="data">Data.</param>
+        /// <param name="accountId">AccountId.</param>
+        /// <param name="accountNumber">AccountNumber.</param>
+        /// <param name="referenceProduct">ReferenceProduct.</param>
+        /// <param name="restrictionCondition">RestrictionCondition.</param>
+        /// <param name="velocityLimits">VelocityLimits.</param>
+        /// <param name="error">Error.</param>
         public SearchAccountLimitResponse(
             string requestId = null,
-            string status = null,
-            Models.SearchAccountLimitResponseData data = null)
+            int? accountId = null,
+            string accountNumber = null,
+            string referenceProduct = null,
+            string restrictionCondition = null,
+            List<Models.AccountVelocityLimit> velocityLimits = null,
+            Models.ErrorStatus error = null)
         {
-            this.RequestId = requestId;
-            this.Status = status;
-            this.Data = data;
+            if (requestId != null)
+            {
+                this.RequestId = requestId;
+            }
+
+            this.AccountId = accountId;
+            this.AccountNumber = accountNumber;
+            this.ReferenceProduct = referenceProduct;
+            this.RestrictionCondition = restrictionCondition;
+            this.VelocityLimits = velocityLimits;
+            this.Error = error;
         }
 
         /// <summary>
-        /// Gets or sets RequestId.
+        /// Request Id of the API call
         /// </summary>
-        [JsonProperty("RequestId", NullValueHandling = NullValueHandling.Ignore)]
-        public string RequestId { get; set; }
+        [JsonProperty("RequestId")]
+        public string RequestId
+        {
+            get
+            {
+                return this.requestId;
+            }
+
+            set
+            {
+                this.shouldSerialize["RequestId"] = true;
+                this.requestId = value;
+            }
+        }
 
         /// <summary>
-        /// Gets or sets Status.
+        /// Account ID of the customer.
         /// </summary>
-        [JsonProperty("Status", NullValueHandling = NullValueHandling.Ignore)]
-        public string Status { get; set; }
+        [JsonProperty("AccountId", NullValueHandling = NullValueHandling.Ignore)]
+        public int? AccountId { get; set; }
 
         /// <summary>
-        /// Gets or sets Data.
+        /// Account Number
+        /// Example: GB99215176
         /// </summary>
-        [JsonProperty("Data", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.SearchAccountLimitResponseData Data { get; set; }
+        [JsonProperty("AccountNumber", NullValueHandling = NullValueHandling.Ignore)]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// 3 digit Shell global fuel product code, if already set up.
+        /// Example: 021
+        /// </summary>
+        [JsonProperty("ReferenceProduct", NullValueHandling = NullValueHandling.Ignore)]
+        public string ReferenceProduct { get; set; }
+
+        /// <summary>
+        /// The restriction condition code.
+        /// Example: DECLINE_ALERT
+        /// </summary>
+        [JsonProperty("RestrictionCondition", NullValueHandling = NullValueHandling.Ignore)]
+        public string RestrictionCondition { get; set; }
+
+        /// <summary>
+        /// Gets or sets VelocityLimits.
+        /// </summary>
+        [JsonProperty("VelocityLimits", NullValueHandling = NullValueHandling.Ignore)]
+        public List<Models.AccountVelocityLimit> VelocityLimits { get; set; }
+
+        /// <summary>
+        /// Gets or sets Error.
+        /// </summary>
+        [JsonProperty("Error", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus Error { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -70,6 +131,23 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.ToString(toStringOutput);
 
             return $"SearchAccountLimitResponse : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetRequestId()
+        {
+            this.shouldSerialize["RequestId"] = false;
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeRequestId()
+        {
+            return this.shouldSerialize["RequestId"];
         }
 
         /// <inheritdoc/>
@@ -85,8 +163,12 @@ namespace ShellCardManagementAPIs.Standard.Models
                 return true;
             }
             return obj is SearchAccountLimitResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.Data == null && other.Data == null) || (this.Data?.Equals(other.Data) == true));
+                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
+                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
+                ((this.ReferenceProduct == null && other.ReferenceProduct == null) || (this.ReferenceProduct?.Equals(other.ReferenceProduct) == true)) &&
+                ((this.RestrictionCondition == null && other.RestrictionCondition == null) || (this.RestrictionCondition?.Equals(other.RestrictionCondition) == true)) &&
+                ((this.VelocityLimits == null && other.VelocityLimits == null) || (this.VelocityLimits?.Equals(other.VelocityLimits) == true)) &&
+                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
         }
         
         /// <summary>
@@ -96,8 +178,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
-            toStringOutput.Add($"this.Data = {(this.Data == null ? "null" : this.Data.ToString())}");
+            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.ReferenceProduct = {(this.ReferenceProduct == null ? "null" : this.ReferenceProduct)}");
+            toStringOutput.Add($"this.RestrictionCondition = {(this.RestrictionCondition == null ? "null" : this.RestrictionCondition)}");
+            toStringOutput.Add($"this.VelocityLimits = {(this.VelocityLimits == null ? "null" : $"[{string.Join(", ", this.VelocityLimits)} ]")}");
+            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

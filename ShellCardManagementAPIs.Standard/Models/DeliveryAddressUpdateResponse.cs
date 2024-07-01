@@ -38,7 +38,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         public DeliveryAddressUpdateResponse(
             string requestId = null,
             int? serviceReference = null,
-            List<Models.DeliveryAddressUpdateReferences> deliveryAddressUpdateReferences = null,
+            Models.DeliveryAddressUpdateReferences2 deliveryAddressUpdateReferences = null,
             Models.ErrorStatus error = null)
         {
             this.RequestId = requestId;
@@ -63,7 +63,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Gets or sets DeliveryAddressUpdateReferences.
         /// </summary>
         [JsonProperty("DeliveryAddressUpdateReferences", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Models.DeliveryAddressUpdateReferences> DeliveryAddressUpdateReferences { get; set; }
+        public Models.DeliveryAddressUpdateReferences2 DeliveryAddressUpdateReferences { get; set; }
 
         /// <summary>
         /// Gets or sets Error.
@@ -107,7 +107,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
             toStringOutput.Add($"this.ServiceReference = {(this.ServiceReference == null ? "null" : this.ServiceReference.ToString())}");
-            toStringOutput.Add($"this.DeliveryAddressUpdateReferences = {(this.DeliveryAddressUpdateReferences == null ? "null" : $"[{string.Join(", ", this.DeliveryAddressUpdateReferences)} ]")}");
+            toStringOutput.Add($"this.DeliveryAddressUpdateReferences = {(this.DeliveryAddressUpdateReferences == null ? "null" : this.DeliveryAddressUpdateReferences.ToString())}");
             toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }

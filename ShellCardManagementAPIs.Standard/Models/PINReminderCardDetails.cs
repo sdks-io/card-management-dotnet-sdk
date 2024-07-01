@@ -51,7 +51,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string pAN = null,
             string cardExpiryDate = null,
             int? pINContactType = null,
-            Models.PINDeliveryDetails pINDeliverTo = null)
+            Models.PINDeliverTo pINDeliverTo = null)
         {
             this.CardId = cardId;
             this.PANID = pANID;
@@ -136,11 +136,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public int? PINContactType { get; set; }
 
         /// <summary>
-        /// PINDeliverDetails entity. The fields of this entity are described below.
-        /// This is mandatory if PINContactType is 4 else optional and ignored.
+        /// Gets or sets PINDeliverTo.
         /// </summary>
         [JsonProperty("PINDeliverTo", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.PINDeliveryDetails PINDeliverTo { get; set; }
+        public Models.PINDeliverTo PINDeliverTo { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()

@@ -21,6 +21,12 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class AccountRestrictionResponse
     {
+        private string requestId;
+        private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
+        {
+            { "RequestId", false },
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountRestrictionResponse"/> class.
         /// </summary>
@@ -32,26 +38,80 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Initializes a new instance of the <see cref="AccountRestrictionResponse"/> class.
         /// </summary>
         /// <param name="requestId">RequestId.</param>
-        /// <param name="status">Status.</param>
+        /// <param name="accountId">AccountId.</param>
+        /// <param name="accountNumber">AccountNumber.</param>
+        /// <param name="usageRestrictionStatus">UsageRestrictionStatus.</param>
+        /// <param name="usageRestrictionDescription">UsageRestrictionDescription.</param>
+        /// <param name="error">Error.</param>
         public AccountRestrictionResponse(
             string requestId = null,
-            string status = null)
+            int? accountId = null,
+            string accountNumber = null,
+            string usageRestrictionStatus = null,
+            string usageRestrictionDescription = null,
+            Models.ErrorStatus error = null)
         {
-            this.RequestId = requestId;
-            this.Status = status;
+            if (requestId != null)
+            {
+                this.RequestId = requestId;
+            }
+
+            this.AccountId = accountId;
+            this.AccountNumber = accountNumber;
+            this.UsageRestrictionStatus = usageRestrictionStatus;
+            this.UsageRestrictionDescription = usageRestrictionDescription;
+            this.Error = error;
         }
 
         /// <summary>
-        /// API Request Id
+        /// Request Id of the API call
         /// </summary>
-        [JsonProperty("RequestId", NullValueHandling = NullValueHandling.Ignore)]
-        public string RequestId { get; set; }
+        [JsonProperty("RequestId")]
+        public string RequestId
+        {
+            get
+            {
+                return this.requestId;
+            }
+
+            set
+            {
+                this.shouldSerialize["RequestId"] = true;
+                this.requestId = value;
+            }
+        }
 
         /// <summary>
-        /// API Response Status
+        /// Account Id on which restriction is applied.
+        /// Example: 123456
         /// </summary>
-        [JsonProperty("Status", NullValueHandling = NullValueHandling.Ignore)]
-        public string Status { get; set; }
+        [JsonProperty("AccountId", NullValueHandling = NullValueHandling.Ignore)]
+        public int? AccountId { get; set; }
+
+        /// <summary>
+        /// Account Number on which restriction is applied.
+        /// Example: GB000000123
+        /// </summary>
+        [JsonProperty("AccountNumber", NullValueHandling = NullValueHandling.Ignore)]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
+        /// Status of the card usage restriction submitted to Gateway. Based on the response from Gateway value will be set as either “Success” or “Failed”.
+        /// </summary>
+        [JsonProperty("UsageRestrictionStatus", NullValueHandling = NullValueHandling.Ignore)]
+        public string UsageRestrictionStatus { get; set; }
+
+        /// <summary>
+        /// Response for the usage restriction in case of an error. This field will have a value only when “UsageRestrictionStatus” is “Failed”.
+        /// </summary>
+        [JsonProperty("UsageRestrictionDescription", NullValueHandling = NullValueHandling.Ignore)]
+        public string UsageRestrictionDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets Error.
+        /// </summary>
+        [JsonProperty("Error", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus Error { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -61,6 +121,23 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.ToString(toStringOutput);
 
             return $"AccountRestrictionResponse : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetRequestId()
+        {
+            this.shouldSerialize["RequestId"] = false;
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeRequestId()
+        {
+            return this.shouldSerialize["RequestId"];
         }
 
         /// <inheritdoc/>
@@ -76,7 +153,11 @@ namespace ShellCardManagementAPIs.Standard.Models
                 return true;
             }
             return obj is AccountRestrictionResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true));
+                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
+                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
+                ((this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null) || (this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true)) &&
+                ((this.UsageRestrictionDescription == null && other.UsageRestrictionDescription == null) || (this.UsageRestrictionDescription?.Equals(other.UsageRestrictionDescription) == true)) &&
+                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
         }
         
         /// <summary>
@@ -86,7 +167,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
+            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.UsageRestrictionStatus = {(this.UsageRestrictionStatus == null ? "null" : this.UsageRestrictionStatus)}");
+            toStringOutput.Add($"this.UsageRestrictionDescription = {(this.UsageRestrictionDescription == null ? "null" : this.UsageRestrictionDescription)}");
+            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

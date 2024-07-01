@@ -6,12 +6,14 @@ namespace ShellCardManagementAPIs.Standard.Authentication
     using System;
     using System.Collections.Generic;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
     using ShellCardManagementAPIs.Standard.Controllers;
     using ShellCardManagementAPIs.Standard.Models;
     using ShellCardManagementAPIs.Standard.Utilities;
     using ShellCardManagementAPIs.Standard.Exceptions;
     using APIMatic.Core.Authentication;
+    using APIMatic.Core.Request;
     using APIMatic.Core;
 
     /// <summary>
@@ -30,11 +32,10 @@ namespace ShellCardManagementAPIs.Standard.Authentication
             OAuthClientId = bearerToken?.OAuthClientId;
             OAuthClientSecret = bearerToken?.OAuthClientSecret;
             OAuthToken = bearerToken?.OAuthToken;
-            Parameters(authParameter => authParameter
-                .Header(headerParameter => headerParameter
-                    .Setup("Authorization",
-                        OAuthToken?.AccessToken == null ? null : $"Bearer {OAuthToken?.AccessToken}"
-                    ).Required()));
+            OAuthClockSkew = bearerToken?.OAuthClockSkew;
+            OAuthTokenProvider = bearerToken?.OAuthTokenProvider;
+            OAuthOnTokenUpdate = bearerToken?.OAuthOnTokenUpdate;
+            OAuthTokenAutoRefresh = bearerToken?.OAuthToken;
         }
 
         /// <summary>
@@ -51,6 +52,29 @@ namespace ShellCardManagementAPIs.Standard.Authentication
         /// Gets Models.OAuthToken value for oAuthToken.
         /// </summary>
         public Models.OAuthToken OAuthToken { get; }
+
+        /// <summary>
+        /// Gets TimeSpan? value for oAuthClockSkew.
+        /// </summary>
+        public TimeSpan? OAuthClockSkew { get; }
+
+        /// <summary>
+        /// Gets Func of OAuthToken value for oAuthTokenProvider.
+        /// </summary>
+        public Func<BearerTokenManager, OAuthToken, Task<OAuthToken>> OAuthTokenProvider { get; }
+
+        /// <summary>
+        /// Gets Action of OAuthToken value for oAuthOnTokenUpdate.
+        /// </summary>
+        public Action<OAuthToken> OAuthOnTokenUpdate { get; }
+
+        /// <summary>
+        /// Gets OAuthToken value for oAuthTokenAutoRefresh.
+        /// </summary>
+        private OAuthToken OAuthTokenAutoRefresh { get; set; }
+
+        private readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1);
+
 
         /// <summary>
         /// Check if credentials match.
@@ -112,23 +136,47 @@ namespace ShellCardManagementAPIs.Standard.Authentication
             oAuthApi = controllerGetter;
         }
 
-        /// <summary>
-        /// Validates the authentication parameters for the HTTP Request.
-        /// </summary>
-        public override void Validate()
+        /// <inheritdoc />
+        public override async Task Apply(RequestBuilder requestBuilder)
         {
-            base.Validate();
-            if (OAuthToken == null)
+            var token = await FetchOrReturnToken(); 
+            Parameters(authParameter => authParameter
+                .Header(headerParameter => headerParameter
+                    .Setup("Authorization",
+                        token?.AccessToken == null ? null : $"Bearer {token.AccessToken}"
+                    ).Required()));
+            await base.Apply(requestBuilder);
+        }
+
+        private async Task<OAuthToken> FetchOrReturnToken()
+        {
+            if (OAuthTokenAutoRefresh != null && !OAuthTokenAutoRefresh.IsTokenExpired(OAuthClockSkew))
+                return OAuthTokenAutoRefresh;
+
+            await semaphoreSlim.WaitAsync();
+            try
             {
-                throw new ApiException(
-                        "Client is not authorized.An OAuth token is needed to make API calls.");
+                if (OAuthTokenAutoRefresh != null && !OAuthTokenAutoRefresh.IsTokenExpired(OAuthClockSkew))
+                    return OAuthTokenAutoRefresh;
+                OAuthTokenAutoRefresh = OAuthTokenProvider != null
+                    ? await OAuthTokenProvider(this, OAuthTokenAutoRefresh)
+                    : await FetchTokenAsync();
+            }
+            finally
+            {
+                semaphoreSlim.Release();
             }
 
-            if (IsTokenExpired())
-            {
+            OAuthOnTokenUpdate?.Invoke(OAuthTokenAutoRefresh);
+
+            if (OAuthTokenAutoRefresh == null)
                 throw new ApiException(
-                        "OAuth token is expired. A valid token is needed to make API calls.");
-            }
+                    "Client is not authorized.An OAuth token is needed to make API calls.");
+
+            if (OAuthTokenAutoRefresh.IsTokenExpired(TimeSpan.Zero))
+                throw new ApiException("OAuth token is expired. A valid token is needed to make API calls.");
+
+            return OAuthTokenAutoRefresh;
         }
 
 
@@ -155,6 +203,12 @@ namespace ShellCardManagementAPIs.Standard.Authentication
 
         internal Models.OAuthToken OAuthToken { get; set; }
 
+        internal TimeSpan? OAuthClockSkew { get; set; }
+
+        internal Func<BearerTokenManager, OAuthToken, Task<OAuthToken>> OAuthTokenProvider { get; set; }
+
+        internal Action<OAuthToken> OAuthOnTokenUpdate { get; set; }
+
         /// <summary>
         /// Creates an object of the BearerTokenModel using the values provided for the builder.
         /// </summary>
@@ -162,7 +216,10 @@ namespace ShellCardManagementAPIs.Standard.Authentication
         public Builder ToBuilder()
         {
             return new Builder(OAuthClientId, OAuthClientSecret)
-                .OAuthToken(OAuthToken);
+                .OAuthToken(OAuthToken)
+                .OAuthClockSkew(OAuthClockSkew)
+                .OAuthTokenProvider(OAuthTokenProvider)
+                .OAuthOnTokenUpdate(OAuthOnTokenUpdate);
         }
 
         /// <summary>
@@ -173,6 +230,9 @@ namespace ShellCardManagementAPIs.Standard.Authentication
             private string oAuthClientId;
             private string oAuthClientSecret;
             private Models.OAuthToken oAuthToken;
+            private TimeSpan? oAuthClockSkew;
+            private Func<BearerTokenManager, OAuthToken, Task<OAuthToken>> oAuthTokenProvider;
+            private Action<OAuthToken> oAuthOnTokenUpdate;
 
             public Builder(string oAuthClientId, string oAuthClientSecret)
             {
@@ -217,6 +277,42 @@ namespace ShellCardManagementAPIs.Standard.Authentication
 
 
             /// <summary>
+            /// Sets OAuthClockSkew.
+            /// </summary>
+            /// <param name="oAuthClockSkew">oAuthClockSkew.</param>
+            /// <returns>Builder.</returns>
+            public Builder OAuthClockSkew(TimeSpan? oAuthClockSkew)
+            {
+                this.oAuthClockSkew = oAuthClockSkew;
+                return this;
+            }
+
+
+            /// <summary>
+            /// Sets OAuthTokenProvider.
+            /// </summary>
+            /// <param name="oAuthTokenProvider">oAuthTokenProvider.</param>
+            /// <returns>Builder.</returns>
+            public Builder OAuthTokenProvider(Func<BearerTokenManager, OAuthToken, Task<OAuthToken>> oAuthTokenProvider)
+            {
+                this.oAuthTokenProvider = oAuthTokenProvider;
+                return this;
+            }
+
+
+            /// <summary>
+            /// Sets OAuthOnTokenUpdate.
+            /// </summary>
+            /// <param name="oAuthOnTokenUpdate">oAuthOnTokenUpdate.</param>
+            /// <returns>Builder.</returns>
+            public Builder OAuthOnTokenUpdate(Action<OAuthToken> oAuthOnTokenUpdate)
+            {
+                this.oAuthOnTokenUpdate = oAuthOnTokenUpdate;
+                return this;
+            }
+
+
+            /// <summary>
             /// Creates an object of the BearerTokenModel using the values provided for the builder.
             /// </summary>
             /// <returns>BearerTokenModel.</returns>
@@ -226,9 +322,25 @@ namespace ShellCardManagementAPIs.Standard.Authentication
                 {
                     OAuthClientId = this.oAuthClientId,
                     OAuthClientSecret = this.oAuthClientSecret,
-                    OAuthToken = this.oAuthToken
+                    OAuthToken = this.oAuthToken,
+                    OAuthClockSkew = this.oAuthClockSkew,
+                    OAuthTokenProvider = this.oAuthTokenProvider,
+                    OAuthOnTokenUpdate = this.oAuthOnTokenUpdate
                 };
             }
+        }
+    }
+    internal static class OAuthTokenExtensions
+    {
+        internal static bool IsTokenExpired(this OAuthToken token, TimeSpan? clockSkew)
+        {
+            if (token == null)
+            {
+                throw new InvalidOperationException("OAuth token is missing.");
+            }
+
+            if (token.Expiry == null) return true;
+            return token.Expiry < DateTimeOffset.UtcNow.Subtract(clockSkew ?? TimeSpan.Zero).ToUnixTimeSeconds();    
         }
     }
 }

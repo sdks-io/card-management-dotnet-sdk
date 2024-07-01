@@ -110,7 +110,7 @@
 | `HasActiveVolBasedPricing` | `bool?` | Optional | True, if the payer is setup for volume-based pricing and is active on the current date, else false.<br><br>This field is returned only when IncludeBonusParameters is set to True in the request. Else set to null. |
 | `HasActiveVolBasedBonus` | `bool?` | Optional | True, if the payer is setup for volume-based bonus and is active on the current date, else false.<br>This field is returned only when IncludeBonusParameters is set to True in the request. Else set to null. |
 | `HasActiveVolBasedAssociationBonus` | `bool?` | Optional | True, if the payer is setup for volume-based association bonus and is active on the current date, else false.<br>This field is returned only when IncludeBonusParameters is set to True in the request. Else set to null. |
-| `FinanceCurrency` | [`FinanceCurrency`](../../doc/models/finance-currency.md) | Optional | This entity will not be present in the response if the ‘IncludeFinanceCurrency’ flag in the request is ‘false’ |
+| `FinanceCurrency` | [`FinanceCurrency2`](../../doc/models/finance-currency-2.md) | Optional | - |
 | `TollsCustomerId` | `string` | Optional | Customer id in e-TM system<br>This field will have value only when ReturnTollsCustomerId is set to true in the request else set to null or empty. |
 | `TollsColcoCountryTypeId` | `string` | Optional | String	Colco country type id in e-TM system<br>This field will have value only when ReturnTollsCustomerId is set to true in the request else set to null or empty. |
 | `Contracts` | [`List<CustomerContract>`](../../doc/models/customer-contract.md) | Optional | - |

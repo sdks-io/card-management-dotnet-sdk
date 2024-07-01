@@ -32,13 +32,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Initializes a new instance of the <see cref="DeleteBundleResponse"/> class.
         /// </summary>
         /// <param name="requestId">RequestId.</param>
-        /// <param name="status">Status.</param>
+        /// <param name="error">Error.</param>
         public DeleteBundleResponse(
             string requestId = null,
-            string status = null)
+            Models.ErrorStatus error = null)
         {
             this.RequestId = requestId;
-            this.Status = status;
+            this.Error = error;
         }
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         public string RequestId { get; set; }
 
         /// <summary>
-        /// API Response Status
+        /// Gets or sets Error.
         /// </summary>
-        [JsonProperty("Status", NullValueHandling = NullValueHandling.Ignore)]
-        public string Status { get; set; }
+        [JsonProperty("Error", NullValueHandling = NullValueHandling.Ignore)]
+        public Models.ErrorStatus Error { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -76,7 +76,7 @@ namespace ShellCardManagementAPIs.Standard.Models
                 return true;
             }
             return obj is DeleteBundleResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true));
+                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
         }
         
         /// <summary>
@@ -86,7 +86,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
+            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

@@ -13,9 +13,15 @@ namespace ShellCardManagementAPIs.Standard
     public enum Environment
     {
         /// <summary>
+        /// SIT.
+        /// </summary>
+        [EnumMember(Value = "SIT")]
+        SIT,
+
+        /// <summary>
         /// Production.
         /// </summary>
-        [EnumMember(Value = "production")]
+        [EnumMember(Value = "Production")]
         Production,
     }
 }

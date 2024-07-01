@@ -21,10 +21,24 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class AccountRestrictionRequest
     {
+        private int? colCoId;
+        private int? colCoCode;
         private int? payerId;
+        private string payerNumber;
+        private int? accountId;
+        private string accountNumber;
+        private bool? resetUsageRestrictions;
+        private Models.UsageRestrictionsCard usageRestrictions;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
         {
+            { "ColCoId", false },
+            { "ColCoCode", false },
             { "PayerId", false },
+            { "PayerNumber", false },
+            { "AccountId", false },
+            { "AccountNumber", false },
+            { "ResetUsageRestrictions", false },
+            { "UsageRestrictions", false },
         };
 
         /// <summary>
@@ -41,6 +55,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="colCoCode">ColCoCode.</param>
         /// <param name="payerId">PayerId.</param>
         /// <param name="payerNumber">PayerNumber.</param>
+        /// <param name="accountId">AccountId.</param>
         /// <param name="accountNumber">AccountNumber.</param>
         /// <param name="resetUsageRestrictions">ResetUsageRestrictions.</param>
         /// <param name="usageRestrictions">UsageRestrictions.</param>
@@ -49,21 +64,51 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? colCoCode = null,
             int? payerId = null,
             string payerNumber = null,
+            int? accountId = null,
             string accountNumber = null,
-            bool? resetUsageRestrictions = false,
-            Models.UsageRestrictions usageRestrictions = null)
+            bool? resetUsageRestrictions = null,
+            Models.UsageRestrictionsCard usageRestrictions = null)
         {
-            this.ColCoId = colCoId;
-            this.ColCoCode = colCoCode;
+            if (colCoId != null)
+            {
+                this.ColCoId = colCoId;
+            }
+
+            if (colCoCode != null)
+            {
+                this.ColCoCode = colCoCode;
+            }
+
             if (payerId != null)
             {
                 this.PayerId = payerId;
             }
 
-            this.PayerNumber = payerNumber;
-            this.AccountNumber = accountNumber;
-            this.ResetUsageRestrictions = resetUsageRestrictions;
-            this.UsageRestrictions = usageRestrictions;
+            if (payerNumber != null)
+            {
+                this.PayerNumber = payerNumber;
+            }
+
+            if (accountId != null)
+            {
+                this.AccountId = accountId;
+            }
+
+            if (accountNumber != null)
+            {
+                this.AccountNumber = accountNumber;
+            }
+
+            if (resetUsageRestrictions != null)
+            {
+                this.ResetUsageRestrictions = resetUsageRestrictions;
+            }
+
+            if (usageRestrictions != null)
+            {
+                this.UsageRestrictions = usageRestrictions;
+            }
+
         }
 
         /// <summary>
@@ -73,8 +118,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// 1 for Philippines
         /// 5 for UK
         /// </summary>
-        [JsonProperty("ColCoId", NullValueHandling = NullValueHandling.Ignore)]
-        public int? ColCoId { get; set; }
+        [JsonProperty("ColCoId")]
+        public int? ColCoId
+        {
+            get
+            {
+                return this.colCoId;
+            }
+
+            set
+            {
+                this.shouldSerialize["ColCoId"] = true;
+                this.colCoId = value;
+            }
+        }
 
         /// <summary>
         /// Collecting Company Code (Shell Code) of the selected payer.
@@ -83,8 +140,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// 86 for Philippines
         /// 5 for UK
         /// </summary>
-        [JsonProperty("ColCoCode", NullValueHandling = NullValueHandling.Ignore)]
-        public int? ColCoCode { get; set; }
+        [JsonProperty("ColCoCode")]
+        public int? ColCoCode
+        {
+            get
+            {
+                return this.colCoCode;
+            }
+
+            set
+            {
+                this.shouldSerialize["ColCoCode"] = true;
+                this.colCoCode = value;
+            }
+        }
 
         /// <summary>
         /// Payer Id of the selected payer.
@@ -111,29 +180,99 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Optional if PayerId is passed else Mandatory
         /// Example: GB000000123
         /// </summary>
-        [JsonProperty("PayerNumber", NullValueHandling = NullValueHandling.Ignore)]
-        public string PayerNumber { get; set; }
+        [JsonProperty("PayerNumber")]
+        public string PayerNumber
+        {
+            get
+            {
+                return this.payerNumber;
+            }
+
+            set
+            {
+                this.shouldSerialize["PayerNumber"] = true;
+                this.payerNumber = value;
+            }
+        }
+
+        /// <summary>
+        /// Account ID of the customer on which the restrictions will be applied.
+        /// Optional if AccountNumber is passed, else Mandatory.
+        /// Example: 123456
+        /// </summary>
+        [JsonProperty("AccountId")]
+        public int? AccountId
+        {
+            get
+            {
+                return this.accountId;
+            }
+
+            set
+            {
+                this.shouldSerialize["AccountId"] = true;
+                this.accountId = value;
+            }
+        }
 
         /// <summary>
         /// Account Number of the customer on which the restrictions will be applied.
         /// Optional if AccountId is passed, else Mandatory.
+        /// Example: GB000000123
         /// </summary>
-        [JsonProperty("AccountNumber", NullValueHandling = NullValueHandling.Ignore)]
-        public string AccountNumber { get; set; }
+        [JsonProperty("AccountNumber")]
+        public string AccountNumber
+        {
+            get
+            {
+                return this.accountNumber;
+            }
+
+            set
+            {
+                this.shouldSerialize["AccountNumber"] = true;
+                this.accountNumber = value;
+            }
+        }
 
         /// <summary>
+        /// True/False.
         /// If true, the usage restrictions applied on the account will be removed.
         /// Optional
         /// Default: False
         /// </summary>
-        [JsonProperty("ResetUsageRestrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? ResetUsageRestrictions { get; set; }
+        [JsonProperty("ResetUsageRestrictions")]
+        public bool? ResetUsageRestrictions
+        {
+            get
+            {
+                return this.resetUsageRestrictions;
+            }
+
+            set
+            {
+                this.shouldSerialize["ResetUsageRestrictions"] = true;
+                this.resetUsageRestrictions = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets UsageRestrictions.
         /// </summary>
-        [JsonProperty("UsageRestrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.UsageRestrictions UsageRestrictions { get; set; }
+        [JsonProperty("UsageRestrictions")]
+        public Models.UsageRestrictionsCard UsageRestrictions
+        {
+            get
+            {
+                return this.usageRestrictions;
+            }
+
+            set
+            {
+                this.shouldSerialize["UsageRestrictions"] = true;
+                this.usageRestrictions = value;
+            }
+        }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -148,9 +287,83 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Marks the field to not be serailized.
         /// </summary>
+        public void UnsetColCoId()
+        {
+            this.shouldSerialize["ColCoId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetColCoCode()
+        {
+            this.shouldSerialize["ColCoCode"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
         public void UnsetPayerId()
         {
             this.shouldSerialize["PayerId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetPayerNumber()
+        {
+            this.shouldSerialize["PayerNumber"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetAccountId()
+        {
+            this.shouldSerialize["AccountId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetAccountNumber()
+        {
+            this.shouldSerialize["AccountNumber"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetResetUsageRestrictions()
+        {
+            this.shouldSerialize["ResetUsageRestrictions"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetUsageRestrictions()
+        {
+            this.shouldSerialize["UsageRestrictions"] = false;
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeColCoId()
+        {
+            return this.shouldSerialize["ColCoId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeColCoCode()
+        {
+            return this.shouldSerialize["ColCoCode"];
         }
 
         /// <summary>
@@ -160,6 +373,51 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool ShouldSerializePayerId()
         {
             return this.shouldSerialize["PayerId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializePayerNumber()
+        {
+            return this.shouldSerialize["PayerNumber"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeAccountId()
+        {
+            return this.shouldSerialize["AccountId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeAccountNumber()
+        {
+            return this.shouldSerialize["AccountNumber"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeResetUsageRestrictions()
+        {
+            return this.shouldSerialize["ResetUsageRestrictions"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeUsageRestrictions()
+        {
+            return this.shouldSerialize["UsageRestrictions"];
         }
 
         /// <inheritdoc/>
@@ -178,6 +436,7 @@ namespace ShellCardManagementAPIs.Standard.Models
                 ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
                 ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
                 ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
+                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
                 ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
                 ((this.ResetUsageRestrictions == null && other.ResetUsageRestrictions == null) || (this.ResetUsageRestrictions?.Equals(other.ResetUsageRestrictions) == true)) &&
                 ((this.UsageRestrictions == null && other.UsageRestrictions == null) || (this.UsageRestrictions?.Equals(other.UsageRestrictions) == true));
@@ -193,6 +452,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
             toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
             toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
             toStringOutput.Add($"this.ResetUsageRestrictions = {(this.ResetUsageRestrictions == null ? "null" : this.ResetUsageRestrictions.ToString())}");
             toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");

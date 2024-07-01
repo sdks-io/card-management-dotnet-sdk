@@ -32,38 +32,29 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Initializes a new instance of the <see cref="DeleteBundleRequest"/> class.
         /// </summary>
         /// <param name="bundleId">BundleId.</param>
-        /// <param name="colCoId">ColCoId.</param>
         /// <param name="colCoCode">ColCoCode.</param>
+        /// <param name="colCoId">ColCoId.</param>
         /// <param name="payerNumber">PayerNumber.</param>
         /// <param name="payerId">PayerId.</param>
         /// <param name="accountId">AccountId.</param>
         /// <param name="accountNumber">AccountNumber.</param>
         public DeleteBundleRequest(
             string bundleId,
-            int? colCoId = null,
             int? colCoCode = null,
+            int? colCoId = null,
             string payerNumber = null,
             int? payerId = null,
             int? accountId = null,
             string accountNumber = null)
         {
-            this.ColCoId = colCoId;
             this.ColCoCode = colCoCode;
+            this.ColCoId = colCoId;
             this.PayerNumber = payerNumber;
             this.PayerId = payerId;
             this.AccountId = accountId;
             this.AccountNumber = accountNumber;
             this.BundleId = bundleId;
         }
-
-        /// <summary>
-        /// Collecting Company Id of the selected payer.
-        /// Optional if ColCoCode is passed else Mandatory.
-        /// Example:
-        /// 1 for Philippines
-        /// </summary>
-        [JsonProperty("ColCoId", NullValueHandling = NullValueHandling.Ignore)]
-        public int? ColCoId { get; set; }
 
         /// <summary>
         /// Collecting Company Code (Shell Code) of the selected payer.
@@ -74,6 +65,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// </summary>
         [JsonProperty("ColCoCode", NullValueHandling = NullValueHandling.Ignore)]
         public int? ColCoCode { get; set; }
+
+        /// <summary>
+        /// Collecting Company Code (Shell Code) of the selected payer.
+        /// Mandatory for serviced OUs such as Romania, Latvia, Lithuania, Estonia, Ukraine etc. It is optional for other countries if ColCoID is provided.
+        /// Example:
+        /// 86 for Philippines
+        /// 5 for UK
+        /// </summary>
+        [JsonProperty("ColCoId", NullValueHandling = NullValueHandling.Ignore)]
+        public int? ColCoId { get; set; }
 
         /// <summary>
         /// Payer Number of the selected payer.
@@ -136,8 +137,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 return true;
             }
-            return obj is DeleteBundleRequest other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
+            return obj is DeleteBundleRequest other &&                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
+                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
                 ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
                 ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
                 ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
@@ -151,8 +152,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");

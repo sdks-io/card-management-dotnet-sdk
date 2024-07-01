@@ -9,13 +9,13 @@ namespace ShellCardManagementAPIs.Standard
     public enum Server
     {
         /// <summary>
-        /// Default.
+        /// OAuthServer.
         /// </summary>
-        Default,
+        OAuthServer,
 
         /// <summary>
-        /// AccessTokenServer.
+        /// Shell.
         /// </summary>
-        AccessTokenServer,
+        Shell,
     }
 }

@@ -12,17 +12,535 @@ RestrictionController restrictionController = client.RestrictionController;
 
 ## Methods
 
-* [Restriction Bundle Create](../../doc/controllers/restriction.md#restriction-bundle-create)
-* [Restriction Bundle Update](../../doc/controllers/restriction.md#restriction-bundle-update)
-* [Restriction Bundle Delete](../../doc/controllers/restriction.md#restriction-bundle-delete)
-* [Restriction Bundle Summary](../../doc/controllers/restriction.md#restriction-bundle-summary)
-* [Card Restriction](../../doc/controllers/restriction.md#card-restriction)
-* [Account Restriction](../../doc/controllers/restriction.md#account-restriction)
-* [Search Account Limit](../../doc/controllers/restriction.md#search-account-limit)
 * [Search Card Restriction](../../doc/controllers/restriction.md#search-card-restriction)
+* [Apply Restriction](../../doc/controllers/restriction.md#apply-restriction)
+* [Create Bundle](../../doc/controllers/restriction.md#create-bundle)
+* [Update Bundle](../../doc/controllers/restriction.md#update-bundle)
+* [Delete Bundle](../../doc/controllers/restriction.md#delete-bundle)
+* [Summaryofbundles](../../doc/controllers/restriction.md#summaryofbundles)
+* [Restriction Account](../../doc/controllers/restriction.md#restriction-account)
+* [Search Account Limit](../../doc/controllers/restriction.md#search-account-limit)
+* [Bundledetails](../../doc/controllers/restriction.md#bundledetails)
 
 
-# Restriction Bundle Create
+# Search Card Restriction
+
+This API will allows querying card details including the day/time and product restrictions.
+
+#### Supported operations
+
+* Search by list of cards or bundle
+* Include card bundle details (optional)
+
+```csharp
+SearchCardRestrictionAsync(
+    string apikey,
+    string requestId,
+    Models.SearchCardRestrictionReq body = null)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
+| `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
+| `body` | [`SearchCardRestrictionReq`](../../doc/models/search-card-restriction-req.md) | Body, Optional | Restriction search card request body |
+
+## Response Type
+
+[`Task<Models.SearchCardRestrictionRes>`](../../doc/models/search-card-restriction-res.md)
+
+## Example Usage
+
+```csharp
+string apikey = "apikey6";
+string requestId = "RequestId8";
+try
+{
+    SearchCardRestrictionRes result = await restrictionController.SearchCardRestrictionAsync(
+        apikey,
+        requestId
+    );
+}
+catch (ApiException e)
+{
+    // TODO: Handle exception here
+    Console.WriteLine(e.Message);
+}
+```
+
+## Example Response *(as JSON)*
+
+```json
+{
+  "Cards": [
+    {
+      "BundleId": null,
+      "Restrictions": {
+        "DayTimeRestrictions": {
+          "Friday": false,
+          "Monday": false,
+          "Saturday": true,
+          "Sunday": true,
+          "Thursday": true,
+          "TimeFrom": "02:00:00",
+          "TimeTo": "19:00:00",
+          "Tuesday": false,
+          "Wednesday": false
+        },
+        "LocationRestrictions": null,
+        "ProductRestrictions": {
+          "FuelSetId": 0,
+          "FuelSetName": null,
+          "NonFuelSets": null,
+          "ProductGroups": [
+            {
+              "IsDefault": true,
+              "IsFuelType": true,
+              "Name": "Electric",
+              "ProductGroupId": "P100",
+              "Products": [
+                {
+                  "Description": "Electric Charge",
+                  "GlobalProductCode": "018"
+                },
+                {
+                  "Description": "Electric Charge - Time",
+                  "GlobalProductCode": "087"
+                },
+                {
+                  "Description": "Electric Charge - Home",
+                  "GlobalProductCode": "088"
+                },
+                {
+                  "Description": "DC Rapid eCharge",
+                  "GlobalProductCode": "486"
+                },
+                {
+                  "Description": "eCharge Connection Fee",
+                  "GlobalProductCode": "489"
+                }
+              ],
+              "ReferenceId": 0
+            },
+            {
+              "IsDefault": true,
+              "IsFuelType": true,
+              "Name": "Standard Diesel",
+              "ProductGroupId": "P105",
+              "Products": [
+                {
+                  "Description": "Diesel AGO",
+                  "GlobalProductCode": "030"
+                },
+                {
+                  "Description": "GTL",
+                  "GlobalProductCode": "031"
+                },
+                {
+                  "Description": "Fuel Economy Diesel (AGO Low Sulphur)",
+                  "GlobalProductCode": "032"
+                },
+                {
+                  "Description": "Two Stroke",
+                  "GlobalProductCode": "035"
+                },
+                {
+                  "Description": "HVO-100",
+                  "GlobalProductCode": "036"
+                },
+                {
+                  "Description": "Industrial GasOil",
+                  "GlobalProductCode": "037"
+                },
+                {
+                  "Description": "AdBlue Bulk",
+                  "GlobalProductCode": "038"
+                },
+                {
+                  "Description": "AdBlue Packed",
+                  "GlobalProductCode": "039"
+                },
+                {
+                  "Description": "HVO Blended",
+                  "GlobalProductCode": "505"
+                }
+              ],
+              "ReferenceId": 0
+            },
+            {
+              "IsDefault": true,
+              "IsFuelType": true,
+              "Name": "Standard Petrol",
+              "ProductGroupId": "P106",
+              "Products": [
+                {
+                  "Description": "Unspecified Unleaded",
+                  "GlobalProductCode": "020"
+                },
+                {
+                  "Description": "Unleaded - High octane",
+                  "GlobalProductCode": "021"
+                },
+                {
+                  "Description": "Unleaded - Medium octane",
+                  "GlobalProductCode": "022"
+                },
+                {
+                  "Description": "Unleaded - Low octane",
+                  "GlobalProductCode": "023"
+                },
+                {
+                  "Description": "Unleaded Environmental",
+                  "GlobalProductCode": "024"
+                },
+                {
+                  "Description": "Leaded and Lead Replacement",
+                  "GlobalProductCode": "025"
+                },
+                {
+                  "Description": "Super Ethanol – E85",
+                  "GlobalProductCode": "502"
+                },
+                {
+                  "Description": "Super Ethanol – E85",
+                  "GlobalProductCode": "502"
+                }
+              ],
+              "ReferenceId": 0
+            },
+            {
+              "IsDefault": true,
+              "IsFuelType": false,
+              "Name": "Alcholic Drink",
+              "ProductGroupId": "P107",
+              "Products": [
+                {
+                  "Description": "Alcoholic drinks",
+                  "GlobalProductCode": "073"
+                }
+              ],
+              "ReferenceId": 0
+            },
+            {
+              "IsDefault": true,
+              "IsFuelType": false,
+              "Name": "Car Cleaning",
+              "ProductGroupId": "P109",
+              "Products": [
+                {
+                  "Description": "Automatic Carwash",
+                  "GlobalProductCode": "065"
+                },
+                {
+                  "Description": "Carwash Subscription",
+                  "GlobalProductCode": "465"
+                }
+              ],
+              "ReferenceId": 0
+            },
+            {
+              "IsDefault": true,
+              "IsFuelType": false,
+              "Name": "Controlled Road Services",
+              "ProductGroupId": "P110",
+              "Products": [
+                {
+                  "Description": "Public transport and taxi",
+                  "GlobalProductCode": "063"
+                },
+                {
+                  "Description": "Others",
+                  "GlobalProductCode": "080"
+                },
+                {
+                  "Description": "Car hire",
+                  "GlobalProductCode": "081"
+                },
+                {
+                  "Description": "Hotels",
+                  "GlobalProductCode": "082"
+                },
+                {
+                  "Description": "Restaurant",
+                  "GlobalProductCode": "083"
+                },
+                {
+                  "Description": "Telephone",
+                  "GlobalProductCode": "089"
+                }
+              ],
+              "ReferenceId": 0
+            },
+            {
+              "IsDefault": true,
+              "IsFuelType": false,
+              "Name": "Food and Drink",
+              "ProductGroupId": "P111",
+              "Products": [
+                {
+                  "Description": "Food (low VAT)",
+                  "GlobalProductCode": "071"
+                },
+                {
+                  "Description": "Non-alcoholic drinks",
+                  "GlobalProductCode": "072"
+                },
+                {
+                  "Description": "Food (high VAT)",
+                  "GlobalProductCode": "075"
+                }
+              ],
+              "ReferenceId": 0
+            }
+          ],
+          "Products": [
+            {
+              "Description": "Diesel AGO",
+              "GlobalProductCode": "030"
+            },
+            {
+              "Description": "GTL",
+              "GlobalProductCode": "031"
+            },
+            {
+              "Description": "Fuel Economy Diesel (AGO Low Sulphur)",
+              "GlobalProductCode": "032"
+            },
+            {
+              "Description": "Two Stroke",
+              "GlobalProductCode": "035"
+            },
+            {
+              "Description": "HVO-100",
+              "GlobalProductCode": "036"
+            },
+            {
+              "Description": "Industrial GasOil",
+              "GlobalProductCode": "037"
+            },
+            {
+              "Description": "AdBlue Bulk",
+              "GlobalProductCode": "038"
+            },
+            {
+              "Description": "AdBlue Packed",
+              "GlobalProductCode": "039"
+            },
+            {
+              "Description": "Automatic Carwash",
+              "GlobalProductCode": "065"
+            },
+            {
+              "Description": "Electric Charge",
+              "GlobalProductCode": "018"
+            },
+            {
+              "Description": "Electric Charge - Time",
+              "GlobalProductCode": "087"
+            },
+            {
+              "Description": "Electric Charge - Home",
+              "GlobalProductCode": "088"
+            },
+            {
+              "Description": "Unspecified Unleaded",
+              "GlobalProductCode": "020"
+            },
+            {
+              "Description": "Unleaded - High octane",
+              "GlobalProductCode": "021"
+            },
+            {
+              "Description": "Unleaded - Medium octane",
+              "GlobalProductCode": "022"
+            },
+            {
+              "Description": "Unleaded - Low octane",
+              "GlobalProductCode": "023"
+            },
+            {
+              "Description": "Unleaded Environmental",
+              "GlobalProductCode": "024"
+            },
+            {
+              "Description": "Leaded and Lead Replacement",
+              "GlobalProductCode": "025"
+            },
+            {
+              "Description": "Public transport and taxi",
+              "GlobalProductCode": "063"
+            },
+            {
+              "Description": "Others",
+              "GlobalProductCode": "080"
+            },
+            {
+              "Description": "Car hire",
+              "GlobalProductCode": "081"
+            },
+            {
+              "Description": "Hotels",
+              "GlobalProductCode": "082"
+            },
+            {
+              "Description": "Restaurant",
+              "GlobalProductCode": "083"
+            },
+            {
+              "Description": "Telephone",
+              "GlobalProductCode": "089"
+            },
+            {
+              "Description": "Food (low VAT)",
+              "GlobalProductCode": "071"
+            },
+            {
+              "Description": "Non-alcoholic drinks",
+              "GlobalProductCode": "072"
+            },
+            {
+              "Description": "Food (high VAT)",
+              "GlobalProductCode": "075"
+            },
+            {
+              "Description": "Alcoholic drinks",
+              "GlobalProductCode": "073"
+            }
+          ],
+          "PurchaseCategoryCode": "null",
+          "PurchaseCategoryId": 0
+        },
+        "UsageRestrictions": null
+      },
+      "RestrictionCurrencyCode": null,
+      "RestrictionCurrencySymbol": null,
+      "AccountId": 449,
+      "AccountName": "Test Card Customer Do Not Block",
+      "AccountNumber": "SG00000446",
+      "AccountShortName": "Test Card Customer Do Not Block",
+      "CardId": 6215,
+      "CardTypeCode": "7002872",
+      "CardTypeId": 15,
+      "CardTypeName": "SG FLE NAT SIN R2",
+      "ColCoCurrencyCode": "SGD",
+      "ColCoCurrencySymbol": "$",
+      "CurrencyCode": "SGD",
+      "CurrencySymbol": "$",
+      "DriverName": "P1D3 FEB 16TH",
+      "ExpiryDate": "20270430",
+      "IsCRT": false,
+      "IsFleet": true,
+      "IsInternational": false,
+      "IsNational": true,
+      "IsPartnerSitesIncluded": true,
+      "IsShellSitesOnly": false,
+      "IssueDate": "20240301",
+      "IssueNumber": 1,
+      "IsSuperseded": false,
+      "IsVirtualCard": false,
+      "PAN": "7002872532799004748",
+      "PurchaseCategoryCode": "1",
+      "PurchaseCategoryId": 55,
+      "PurchaseCategoryName": "1 - All Fuel Products",
+      "StatusDescription": "Active",
+      "StatusId": 1,
+      "VRN": "1234",
+      "MediumTypeID": 1,
+      "MediumType": "Fuel Card"
+    }
+  ],
+  "Error": {
+    "Code": "0000",
+    "Description": "Unable to fetch Usage Restriction / Day Time Restriction / Location Restriction details for few/all the cards."
+  },
+  "RequestId": "91bbb8f0-ec5c-473b-aa3a-a4eeca5ad594"
+}
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`FleetmanagementV2RestrictionSearchcard401ErrorException`](../../doc/models/fleetmanagement-v2-restriction-searchcard-401-error-exception.md) |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | [`FleetmanagementV2RestrictionSearchcard500ErrorException`](../../doc/models/fleetmanagement-v2-restriction-searchcard-500-error-exception.md) |
+
+
+# Apply Restriction
+
+The Card Limit and Restriction API is REST-based and employs Basic and ApiKey authentication. The API endpoints accept JSON-encoded request bodies, return JSON-encoded responses and use standard HTTP response codes.
+
+All resources are located in the Shell Card Platform.  The Shell Card Platform is the overall platform that encompasses all the internal Shell systems used to manage resources. The internal workings of the platform are not important when interacting with the API. However, it is worth noting that the platform uses a microservice architecture to communicate with various backend systems and some API calls are processed asynchronously.
+
+All endpoints use the `POST` verb for retrieving, updating, creating and deleting resources in the Shell Card Platform. The endpoints that retrieve resources from the Shell Card Platform allow flexible search parameters in the API request body.
+
+**Important Note** - This operation allows setting or updating the restrictions on existing cards. (For up to 3 cards in a single call).
+
+All restrictions of the cards are submitted and executed after successful below condition.
+•	The card exists.
+•	Day time restriction cannot be set to restrict the use of a card on all days of the week i.e., the values for all the days in the restriction cannot be set to false.
+•	Either of the usage, daytime, location or product restriction ‘Reset’ is set to ‘True’ or applied on the card.
+•	All the limits in the usage restriction profile for a card is not set to ‘0’/null.
+•	If IsVelocityCeiling is ‘true’, API will validate below condition:
+Usage restrictions for a card are lower than Customer Card Type level limits, if there are no customer level overrides available then lower than OU card type limits.
+•	In usage restrictions, the limits per transaction should be less than or equal to Daily, Daily should be less than or equal to Weekly, Weekly should be less than or equal to Monthly, Monthly should be less than or equal to Yearly (Annually). Exception being null/blank will be skipped. i.e., Daily value should be less than equal to Monthly value if Weekly value is null/blank. Lifetime limit is not considered for usage restrictions limits validation.
+•	Apply the card type limit to Gateway when a value is NULL in the input. However, if the card type limit is NULL for the same field, then no limit will be applied in Gateway.
+•	If ‘SetDefaultOnVelocityUpdate’ is ‘true’ then the operation will apply customer cardtype or OU level velocity limits on existing cards when restrictions are modified without providing custom values for all fields.
+
+```csharp
+ApplyRestrictionAsync(
+    string apikey,
+    string requestId,
+    Models.CardRestrictionReq body = null)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
+| `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
+| `body` | [`CardRestrictionReq`](../../doc/models/card-restriction-req.md) | Body, Optional | Card Restriction request body |
+
+## Response Type
+
+[`Task<Models.CardRestrictionResponse>`](../../doc/models/card-restriction-response.md)
+
+## Example Usage
+
+```csharp
+string apikey = "apikey6";
+string requestId = "RequestId8";
+try
+{
+    CardRestrictionResponse result = await restrictionController.ApplyRestrictionAsync(
+        apikey,
+        requestId
+    );
+}
+catch (ApiException e)
+{
+    // TODO: Handle exception here
+    Console.WriteLine(e.Message);
+}
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
+
+
+# Create Bundle
 
 This API enables clients to create a new card bundle and apply restrictions.
 
@@ -47,7 +565,8 @@ The following are the key validation rules with the associated error codes for f
 * `0007` - Error returned if request parameters fail validation e.g. mandatory check.
 
 ```csharp
-RestrictionBundleCreateAsync(
+CreateBundleAsync(
+    string apikey,
     string requestId,
     Models.CreateBundleRequest body = null)
 ```
@@ -56,8 +575,9 @@ RestrictionBundleCreateAsync(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`CreateBundleRequest`](../../doc/models/create-bundle-request.md) | Body, Optional | Create Bundle Request body |
+| `body` | [`CreateBundleRequest`](../../doc/models/create-bundle-request.md) | Body, Optional | CreateBundle request body |
 
 ## Response Type
 
@@ -66,68 +586,13 @@ RestrictionBundleCreateAsync(
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
-CreateBundleRequest body = new CreateBundleRequest
-{
-    Description = "",
-    Cards = new List<string>
-    {
-        "7077141000589242081",
-        "7077141000589242099",
-    },
-    ColCoId = 14,
-    PayerId = 22884,
-    AccountId = 22884,
-    ExternalBundleId = "SIT3Bundle04FEB-2",
-    Restrictions = new CreateBundleRequestRestrictions
-    {
-        UsageRestrictionAction = "None",
-        DayTimeRestrictionAction = "Add",
-        LocationRestrictionAction = "Add",
-        DayTimeRestrictions = new DayTimeRestrictions
-        {
-            Friday = true,
-            Monday = false,
-            Saturday = true,
-            Sunday = true,
-            Thursday = false,
-            TimeFrom = "03:10:00",
-            TimeTo = "12:00:00",
-            Tuesday = false,
-            Wednesday = false,
-        },
-        LocationRestrictions = new LocationRestrictions
-        {
-        },
-        ProductRestrictions = new ProductRestrictions
-        {
-            Products = new List<string>
-            {
-                "010",
-                "011",
-            },
-        },
-        UsageRestrictions = new UsageRestrictions
-        {
-            DailySpend = 1000,
-            MonthlySpend = 14000,
-            PerTransactionSpend = 800,
-            DailyVolume = 10,
-            WeeklyVolume = 100,
-            MonthlyVolume = 1000,
-            PerTransactionVolume = 10,
-            DailyTransactionCount = 3,
-            WeeklyTransactionCount = 9,
-            MonthlyTransactionCount = 20,
-        },
-    },
-};
-
 try
 {
-    CreateBundleResponse result = await restrictionController.RestrictionBundleCreateAsync(
-        requestId,
-        body
+    CreateBundleResponse result = await restrictionController.CreateBundleAsync(
+        apikey,
+        requestId
     );
 }
 catch (ApiException e)
@@ -137,36 +602,18 @@ catch (ApiException e)
 }
 ```
 
-## Example Response *(as JSON)*
-
-```json
-{
-  "RequestId": "254745ea-7573-4eed-e714-f2a42506dba0",
-  "Status": "Success",
-  "Data": [
-    {
-      "BundleId": "31183",
-      "Cards": null,
-      "DayTimeRestrictionProfileId": "33395",
-      "LocationRestrictionProfileId": "32326",
-      "ProductRestrictionProfileId": "38029"
-    }
-  ]
-}
-```
-
 ## Errors
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Restriction Bundle Update
+# Update Bundle
 
 This API enables clients to update an existing card bundle and its associated restrictions.
 
@@ -193,7 +640,8 @@ The following are the key validation rules with the associated error codes for f
 * `0007` - Error returned if request parameters fail validation e.g. at least one card must be provided in the input.
 
 ```csharp
-RestrictionBundleUpdateAsync(
+UpdateBundleAsync(
+    string apikey,
     string requestId,
     Models.UpdateBundleRequest body = null)
 ```
@@ -202,8 +650,9 @@ RestrictionBundleUpdateAsync(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`UpdateBundleRequest`](../../doc/models/update-bundle-request.md) | Body, Optional | Update Bundle Request body |
+| `body` | [`UpdateBundleRequest`](../../doc/models/update-bundle-request.md) | Body, Optional | Update Bundle request body |
 
 ## Response Type
 
@@ -212,29 +661,13 @@ RestrictionBundleUpdateAsync(
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
-UpdateBundleRequest body = new UpdateBundleRequest
-{
-    BundleId = "2207",
-    RequestAction = "Add",
-    ColCoId = 32,
-    PayerId = 1223,
-    AccountId = 1223,
-    Cards = new List<string>
-    {
-        "7077327290224797344",
-    },
-    UsageRestrictionAction = "Update",
-    Restrictions = new BundleRestriction
-    {
-    },
-};
-
 try
 {
-    UpdateBundleResponse result = await restrictionController.RestrictionBundleUpdateAsync(
-        requestId,
-        body
+    UpdateBundleResponse result = await restrictionController.UpdateBundleAsync(
+        apikey,
+        requestId
     );
 }
 catch (ApiException e)
@@ -244,27 +677,18 @@ catch (ApiException e)
 }
 ```
 
-## Example Response *(as JSON)*
-
-```json
-{
-  "RequestId": "13cb37b6-991f-4f37-c8c2-f4b29c916735",
-  "Status": "Success"
-}
-```
-
 ## Errors
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Restriction Bundle Delete
+# Delete Bundle
 
 This API enables clients to delete an existing card bundle in the Shell Card Platform. Once the card bundle is deleted the usage and product restrictions of the cards that were present in the bundle will be reset based on the request.
 
@@ -280,7 +704,8 @@ The following are the key validation rules with the associated error codes for f
 * `0007` - Error returned if request parameters fail validation e.g. mandatory check.
 
 ```csharp
-RestrictionBundleDeleteAsync(
+DeleteBundleAsync(
+    string apikey,
     string requestId,
     Models.DeleteBundleRequest body = null)
 ```
@@ -289,8 +714,9 @@ RestrictionBundleDeleteAsync(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`DeleteBundleRequest`](../../doc/models/delete-bundle-request.md) | Body, Optional | Delete Bundle Request body |
+| `body` | [`DeleteBundleRequest`](../../doc/models/delete-bundle-request.md) | Body, Optional | Update Bundle request body |
 
 ## Response Type
 
@@ -299,18 +725,23 @@ RestrictionBundleDeleteAsync(
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
 DeleteBundleRequest body = new DeleteBundleRequest
 {
-    BundleId = "31189",
-    ColCoId = 14,
-    PayerId = 22884,
-    AccountId = 22884,
+    BundleId = "123",
+    ColCoCode = 86,
+    ColCoId = 1,
+    PayerNumber = "PH50000843",
+    PayerId = 853,
+    AccountId = 854,
+    AccountNumber = "PH50000844",
 };
 
 try
 {
-    DeleteBundleResponse result = await restrictionController.RestrictionBundleDeleteAsync(
+    DeleteBundleResponse result = await restrictionController.DeleteBundleAsync(
+        apikey,
         requestId,
         body
     );
@@ -326,8 +757,11 @@ catch (ApiException e)
 
 ```json
 {
-  "RequestId": "13cb37b6-991f-4f37-c8c2-f4b29c916735",
-  "Status": "Success"
+  "Error": {
+    "Description": "Success",
+    "Code": "0000"
+  },
+  "RequestId": "ed557f02-c7d7-4c01-b3e5-11bf3239c8ed"
 }
 ```
 
@@ -335,14 +769,14 @@ catch (ApiException e)
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Restriction Bundle Summary
+# Summaryofbundles
 
 This API allows clients to get a summary of card bundles associated with Payer/Account. This API will return the basic bundle details including card and restriction details. Optionally the API will also include a count of cards that are not associated with the bundle but returned by the search criteria.
 
@@ -353,45 +787,37 @@ Note - to include count of cards of an account that are not associated with any 
 * Get summary of bundles by list of bundle Ids
 
 ```csharp
-RestrictionBundleSummaryAsync(
+SummaryofbundlesAsync(
+    string apikey,
     string requestId,
-    Models.SummaryOfBundleRequest body = null)
+    Models.SummaryofbundlerRequest body = null)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`SummaryOfBundleRequest`](../../doc/models/summary-of-bundle-request.md) | Body, Optional | Summary Bundle Request body |
+| `body` | [`SummaryofbundlerRequest`](../../doc/models/summaryofbundler-request.md) | Body, Optional | Summary of Bundle request body |
 
 ## Response Type
 
-[`Task<Models.SummaryOfBundleResponse>`](../../doc/models/summary-of-bundle-response.md)
+[`Task<Models.SummaryofbundleResponse>`](../../doc/models/summaryofbundle-response.md)
 
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
-SummaryOfBundleRequest body = new SummaryOfBundleRequest
+SummaryofbundlerRequest body = new SummaryofbundlerRequest
 {
-    Filters = new SummaryofBundle
-    {
-        BundleId = new List<string>
-        {
-            "2343",
-        },
-        ColCoId = 5,
-        PayerNumber = "GB00000235",
-        PayerId = 291,
-        AccountId = 291,
-        AccountNumber = "GB00000235",
-    },
 };
 
 try
 {
-    SummaryOfBundleResponse result = await restrictionController.RestrictionBundleSummaryAsync(
+    SummaryofbundleResponse result = await restrictionController.SummaryofbundlesAsync(
+        apikey,
         requestId,
         body
     );
@@ -403,208 +829,31 @@ catch (ApiException e)
 }
 ```
 
-## Example Response *(as JSON)*
-
-```json
-{
-  "RequestId": "cf142c58-bdfa-4414-81c5-f099c0c829d7",
-  "Status": "Success",
-  "Data": [
-    {
-      "PayerId": 291,
-      "PayerNumber": "GB00000235",
-      "AccountId": 291,
-      "AccountNumber": "GB00000235",
-      "CountOfCardsNotInBundle": 205,
-      "CardBundles": [
-        {
-          "BundleId": "1234",
-          "ExternalBundleId": "2343",
-          "Description": "CardBundle1",
-          "TotalCards": 1250
-        }
-      ]
-    }
-  ]
-}
-```
-
 ## Errors
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Card Restriction
+# Restriction Account
 
-This API allows to set or update the restrictions for existing cards or newly ordered cards under the same payer.
+This API allows setting or updating the usage restrictions of an existing account.
 
-#### Supported operations
+Then validation rules applied for this API.
 
-* Set or reset usage restrictions for cards
-* Set or reset day/time restrictions for cards
-* Set or reset product restrictions for cards
-* Set or reset location restrictions for cards
-
-```csharp
-CardRestrictionAsync(
-    string requestId,
-    Models.RestrictionCardRequest body = null)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`RestrictionCardRequest`](../../doc/models/restriction-card-request.md) | Body, Optional | Summary Bundle Request body |
-
-## Response Type
-
-[`Task<Models.RestrictionCardResponse>`](../../doc/models/restriction-card-response.md)
-
-## Example Usage
+•	The account exists.
+•	Day time restriction cannot be set to restrict the use of a card, under the account, on all days of the week.
+•	Either of the usage, daytime or location is either marked for reset or new restriction values provided for the account.
+•	In usage restrictions, the limits per transaction should be less than or equal to Daily, Daily should be less than or equal to Weekly, Weekly should be less than or equal to Monthly. Exception being 0/blank will be skipped, i.e., Daily value should be less than equal to Monthly value if Weekly value is 0/blank.
 
 ```csharp
-string requestId = "RequestId8";
-RestrictionCardRequest body = new RestrictionCardRequest
-{
-    ColCoId = 5,
-    PayerNumber = "GB00000235",
-    PayerId = 291,
-    Cards = new List<Models.RestrictionCardRequestCardsItems>
-    {
-        new RestrictionCardRequestCardsItems
-        {
-            AccountNumber = "GB00000235",
-            AccountId = 291,
-            PAN = "7002057035956000019",
-            CardId = 205113,
-            ResetUsageRestrictions = false,
-            ResetDayTimeRestrictions = false,
-            ResetProductRestrictions = false,
-            ResetLocationRestrictions = false,
-            DayTimeRestrictions = new DayTimeRestrictions
-            {
-                Friday = true,
-                Monday = true,
-                Saturday = false,
-                Sunday = false,
-                Thursday = true,
-                TimeFrom = "01:00:00",
-                TimeTo = "10:00:00",
-                Tuesday = true,
-                Wednesday = true,
-            },
-            LocationRestrictions = new LocationRestrictions
-            {
-                ShellSiteRestrictions = new List<Models.LocationRestrictionsShellSiteRestrictionsItems>
-                {
-                    new LocationRestrictionsShellSiteRestrictionsItems
-                    {
-                    },
-                },
-                PartnerSiteRestrictions = new List<Models.LocationRestrictionsPartnerSiteRestrictionsItems>
-                {
-                    new LocationRestrictionsPartnerSiteRestrictionsItems
-                    {
-                        NetworkCode = "0452301643",
-                    },
-                },
-            },
-            ProductRestrictions = new ProductRestrictions
-            {
-            },
-            UsageRestrictions = new UsageRestrictions
-            {
-                DailySpend = 1010,
-                WeeklySpend = 1620,
-                MonthlySpend = 15020,
-                PerTransactionSpend = 920,
-                DailyVolume = 10,
-                WeeklyVolume = 100,
-                MonthlyVolume = 1000,
-                PerTransactionVolume = 10,
-                DailyTransactionCount = 6,
-                WeeklyTransactionCount = 18,
-                MonthlyTransactionCount = 32,
-            },
-        },
-    },
-};
-
-try
-{
-    RestrictionCardResponse result = await restrictionController.CardRestrictionAsync(
-        requestId,
-        body
-    );
-}
-catch (ApiException e)
-{
-    // TODO: Handle exception here
-    Console.WriteLine(e.Message);
-}
-```
-
-## Example Response *(as JSON)*
-
-```json
-{
-  "MainReference": 1234,
-  "RequestId": "cf142c58-bdfa-4414-81c5-f099c0c829d7",
-  "Status": "Success",
-  "Data": [
-    {
-      "AccountId": 291,
-      "AccountNumber": "GB00000235",
-      "CardId": 205113,
-      "CardProductReference": null,
-      "DayTimeRestrictionDescription": "0000 - Success",
-      "DayTimeRestrictionStatus": "Success",
-      "LocationRestrictionDescription": "0000 - Success",
-      "LocationRestrictionStatus": "Success",
-      "PAN": "7002057035956000019",
-      "ProductRestrictionDescription": "0000 - Success",
-      "ProductRestrictionStatus": "Success",
-      "UsageRestrictionDescription": "0000 - Success",
-      "UsageRestrictionStatus": "Success",
-      "ValidationErrorCode": null,
-      "ValidationErrorDescription": null
-    }
-  ]
-}
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-
-
-# Account Restriction
-
-This operation allows setting or updating the usage restrictions of an existing account.
-
-#### Validation rules
-
-* The account exists.
-* Day time restriction cannot be set to restrict the use of a card, under the account, on all days of the week.
-* Either of the usage, daytime or location is either marked for reset or new restriction values provided for the account.
-* In usage restrictions, the limits per transaction should be less than or equal to Daily, Daily should be less than or equal to Weekly, Weekly should be less than or equal to Monthly. Exception being 0/blank will be skipped, i.e., Daily value should be less than equal to Monthly value if Weekly value is 0/blank.
-
-```csharp
-AccountRestrictionAsync(
+RestrictionAccountAsync(
+    string apikey,
     string requestId,
     Models.AccountRestrictionRequest body = null)
 ```
@@ -613,8 +862,9 @@ AccountRestrictionAsync(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`AccountRestrictionRequest`](../../doc/models/account-restriction-request.md) | Body, Optional | Summary Bundle Request body |
+| `body` | [`AccountRestrictionRequest`](../../doc/models/account-restriction-request.md) | Body, Optional | Account Restriction request body |
 
 ## Response Type
 
@@ -623,41 +873,13 @@ AccountRestrictionAsync(
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
-AccountRestrictionRequest body = new AccountRestrictionRequest
-{
-    ColCoId = 32,
-    ColCoCode = 3,
-    PayerNumber = "CZ00000927",
-    AccountNumber = "CZ00000928",
-    ResetUsageRestrictions = false,
-    UsageRestrictions = new UsageRestrictions
-    {
-        DailySpend = 10,
-        WeeklySpend = 30,
-        MonthlySpend = 100,
-        PerTransactionSpend = 3,
-        DailyVolume = 10,
-        WeeklyVolume = 146,
-        MonthlyVolume = 625,
-        PerTransactionVolume = 5,
-        DailyTransactionCount = 5,
-        WeeklyTransactionCount = 15,
-        MonthlyTransactionCount = 20,
-        AnnualSpend = 500,
-        LifeTimeSpend = 50000,
-        AnnualVolume = 1000,
-        LifeTimeVolume = 5000,
-        AnnualTransactionCount = 50,
-        LifeTimeTransactionCount = 100,
-    },
-};
-
 try
 {
-    AccountRestrictionResponse result = await restrictionController.AccountRestrictionAsync(
-        requestId,
-        body
+    AccountRestrictionResponse result = await restrictionController.RestrictionAccountAsync(
+        apikey,
+        requestId
     );
 }
 catch (ApiException e)
@@ -667,33 +889,24 @@ catch (ApiException e)
 }
 ```
 
-## Example Response *(as JSON)*
-
-```json
-{
-  "RequestId": "18c955d1-b3ec-4dc0-95da-76e67afb891a",
-  "Status": "SUCCESS"
-}
-```
-
 ## Errors
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
 # Search Account Limit
 
-This operation will allow user to get account level limits for the given account.
-It returns the velocity limits if its overridden at the account else the values will be null/empty.
+This API will allow user to get account level limits for the given account. It returns the velocity limits if its overridden at the account else the values will be null/empty.
 
 ```csharp
 SearchAccountLimitAsync(
+    string apikey,
     string requestId,
     Models.SearchAccountLimitRequest body = null)
 ```
@@ -702,8 +915,9 @@ SearchAccountLimitAsync(
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`SearchAccountLimitRequest`](../../doc/models/search-account-limit-request.md) | Body, Optional | Summary Bundle Request body |
+| `body` | [`SearchAccountLimitRequest`](../../doc/models/search-account-limit-request.md) | Body, Optional | Search Account Limit RequestBody |
 
 ## Response Type
 
@@ -712,23 +926,19 @@ SearchAccountLimitAsync(
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
 SearchAccountLimitRequest body = new SearchAccountLimitRequest
 {
-    Filters = new SearchAccountLimitRequestFilters
-    {
-        ColCoId = 14,
-        ColCoCode = 14,
-        PayerId = 1234,
-        PayerNumber = "GB99215176",
-        AccountId = 29484,
-        AccountNumber = "GB99215176",
-    },
+    ColCoCode = 32,
+    PayerId = 1240,
+    AccountId = 1232,
 };
 
 try
 {
     SearchAccountLimitResponse result = await restrictionController.SearchAccountLimitAsync(
+        apikey,
         requestId,
         body
     );
@@ -744,25 +954,25 @@ catch (ApiException e)
 
 ```json
 {
-  "RequestId": "27ec111b-0310-425d-b2a0-0fc2b1bfabb7",
-  "Status": "SUCCESS",
-  "Data": {
-    "AccountId": 29484,
-    "AccountNumber": "GB99215176",
-    "ReferenceProduct": "021",
-    "RestrictionCondition": "DECLINE_ALERT",
-    "VelocityLimits": [
-      {
-        "Type": "VALUE",
-        "Period": "DAILY",
-        "Limit": 1500.55,
-        "Accumulation": 1100.55,
-        "Balance": 400.55,
-        "Override": true,
-        "ProductGroup": "RoadSvc",
-        "Threshold": 50.55
-      }
-    ]
+  "RequestId": "2ace3991-5d03-4a68-ac68-ca9119b25101",
+  "AccountId": 1232,
+  "ReferenceProduct": "021",
+  "RestrictionCondition": "DECLINE_ALERT",
+  "VelocityLimits": [
+    {
+      "Type": "VALUE",
+      "Period": "MONTHLY",
+      "Limit": 330,
+      "Accumulation": 2220,
+      "Balance": 230,
+      "Override": true,
+      "ProductGroup": "RoadSvc",
+      "Threshold": 3230
+    }
+  ],
+  "Error": {
+    "Code": "0000",
+    "Description": "Success"
   }
 }
 ```
@@ -771,69 +981,53 @@ catch (ApiException e)
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Search Card Restriction
+# Bundledetails
 
-This API will allows querying card details including the day/time and product restrictions.
-
-#### Supported operations
-
-* Search by list of cards or bundle
-* Include card bundle details (optional)
+This API allows to get the details of a specific card bundle. It returns the bundle basic details along with the cards in the bundle and restrictions applied on them.
 
 ```csharp
-SearchCardRestrictionAsync(
+BundledetailsAsync(
+    string apikey,
     string requestId,
-    Models.RestrictionSearchCardRequest body = null)
+    Models.BudleDetailsRequest body = null)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
+| `apikey` | `string` | Header, Required | This is the API key of the specific environment which needs to be passed by the client. |
 | `requestId` | `string` | Header, Required | Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request. |
-| `body` | [`RestrictionSearchCardRequest`](../../doc/models/restriction-search-card-request.md) | Body, Optional | Summary Bundle Request body |
+| `body` | [`BudleDetailsRequest`](../../doc/models/budle-details-request.md) | Body, Optional | Bundle Details Request body |
 
 ## Response Type
 
-[`Task<Models.RestrictionSearchCardResponse>`](../../doc/models/restriction-search-card-response.md)
+[`Task<Models.BundleDetailsResponse>`](../../doc/models/bundle-details-response.md)
 
 ## Example Usage
 
 ```csharp
+string apikey = "apikey6";
 string requestId = "RequestId8";
-RestrictionSearchCardRequest body = new RestrictionSearchCardRequest
+BudleDetailsRequest body = new BudleDetailsRequest
 {
-    Filters = new RestrictionSearchCardRequestFilters
-    {
-        ColCoCode = 32,
-        ColCoId = 32,
-        PayerNumber = "CZ00000923",
-        PayerId = 1223,
-        BundleId = "BundleId8",
-        Cards = new List<Models.RestrictionSearchCardRequestFiltersCardsItems>
-        {
-            new RestrictionSearchCardRequestFiltersCardsItems
-            {
-                PAN = "7077327290223419353",
-                CardId = 459629,
-            },
-        },
-        IncludeLocationRestrictions = true,
-        IncludeInheritedLimits = true,
-        IncludeBundleDetails = true,
-    },
+    ColCoCode = 32,
+    PayerNumber = "CZ00000927",
+    AccountNumber = "CZ00000927",
+    BundleId = "1060",
 };
 
 try
 {
-    RestrictionSearchCardResponse result = await restrictionController.SearchCardRestrictionAsync(
+    BundleDetailsResponse result = await restrictionController.BundledetailsAsync(
+        apikey,
         requestId,
         body
     );
@@ -845,202 +1039,13 @@ catch (ApiException e)
 }
 ```
 
-## Example Response *(as JSON)*
-
-```json
-{
-  "RequestId": "cf142c58-bdfa-4414-81c5-f099c0c829d7",
-  "Status": "Success",
-  "Data": [
-    {
-      "BundleId": 100,
-      "Restrictions": {
-        "DayTimeRestrictions": {
-          "Friday": true,
-          "Monday": true,
-          "Saturday": false,
-          "Sunday": false,
-          "Thursday": true,
-          "TimeFrom": "01:00:00",
-          "TimeTo": "10:00:00",
-          "Tuesday": true,
-          "Wednesday": true
-        },
-        "LocationRestrictions": {
-          "CountryRestrictions": {
-            "Countries": [
-              "203"
-            ],
-            "Exclusive": true
-          },
-          "NetworkRestrictions": [
-            {
-              "Country": "826",
-              "Exclusive": false,
-              "Networks": [
-                "0002003826"
-              ]
-            }
-          ],
-          "PartnerSiteRestrictions": [
-            {
-              "Exclusive": false,
-              "NetworkCode": "0452301643",
-              "SiteGroups": [
-                "P1"
-              ],
-              "Sites": []
-            }
-          ],
-          "ShellSiteRestrictions": [
-            {
-              "Country": "276",
-              "Exclusive": true,
-              "SiteGroups": [
-                "P2"
-              ],
-              "Sites": []
-            }
-          ]
-        },
-        "ProductRestrictions": {
-          "FuelSetId": 0,
-          "FuelSetName": null,
-          "NonFuelSets": null,
-          "ProductGroups": [
-            {
-              "IsDefault": true,
-              "IsFuelType": true,
-              "Name": "Premium Diesel",
-              "ProductGroupId": "P103",
-              "Products": [
-                {
-                  "Description": "High Performance Diesel",
-                  "GlobalProductCode": "033"
-                }
-              ],
-              "ReferenceId": 100
-            }
-          ],
-          "Products": [],
-          "PurchaseCategoryCode": "",
-          "PurchaseCategoryId": 0
-        },
-        "UsageRestrictions": {
-          "AnnualSpend": 9999999999.99,
-          "AnnualSpendAccumulated": 0,
-          "AnnualSpendBalance": 9999999999.99,
-          "AnnualTransactionAccumulated": 0,
-          "AnnualTransactionBalance": 999999999999,
-          "AnnualTransactionCount": 999999999999,
-          "AnnualVolume": 9999999999.99,
-          "AnnualVolumeAccumulated": 0,
-          "AnnualVolumeBalance": 9999999999.99,
-          "DailySpend": 1010,
-          "DailySpendAccumulated": 0,
-          "DailySpendBalance": 1010,
-          "DailyTransactionAccumulated": 0,
-          "DailyTransactionBalance": 6,
-          "DailyTransactionCount": 6,
-          "DailyVolume": 10,
-          "DailyVolumeAccumulated": 0,
-          "DailyVolumeBalance": 10,
-          "Level": "Card",
-          "LifeTimeSpend": null,
-          "LifeTimeSpendAccumulated": null,
-          "LifeTimeSpendBalance": null,
-          "LifeTimeTransactionAccumulated": null,
-          "LifeTimeTransactionBalance": null,
-          "LifeTimeTransactionCount": null,
-          "LifeTimeVolume": null,
-          "LifeTimeVolumeAccumulated": null,
-          "LifeTimeVolumeBalance": null,
-          "MonthlySpend": 15020,
-          "MonthlySpendAccumulated": 0,
-          "MonthlySpendBalance": 15020,
-          "MonthlyTransactionAccumulated": 0,
-          "MonthlyTransactionBalance": 32,
-          "MonthlyTransactionCount": 32,
-          "MonthlyVolume": 1000,
-          "MonthlyVolumeAccumulated": 0,
-          "MonthlyVolumeBalance": 1000,
-          "PerTransactionSpend": 920,
-          "PerTransactionVolume": 10,
-          "WeeklySpend": 1620,
-          "WeeklySpendAccumulated": 0,
-          "WeeklySpendBalance": 1620,
-          "WeeklyTransactionAccumulated": 0,
-          "WeeklyTransactionBalance": 18,
-          "WeeklyTransactionCount": 18,
-          "WeeklyVolume": 100,
-          "WeeklyVolumeAccumulated": 0,
-          "WeeklyVolumeBalance": 100,
-          "AnnualSpendOverride": false,
-          "DailySpendOverride": true,
-          "LifeTimeSpendOverride": false,
-          "MonthlySpendOverride": true,
-          "PerTransactionSpendOverride": true,
-          "WeeklySpendOverride": true,
-          "DailyVolumeOverride": true,
-          "WeeklyVolumeOverride": true,
-          "MonthlyVolumeOverride": true,
-          "PerTransactionVolumeOverride": true,
-          "AnnualVolumeOverride": false,
-          "LifeTimeVolumeOverride": false,
-          "DailyTransactionOverride": true,
-          "WeeklyTransactionOverride": true,
-          "MonthlyTransactionOverride": true,
-          "AnnualTransactionOverride": false,
-          "LifeTimeTransactionOverride": false
-        }
-      },
-      "RestrictionCurrencyCode": "CZK",
-      "RestrictionCurrencySymbol": "Kč",
-      "AccountId": 1223,
-      "AccountName": "NewtestPandB",
-      "AccountNumber": "CZ00000923",
-      "AccountShortName": "NewtestPandB",
-      "CardId": 459629,
-      "CardTypeCode": "7077327",
-      "CardTypeId": 105,
-      "CardTypeName": "CZ CRT INT MUL R7",
-      "ColCoCurrencyCode": "CZK",
-      "ColCoCurrencySymbol": "Kč",
-      "CurrencyCode": "EUR",
-      "CurrencySymbol": "€",
-      "DriverName": "XYZ 1504",
-      "ExpiryDate": "20240731",
-      "IsCRT": true,
-      "IsFleet": false,
-      "IsInternational": true,
-      "IsNational": false,
-      "IsPartnerSitesIncluded": true,
-      "IsShellSitesOnly": false,
-      "IssueDate": "20200722",
-      "IssueNumber": 1,
-      "IsSuperseded": false,
-      "IsVirtualCard": false,
-      "PAN": "7077327290223419353",
-      "PurchaseCategoryCode": "0",
-      "PurchaseCategoryId": 100,
-      "PurchaseCategoryName": "0 - Diesel Products and TMF",
-      "StatusDescription": "Active",
-      "StatusId": 1,
-      "VRN": "ABC 1504",
-      "MediumTypeID": 5,
-      "MediumType": "Key fob"
-    }
-  ]
-}
-```
-
 ## Errors
 
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
-| 400 | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing). | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 403 | Forbidden | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
-| 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
+| 400 | The server cannot or will not process the request  due to something that is perceived to be a client<br>error (e.g., malformed request syntax, invalid<br>request message framing, or deceptive request routing). | `ApiException` |
+| 401 | The request has not been applied because it lacks valid  authentication credentials for the target resource. | `ApiException` |
+| 403 | The server understood the request but refuses to authorize it. | `ApiException` |
+| 404 | The origin server did not find a current representation  for the target resource or is not willing to disclose  that one exists. | `ApiException` |
+| 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 

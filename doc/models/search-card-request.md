@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `Filters` | [`SearchRequest`](../../doc/models/search-request.md) | Optional | Encapsulate the Search details request. |
+| `Filters` | [`Filters`](../../doc/models/filters.md) | Optional | - |
 | `PageSize` | `string` | Optional | Page Size – Number of records to show on a page<br>Optional<br>Default value 50 |
 | `Page` | `string` | Optional | Page Number |
 

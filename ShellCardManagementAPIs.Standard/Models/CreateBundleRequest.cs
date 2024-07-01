@@ -21,14 +21,22 @@ namespace ShellCardManagementAPIs.Standard.Models
     /// </summary>
     public class CreateBundleRequest
     {
-        private string externalBundleId;
+        private int? colCoId;
         private int? colCoCode;
+        private int? payerId;
+        private int? accountId;
         private string accountNumber;
+        private string externalBundleId;
+        private Models.BundleRestriction restrictions;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
         {
-            { "ExternalBundleId", false },
+            { "ColCoId", false },
             { "ColCoCode", false },
+            { "PayerId", false },
+            { "AccountId", false },
             { "AccountNumber", false },
+            { "ExternalBundleId", false },
+            { "Restrictions", false },
         };
 
         /// <summary>
@@ -41,31 +49,54 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateBundleRequest"/> class.
         /// </summary>
+        /// <param name="colCoId">ColCoId.</param>
+        /// <param name="colCoCode">ColCoCode.</param>
+        /// <param name="payerId">PayerId.</param>
+        /// <param name="payerNumber">PayerNumber.</param>
+        /// <param name="accountId">AccountId.</param>
+        /// <param name="accountNumber">AccountNumber.</param>
+        /// <param name="externalBundleId">ExternalBundleId.</param>
         /// <param name="description">Description.</param>
         /// <param name="cards">Cards.</param>
-        /// <param name="colCoId">ColCoId.</param>
-        /// <param name="payerId">PayerId.</param>
-        /// <param name="accountId">AccountId.</param>
-        /// <param name="externalBundleId">ExternalBundleId.</param>
-        /// <param name="colCoCode">ColCoCode.</param>
-        /// <param name="payerNumber">PayerNumber.</param>
-        /// <param name="accountNumber">AccountNumber.</param>
         /// <param name="restrictions">Restrictions.</param>
         public CreateBundleRequest(
-            string description,
-            List<string> cards,
             int? colCoId = null,
-            int? payerId = null,
-            int? accountId = null,
-            string externalBundleId = null,
             int? colCoCode = null,
+            int? payerId = null,
             string payerNumber = null,
+            int? accountId = null,
             string accountNumber = null,
-            Models.CreateBundleRequestRestrictions restrictions = null)
+            string externalBundleId = null,
+            string description = null,
+            List<string> cards = null,
+            Models.BundleRestriction restrictions = null)
         {
-            this.ColCoId = colCoId;
-            this.PayerId = payerId;
-            this.AccountId = accountId;
+            if (colCoId != null)
+            {
+                this.ColCoId = colCoId;
+            }
+
+            if (colCoCode != null)
+            {
+                this.ColCoCode = colCoCode;
+            }
+
+            if (payerId != null)
+            {
+                this.PayerId = payerId;
+            }
+
+            this.PayerNumber = payerNumber;
+            if (accountId != null)
+            {
+                this.AccountId = accountId;
+            }
+
+            if (accountNumber != null)
+            {
+                this.AccountNumber = accountNumber;
+            }
+
             if (externalBundleId != null)
             {
                 this.ExternalBundleId = externalBundleId;
@@ -73,45 +104,124 @@ namespace ShellCardManagementAPIs.Standard.Models
 
             this.Description = description;
             this.Cards = cards;
-            if (colCoCode != null)
+            if (restrictions != null)
             {
-                this.ColCoCode = colCoCode;
+                this.Restrictions = restrictions;
             }
 
-            this.PayerNumber = payerNumber;
-            if (accountNumber != null)
-            {
-                this.AccountNumber = accountNumber;
-            }
-
-            this.Restrictions = restrictions;
         }
 
         /// <summary>
-        /// Collecting Company Id  of the selected payer.
+        /// Collecting Company Id of the selected payer.
         /// Optional if ColCoCode is passed else Mandatory.
         /// Example:
-        /// 1-Philippines
-        /// 5-UK
+        /// 1 for Philippines
+        /// 5 for UK
         /// </summary>
-        [JsonProperty("ColCoId", NullValueHandling = NullValueHandling.Ignore)]
-        public int? ColCoId { get; set; }
+        [JsonProperty("ColCoId")]
+        public int? ColCoId
+        {
+            get
+            {
+                return this.colCoId;
+            }
+
+            set
+            {
+                this.shouldSerialize["ColCoId"] = true;
+                this.colCoId = value;
+            }
+        }
+
+        /// <summary>
+        /// Collecting Company Code (Shell Code) of the selected payer.
+        /// Mandatory for serviced OUs such as Romania, Latvia, Lithuania, Estonia, Ukraine etc. It is optional for other countries if ColCoID is provided.
+        /// Example:
+        /// 86 for Philippines
+        /// 5 for UK
+        /// </summary>
+        [JsonProperty("ColCoCode")]
+        public int? ColCoCode
+        {
+            get
+            {
+                return this.colCoCode;
+            }
+
+            set
+            {
+                this.shouldSerialize["ColCoCode"] = true;
+                this.colCoCode = value;
+            }
+        }
 
         /// <summary>
         /// Payer Id of the selected payer.
-        /// Optional if PayerNumber is passed else Mandatory
+        /// Either PayerId or PayerNumber or both must be passed.
         /// Example: 123456
         /// </summary>
-        [JsonProperty("PayerId", NullValueHandling = NullValueHandling.Ignore)]
-        public int? PayerId { get; set; }
+        [JsonProperty("PayerId")]
+        public int? PayerId
+        {
+            get
+            {
+                return this.payerId;
+            }
+
+            set
+            {
+                this.shouldSerialize["PayerId"] = true;
+                this.payerId = value;
+            }
+        }
+
+        /// <summary>
+        /// Payer Number of the selected payer.
+        /// Either PayerId or PayerNumber or both must be passed.
+        /// Example: GB000000123
+        /// </summary>
+        [JsonProperty("PayerNumber", NullValueHandling = NullValueHandling.Ignore)]
+        public string PayerNumber { get; set; }
 
         /// <summary>
         /// Account ID of the customer.
         /// Either AccountId or AccountNumber or both must be passed.
         /// Example: 123456
         /// </summary>
-        [JsonProperty("AccountId", NullValueHandling = NullValueHandling.Ignore)]
-        public int? AccountId { get; set; }
+        [JsonProperty("AccountId")]
+        public int? AccountId
+        {
+            get
+            {
+                return this.accountId;
+            }
+
+            set
+            {
+                this.shouldSerialize["AccountId"] = true;
+                this.accountId = value;
+            }
+        }
+
+        /// <summary>
+        /// Account Number of the customer.
+        /// Either AccountId or AccountNumber or both must be passed.
+        /// Example: GB000000123
+        /// </summary>
+        [JsonProperty("AccountNumber")]
+        public string AccountNumber
+        {
+            get
+            {
+                return this.accountNumber;
+            }
+
+            set
+            {
+                this.shouldSerialize["AccountNumber"] = true;
+                this.accountNumber = value;
+            }
+        }
 
         /// <summary>
         /// Identifier of the bundle in external system.
@@ -136,7 +246,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// A bundle description.
         /// Optional.
         /// </summary>
-        [JsonProperty("Description")]
+        [JsonProperty("Description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
         /// <summary>
@@ -145,64 +255,26 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Example: 7002051006629890645
         /// When PAN matches with multiple cards, the restriction will be applied on the latest issued card.
         /// </summary>
-        [JsonProperty("Cards")]
+        [JsonProperty("Cards", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> Cards { get; set; }
 
         /// <summary>
-        /// Collecting Company Code (Shell Code) of the selected payer.
-        /// Mandatory for serviced OUs such as Romania, Latvia, Lithuania, Estonia, Ukraine etc. It is optional for other countries if ColCoID is provided.
-        /// Example:
-        /// 86-Philippines
-        /// 5-UK
+        /// Gets or sets Restrictions.
         /// </summary>
-        [JsonProperty("ColCoCode")]
-        public int? ColCoCode
+        [JsonProperty("Restrictions")]
+        public Models.BundleRestriction Restrictions
         {
             get
             {
-                return this.colCoCode;
+                return this.restrictions;
             }
 
             set
             {
-                this.shouldSerialize["ColCoCode"] = true;
-                this.colCoCode = value;
+                this.shouldSerialize["Restrictions"] = true;
+                this.restrictions = value;
             }
         }
-
-        /// <summary>
-        /// Payer Number (Ex: GB000000123) of the selected payer.
-        /// Optional if PayerId is passed else Mandatory
-        /// </summary>
-        [JsonProperty("PayerNumber", NullValueHandling = NullValueHandling.Ignore)]
-        public string PayerNumber { get; set; }
-
-        /// <summary>
-        /// Account Number of the customer.
-        /// Either AccountId or AccountNumber or both must be passed.
-        /// Example: GB000000123
-        /// </summary>
-        [JsonProperty("AccountNumber")]
-        public string AccountNumber
-        {
-            get
-            {
-                return this.accountNumber;
-            }
-
-            set
-            {
-                this.shouldSerialize["AccountNumber"] = true;
-                this.accountNumber = value;
-            }
-        }
-
-        /// <summary>
-        /// Restrictions to be applied on the bundle.
-        /// Mandatory
-        /// </summary>
-        [JsonProperty("Restrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.CreateBundleRequestRestrictions Restrictions { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
@@ -217,9 +289,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Marks the field to not be serailized.
         /// </summary>
-        public void UnsetExternalBundleId()
+        public void UnsetColCoId()
         {
-            this.shouldSerialize["ExternalBundleId"] = false;
+            this.shouldSerialize["ColCoId"] = false;
         }
 
         /// <summary>
@@ -233,18 +305,50 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Marks the field to not be serailized.
         /// </summary>
+        public void UnsetPayerId()
+        {
+            this.shouldSerialize["PayerId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetAccountId()
+        {
+            this.shouldSerialize["AccountId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
         public void UnsetAccountNumber()
         {
             this.shouldSerialize["AccountNumber"] = false;
         }
 
         /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetExternalBundleId()
+        {
+            this.shouldSerialize["ExternalBundleId"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serailized.
+        /// </summary>
+        public void UnsetRestrictions()
+        {
+            this.shouldSerialize["Restrictions"] = false;
+        }
+
+        /// <summary>
         /// Checks if the field should be serialized or not.
         /// </summary>
         /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeExternalBundleId()
+        public bool ShouldSerializeColCoId()
         {
-            return this.shouldSerialize["ExternalBundleId"];
+            return this.shouldSerialize["ColCoId"];
         }
 
         /// <summary>
@@ -260,9 +364,45 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Checks if the field should be serialized or not.
         /// </summary>
         /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializePayerId()
+        {
+            return this.shouldSerialize["PayerId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeAccountId()
+        {
+            return this.shouldSerialize["AccountId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
         public bool ShouldSerializeAccountNumber()
         {
             return this.shouldSerialize["AccountNumber"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeExternalBundleId()
+        {
+            return this.shouldSerialize["ExternalBundleId"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeRestrictions()
+        {
+            return this.shouldSerialize["Restrictions"];
         }
 
         /// <inheritdoc/>
@@ -278,14 +418,14 @@ namespace ShellCardManagementAPIs.Standard.Models
                 return true;
             }
             return obj is CreateBundleRequest other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
+                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
                 ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
+                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
                 ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
+                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
                 ((this.ExternalBundleId == null && other.ExternalBundleId == null) || (this.ExternalBundleId?.Equals(other.ExternalBundleId) == true)) &&
                 ((this.Description == null && other.Description == null) || (this.Description?.Equals(other.Description) == true)) &&
                 ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
                 ((this.Restrictions == null && other.Restrictions == null) || (this.Restrictions?.Equals(other.Restrictions) == true));
         }
         
@@ -296,14 +436,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
             toStringOutput.Add($"this.ExternalBundleId = {(this.ExternalBundleId == null ? "null" : this.ExternalBundleId)}");
             toStringOutput.Add($"this.Description = {(this.Description == null ? "null" : this.Description)}");
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
             toStringOutput.Add($"this.Restrictions = {(this.Restrictions == null ? "null" : this.Restrictions.ToString())}");
         }
     }

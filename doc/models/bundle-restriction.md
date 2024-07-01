@@ -9,35 +9,41 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `ResetDayTimeRestriction` | `bool?` | Optional | True/False<br>A value indicates if the day/time restriction is to be reset for card bundle.<br>Optional<br>Default value is False.<br>**Default**: `false` |
-| `ResetLocationRestriction` | `bool?` | Optional | True/False<br>A value indicates if the location restriction is to be reset for card bundle.<br>Optional<br>Default value is False.<br>**Default**: `false` |
-| `ResetProductRestriction` | `bool?` | Optional | True/False<br>A value indicates if the product restriction is to be reset for card bundle.<br>Optional<br>Default value is False.<br>**Default**: `false` |
-| `UsageRestrictions` | [`UsageRestrictions`](../../doc/models/usage-restrictions.md) | Optional | - |
-| `DayTimeRestrictions` | [`DayTimeRestrictions`](../../doc/models/day-time-restrictions.md) | Optional | Day/time restrictions such as weekdays and time range to be applied on the bundle.<br>Mandatory if respective action is set as “Add”.<br>The details of DayTimeRestriction entity is given below. |
-| `ProductRestriction` | [`ProductRestrictions`](../../doc/models/product-restrictions.md) | Optional | - |
-| `LocationRestrictionProfileId` | `string` | Optional | Identifier of the location restriction profile to be updated for the bundle in Gateway.<br>Optional |
-| `LocationRestrictions` | [`LocationRestrictions`](../../doc/models/location-restrictions.md) | Optional | Location restrictions to be applied on the bundle which either allows or restricts using the cards, which are under the bundle, in the specified locations.<br>Mandatory if respective action is set as “Add”.<br>Details of location restrictions are given below. |
+| `DayTimeRestrictionAction` | `string` | Optional | The value indicates what actions to be performed with respect to day time restriction.<br>Mandatory<br>Allowed values –<br>•	Add: Apply the given restriction on the bundle.<br>•	Default: No Day/Time restriction will be applied on the bundle in Gateway. |
+| `LocationRestrictionAction` | `string` | Optional | The value indicates what actions to be performed with respect to location restriction.<br>Mandatory<br>Allowed values –<br>•	Add: Apply the given restriction on the bundle.<br>•	Default: No location restriction will be applied on the bundle in Gateway. |
+| `UsageRestrictions` | [`UsageRestrictionsCard`](../../doc/models/usage-restrictions-card.md) | Optional | - |
+| `DayTimeRestrictions` | [`DayTimeRestriction`](../../doc/models/day-time-restriction.md) | Optional | Details of the day/time restrictions such as weekdays and time range in which transactions should be allowed on the card. |
+| `ProductRestrictions` | [`ProductRestrictionCard`](../../doc/models/product-restriction-card.md) | Optional | - |
+| `LocationRestrictions` | [`LocationRestriction`](../../doc/models/location-restriction.md) | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "ResetDayTimeRestriction": false,
-  "ResetLocationRestriction": false,
-  "ResetProductRestriction": false,
+  "DayTimeRestrictionAction": "DayTimeRestrictionAction8",
+  "LocationRestrictionAction": "LocationRestrictionAction6",
   "UsageRestrictions": {
     "DailySpend": 7.72,
     "WeeklySpend": 10.22,
     "MonthlySpend": 48.66,
     "PerTransactionSpend": 17.28,
-    "DailyVolume": 122
+    "AnnualSpend": 223.08
   },
   "DayTimeRestrictions": {
-    "Friday": false,
     "Monday": false,
-    "Saturday": false,
-    "Sunday": false,
-    "Thursday": false
+    "Tuesday": false,
+    "Wednesday": false,
+    "Thursday": false,
+    "Friday": false
+  },
+  "ProductRestrictions": {
+    "Products": [
+      "Products4"
+    ],
+    "ProductGroups": [
+      "ProductGroups3",
+      "ProductGroups4"
+    ]
   }
 }
 ```
