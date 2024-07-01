@@ -16,11 +16,11 @@ Go to the Shell Developer Portal: [https://developer.shell.com](https://develope
 If you are building with .NET CLI tools then you can also use the following command:
 
 ```bash
-dotnet add package sdksio.CardManagementSDK --version 1.1.0
+dotnet add package sdksio.CardsManagementSDK --version 1.1.0
 ```
 
 You can also view the package at:
-https://www.nuget.org/packages/sdksio.CardManagementSDK/1.1.0
+https://www.nuget.org/packages/sdksio.CardsManagementSDK/1.1.0
 
 ## Initialize the API Client
 

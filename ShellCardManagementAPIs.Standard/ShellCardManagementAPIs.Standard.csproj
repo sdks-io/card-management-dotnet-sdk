@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>sdksio.CardManagementSDK</AssemblyName>
+    <AssemblyName>sdksio.CardsManagementSDK</AssemblyName>
     <Version>1.1.0.0</Version>
     <Authors>developer sdksio</Authors>
     <Owners>Shell Technical Support (API)</Owners>
@@ -20,7 +20,7 @@
 All resources are located in the Shell Card Platform. The Shell Card Platform is the overall platform that encompasses all the internal Shell systems used to manage resources. The internal workings of the platform are not important when interacting with the API. However, it is worth noting that the platform uses a microservice architecture to communicate with various backend systems and some API calls are processed asynchronously. All endpoints use the POST verb for retrieving, updating, creating and deleting resources in the Shell Card Platform. The endpoints that retrieve resources from the Shell Card Platform allow flexible search parameters in the API request body.</Description>
     <LangVersion>7.3</LangVersion>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <PackageId>sdksio.CardManagementSDK</PackageId>
+    <PackageId>sdksio.CardsManagementSDK</PackageId>
     <PackageTags>Shell;Card Management;APIMatic;SDKs</PackageTags>
     <RepositoryUrl>https://github.com/sdks-io/card-management-dotnet-sdk.git</RepositoryUrl>
     <PackRepositoryTypeageId>git</PackRepositoryTypeageId>
