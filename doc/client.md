@@ -7,13 +7,13 @@ The following parameters are configurable for the API Client:
 |  --- | --- | --- |
 | `Environment` | `Environment` | The API environment. <br> **Default: `Environment.SIT`** |
 | `Timeout` | `TimeSpan` | Http client timeout.<br>*Default*: `TimeSpan.FromSeconds(100)` |
-| `BasicAuthCredentials` | [`BasicAuthCredentials`]($a/basic-authentication.md) | The Credentials Setter for Basic Authentication |
-| `BearerTokenCredentials` | [`BearerTokenCredentials`]($a/oauth-2-client-credentials-grant.md) | The Credentials Setter for OAuth 2 Client Credentials Grant |
+| `BasicAuthCredentials` | [`BasicAuthCredentials`](auth/basic-authentication.md) | The Credentials Setter for Basic Authentication |
+| `BearerTokenCredentials` | [`BearerTokenCredentials`](auth/oauth-2-client-credentials-grant.md) | The Credentials Setter for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
 ```csharp
-ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient.Builder()
+ShellCardManagementAPIsClient client = new ShellCardManagementAPIsClient.Builder()
     .BasicAuthCredentials(
         new BasicAuthModel.Builder(
             "Username",
@@ -50,8 +50,8 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | HttpClientConfiguration | Gets the configuration of the Http Client associated with this client. | [`IHttpClientConfiguration`](http-client-configuration.md) |
 | Timeout | Http client timeout. | `TimeSpan` |
 | Environment | Current API environment. | `Environment` |
-| BasicAuthCredentials | Gets the credentials to use with BasicAuth. | [`IBasicAuthCredentials`]($a/basic-authentication.md) |
-| BearerTokenCredentials | Gets the credentials to use with BearerToken. | [`IBearerTokenCredentials`]($a/oauth-2-client-credentials-grant.md) |
+| BasicAuthCredentials | Gets the credentials to use with BasicAuth. | [`IBasicAuthCredentials`](auth/basic-authentication.md) |
+| BearerTokenCredentials | Gets the credentials to use with BearerToken. | [`IBearerTokenCredentials`](auth/oauth-2-client-credentials-grant.md) |
 
 ### Methods
 

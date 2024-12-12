@@ -1,21 +1,21 @@
 // <copyright file="CardDetail.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardDetail.
     /// </summary>
@@ -163,6 +163,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string clientReferenceId = null,
             Models.CardDetailAutoRenewEnum? autoRenew = null)
         {
+
             if (payerId != null)
             {
                 this.PayerId = payerId;
@@ -217,15 +218,15 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.DriverName = driverName;
             }
-
             this.OdometerInputRequired = odometerInputRequired;
             this.FleetIdInputRequired = fleetIdInputRequired;
+
             if (purchaseCategoryId != null)
             {
                 this.PurchaseCategoryId = purchaseCategoryId;
             }
-
             this.SelfSelectedEncryptedPIN = selfSelectedEncryptedPIN;
+
             if (selfSelectedPINKeyID != null)
             {
                 this.SelfSelectedPINKeyID = selfSelectedPINKeyID;
@@ -245,26 +246,26 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.CardGroupName = cardGroupName;
             }
-
             this.IsNewCardGroup = isNewCardGroup;
             this.EmbossCardGroup = embossCardGroup;
             this.CardDeliveryType = cardDeliveryType;
             this.CardContact = cardContact;
+
             if (pINDeliveryAddressType != null)
             {
                 this.PINDeliveryAddressType = pINDeliveryAddressType;
             }
-
             this.PINAdviceType = pINAdviceType;
             this.PINContact = pINContact;
             this.NotifyCaller = notifyCaller;
+
             if (caller != null)
             {
                 this.Caller = caller;
             }
-
             this.NotifyCallerOnSync = notifyCallerOnSync;
             this.ValidateFleetId = validateFleetId;
+
             if (fleetOption != null)
             {
                 this.FleetOption = fleetOption;
@@ -284,9 +285,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ProductRestrictionAction = productRestrictionAction;
             }
-
             this.Products = products;
             this.ProductGroups = productGroups;
+
             if (expiryDate != null)
             {
                 this.ExpiryDate = expiryDate;
@@ -296,7 +297,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ClientReferenceId = clientReferenceId;
             }
-
             this.AutoRenew = autoRenew;
         }
 
@@ -678,8 +678,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Card delivery type.<br />
         /// Mandatory <br />
         /// Allowed Value: <br />
-        /// 1.	Customer Address(Default) <br />
-        /// 2.	New Delivery Address
+        /// 1.    Customer Address(Default) <br />
+        /// 2.    New Delivery Address
         /// </summary>
         [JsonProperty("CardDeliveryType", NullValueHandling = NullValueHandling.Include)]
         public int? CardDeliveryType { get; set; }
@@ -694,9 +694,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// PIN delivery address type selection.<br />
         /// Optional<br />
         /// Allowed Values:<br />
-        /// 1.	Customer Address(Default)<br />
-        /// 2.	Card Address<br />
-        /// 3.	New Delivery Address
+        /// 1.    Customer Address(Default)<br />
+        /// 2.    Card Address<br />
+        /// 3.    New Delivery Address
         /// </summary>
         [JsonProperty("PINDeliveryAddressType")]
         public int? PINDeliveryAddressType
@@ -717,10 +717,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// PIN delivery method.<br />
         /// Mandatory<br />
         /// Allowed Values:<br />
-        /// 1.	Paper<br />
-        /// 2.	Email<br />
-        /// 3.	SMS<br />
-        /// 4.	None <br /> **Note:** Paper delivery not applicable for selfselctedPIN type
+        /// 1.    Paper<br />
+        /// 2.    Email<br />
+        /// 3.    SMS<br />
+        /// 4.    None <br /> **Note:** Paper delivery not applicable for selfselctedPIN type
         /// </summary>
         [JsonProperty("PINAdviceType", NullValueHandling = NullValueHandling.Include)]
         public int? PINAdviceType { get; set; }
@@ -746,8 +746,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Mandatory, if NotifyCaller is true.<br />
         /// Maximum field length: 20<br />
         /// Allowed values:<br />
-        /// •	“NextGenUI”: This value to be used by next gen UI application.<br />
-        /// •	“FleetHubUILifeTime”: This value to be used by Fleet Hub UI application for life time restriction cards.<br />
+        /// •    “NextGenUI”: This value to be used by next gen UI application.<br />
+        /// •    “FleetHubUILifeTime”: This value to be used by Fleet Hub UI application for life time restriction cards.<br />
         /// Note: The values passed in this field are case insensitive
         /// </summary>
         [JsonProperty("Caller")]
@@ -789,10 +789,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Optional.<br />
         /// Default: NO_VALIDATION<br />
         /// Allowed values:<br />
-        /// •	ALERT<br />
-        /// •	DECLINE<br />
-        /// •	DECLINE_ALERT<br />
-        /// •	NO_VALIDATION<br />
+        /// •    ALERT<br />
+        /// •    DECLINE<br />
+        /// •    DECLINE_ALERT<br />
+        /// •    NO_VALIDATION<br />
         /// Note: When FleetIdOption is not provided and validatefleetid is true then by default allowed value is NO_VALIDATION.
         /// </summary>
         [JsonProperty("FleetOption")]
@@ -950,14 +950,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardDetail : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -965,7 +963,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -973,7 +971,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -981,7 +979,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -989,7 +987,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -997,7 +995,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -1005,7 +1003,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeId()
         {
@@ -1013,7 +1011,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTokenTypeId()
         {
@@ -1021,7 +1019,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetEmbossText()
         {
@@ -1029,7 +1027,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetVRN()
         {
@@ -1037,7 +1035,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDriverName()
         {
@@ -1045,7 +1043,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPurchaseCategoryId()
         {
@@ -1053,7 +1051,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSelfSelectedPINKeyID()
         {
@@ -1061,7 +1059,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSelfSelectedPINSessionKey()
         {
@@ -1069,7 +1067,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupId()
         {
@@ -1077,7 +1075,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupName()
         {
@@ -1085,7 +1083,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryAddressType()
         {
@@ -1093,7 +1091,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCaller()
         {
@@ -1101,7 +1099,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetFleetOption()
         {
@@ -1109,7 +1107,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBundleId()
         {
@@ -1117,7 +1115,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetUsageRestrictionAction()
         {
@@ -1125,7 +1123,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetProductRestrictionAction()
         {
@@ -1133,7 +1131,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiryDate()
         {
@@ -1141,7 +1139,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetClientReferenceId()
         {
@@ -1367,56 +1365,90 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardDetail other &&                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.CardTypeId == null && other.CardTypeId == null) || (this.CardTypeId?.Equals(other.CardTypeId) == true)) &&
-                ((this.TokenTypeId == null && other.TokenTypeId == null) || (this.TokenTypeId?.Equals(other.TokenTypeId) == true)) &&
-                ((this.EmbossText == null && other.EmbossText == null) || (this.EmbossText?.Equals(other.EmbossText) == true)) &&
-                ((this.VRN == null && other.VRN == null) || (this.VRN?.Equals(other.VRN) == true)) &&
-                ((this.DriverName == null && other.DriverName == null) || (this.DriverName?.Equals(other.DriverName) == true)) &&
-                ((this.OdometerInputRequired == null && other.OdometerInputRequired == null) || (this.OdometerInputRequired?.Equals(other.OdometerInputRequired) == true)) &&
-                ((this.FleetIdInputRequired == null && other.FleetIdInputRequired == null) || (this.FleetIdInputRequired?.Equals(other.FleetIdInputRequired) == true)) &&
-                ((this.PurchaseCategoryId == null && other.PurchaseCategoryId == null) || (this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true)) &&
-                ((this.SelfSelectedEncryptedPIN == null && other.SelfSelectedEncryptedPIN == null) || (this.SelfSelectedEncryptedPIN?.Equals(other.SelfSelectedEncryptedPIN) == true)) &&
-                ((this.SelfSelectedPINKeyID == null && other.SelfSelectedPINKeyID == null) || (this.SelfSelectedPINKeyID?.Equals(other.SelfSelectedPINKeyID) == true)) &&
-                ((this.SelfSelectedPINSessionKey == null && other.SelfSelectedPINSessionKey == null) || (this.SelfSelectedPINSessionKey?.Equals(other.SelfSelectedPINSessionKey) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardGroupName == null && other.CardGroupName == null) || (this.CardGroupName?.Equals(other.CardGroupName) == true)) &&
-                ((this.IsNewCardGroup == null && other.IsNewCardGroup == null) || (this.IsNewCardGroup?.Equals(other.IsNewCardGroup) == true)) &&
-                ((this.EmbossCardGroup == null && other.EmbossCardGroup == null) || (this.EmbossCardGroup?.Equals(other.EmbossCardGroup) == true)) &&
-                ((this.CardDeliveryType == null && other.CardDeliveryType == null) || (this.CardDeliveryType?.Equals(other.CardDeliveryType) == true)) &&
-                ((this.CardContact == null && other.CardContact == null) || (this.CardContact?.Equals(other.CardContact) == true)) &&
-                ((this.PINDeliveryAddressType == null && other.PINDeliveryAddressType == null) || (this.PINDeliveryAddressType?.Equals(other.PINDeliveryAddressType) == true)) &&
-                ((this.PINAdviceType == null && other.PINAdviceType == null) || (this.PINAdviceType?.Equals(other.PINAdviceType) == true)) &&
-                ((this.PINContact == null && other.PINContact == null) || (this.PINContact?.Equals(other.PINContact) == true)) &&
-                ((this.NotifyCaller == null && other.NotifyCaller == null) || (this.NotifyCaller?.Equals(other.NotifyCaller) == true)) &&
-                ((this.Caller == null && other.Caller == null) || (this.Caller?.Equals(other.Caller) == true)) &&
-                ((this.NotifyCallerOnSync == null && other.NotifyCallerOnSync == null) || (this.NotifyCallerOnSync?.Equals(other.NotifyCallerOnSync) == true)) &&
-                ((this.ValidateFleetId == null && other.ValidateFleetId == null) || (this.ValidateFleetId?.Equals(other.ValidateFleetId) == true)) &&
-                ((this.FleetOption == null && other.FleetOption == null) || (this.FleetOption?.Equals(other.FleetOption) == true)) &&
-                ((this.BundleId == null && other.BundleId == null) || (this.BundleId?.Equals(other.BundleId) == true)) &&
-                ((this.UsageRestrictionAction == null && other.UsageRestrictionAction == null) || (this.UsageRestrictionAction?.Equals(other.UsageRestrictionAction) == true)) &&
-                ((this.ProductRestrictionAction == null && other.ProductRestrictionAction == null) || (this.ProductRestrictionAction?.Equals(other.ProductRestrictionAction) == true)) &&
-                ((this.Products == null && other.Products == null) || (this.Products?.Equals(other.Products) == true)) &&
-                ((this.ProductGroups == null && other.ProductGroups == null) || (this.ProductGroups?.Equals(other.ProductGroups) == true)) &&
-                ((this.ExpiryDate == null && other.ExpiryDate == null) || (this.ExpiryDate?.Equals(other.ExpiryDate) == true)) &&
-                ((this.ClientReferenceId == null && other.ClientReferenceId == null) || (this.ClientReferenceId?.Equals(other.ClientReferenceId) == true)) &&
-                ((this.AutoRenew == null && other.AutoRenew == null) || (this.AutoRenew?.Equals(other.AutoRenew) == true));
+            return obj is CardDetail other &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.CardTypeId == null && other.CardTypeId == null ||
+                 this.CardTypeId?.Equals(other.CardTypeId) == true) &&
+                (this.TokenTypeId == null && other.TokenTypeId == null ||
+                 this.TokenTypeId?.Equals(other.TokenTypeId) == true) &&
+                (this.EmbossText == null && other.EmbossText == null ||
+                 this.EmbossText?.Equals(other.EmbossText) == true) &&
+                (this.VRN == null && other.VRN == null ||
+                 this.VRN?.Equals(other.VRN) == true) &&
+                (this.DriverName == null && other.DriverName == null ||
+                 this.DriverName?.Equals(other.DriverName) == true) &&
+                (this.OdometerInputRequired == null && other.OdometerInputRequired == null ||
+                 this.OdometerInputRequired?.Equals(other.OdometerInputRequired) == true) &&
+                (this.FleetIdInputRequired == null && other.FleetIdInputRequired == null ||
+                 this.FleetIdInputRequired?.Equals(other.FleetIdInputRequired) == true) &&
+                (this.PurchaseCategoryId == null && other.PurchaseCategoryId == null ||
+                 this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true) &&
+                (this.SelfSelectedEncryptedPIN == null && other.SelfSelectedEncryptedPIN == null ||
+                 this.SelfSelectedEncryptedPIN?.Equals(other.SelfSelectedEncryptedPIN) == true) &&
+                (this.SelfSelectedPINKeyID == null && other.SelfSelectedPINKeyID == null ||
+                 this.SelfSelectedPINKeyID?.Equals(other.SelfSelectedPINKeyID) == true) &&
+                (this.SelfSelectedPINSessionKey == null && other.SelfSelectedPINSessionKey == null ||
+                 this.SelfSelectedPINSessionKey?.Equals(other.SelfSelectedPINSessionKey) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardGroupName == null && other.CardGroupName == null ||
+                 this.CardGroupName?.Equals(other.CardGroupName) == true) &&
+                (this.IsNewCardGroup == null && other.IsNewCardGroup == null ||
+                 this.IsNewCardGroup?.Equals(other.IsNewCardGroup) == true) &&
+                (this.EmbossCardGroup == null && other.EmbossCardGroup == null ||
+                 this.EmbossCardGroup?.Equals(other.EmbossCardGroup) == true) &&
+                (this.CardDeliveryType == null && other.CardDeliveryType == null ||
+                 this.CardDeliveryType?.Equals(other.CardDeliveryType) == true) &&
+                (this.CardContact == null && other.CardContact == null ||
+                 this.CardContact?.Equals(other.CardContact) == true) &&
+                (this.PINDeliveryAddressType == null && other.PINDeliveryAddressType == null ||
+                 this.PINDeliveryAddressType?.Equals(other.PINDeliveryAddressType) == true) &&
+                (this.PINAdviceType == null && other.PINAdviceType == null ||
+                 this.PINAdviceType?.Equals(other.PINAdviceType) == true) &&
+                (this.PINContact == null && other.PINContact == null ||
+                 this.PINContact?.Equals(other.PINContact) == true) &&
+                (this.NotifyCaller == null && other.NotifyCaller == null ||
+                 this.NotifyCaller?.Equals(other.NotifyCaller) == true) &&
+                (this.Caller == null && other.Caller == null ||
+                 this.Caller?.Equals(other.Caller) == true) &&
+                (this.NotifyCallerOnSync == null && other.NotifyCallerOnSync == null ||
+                 this.NotifyCallerOnSync?.Equals(other.NotifyCallerOnSync) == true) &&
+                (this.ValidateFleetId == null && other.ValidateFleetId == null ||
+                 this.ValidateFleetId?.Equals(other.ValidateFleetId) == true) &&
+                (this.FleetOption == null && other.FleetOption == null ||
+                 this.FleetOption?.Equals(other.FleetOption) == true) &&
+                (this.BundleId == null && other.BundleId == null ||
+                 this.BundleId?.Equals(other.BundleId) == true) &&
+                (this.UsageRestrictionAction == null && other.UsageRestrictionAction == null ||
+                 this.UsageRestrictionAction?.Equals(other.UsageRestrictionAction) == true) &&
+                (this.ProductRestrictionAction == null && other.ProductRestrictionAction == null ||
+                 this.ProductRestrictionAction?.Equals(other.ProductRestrictionAction) == true) &&
+                (this.Products == null && other.Products == null ||
+                 this.Products?.Equals(other.Products) == true) &&
+                (this.ProductGroups == null && other.ProductGroups == null ||
+                 this.ProductGroups?.Equals(other.ProductGroups) == true) &&
+                (this.ExpiryDate == null && other.ExpiryDate == null ||
+                 this.ExpiryDate?.Equals(other.ExpiryDate) == true) &&
+                (this.ClientReferenceId == null && other.ClientReferenceId == null ||
+                 this.ClientReferenceId?.Equals(other.ClientReferenceId) == true) &&
+                (this.AutoRenew == null && other.AutoRenew == null ||
+                 this.AutoRenew?.Equals(other.AutoRenew) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -1424,24 +1456,24 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
             toStringOutput.Add($"this.TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
-            toStringOutput.Add($"this.EmbossText = {(this.EmbossText == null ? "null" : this.EmbossText)}");
-            toStringOutput.Add($"this.VRN = {(this.VRN == null ? "null" : this.VRN)}");
-            toStringOutput.Add($"this.DriverName = {(this.DriverName == null ? "null" : this.DriverName)}");
+            toStringOutput.Add($"this.EmbossText = {this.EmbossText ?? "null"}");
+            toStringOutput.Add($"this.VRN = {this.VRN ?? "null"}");
+            toStringOutput.Add($"this.DriverName = {this.DriverName ?? "null"}");
             toStringOutput.Add($"this.OdometerInputRequired = {(this.OdometerInputRequired == null ? "null" : this.OdometerInputRequired.ToString())}");
             toStringOutput.Add($"this.FleetIdInputRequired = {(this.FleetIdInputRequired == null ? "null" : this.FleetIdInputRequired.ToString())}");
             toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.SelfSelectedEncryptedPIN = {(this.SelfSelectedEncryptedPIN == null ? "null" : this.SelfSelectedEncryptedPIN)}");
-            toStringOutput.Add($"this.SelfSelectedPINKeyID = {(this.SelfSelectedPINKeyID == null ? "null" : this.SelfSelectedPINKeyID)}");
-            toStringOutput.Add($"this.SelfSelectedPINSessionKey = {(this.SelfSelectedPINSessionKey == null ? "null" : this.SelfSelectedPINSessionKey)}");
+            toStringOutput.Add($"this.SelfSelectedEncryptedPIN = {this.SelfSelectedEncryptedPIN ?? "null"}");
+            toStringOutput.Add($"this.SelfSelectedPINKeyID = {this.SelfSelectedPINKeyID ?? "null"}");
+            toStringOutput.Add($"this.SelfSelectedPINSessionKey = {this.SelfSelectedPINSessionKey ?? "null"}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {(this.CardGroupName == null ? "null" : this.CardGroupName)}");
+            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
             toStringOutput.Add($"this.IsNewCardGroup = {(this.IsNewCardGroup == null ? "null" : this.IsNewCardGroup.ToString())}");
             toStringOutput.Add($"this.EmbossCardGroup = {(this.EmbossCardGroup == null ? "null" : this.EmbossCardGroup.ToString())}");
             toStringOutput.Add($"this.CardDeliveryType = {(this.CardDeliveryType == null ? "null" : this.CardDeliveryType.ToString())}");
@@ -1450,17 +1482,17 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.PINAdviceType = {(this.PINAdviceType == null ? "null" : this.PINAdviceType.ToString())}");
             toStringOutput.Add($"this.PINContact = {(this.PINContact == null ? "null" : this.PINContact.ToString())}");
             toStringOutput.Add($"this.NotifyCaller = {(this.NotifyCaller == null ? "null" : this.NotifyCaller.ToString())}");
-            toStringOutput.Add($"this.Caller = {(this.Caller == null ? "null" : this.Caller)}");
+            toStringOutput.Add($"this.Caller = {this.Caller ?? "null"}");
             toStringOutput.Add($"this.NotifyCallerOnSync = {(this.NotifyCallerOnSync == null ? "null" : this.NotifyCallerOnSync.ToString())}");
             toStringOutput.Add($"this.ValidateFleetId = {(this.ValidateFleetId == null ? "null" : this.ValidateFleetId.ToString())}");
-            toStringOutput.Add($"this.FleetOption = {(this.FleetOption == null ? "null" : this.FleetOption)}");
-            toStringOutput.Add($"this.BundleId = {(this.BundleId == null ? "null" : this.BundleId)}");
-            toStringOutput.Add($"this.UsageRestrictionAction = {(this.UsageRestrictionAction == null ? "null" : this.UsageRestrictionAction)}");
-            toStringOutput.Add($"this.ProductRestrictionAction = {(this.ProductRestrictionAction == null ? "null" : this.ProductRestrictionAction)}");
+            toStringOutput.Add($"this.FleetOption = {this.FleetOption ?? "null"}");
+            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"this.UsageRestrictionAction = {this.UsageRestrictionAction ?? "null"}");
+            toStringOutput.Add($"this.ProductRestrictionAction = {this.ProductRestrictionAction ?? "null"}");
             toStringOutput.Add($"this.Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
             toStringOutput.Add($"this.ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
-            toStringOutput.Add($"this.ExpiryDate = {(this.ExpiryDate == null ? "null" : this.ExpiryDate)}");
-            toStringOutput.Add($"this.ClientReferenceId = {(this.ClientReferenceId == null ? "null" : this.ClientReferenceId)}");
+            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
+            toStringOutput.Add($"this.ClientReferenceId = {this.ClientReferenceId ?? "null"}");
             toStringOutput.Add($"this.AutoRenew = {(this.AutoRenew == null ? "null" : this.AutoRenew.ToString())}");
         }
     }

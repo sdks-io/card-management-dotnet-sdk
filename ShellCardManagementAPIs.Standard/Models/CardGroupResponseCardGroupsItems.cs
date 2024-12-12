@@ -1,21 +1,21 @@
 // <copyright file="CardGroupResponseCardGroupsItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardGroupResponseCardGroupsItems.
     /// </summary>
@@ -125,6 +125,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string terminatedDate = null,
             int? totalCards = null)
         {
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -234,7 +235,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.TotalCards = totalCards;
             }
-
         }
 
         /// <summary>
@@ -641,14 +641,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardGroupResponseCardGroupsItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -656,7 +654,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -664,7 +662,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountShortName()
         {
@@ -672,7 +670,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetActiveCards()
         {
@@ -680,7 +678,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBlockedCards()
         {
@@ -688,7 +686,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCancelledCards()
         {
@@ -696,7 +694,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardDeliveryPoint()
         {
@@ -704,7 +702,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupId()
         {
@@ -712,7 +710,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupName()
         {
@@ -720,7 +718,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeCode()
         {
@@ -728,7 +726,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeId()
         {
@@ -736,7 +734,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeName()
         {
@@ -744,7 +742,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiredCards()
         {
@@ -752,7 +750,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiryDate()
         {
@@ -760,7 +758,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPrintOnCard()
         {
@@ -768,7 +766,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRenewalPendingCards()
         {
@@ -776,7 +774,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetReplacedCards()
         {
@@ -784,7 +782,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetStatus()
         {
@@ -792,7 +790,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTemporaryBlockByCustomer()
         {
@@ -800,7 +798,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTemporaryBlockByShell()
         {
@@ -808,7 +806,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTerminatedDate()
         {
@@ -816,7 +814,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalCards()
         {
@@ -1024,39 +1022,56 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardGroupResponseCardGroupsItems other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.AccountShortName == null && other.AccountShortName == null) || (this.AccountShortName?.Equals(other.AccountShortName) == true)) &&
-                ((this.ActiveCards == null && other.ActiveCards == null) || (this.ActiveCards?.Equals(other.ActiveCards) == true)) &&
-                ((this.BlockedCards == null && other.BlockedCards == null) || (this.BlockedCards?.Equals(other.BlockedCards) == true)) &&
-                ((this.CancelledCards == null && other.CancelledCards == null) || (this.CancelledCards?.Equals(other.CancelledCards) == true)) &&
-                ((this.CardDeliveryPoint == null && other.CardDeliveryPoint == null) || (this.CardDeliveryPoint?.Equals(other.CardDeliveryPoint) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardGroupName == null && other.CardGroupName == null) || (this.CardGroupName?.Equals(other.CardGroupName) == true)) &&
-                ((this.CardTypeCode == null && other.CardTypeCode == null) || (this.CardTypeCode?.Equals(other.CardTypeCode) == true)) &&
-                ((this.CardTypeId == null && other.CardTypeId == null) || (this.CardTypeId?.Equals(other.CardTypeId) == true)) &&
-                ((this.CardTypeName == null && other.CardTypeName == null) || (this.CardTypeName?.Equals(other.CardTypeName) == true)) &&
-                ((this.ExpiredCards == null && other.ExpiredCards == null) || (this.ExpiredCards?.Equals(other.ExpiredCards) == true)) &&
-                ((this.ExpiryDate == null && other.ExpiryDate == null) || (this.ExpiryDate?.Equals(other.ExpiryDate) == true)) &&
-                ((this.PrintOnCard == null && other.PrintOnCard == null) || (this.PrintOnCard?.Equals(other.PrintOnCard) == true)) &&
-                ((this.RenewalPendingCards == null && other.RenewalPendingCards == null) || (this.RenewalPendingCards?.Equals(other.RenewalPendingCards) == true)) &&
-                ((this.ReplacedCards == null && other.ReplacedCards == null) || (this.ReplacedCards?.Equals(other.ReplacedCards) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.TemporaryBlockByCustomer == null && other.TemporaryBlockByCustomer == null) || (this.TemporaryBlockByCustomer?.Equals(other.TemporaryBlockByCustomer) == true)) &&
-                ((this.TemporaryBlockByShell == null && other.TemporaryBlockByShell == null) || (this.TemporaryBlockByShell?.Equals(other.TemporaryBlockByShell) == true)) &&
-                ((this.TerminatedDate == null && other.TerminatedDate == null) || (this.TerminatedDate?.Equals(other.TerminatedDate) == true)) &&
-                ((this.TotalCards == null && other.TotalCards == null) || (this.TotalCards?.Equals(other.TotalCards) == true));
+            return obj is CardGroupResponseCardGroupsItems other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.AccountShortName == null && other.AccountShortName == null ||
+                 this.AccountShortName?.Equals(other.AccountShortName) == true) &&
+                (this.ActiveCards == null && other.ActiveCards == null ||
+                 this.ActiveCards?.Equals(other.ActiveCards) == true) &&
+                (this.BlockedCards == null && other.BlockedCards == null ||
+                 this.BlockedCards?.Equals(other.BlockedCards) == true) &&
+                (this.CancelledCards == null && other.CancelledCards == null ||
+                 this.CancelledCards?.Equals(other.CancelledCards) == true) &&
+                (this.CardDeliveryPoint == null && other.CardDeliveryPoint == null ||
+                 this.CardDeliveryPoint?.Equals(other.CardDeliveryPoint) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardGroupName == null && other.CardGroupName == null ||
+                 this.CardGroupName?.Equals(other.CardGroupName) == true) &&
+                (this.CardTypeCode == null && other.CardTypeCode == null ||
+                 this.CardTypeCode?.Equals(other.CardTypeCode) == true) &&
+                (this.CardTypeId == null && other.CardTypeId == null ||
+                 this.CardTypeId?.Equals(other.CardTypeId) == true) &&
+                (this.CardTypeName == null && other.CardTypeName == null ||
+                 this.CardTypeName?.Equals(other.CardTypeName) == true) &&
+                (this.ExpiredCards == null && other.ExpiredCards == null ||
+                 this.ExpiredCards?.Equals(other.ExpiredCards) == true) &&
+                (this.ExpiryDate == null && other.ExpiryDate == null ||
+                 this.ExpiryDate?.Equals(other.ExpiryDate) == true) &&
+                (this.PrintOnCard == null && other.PrintOnCard == null ||
+                 this.PrintOnCard?.Equals(other.PrintOnCard) == true) &&
+                (this.RenewalPendingCards == null && other.RenewalPendingCards == null ||
+                 this.RenewalPendingCards?.Equals(other.RenewalPendingCards) == true) &&
+                (this.ReplacedCards == null && other.ReplacedCards == null ||
+                 this.ReplacedCards?.Equals(other.ReplacedCards) == true) &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.TemporaryBlockByCustomer == null && other.TemporaryBlockByCustomer == null ||
+                 this.TemporaryBlockByCustomer?.Equals(other.TemporaryBlockByCustomer) == true) &&
+                (this.TemporaryBlockByShell == null && other.TemporaryBlockByShell == null ||
+                 this.TemporaryBlockByShell?.Equals(other.TemporaryBlockByShell) == true) &&
+                (this.TerminatedDate == null && other.TerminatedDate == null ||
+                 this.TerminatedDate?.Equals(other.TerminatedDate) == true) &&
+                (this.TotalCards == null && other.TotalCards == null ||
+                 this.TotalCards?.Equals(other.TotalCards) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -1064,26 +1079,26 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.AccountShortName = {(this.AccountShortName == null ? "null" : this.AccountShortName)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
             toStringOutput.Add($"this.ActiveCards = {(this.ActiveCards == null ? "null" : this.ActiveCards.ToString())}");
             toStringOutput.Add($"this.BlockedCards = {(this.BlockedCards == null ? "null" : this.BlockedCards.ToString())}");
             toStringOutput.Add($"this.CancelledCards = {(this.CancelledCards == null ? "null" : this.CancelledCards.ToString())}");
             toStringOutput.Add($"this.CardDeliveryPoint = {(this.CardDeliveryPoint == null ? "null" : this.CardDeliveryPoint.ToString())}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {(this.CardGroupName == null ? "null" : this.CardGroupName)}");
-            toStringOutput.Add($"this.CardTypeCode = {(this.CardTypeCode == null ? "null" : this.CardTypeCode)}");
+            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
             toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeName = {(this.CardTypeName == null ? "null" : this.CardTypeName)}");
+            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
             toStringOutput.Add($"this.ExpiredCards = {(this.ExpiredCards == null ? "null" : this.ExpiredCards.ToString())}");
-            toStringOutput.Add($"this.ExpiryDate = {(this.ExpiryDate == null ? "null" : this.ExpiryDate)}");
+            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
             toStringOutput.Add($"this.PrintOnCard = {(this.PrintOnCard == null ? "null" : this.PrintOnCard.ToString())}");
             toStringOutput.Add($"this.RenewalPendingCards = {(this.RenewalPendingCards == null ? "null" : this.RenewalPendingCards.ToString())}");
             toStringOutput.Add($"this.ReplacedCards = {(this.ReplacedCards == null ? "null" : this.ReplacedCards.ToString())}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
             toStringOutput.Add($"this.TemporaryBlockByCustomer = {(this.TemporaryBlockByCustomer == null ? "null" : this.TemporaryBlockByCustomer.ToString())}");
             toStringOutput.Add($"this.TemporaryBlockByShell = {(this.TemporaryBlockByShell == null ? "null" : this.TemporaryBlockByShell.ToString())}");
-            toStringOutput.Add($"this.TerminatedDate = {(this.TerminatedDate == null ? "null" : this.TerminatedDate)}");
+            toStringOutput.Add($"this.TerminatedDate = {this.TerminatedDate ?? "null"}");
             toStringOutput.Add($"this.TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
         }
     }

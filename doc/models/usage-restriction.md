@@ -11,7 +11,7 @@ Details of the usage restrictions such as day/week/month value and volume restri
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `Level` | `string` | Optional | Usage limit is applied on the card from this level.<br>Valid values –<br>•	Inherited<br>•	Card<br>When Card level usage restrictions are not present, the API will return the inherited restrictions.<br>Note: -This field is deprecated. Instead, use ‘Override’. |
+| `Level` | `string` | Optional | Usage limit is applied on the card from this level.<br>Valid values –<br>•    Inherited<br>•    Card<br>When Card level usage restrictions are not present, the API will return the inherited restrictions.<br>Note: -This field is deprecated. Instead, use ‘Override’. |
 | `DailySpend` | `double?` | Optional | Maximum spend value (amount) allowed per day.<br>Card limit ‘0’ represents the value is inherited and inherited limit could be calculated by adding accumulated and balance.<br>However, Inherited limit ‘0’ represents unlimited. |
 | `DailySpendAccumulated` | `double?` | Optional | Balance spend value (amount) available for rest of the day. |
 | `DailySpendBalance` | `double?` | Optional | Balance spend value (amount) available for rest of the day. |

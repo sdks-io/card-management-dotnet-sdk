@@ -1,21 +1,21 @@
 // <copyright file="FinanceCurrency.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// FinanceCurrency.
     /// </summary>
@@ -53,6 +53,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             double? invoiceExchangeRate = null,
             double? creditLimitExchangeRate = null)
         {
+
             if (currencyCode != null)
             {
                 this.CurrencyCode = currencyCode;
@@ -72,7 +73,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.CreditLimitExchangeRate = creditLimitExchangeRate;
             }
-
         }
 
         /// <summary>
@@ -151,14 +151,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"FinanceCurrency : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrencyCode()
         {
@@ -166,7 +164,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrencySymbol()
         {
@@ -174,7 +172,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoiceExchangeRate()
         {
@@ -182,7 +180,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCreditLimitExchangeRate()
         {
@@ -228,29 +226,28 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is FinanceCurrency other &&                ((this.CurrencyCode == null && other.CurrencyCode == null) || (this.CurrencyCode?.Equals(other.CurrencyCode) == true)) &&
-                ((this.CurrencySymbol == null && other.CurrencySymbol == null) || (this.CurrencySymbol?.Equals(other.CurrencySymbol) == true)) &&
-                ((this.InvoiceExchangeRate == null && other.InvoiceExchangeRate == null) || (this.InvoiceExchangeRate?.Equals(other.InvoiceExchangeRate) == true)) &&
-                ((this.CreditLimitExchangeRate == null && other.CreditLimitExchangeRate == null) || (this.CreditLimitExchangeRate?.Equals(other.CreditLimitExchangeRate) == true));
+            return obj is FinanceCurrency other &&
+                (this.CurrencyCode == null && other.CurrencyCode == null ||
+                 this.CurrencyCode?.Equals(other.CurrencyCode) == true) &&
+                (this.CurrencySymbol == null && other.CurrencySymbol == null ||
+                 this.CurrencySymbol?.Equals(other.CurrencySymbol) == true) &&
+                (this.InvoiceExchangeRate == null && other.InvoiceExchangeRate == null ||
+                 this.InvoiceExchangeRate?.Equals(other.InvoiceExchangeRate) == true) &&
+                (this.CreditLimitExchangeRate == null && other.CreditLimitExchangeRate == null ||
+                 this.CreditLimitExchangeRate?.Equals(other.CreditLimitExchangeRate) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CurrencyCode = {(this.CurrencyCode == null ? "null" : this.CurrencyCode)}");
-            toStringOutput.Add($"this.CurrencySymbol = {(this.CurrencySymbol == null ? "null" : this.CurrencySymbol)}");
+            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.CurrencySymbol = {this.CurrencySymbol ?? "null"}");
             toStringOutput.Add($"this.InvoiceExchangeRate = {(this.InvoiceExchangeRate == null ? "null" : this.InvoiceExchangeRate.ToString())}");
             toStringOutput.Add($"this.CreditLimitExchangeRate = {(this.CreditLimitExchangeRate == null ? "null" : this.CreditLimitExchangeRate.ToString())}");
         }

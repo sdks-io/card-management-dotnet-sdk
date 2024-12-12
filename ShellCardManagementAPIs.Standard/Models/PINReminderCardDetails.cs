@@ -1,21 +1,21 @@
 // <copyright file="PINReminderCardDetails.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PINReminderCardDetails.
     /// </summary>
@@ -56,11 +56,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.CardId = cardId;
             this.PANID = pANID;
             this.PAN = pAN;
+
             if (cardExpiryDate != null)
             {
                 this.CardExpiryDate = cardExpiryDate;
             }
-
             this.PINAdviceType = pINAdviceType;
             this.PINContactType = pINContactType;
             this.PINDeliverTo = pINDeliverTo;
@@ -115,9 +115,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// PIN delivery method.
         /// Mandatory
         /// Allowed Values:
-        ///    1.	Paper
-        ///    2.	Email
-        ///    3.	SMS
+        ///    1.    Paper
+        ///    2.    Email
+        ///    3.    SMS
         /// </summary>
         [JsonProperty("PINAdviceType")]
         public int PINAdviceType { get; set; }
@@ -126,10 +126,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// PIN Contact Type.
         /// Mandatory
         /// Allowed Values:
-        /// 1.	Use PIN Delivery contact details stored previously for this card
-        /// 2.	Use Card Delivery contact details stored previously for this card
-        /// 3.	Use default PIN Delivery contact details stored for this customer
-        /// 4.	Use new specific contact for PIN Reminder only
+        /// 1.    Use PIN Delivery contact details stored previously for this card
+        /// 2.    Use Card Delivery contact details stored previously for this card
+        /// 3.    Use default PIN Delivery contact details stored for this customer
+        /// 4.    Use new specific contact for PIN Reminder only
         /// Note: - PINContactType “3” is only allowed for Paper delivery
         /// </summary>
         [JsonProperty("PINContactType", NullValueHandling = NullValueHandling.Ignore)]
@@ -145,14 +145,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PINReminderCardDetails : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardExpiryDate()
         {
@@ -171,24 +169,25 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PINReminderCardDetails other &&                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.PANID == null && other.PANID == null) || (this.PANID?.Equals(other.PANID) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.CardExpiryDate == null && other.CardExpiryDate == null) || (this.CardExpiryDate?.Equals(other.CardExpiryDate) == true)) &&
-                this.PINAdviceType.Equals(other.PINAdviceType) &&
-                ((this.PINContactType == null && other.PINContactType == null) || (this.PINContactType?.Equals(other.PINContactType) == true)) &&
-                ((this.PINDeliverTo == null && other.PINDeliverTo == null) || (this.PINDeliverTo?.Equals(other.PINDeliverTo) == true));
+            return obj is PINReminderCardDetails other &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.PANID == null && other.PANID == null ||
+                 this.PANID?.Equals(other.PANID) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.CardExpiryDate == null && other.CardExpiryDate == null ||
+                 this.CardExpiryDate?.Equals(other.CardExpiryDate) == true) &&
+                (this.PINAdviceType.Equals(other.PINAdviceType)) &&
+                (this.PINContactType == null && other.PINContactType == null ||
+                 this.PINContactType?.Equals(other.PINContactType) == true) &&
+                (this.PINDeliverTo == null && other.PINDeliverTo == null ||
+                 this.PINDeliverTo?.Equals(other.PINDeliverTo) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -197,8 +196,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
             toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
-            toStringOutput.Add($"this.CardExpiryDate = {(this.CardExpiryDate == null ? "null" : this.CardExpiryDate)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
             toStringOutput.Add($"this.PINAdviceType = {this.PINAdviceType}");
             toStringOutput.Add($"this.PINContactType = {(this.PINContactType == null ? "null" : this.PINContactType.ToString())}");
             toStringOutput.Add($"this.PINDeliverTo = {(this.PINDeliverTo == null ? "null" : this.PINDeliverTo.ToString())}");

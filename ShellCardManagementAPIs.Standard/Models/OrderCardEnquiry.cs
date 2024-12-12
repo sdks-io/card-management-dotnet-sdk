@@ -1,21 +1,21 @@
 // <copyright file="OrderCardEnquiry.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// OrderCardEnquiry.
     /// </summary>
@@ -29,6 +29,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         private string cardGroupName;
         private int? cardId;
         private string cardPAN;
+        private string maskedPAN;
+        private double? pANID;
         private string cardTypeCode;
         private int? cardTypeId;
         private string cardTypeName;
@@ -63,6 +65,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "CardGroupName", false },
             { "CardId", false },
             { "CardPAN", false },
+            { "MaskedPAN", false },
+            { "PANID", false },
             { "CardTypeCode", false },
             { "CardTypeId", false },
             { "CardTypeName", false },
@@ -107,6 +111,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="cardGroupName">CardGroupName.</param>
         /// <param name="cardId">CardId.</param>
         /// <param name="cardPAN">CardPAN.</param>
+        /// <param name="maskedPAN">MaskedPAN.</param>
+        /// <param name="pANID">PANID.</param>
         /// <param name="cardTypeCode">CardTypeCode.</param>
         /// <param name="cardTypeId">CardTypeId.</param>
         /// <param name="cardTypeName">CardTypeName.</param>
@@ -143,6 +149,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             string cardGroupName = null,
             int? cardId = null,
             string cardPAN = null,
+            string maskedPAN = null,
+            double? pANID = null,
             string cardTypeCode = null,
             int? cardTypeId = null,
             string cardTypeName = null,
@@ -171,6 +179,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string statusDescription = null,
             int? colCoId = null)
         {
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -209,6 +218,16 @@ namespace ShellCardManagementAPIs.Standard.Models
             if (cardPAN != null)
             {
                 this.CardPAN = cardPAN;
+            }
+
+            if (maskedPAN != null)
+            {
+                this.MaskedPAN = maskedPAN;
+            }
+
+            if (pANID != null)
+            {
+                this.PANID = pANID;
             }
 
             if (cardTypeCode != null)
@@ -255,15 +274,15 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.GatewaySyncStatus = gatewaySyncStatus;
             }
-
             this.MainReference = mainReference;
             this.OrderCardReference = orderCardReference;
+
             if (orderStatus != null)
             {
                 this.OrderStatus = orderStatus;
             }
-
             this.PayerId = payerId;
+
             if (payerNumber != null)
             {
                 this.PayerNumber = payerNumber;
@@ -333,7 +352,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ColCoId = colCoId;
             }
-
         }
 
         /// <summary>
@@ -482,6 +500,42 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.shouldSerialize["CardPAN"] = true;
                 this.cardPAN = value;
+            }
+        }
+
+        /// <summary>
+        /// Card PAN
+        /// </summary>
+        [JsonProperty("MaskedPAN")]
+        public string MaskedPAN
+        {
+            get
+            {
+                return this.maskedPAN;
+            }
+
+            set
+            {
+                this.shouldSerialize["MaskedPAN"] = true;
+                this.maskedPAN = value;
+            }
+        }
+
+        /// <summary>
+        /// Card PAN ID as a unique number for each PAN
+        /// </summary>
+        [JsonProperty("PANID")]
+        public double? PANID
+        {
+            get
+            {
+                return this.pANID;
+            }
+
+            set
+            {
+                this.shouldSerialize["PANID"] = true;
+                this.pANID = value;
             }
         }
 
@@ -677,11 +731,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Possible values:<br />
         /// P   Pending<br />
         /// I   Picked up for processing<br />
-        /// PX	Failed at Queue but retry attempts pending<br />
-        /// X	Failed  at Queue<br />
-        /// R	Card is processed, awaiting for PAN update.<br />
-        /// S	Processed<br />
-        /// F	Failed
+        /// PX    Failed at Queue but retry attempts pending<br />
+        /// X    Failed  at Queue<br />
+        /// R    Card is processed, awaiting for PAN update.<br />
+        /// S    Processed<br />
+        /// F    Failed
         /// </summary>
         [JsonProperty("OrderStatus")]
         public string OrderStatus
@@ -981,14 +1035,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"OrderCardEnquiry : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -996,7 +1048,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -1004,7 +1056,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBCOReference()
         {
@@ -1012,7 +1064,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBCORowNumber()
         {
@@ -1020,7 +1072,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupId()
         {
@@ -1028,7 +1080,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupName()
         {
@@ -1036,7 +1088,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardId()
         {
@@ -1044,7 +1096,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardPAN()
         {
@@ -1052,7 +1104,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
+        /// </summary>
+        public void UnsetMaskedPAN()
+        {
+            this.shouldSerialize["MaskedPAN"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serialized.
+        /// </summary>
+        public void UnsetPANID()
+        {
+            this.shouldSerialize["PANID"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeCode()
         {
@@ -1060,7 +1128,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeId()
         {
@@ -1068,7 +1136,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeName()
         {
@@ -1076,7 +1144,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDriverName()
         {
@@ -1084,7 +1152,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetErrorCode()
         {
@@ -1092,7 +1160,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetErrorDescription()
         {
@@ -1100,7 +1168,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetGatewaySyncErrorCode()
         {
@@ -1108,7 +1176,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetGatewaySyncErrorDescription()
         {
@@ -1116,7 +1184,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetGatewaySyncStatus()
         {
@@ -1124,7 +1192,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetOrderStatus()
         {
@@ -1132,7 +1200,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -1140,7 +1208,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetProcessedDate()
         {
@@ -1148,7 +1216,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPurchaseCategoryCode()
         {
@@ -1156,7 +1224,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPurchaseCategoryId()
         {
@@ -1164,7 +1232,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPurchaseCategoryName()
         {
@@ -1172,7 +1240,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSubmittedDate()
         {
@@ -1180,7 +1248,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSyncProcessedDate()
         {
@@ -1188,7 +1256,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSyncRequestedDate()
         {
@@ -1196,7 +1264,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetVRN()
         {
@@ -1204,7 +1272,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetOrderRequestId()
         {
@@ -1212,7 +1280,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiryDate()
         {
@@ -1220,7 +1288,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetClientReferenceId()
         {
@@ -1228,7 +1296,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetStatusDescription()
         {
@@ -1236,7 +1304,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -1313,6 +1381,24 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool ShouldSerializeCardPAN()
         {
             return this.shouldSerialize["CardPAN"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeMaskedPAN()
+        {
+            return this.shouldSerialize["MaskedPAN"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializePANID()
+        {
+            return this.shouldSerialize["PANID"];
         }
 
         /// <summary>
@@ -1534,52 +1620,86 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is OrderCardEnquiry other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.BCOReference == null && other.BCOReference == null) || (this.BCOReference?.Equals(other.BCOReference) == true)) &&
-                ((this.BCORowNumber == null && other.BCORowNumber == null) || (this.BCORowNumber?.Equals(other.BCORowNumber) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardGroupName == null && other.CardGroupName == null) || (this.CardGroupName?.Equals(other.CardGroupName) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.CardPAN == null && other.CardPAN == null) || (this.CardPAN?.Equals(other.CardPAN) == true)) &&
-                ((this.CardTypeCode == null && other.CardTypeCode == null) || (this.CardTypeCode?.Equals(other.CardTypeCode) == true)) &&
-                ((this.CardTypeId == null && other.CardTypeId == null) || (this.CardTypeId?.Equals(other.CardTypeId) == true)) &&
-                ((this.CardTypeName == null && other.CardTypeName == null) || (this.CardTypeName?.Equals(other.CardTypeName) == true)) &&
-                ((this.DriverName == null && other.DriverName == null) || (this.DriverName?.Equals(other.DriverName) == true)) &&
-                ((this.ErrorCode == null && other.ErrorCode == null) || (this.ErrorCode?.Equals(other.ErrorCode) == true)) &&
-                ((this.ErrorDescription == null && other.ErrorDescription == null) || (this.ErrorDescription?.Equals(other.ErrorDescription) == true)) &&
-                ((this.GatewaySyncErrorCode == null && other.GatewaySyncErrorCode == null) || (this.GatewaySyncErrorCode?.Equals(other.GatewaySyncErrorCode) == true)) &&
-                ((this.GatewaySyncErrorDescription == null && other.GatewaySyncErrorDescription == null) || (this.GatewaySyncErrorDescription?.Equals(other.GatewaySyncErrorDescription) == true)) &&
-                ((this.GatewaySyncStatus == null && other.GatewaySyncStatus == null) || (this.GatewaySyncStatus?.Equals(other.GatewaySyncStatus) == true)) &&
-                ((this.MainReference == null && other.MainReference == null) || (this.MainReference?.Equals(other.MainReference) == true)) &&
-                ((this.OrderCardReference == null && other.OrderCardReference == null) || (this.OrderCardReference?.Equals(other.OrderCardReference) == true)) &&
-                ((this.OrderStatus == null && other.OrderStatus == null) || (this.OrderStatus?.Equals(other.OrderStatus) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.ProcessedDate == null && other.ProcessedDate == null) || (this.ProcessedDate?.Equals(other.ProcessedDate) == true)) &&
-                ((this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null) || (this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true)) &&
-                ((this.PurchaseCategoryId == null && other.PurchaseCategoryId == null) || (this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true)) &&
-                ((this.PurchaseCategoryName == null && other.PurchaseCategoryName == null) || (this.PurchaseCategoryName?.Equals(other.PurchaseCategoryName) == true)) &&
-                ((this.SubmittedDate == null && other.SubmittedDate == null) || (this.SubmittedDate?.Equals(other.SubmittedDate) == true)) &&
-                ((this.SyncProcessedDate == null && other.SyncProcessedDate == null) || (this.SyncProcessedDate?.Equals(other.SyncProcessedDate) == true)) &&
-                ((this.SyncRequestedDate == null && other.SyncRequestedDate == null) || (this.SyncRequestedDate?.Equals(other.SyncRequestedDate) == true)) &&
-                ((this.VRN == null && other.VRN == null) || (this.VRN?.Equals(other.VRN) == true)) &&
-                ((this.OrderRequestId == null && other.OrderRequestId == null) || (this.OrderRequestId?.Equals(other.OrderRequestId) == true)) &&
-                ((this.ExpiryDate == null && other.ExpiryDate == null) || (this.ExpiryDate?.Equals(other.ExpiryDate) == true)) &&
-                ((this.ClientReferenceId == null && other.ClientReferenceId == null) || (this.ClientReferenceId?.Equals(other.ClientReferenceId) == true)) &&
-                ((this.StatusDescription == null && other.StatusDescription == null) || (this.StatusDescription?.Equals(other.StatusDescription) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true));
+            return obj is OrderCardEnquiry other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.BCOReference == null && other.BCOReference == null ||
+                 this.BCOReference?.Equals(other.BCOReference) == true) &&
+                (this.BCORowNumber == null && other.BCORowNumber == null ||
+                 this.BCORowNumber?.Equals(other.BCORowNumber) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardGroupName == null && other.CardGroupName == null ||
+                 this.CardGroupName?.Equals(other.CardGroupName) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.CardPAN == null && other.CardPAN == null ||
+                 this.CardPAN?.Equals(other.CardPAN) == true) &&
+                (this.MaskedPAN == null && other.MaskedPAN == null ||
+                 this.MaskedPAN?.Equals(other.MaskedPAN) == true) &&
+                (this.PANID == null && other.PANID == null ||
+                 this.PANID?.Equals(other.PANID) == true) &&
+                (this.CardTypeCode == null && other.CardTypeCode == null ||
+                 this.CardTypeCode?.Equals(other.CardTypeCode) == true) &&
+                (this.CardTypeId == null && other.CardTypeId == null ||
+                 this.CardTypeId?.Equals(other.CardTypeId) == true) &&
+                (this.CardTypeName == null && other.CardTypeName == null ||
+                 this.CardTypeName?.Equals(other.CardTypeName) == true) &&
+                (this.DriverName == null && other.DriverName == null ||
+                 this.DriverName?.Equals(other.DriverName) == true) &&
+                (this.ErrorCode == null && other.ErrorCode == null ||
+                 this.ErrorCode?.Equals(other.ErrorCode) == true) &&
+                (this.ErrorDescription == null && other.ErrorDescription == null ||
+                 this.ErrorDescription?.Equals(other.ErrorDescription) == true) &&
+                (this.GatewaySyncErrorCode == null && other.GatewaySyncErrorCode == null ||
+                 this.GatewaySyncErrorCode?.Equals(other.GatewaySyncErrorCode) == true) &&
+                (this.GatewaySyncErrorDescription == null && other.GatewaySyncErrorDescription == null ||
+                 this.GatewaySyncErrorDescription?.Equals(other.GatewaySyncErrorDescription) == true) &&
+                (this.GatewaySyncStatus == null && other.GatewaySyncStatus == null ||
+                 this.GatewaySyncStatus?.Equals(other.GatewaySyncStatus) == true) &&
+                (this.MainReference == null && other.MainReference == null ||
+                 this.MainReference?.Equals(other.MainReference) == true) &&
+                (this.OrderCardReference == null && other.OrderCardReference == null ||
+                 this.OrderCardReference?.Equals(other.OrderCardReference) == true) &&
+                (this.OrderStatus == null && other.OrderStatus == null ||
+                 this.OrderStatus?.Equals(other.OrderStatus) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.ProcessedDate == null && other.ProcessedDate == null ||
+                 this.ProcessedDate?.Equals(other.ProcessedDate) == true) &&
+                (this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null ||
+                 this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true) &&
+                (this.PurchaseCategoryId == null && other.PurchaseCategoryId == null ||
+                 this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true) &&
+                (this.PurchaseCategoryName == null && other.PurchaseCategoryName == null ||
+                 this.PurchaseCategoryName?.Equals(other.PurchaseCategoryName) == true) &&
+                (this.SubmittedDate == null && other.SubmittedDate == null ||
+                 this.SubmittedDate?.Equals(other.SubmittedDate) == true) &&
+                (this.SyncProcessedDate == null && other.SyncProcessedDate == null ||
+                 this.SyncProcessedDate?.Equals(other.SyncProcessedDate) == true) &&
+                (this.SyncRequestedDate == null && other.SyncRequestedDate == null ||
+                 this.SyncRequestedDate?.Equals(other.SyncRequestedDate) == true) &&
+                (this.VRN == null && other.VRN == null ||
+                 this.VRN?.Equals(other.VRN) == true) &&
+                (this.OrderRequestId == null && other.OrderRequestId == null ||
+                 this.OrderRequestId?.Equals(other.OrderRequestId) == true) &&
+                (this.ExpiryDate == null && other.ExpiryDate == null ||
+                 this.ExpiryDate?.Equals(other.ExpiryDate) == true) &&
+                (this.ClientReferenceId == null && other.ClientReferenceId == null ||
+                 this.ClientReferenceId?.Equals(other.ClientReferenceId) == true) &&
+                (this.StatusDescription == null && other.StatusDescription == null ||
+                 this.StatusDescription?.Equals(other.StatusDescription) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -1587,39 +1707,41 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.BCOReference = {(this.BCOReference == null ? "null" : this.BCOReference.ToString())}");
             toStringOutput.Add($"this.BCORowNumber = {(this.BCORowNumber == null ? "null" : this.BCORowNumber.ToString())}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {(this.CardGroupName == null ? "null" : this.CardGroupName)}");
+            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.CardPAN = {(this.CardPAN == null ? "null" : this.CardPAN)}");
-            toStringOutput.Add($"this.CardTypeCode = {(this.CardTypeCode == null ? "null" : this.CardTypeCode)}");
+            toStringOutput.Add($"this.CardPAN = {this.CardPAN ?? "null"}");
+            toStringOutput.Add($"this.MaskedPAN = {this.MaskedPAN ?? "null"}");
+            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
+            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
             toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeName = {(this.CardTypeName == null ? "null" : this.CardTypeName)}");
-            toStringOutput.Add($"this.DriverName = {(this.DriverName == null ? "null" : this.DriverName)}");
-            toStringOutput.Add($"this.ErrorCode = {(this.ErrorCode == null ? "null" : this.ErrorCode)}");
-            toStringOutput.Add($"this.ErrorDescription = {(this.ErrorDescription == null ? "null" : this.ErrorDescription)}");
-            toStringOutput.Add($"this.GatewaySyncErrorCode = {(this.GatewaySyncErrorCode == null ? "null" : this.GatewaySyncErrorCode)}");
-            toStringOutput.Add($"this.GatewaySyncErrorDescription = {(this.GatewaySyncErrorDescription == null ? "null" : this.GatewaySyncErrorDescription)}");
-            toStringOutput.Add($"this.GatewaySyncStatus = {(this.GatewaySyncStatus == null ? "null" : this.GatewaySyncStatus)}");
+            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"this.DriverName = {this.DriverName ?? "null"}");
+            toStringOutput.Add($"this.ErrorCode = {this.ErrorCode ?? "null"}");
+            toStringOutput.Add($"this.ErrorDescription = {this.ErrorDescription ?? "null"}");
+            toStringOutput.Add($"this.GatewaySyncErrorCode = {this.GatewaySyncErrorCode ?? "null"}");
+            toStringOutput.Add($"this.GatewaySyncErrorDescription = {this.GatewaySyncErrorDescription ?? "null"}");
+            toStringOutput.Add($"this.GatewaySyncStatus = {this.GatewaySyncStatus ?? "null"}");
             toStringOutput.Add($"this.MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
             toStringOutput.Add($"this.OrderCardReference = {(this.OrderCardReference == null ? "null" : this.OrderCardReference.ToString())}");
-            toStringOutput.Add($"this.OrderStatus = {(this.OrderStatus == null ? "null" : this.OrderStatus)}");
+            toStringOutput.Add($"this.OrderStatus = {this.OrderStatus ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
-            toStringOutput.Add($"this.ProcessedDate = {(this.ProcessedDate == null ? "null" : this.ProcessedDate)}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {(this.PurchaseCategoryCode == null ? "null" : this.PurchaseCategoryCode)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"this.ProcessedDate = {this.ProcessedDate ?? "null"}");
+            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
             toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategoryName = {(this.PurchaseCategoryName == null ? "null" : this.PurchaseCategoryName)}");
-            toStringOutput.Add($"this.SubmittedDate = {(this.SubmittedDate == null ? "null" : this.SubmittedDate)}");
-            toStringOutput.Add($"this.SyncProcessedDate = {(this.SyncProcessedDate == null ? "null" : this.SyncProcessedDate)}");
-            toStringOutput.Add($"this.SyncRequestedDate = {(this.SyncRequestedDate == null ? "null" : this.SyncRequestedDate)}");
-            toStringOutput.Add($"this.VRN = {(this.VRN == null ? "null" : this.VRN)}");
-            toStringOutput.Add($"this.OrderRequestId = {(this.OrderRequestId == null ? "null" : this.OrderRequestId)}");
-            toStringOutput.Add($"this.ExpiryDate = {(this.ExpiryDate == null ? "null" : this.ExpiryDate)}");
-            toStringOutput.Add($"this.ClientReferenceId = {(this.ClientReferenceId == null ? "null" : this.ClientReferenceId)}");
-            toStringOutput.Add($"this.StatusDescription = {(this.StatusDescription == null ? "null" : this.StatusDescription)}");
+            toStringOutput.Add($"this.PurchaseCategoryName = {this.PurchaseCategoryName ?? "null"}");
+            toStringOutput.Add($"this.SubmittedDate = {this.SubmittedDate ?? "null"}");
+            toStringOutput.Add($"this.SyncProcessedDate = {this.SyncProcessedDate ?? "null"}");
+            toStringOutput.Add($"this.SyncRequestedDate = {this.SyncRequestedDate ?? "null"}");
+            toStringOutput.Add($"this.VRN = {this.VRN ?? "null"}");
+            toStringOutput.Add($"this.OrderRequestId = {this.OrderRequestId ?? "null"}");
+            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
+            toStringOutput.Add($"this.ClientReferenceId = {this.ClientReferenceId ?? "null"}");
+            toStringOutput.Add($"this.StatusDescription = {this.StatusDescription ?? "null"}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
         }
     }

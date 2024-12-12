@@ -1,21 +1,21 @@
 // <copyright file="PINDeliveryDetails.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PINDeliveryDetails.
     /// </summary>
@@ -71,6 +71,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string emailAddress = null,
             bool? savePINReminder = null)
         {
+
             if (contactName != null)
             {
                 this.ContactName = contactName;
@@ -80,11 +81,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ContactTitle = contactTitle;
             }
-
             this.CompanyName = companyName;
             this.AddressLine = addressLine;
             this.ZipCode = zipCode;
             this.City = city;
+
             if (regionID != null)
             {
                 this.RegionID = regionID;
@@ -104,7 +105,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.EmailAddress = emailAddress;
             }
-
             this.SavePINReminder = savePINReminder;
         }
 
@@ -260,14 +260,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PINDeliveryDetails : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactName()
         {
@@ -275,7 +273,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactTitle()
         {
@@ -283,7 +281,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRegionID()
         {
@@ -291,7 +289,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountryID()
         {
@@ -299,7 +297,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPhoneNumber()
         {
@@ -307,7 +305,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetEmailAddress()
         {
@@ -371,44 +369,50 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PINDeliveryDetails other &&                ((this.ContactName == null && other.ContactName == null) || (this.ContactName?.Equals(other.ContactName) == true)) &&
-                ((this.ContactTitle == null && other.ContactTitle == null) || (this.ContactTitle?.Equals(other.ContactTitle) == true)) &&
-                ((this.CompanyName == null && other.CompanyName == null) || (this.CompanyName?.Equals(other.CompanyName) == true)) &&
-                ((this.AddressLine == null && other.AddressLine == null) || (this.AddressLine?.Equals(other.AddressLine) == true)) &&
-                ((this.ZipCode == null && other.ZipCode == null) || (this.ZipCode?.Equals(other.ZipCode) == true)) &&
-                ((this.City == null && other.City == null) || (this.City?.Equals(other.City) == true)) &&
-                ((this.RegionID == null && other.RegionID == null) || (this.RegionID?.Equals(other.RegionID) == true)) &&
-                ((this.CountryID == null && other.CountryID == null) || (this.CountryID?.Equals(other.CountryID) == true)) &&
-                ((this.PhoneNumber == null && other.PhoneNumber == null) || (this.PhoneNumber?.Equals(other.PhoneNumber) == true)) &&
-                ((this.EmailAddress == null && other.EmailAddress == null) || (this.EmailAddress?.Equals(other.EmailAddress) == true)) &&
-                ((this.SavePINReminder == null && other.SavePINReminder == null) || (this.SavePINReminder?.Equals(other.SavePINReminder) == true));
+            return obj is PINDeliveryDetails other &&
+                (this.ContactName == null && other.ContactName == null ||
+                 this.ContactName?.Equals(other.ContactName) == true) &&
+                (this.ContactTitle == null && other.ContactTitle == null ||
+                 this.ContactTitle?.Equals(other.ContactTitle) == true) &&
+                (this.CompanyName == null && other.CompanyName == null ||
+                 this.CompanyName?.Equals(other.CompanyName) == true) &&
+                (this.AddressLine == null && other.AddressLine == null ||
+                 this.AddressLine?.Equals(other.AddressLine) == true) &&
+                (this.ZipCode == null && other.ZipCode == null ||
+                 this.ZipCode?.Equals(other.ZipCode) == true) &&
+                (this.City == null && other.City == null ||
+                 this.City?.Equals(other.City) == true) &&
+                (this.RegionID == null && other.RegionID == null ||
+                 this.RegionID?.Equals(other.RegionID) == true) &&
+                (this.CountryID == null && other.CountryID == null ||
+                 this.CountryID?.Equals(other.CountryID) == true) &&
+                (this.PhoneNumber == null && other.PhoneNumber == null ||
+                 this.PhoneNumber?.Equals(other.PhoneNumber) == true) &&
+                (this.EmailAddress == null && other.EmailAddress == null ||
+                 this.EmailAddress?.Equals(other.EmailAddress) == true) &&
+                (this.SavePINReminder == null && other.SavePINReminder == null ||
+                 this.SavePINReminder?.Equals(other.SavePINReminder) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ContactName = {(this.ContactName == null ? "null" : this.ContactName)}");
-            toStringOutput.Add($"this.ContactTitle = {(this.ContactTitle == null ? "null" : this.ContactTitle)}");
-            toStringOutput.Add($"this.CompanyName = {(this.CompanyName == null ? "null" : this.CompanyName)}");
-            toStringOutput.Add($"this.AddressLine = {(this.AddressLine == null ? "null" : this.AddressLine)}");
-            toStringOutput.Add($"this.ZipCode = {(this.ZipCode == null ? "null" : this.ZipCode)}");
-            toStringOutput.Add($"this.City = {(this.City == null ? "null" : this.City)}");
+            toStringOutput.Add($"this.ContactName = {this.ContactName ?? "null"}");
+            toStringOutput.Add($"this.ContactTitle = {this.ContactTitle ?? "null"}");
+            toStringOutput.Add($"this.CompanyName = {this.CompanyName ?? "null"}");
+            toStringOutput.Add($"this.AddressLine = {this.AddressLine ?? "null"}");
+            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
+            toStringOutput.Add($"this.City = {this.City ?? "null"}");
             toStringOutput.Add($"this.RegionID = {(this.RegionID == null ? "null" : this.RegionID.ToString())}");
             toStringOutput.Add($"this.CountryID = {(this.CountryID == null ? "null" : this.CountryID.ToString())}");
-            toStringOutput.Add($"this.PhoneNumber = {(this.PhoneNumber == null ? "null" : this.PhoneNumber)}");
-            toStringOutput.Add($"this.EmailAddress = {(this.EmailAddress == null ? "null" : this.EmailAddress)}");
+            toStringOutput.Add($"this.PhoneNumber = {this.PhoneNumber ?? "null"}");
+            toStringOutput.Add($"this.EmailAddress = {this.EmailAddress ?? "null"}");
             toStringOutput.Add($"this.SavePINReminder = {(this.SavePINReminder == null ? "null" : this.SavePINReminder.ToString())}");
         }
     }

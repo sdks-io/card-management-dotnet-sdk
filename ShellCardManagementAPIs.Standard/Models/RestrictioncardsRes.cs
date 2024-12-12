@@ -1,21 +1,21 @@
 // <copyright file="RestrictioncardsRes.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// RestrictioncardsRes.
     /// </summary>
@@ -169,40 +169,47 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"RestrictioncardsRes : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is RestrictioncardsRes other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null) || (this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true)) &&
-                ((this.UsageRestrictionDescription == null && other.UsageRestrictionDescription == null) || (this.UsageRestrictionDescription?.Equals(other.UsageRestrictionDescription) == true)) &&
-                ((this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null) || (this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true)) &&
-                ((this.DayTimeRestrictionDescription == null && other.DayTimeRestrictionDescription == null) || (this.DayTimeRestrictionDescription?.Equals(other.DayTimeRestrictionDescription) == true)) &&
-                ((this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null) || (this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true)) &&
-                ((this.ProductRestrictionDescription == null && other.ProductRestrictionDescription == null) || (this.ProductRestrictionDescription?.Equals(other.ProductRestrictionDescription) == true)) &&
-                ((this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null) || (this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true)) &&
-                ((this.LocationRestrictionStatusDescription == null && other.LocationRestrictionStatusDescription == null) || (this.LocationRestrictionStatusDescription?.Equals(other.LocationRestrictionStatusDescription) == true)) &&
-                ((this.ValidationErrorCode == null && other.ValidationErrorCode == null) || (this.ValidationErrorCode?.Equals(other.ValidationErrorCode) == true)) &&
-                ((this.ValidationErrorDescription == null && other.ValidationErrorDescription == null) || (this.ValidationErrorDescription?.Equals(other.ValidationErrorDescription) == true));
+            return obj is RestrictioncardsRes other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null ||
+                 this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true) &&
+                (this.UsageRestrictionDescription == null && other.UsageRestrictionDescription == null ||
+                 this.UsageRestrictionDescription?.Equals(other.UsageRestrictionDescription) == true) &&
+                (this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null ||
+                 this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true) &&
+                (this.DayTimeRestrictionDescription == null && other.DayTimeRestrictionDescription == null ||
+                 this.DayTimeRestrictionDescription?.Equals(other.DayTimeRestrictionDescription) == true) &&
+                (this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null ||
+                 this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true) &&
+                (this.ProductRestrictionDescription == null && other.ProductRestrictionDescription == null ||
+                 this.ProductRestrictionDescription?.Equals(other.ProductRestrictionDescription) == true) &&
+                (this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null ||
+                 this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true) &&
+                (this.LocationRestrictionStatusDescription == null && other.LocationRestrictionStatusDescription == null ||
+                 this.LocationRestrictionStatusDescription?.Equals(other.LocationRestrictionStatusDescription) == true) &&
+                (this.ValidationErrorCode == null && other.ValidationErrorCode == null ||
+                 this.ValidationErrorCode?.Equals(other.ValidationErrorCode) == true) &&
+                (this.ValidationErrorDescription == null && other.ValidationErrorDescription == null ||
+                 this.ValidationErrorDescription?.Equals(other.ValidationErrorDescription) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -210,19 +217,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId)}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
-            toStringOutput.Add($"this.UsageRestrictionStatus = {(this.UsageRestrictionStatus == null ? "null" : this.UsageRestrictionStatus)}");
-            toStringOutput.Add($"this.UsageRestrictionDescription = {(this.UsageRestrictionDescription == null ? "null" : this.UsageRestrictionDescription)}");
-            toStringOutput.Add($"this.DayTimeRestrictionStatus = {(this.DayTimeRestrictionStatus == null ? "null" : this.DayTimeRestrictionStatus)}");
-            toStringOutput.Add($"this.DayTimeRestrictionDescription = {(this.DayTimeRestrictionDescription == null ? "null" : this.DayTimeRestrictionDescription)}");
-            toStringOutput.Add($"this.ProductRestrictionStatus = {(this.ProductRestrictionStatus == null ? "null" : this.ProductRestrictionStatus)}");
-            toStringOutput.Add($"this.ProductRestrictionDescription = {(this.ProductRestrictionDescription == null ? "null" : this.ProductRestrictionDescription)}");
-            toStringOutput.Add($"this.LocationRestrictionStatus = {(this.LocationRestrictionStatus == null ? "null" : this.LocationRestrictionStatus)}");
-            toStringOutput.Add($"this.LocationRestrictionStatusDescription = {(this.LocationRestrictionStatusDescription == null ? "null" : this.LocationRestrictionStatusDescription)}");
-            toStringOutput.Add($"this.ValidationErrorCode = {(this.ValidationErrorCode == null ? "null" : this.ValidationErrorCode)}");
-            toStringOutput.Add($"this.ValidationErrorDescription = {(this.ValidationErrorDescription == null ? "null" : this.ValidationErrorDescription)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.CardId = {this.CardId ?? "null"}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.UsageRestrictionStatus = {this.UsageRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"this.UsageRestrictionDescription = {this.UsageRestrictionDescription ?? "null"}");
+            toStringOutput.Add($"this.DayTimeRestrictionStatus = {this.DayTimeRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"this.DayTimeRestrictionDescription = {this.DayTimeRestrictionDescription ?? "null"}");
+            toStringOutput.Add($"this.ProductRestrictionStatus = {this.ProductRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"this.ProductRestrictionDescription = {this.ProductRestrictionDescription ?? "null"}");
+            toStringOutput.Add($"this.LocationRestrictionStatus = {this.LocationRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"this.LocationRestrictionStatusDescription = {this.LocationRestrictionStatusDescription ?? "null"}");
+            toStringOutput.Add($"this.ValidationErrorCode = {this.ValidationErrorCode ?? "null"}");
+            toStringOutput.Add($"this.ValidationErrorDescription = {this.ValidationErrorDescription ?? "null"}");
         }
     }
 }

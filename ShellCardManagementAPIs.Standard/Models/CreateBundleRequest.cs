@@ -1,21 +1,21 @@
 // <copyright file="CreateBundleRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CreateBundleRequest.
     /// </summary>
@@ -27,7 +27,6 @@ namespace ShellCardManagementAPIs.Standard.Models
         private int? accountId;
         private string accountNumber;
         private string externalBundleId;
-        private Models.BundleRestriction restrictions;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
         {
             { "ColCoId", false },
@@ -36,7 +35,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "AccountId", false },
             { "AccountNumber", false },
             { "ExternalBundleId", false },
-            { "Restrictions", false },
         };
 
         /// <summary>
@@ -69,8 +67,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             string externalBundleId = null,
             string description = null,
             List<string> cards = null,
-            Models.BundleRestriction restrictions = null)
+            object restrictions = null)
         {
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
@@ -85,8 +84,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerId = payerId;
             }
-
             this.PayerNumber = payerNumber;
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -101,14 +100,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ExternalBundleId = externalBundleId;
             }
-
             this.Description = description;
             this.Cards = cards;
-            if (restrictions != null)
-            {
-                this.Restrictions = restrictions;
-            }
-
+            this.Restrictions = restrictions;
         }
 
         /// <summary>
@@ -261,33 +255,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Gets or sets Restrictions.
         /// </summary>
-        [JsonProperty("Restrictions")]
-        public Models.BundleRestriction Restrictions
-        {
-            get
-            {
-                return this.restrictions;
-            }
-
-            set
-            {
-                this.shouldSerialize["Restrictions"] = true;
-                this.restrictions = value;
-            }
-        }
+        [JsonProperty("Restrictions", NullValueHandling = NullValueHandling.Ignore)]
+        public object Restrictions { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CreateBundleRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -295,7 +275,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -303,7 +283,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -311,7 +291,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -319,7 +299,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -327,19 +307,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExternalBundleId()
         {
             this.shouldSerialize["ExternalBundleId"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetRestrictions()
-        {
-            this.shouldSerialize["Restrictions"] = false;
         }
 
         /// <summary>
@@ -396,39 +368,35 @@ namespace ShellCardManagementAPIs.Standard.Models
             return this.shouldSerialize["ExternalBundleId"];
         }
 
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeRestrictions()
-        {
-            return this.shouldSerialize["Restrictions"];
-        }
-
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CreateBundleRequest other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.ExternalBundleId == null && other.ExternalBundleId == null) || (this.ExternalBundleId?.Equals(other.ExternalBundleId) == true)) &&
-                ((this.Description == null && other.Description == null) || (this.Description?.Equals(other.Description) == true)) &&
-                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.Restrictions == null && other.Restrictions == null) || (this.Restrictions?.Equals(other.Restrictions) == true));
+            return obj is CreateBundleRequest other &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.ExternalBundleId == null && other.ExternalBundleId == null ||
+                 this.ExternalBundleId?.Equals(other.ExternalBundleId) == true) &&
+                (this.Description == null && other.Description == null ||
+                 this.Description?.Equals(other.Description) == true) &&
+                (this.Cards == null && other.Cards == null ||
+                 this.Cards?.Equals(other.Cards) == true) &&
+                (this.Restrictions == null && other.Restrictions == null ||
+                 this.Restrictions?.Equals(other.Restrictions) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -438,13 +406,13 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.ExternalBundleId = {(this.ExternalBundleId == null ? "null" : this.ExternalBundleId)}");
-            toStringOutput.Add($"this.Description = {(this.Description == null ? "null" : this.Description)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.ExternalBundleId = {this.ExternalBundleId ?? "null"}");
+            toStringOutput.Add($"this.Description = {this.Description ?? "null"}");
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
-            toStringOutput.Add($"this.Restrictions = {(this.Restrictions == null ? "null" : this.Restrictions.ToString())}");
+            toStringOutput.Add($"Restrictions = {(this.Restrictions == null ? "null" : this.Restrictions.ToString())}");
         }
     }
 }

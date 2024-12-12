@@ -1,21 +1,21 @@
 // <copyright file="CardMoveResponseErrorCardsItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardMoveResponseErrorCardsItems.
     /// </summary>
@@ -61,6 +61,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string validationErrorCode = null,
             string validationErrorDescription = null)
         {
+
             if (accountNumber != null)
             {
                 this.AccountNumber = accountNumber;
@@ -90,7 +91,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ValidationErrorDescription = validationErrorDescription;
             }
-
         }
 
         /// <summary>
@@ -205,14 +205,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardMoveResponseErrorCardsItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -220,7 +218,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -228,7 +226,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPAN()
         {
@@ -236,7 +234,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardId()
         {
@@ -244,7 +242,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetValidationErrorCode()
         {
@@ -252,7 +250,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetValidationErrorDescription()
         {
@@ -316,35 +314,36 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardMoveResponseErrorCardsItems other &&                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.ValidationErrorCode == null && other.ValidationErrorCode == null) || (this.ValidationErrorCode?.Equals(other.ValidationErrorCode) == true)) &&
-                ((this.ValidationErrorDescription == null && other.ValidationErrorDescription == null) || (this.ValidationErrorDescription?.Equals(other.ValidationErrorDescription) == true));
+            return obj is CardMoveResponseErrorCardsItems other &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.ValidationErrorCode == null && other.ValidationErrorCode == null ||
+                 this.ValidationErrorCode?.Equals(other.ValidationErrorCode) == true) &&
+                (this.ValidationErrorDescription == null && other.ValidationErrorDescription == null ||
+                 this.ValidationErrorDescription?.Equals(other.ValidationErrorDescription) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.ValidationErrorCode = {(this.ValidationErrorCode == null ? "null" : this.ValidationErrorCode)}");
-            toStringOutput.Add($"this.ValidationErrorDescription = {(this.ValidationErrorDescription == null ? "null" : this.ValidationErrorDescription)}");
+            toStringOutput.Add($"this.ValidationErrorCode = {this.ValidationErrorCode ?? "null"}");
+            toStringOutput.Add($"this.ValidationErrorDescription = {this.ValidationErrorDescription ?? "null"}");
         }
     }
 }

@@ -1,21 +1,21 @@
 // <copyright file="DayTimeRestriction.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// DayTimeRestriction.
     /// </summary>
@@ -108,7 +108,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Card could be used from this time in a day.
         /// Format: HH:mm (24-hour format)
         /// Note:
-        /// 1.	Clients to convert this to appropriate DateTime or TimeSpan type.
+        /// 1.    Clients to convert this to appropriate DateTime or TimeSpan type.
         /// “00:00” is the lowest time value and “23:59” is the highest time value.
         /// </summary>
         [JsonProperty("TimeFrom", NullValueHandling = NullValueHandling.Ignore)]
@@ -118,7 +118,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Card could be used up to this time in a day.
         /// Format: HH:mm (24-hour format)
         /// Note:
-        /// 1.	Clients to convert this to appropriate DateTime or TimeSpan type.
+        /// 1.    Clients to convert this to appropriate DateTime or TimeSpan type.
         /// “00:00” is the lowest time value and “23:59” is the highest time value.
         /// </summary>
         [JsonProperty("TimeTo", NullValueHandling = NullValueHandling.Ignore)]
@@ -128,35 +128,37 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"DayTimeRestriction : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is DayTimeRestriction other &&                ((this.Monday == null && other.Monday == null) || (this.Monday?.Equals(other.Monday) == true)) &&
-                ((this.Tuesday == null && other.Tuesday == null) || (this.Tuesday?.Equals(other.Tuesday) == true)) &&
-                ((this.Wednesday == null && other.Wednesday == null) || (this.Wednesday?.Equals(other.Wednesday) == true)) &&
-                ((this.Thursday == null && other.Thursday == null) || (this.Thursday?.Equals(other.Thursday) == true)) &&
-                ((this.Friday == null && other.Friday == null) || (this.Friday?.Equals(other.Friday) == true)) &&
-                ((this.Saturday == null && other.Saturday == null) || (this.Saturday?.Equals(other.Saturday) == true)) &&
-                ((this.Sunday == null && other.Sunday == null) || (this.Sunday?.Equals(other.Sunday) == true)) &&
-                ((this.TimeFrom == null && other.TimeFrom == null) || (this.TimeFrom?.Equals(other.TimeFrom) == true)) &&
-                ((this.TimeTo == null && other.TimeTo == null) || (this.TimeTo?.Equals(other.TimeTo) == true));
+            return obj is DayTimeRestriction other &&
+                (this.Monday == null && other.Monday == null ||
+                 this.Monday?.Equals(other.Monday) == true) &&
+                (this.Tuesday == null && other.Tuesday == null ||
+                 this.Tuesday?.Equals(other.Tuesday) == true) &&
+                (this.Wednesday == null && other.Wednesday == null ||
+                 this.Wednesday?.Equals(other.Wednesday) == true) &&
+                (this.Thursday == null && other.Thursday == null ||
+                 this.Thursday?.Equals(other.Thursday) == true) &&
+                (this.Friday == null && other.Friday == null ||
+                 this.Friday?.Equals(other.Friday) == true) &&
+                (this.Saturday == null && other.Saturday == null ||
+                 this.Saturday?.Equals(other.Saturday) == true) &&
+                (this.Sunday == null && other.Sunday == null ||
+                 this.Sunday?.Equals(other.Sunday) == true) &&
+                (this.TimeFrom == null && other.TimeFrom == null ||
+                 this.TimeFrom?.Equals(other.TimeFrom) == true) &&
+                (this.TimeTo == null && other.TimeTo == null ||
+                 this.TimeTo?.Equals(other.TimeTo) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -170,8 +172,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.Friday = {(this.Friday == null ? "null" : this.Friday.ToString())}");
             toStringOutput.Add($"this.Saturday = {(this.Saturday == null ? "null" : this.Saturday.ToString())}");
             toStringOutput.Add($"this.Sunday = {(this.Sunday == null ? "null" : this.Sunday.ToString())}");
-            toStringOutput.Add($"this.TimeFrom = {(this.TimeFrom == null ? "null" : this.TimeFrom)}");
-            toStringOutput.Add($"this.TimeTo = {(this.TimeTo == null ? "null" : this.TimeTo)}");
+            toStringOutput.Add($"this.TimeFrom = {this.TimeFrom ?? "null"}");
+            toStringOutput.Add($"this.TimeTo = {this.TimeTo ?? "null"}");
         }
     }
 }

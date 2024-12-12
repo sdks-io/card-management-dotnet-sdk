@@ -1,21 +1,21 @@
 // <copyright file="AccountRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// AccountRequest.
     /// </summary>
@@ -45,6 +45,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "InvoicePointsOnly", true },
             { "ColCoId", false },
             { "AccountName", false },
+        };
+
+        private Dictionary<string, bool> hasPropertySetterCalledFor = new Dictionary<string, bool>
+        {
+            { "InvoicePointsOnly", false },
         };
 
         /// <summary>
@@ -89,12 +94,13 @@ namespace ShellCardManagementAPIs.Standard.Models
             string accountName = null,
             List<string> statusList = null)
         {
+
             if (status != null)
             {
                 this.Status = status;
             }
-
             this.IncludeCardSummary = includeCardSummary;
+
             if (payerId != null)
             {
                 this.PayerId = payerId;
@@ -129,20 +135,19 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.CurrentPage = currentPage;
             }
-
             this.InvoicePointsOnly = invoicePointsOnly;
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
             }
-
             this.ReturnTollsCustomerId = returnTollsCustomerId;
             this.Accounts = accounts;
+
             if (accountName != null)
             {
                 this.AccountName = accountName;
             }
-
             this.StatusList = statusList;
         }
 
@@ -151,12 +156,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Optional if StatusList is passed, else mandatory.
         /// Ignored if StatusList is passed.
         /// Allowed values:
-        /// •	ALL
-        /// •	ACTIVE
-        /// •	BLOCKED
-        /// •	CANCELLED
-        /// •	CREDITLOCK
-        /// •	DELINQUENCYLOCK
+        /// •    ALL
+        /// •    ACTIVE
+        /// •    BLOCKED
+        /// •    CANCELLED
+        /// •    CREDITLOCK
+        /// •    DELINQUENCYLOCK
         /// </summary>
         [JsonProperty("Status")]
         public string Status
@@ -324,12 +329,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             get
             {
+                if (!hasPropertySetterCalledFor["InvoicePointsOnly"] &&
+                    invoicePointsOnly == null)
+                {
+                    return false; // Default value
+                }
+
                 return this.invoicePointsOnly;
             }
 
             set
             {
                 this.shouldSerialize["InvoicePointsOnly"] = true;
+                hasPropertySetterCalledFor["InvoicePointsOnly"] = true;
                 this.invoicePointsOnly = value;
             }
         }
@@ -391,11 +403,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Optional
         /// Multiple statuses are allowed to be included in the search criteria.
         /// Allowed values:
-        /// •	ACTIVE
-        /// •	BLOCKED
-        /// •	CANCELLED
-        /// •	CREDITLOCK
-        /// •	DELINQUENCYLOCK
+        /// •    ACTIVE
+        /// •    BLOCKED
+        /// •    CANCELLED
+        /// •    CREDITLOCK
+        /// •    DELINQUENCYLOCK
         /// </summary>
         [JsonProperty("StatusList", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> StatusList { get; set; }
@@ -404,14 +416,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"AccountRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetStatus()
         {
@@ -419,7 +429,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -427,7 +437,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -435,7 +445,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPageSize()
         {
@@ -443,7 +453,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestId()
         {
@@ -451,7 +461,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -459,7 +469,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCountryCode()
         {
@@ -467,7 +477,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrentPage()
         {
@@ -475,15 +485,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoicePointsOnly()
         {
             this.shouldSerialize["InvoicePointsOnly"] = false;
+            this.hasPropertySetterCalledFor["InvoicePointsOnly"] = false;
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -491,7 +502,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountName()
         {
@@ -600,52 +611,62 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is AccountRequest other &&                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.IncludeCardSummary == null && other.IncludeCardSummary == null) || (this.IncludeCardSummary?.Equals(other.IncludeCardSummary) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.PageSize == null && other.PageSize == null) || (this.PageSize?.Equals(other.PageSize) == true)) &&
-                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoCountryCode == null && other.ColCoCountryCode == null) || (this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true)) &&
-                ((this.CurrentPage == null && other.CurrentPage == null) || (this.CurrentPage?.Equals(other.CurrentPage) == true)) &&
-                ((this.InvoicePointsOnly == null && other.InvoicePointsOnly == null) || (this.InvoicePointsOnly?.Equals(other.InvoicePointsOnly) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ReturnTollsCustomerId == null && other.ReturnTollsCustomerId == null) || (this.ReturnTollsCustomerId?.Equals(other.ReturnTollsCustomerId) == true)) &&
-                ((this.Accounts == null && other.Accounts == null) || (this.Accounts?.Equals(other.Accounts) == true)) &&
-                ((this.AccountName == null && other.AccountName == null) || (this.AccountName?.Equals(other.AccountName) == true)) &&
-                ((this.StatusList == null && other.StatusList == null) || (this.StatusList?.Equals(other.StatusList) == true));
+            return obj is AccountRequest other &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.IncludeCardSummary == null && other.IncludeCardSummary == null ||
+                 this.IncludeCardSummary?.Equals(other.IncludeCardSummary) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.PageSize == null && other.PageSize == null ||
+                 this.PageSize?.Equals(other.PageSize) == true) &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoCountryCode == null && other.ColCoCountryCode == null ||
+                 this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true) &&
+                (this.CurrentPage == null && other.CurrentPage == null ||
+                 this.CurrentPage?.Equals(other.CurrentPage) == true) &&
+                (this.InvoicePointsOnly == null && other.InvoicePointsOnly == null ||
+                 this.InvoicePointsOnly?.Equals(other.InvoicePointsOnly) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ReturnTollsCustomerId == null && other.ReturnTollsCustomerId == null ||
+                 this.ReturnTollsCustomerId?.Equals(other.ReturnTollsCustomerId) == true) &&
+                (this.Accounts == null && other.Accounts == null ||
+                 this.Accounts?.Equals(other.Accounts) == true) &&
+                (this.AccountName == null && other.AccountName == null ||
+                 this.AccountName?.Equals(other.AccountName) == true) &&
+                (this.StatusList == null && other.StatusList == null ||
+                 this.StatusList?.Equals(other.StatusList) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
             toStringOutput.Add($"this.IncludeCardSummary = {(this.IncludeCardSummary == null ? "null" : this.IncludeCardSummary.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {(this.ColCoCountryCode == null ? "null" : this.ColCoCountryCode)}");
+            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
             toStringOutput.Add($"this.CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
             toStringOutput.Add($"this.InvoicePointsOnly = {(this.InvoicePointsOnly == null ? "null" : this.InvoicePointsOnly.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ReturnTollsCustomerId = {(this.ReturnTollsCustomerId == null ? "null" : this.ReturnTollsCustomerId.ToString())}");
             toStringOutput.Add($"this.Accounts = {(this.Accounts == null ? "null" : $"[{string.Join(", ", this.Accounts)} ]")}");
-            toStringOutput.Add($"this.AccountName = {(this.AccountName == null ? "null" : this.AccountName)}");
+            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
             toStringOutput.Add($"this.StatusList = {(this.StatusList == null ? "null" : $"[{string.Join(", ", this.StatusList)} ]")}");
         }
     }

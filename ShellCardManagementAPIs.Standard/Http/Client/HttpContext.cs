@@ -1,12 +1,12 @@
 // <copyright file="HttpContext.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using APIMatic.Core.Types.Sdk;
+using ShellCardManagementAPIs.Standard.Http.Request;
+using ShellCardManagementAPIs.Standard.Http.Response;
+
 namespace ShellCardManagementAPIs.Standard.Http.Client
 {
-    using APIMatic.Core.Types.Sdk;
-    using ShellCardManagementAPIs.Standard.Http.Request;
-    using ShellCardManagementAPIs.Standard.Http.Response;
-    
     /// <summary>
     /// Represents the contextual information of HTTP request and response.
     /// </summary>

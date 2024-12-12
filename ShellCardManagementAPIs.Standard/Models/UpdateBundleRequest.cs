@@ -1,21 +1,21 @@
 // <copyright file="UpdateBundleRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// UpdateBundleRequest.
     /// </summary>
@@ -71,6 +71,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string usageRestrictionAction = null,
             Models.BundleRestrictionUpdate restrictions = null)
         {
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
@@ -100,7 +101,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.AccountNumber = accountNumber;
             }
-
             this.BundleId = bundleId;
             this.RequestAction = requestAction;
             this.Cards = cards;
@@ -243,9 +243,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// The value indicates the action to be performed with the request.
         /// Mandatory
         /// Allowed values:
-        /// •	Add
-        /// •	Update
-        /// •	Remove
+        /// •    Add
+        /// •    Update
+        /// •    Remove
         /// </summary>
         [JsonProperty("RequestAction", NullValueHandling = NullValueHandling.Include)]
         public string RequestAction { get; set; }
@@ -263,8 +263,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// The value indicates what actions to be performed with respect to usage restrictions on the list of cards being added or removed.
         /// Mandatory for Add / Remove request action. Ignored for Update action.
         /// Allowed values:
-        /// •	Update
-        /// •	None
+        /// •    Update
+        /// •    None
         /// </summary>
         [JsonProperty("UsageRestrictionAction", NullValueHandling = NullValueHandling.Include)]
         public string UsageRestrictionAction { get; set; }
@@ -279,14 +279,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"UpdateBundleRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -294,7 +292,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -302,7 +300,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -310,7 +308,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -318,7 +316,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -326,7 +324,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -390,28 +388,34 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is UpdateBundleRequest other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.BundleId == null && other.BundleId == null) || (this.BundleId?.Equals(other.BundleId) == true)) &&
-                ((this.RequestAction == null && other.RequestAction == null) || (this.RequestAction?.Equals(other.RequestAction) == true)) &&
-                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.UsageRestrictionAction == null && other.UsageRestrictionAction == null) || (this.UsageRestrictionAction?.Equals(other.UsageRestrictionAction) == true)) &&
-                ((this.Restrictions == null && other.Restrictions == null) || (this.Restrictions?.Equals(other.Restrictions) == true));
+            return obj is UpdateBundleRequest other &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.BundleId == null && other.BundleId == null ||
+                 this.BundleId?.Equals(other.BundleId) == true) &&
+                (this.RequestAction == null && other.RequestAction == null ||
+                 this.RequestAction?.Equals(other.RequestAction) == true) &&
+                (this.Cards == null && other.Cards == null ||
+                 this.Cards?.Equals(other.Cards) == true) &&
+                (this.UsageRestrictionAction == null && other.UsageRestrictionAction == null ||
+                 this.UsageRestrictionAction?.Equals(other.UsageRestrictionAction) == true) &&
+                (this.Restrictions == null && other.Restrictions == null ||
+                 this.Restrictions?.Equals(other.Restrictions) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -420,14 +424,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId)}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerId = {this.PayerId ?? "null"}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.BundleId = {(this.BundleId == null ? "null" : this.BundleId)}");
-            toStringOutput.Add($"this.RequestAction = {(this.RequestAction == null ? "null" : this.RequestAction)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"this.RequestAction = {this.RequestAction ?? "null"}");
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
-            toStringOutput.Add($"this.UsageRestrictionAction = {(this.UsageRestrictionAction == null ? "null" : this.UsageRestrictionAction)}");
+            toStringOutput.Add($"this.UsageRestrictionAction = {this.UsageRestrictionAction ?? "null"}");
             toStringOutput.Add($"this.Restrictions = {(this.Restrictions == null ? "null" : this.Restrictions.ToString())}");
         }
     }

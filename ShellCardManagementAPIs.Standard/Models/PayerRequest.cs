@@ -1,21 +1,21 @@
 // <copyright file="PayerRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PayerRequest.
     /// </summary>
@@ -57,8 +57,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// List of Payer entity.
         /// Optional.
         /// Note:
-        /// •	Max number of payers allowed in the input is 10, if it exceeds in the input it will throw an error.
-        /// •	This value is configurable. Initial configuration will be 1000 and will change to 10 once SFH changes are integrated.
+        /// •    Max number of payers allowed in the input is 10, if it exceeds in the input it will throw an error.
+        /// •    This value is configurable. Initial configuration will be 1000 and will change to 10 once SFH changes are integrated.
         /// </summary>
         [JsonProperty("Payers", NullValueHandling = NullValueHandling.Ignore)]
         public List<Models.Payers> Payers { get; set; }
@@ -92,8 +92,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Default value 50
         /// Return 250 rows only in the response if -1 is supplied as page size.
         /// Note:
-        /// •	Max page size is 250, if the user provided value is more than 250 then it will throw error.
-        /// •	This value is configurable.
+        /// •    Max page size is 250, if the user provided value is more than 250 then it will throw error.
+        /// •    This value is configurable.
         /// </summary>
         [JsonProperty("PageSize", NullValueHandling = NullValueHandling.Ignore)]
         public int? PageSize { get; set; }
@@ -102,32 +102,31 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PayerRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PayerRequest other &&                ((this.Payers == null && other.Payers == null) || (this.Payers?.Equals(other.Payers) == true)) &&
-                ((this.ReturnBasicDetailsOnly == null && other.ReturnBasicDetailsOnly == null) || (this.ReturnBasicDetailsOnly?.Equals(other.ReturnBasicDetailsOnly) == true)) &&
-                ((this.IncludeAddresses == null && other.IncludeAddresses == null) || (this.IncludeAddresses?.Equals(other.IncludeAddresses) == true)) &&
-                ((this.IncludeBonusParameters == null && other.IncludeBonusParameters == null) || (this.IncludeBonusParameters?.Equals(other.IncludeBonusParameters) == true)) &&
-                ((this.CurrentPage == null && other.CurrentPage == null) || (this.CurrentPage?.Equals(other.CurrentPage) == true)) &&
-                ((this.PageSize == null && other.PageSize == null) || (this.PageSize?.Equals(other.PageSize) == true));
+            return obj is PayerRequest other &&
+                (this.Payers == null && other.Payers == null ||
+                 this.Payers?.Equals(other.Payers) == true) &&
+                (this.ReturnBasicDetailsOnly == null && other.ReturnBasicDetailsOnly == null ||
+                 this.ReturnBasicDetailsOnly?.Equals(other.ReturnBasicDetailsOnly) == true) &&
+                (this.IncludeAddresses == null && other.IncludeAddresses == null ||
+                 this.IncludeAddresses?.Equals(other.IncludeAddresses) == true) &&
+                (this.IncludeBonusParameters == null && other.IncludeBonusParameters == null ||
+                 this.IncludeBonusParameters?.Equals(other.IncludeBonusParameters) == true) &&
+                (this.CurrentPage == null && other.CurrentPage == null ||
+                 this.CurrentPage?.Equals(other.CurrentPage) == true) &&
+                (this.PageSize == null && other.PageSize == null ||
+                 this.PageSize?.Equals(other.PageSize) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>

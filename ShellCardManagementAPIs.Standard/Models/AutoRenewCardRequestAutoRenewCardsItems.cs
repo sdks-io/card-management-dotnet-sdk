@@ -1,21 +1,21 @@
 // <copyright file="AutoRenewCardRequestAutoRenewCardsItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// AutoRenewCardRequestAutoRenewCardsItems.
     /// </summary>
@@ -35,17 +35,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="accountNumber">AccountNumber.</param>
         /// <param name="accountId">AccountId.</param>
         /// <param name="pAN">PAN.</param>
+        /// <param name="pANID">PANID.</param>
         /// <param name="cardId">CardId.</param>
         public AutoRenewCardRequestAutoRenewCardsItems(
             bool reissueSetting,
             string accountNumber = null,
             int? accountId = null,
             string pAN = null,
+            double? pANID = null,
             int? cardId = null)
         {
             this.AccountNumber = accountNumber;
             this.AccountId = accountId;
             this.PAN = pAN;
+            this.PANID = pANID;
             this.CardId = cardId;
             this.ReissueSetting = reissueSetting;
         }
@@ -72,6 +75,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         public string PAN { get; set; }
 
         /// <summary>
+        /// Card PAN ID.
+        /// Optional if CardId is given, else mandatory.
+        /// Note: PANID is ignored if CardId is given.
+        /// </summary>
+        [JsonProperty("PANID", NullValueHandling = NullValueHandling.Ignore)]
+        public double? PANID { get; set; }
+
+        /// <summary>
         /// Card Id of the card.
         /// Optional if PAN is passed, else Mandatory.
         /// </summary>
@@ -92,40 +103,40 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"AutoRenewCardRequestAutoRenewCardsItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is AutoRenewCardRequestAutoRenewCardsItems other &&                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                this.ReissueSetting.Equals(other.ReissueSetting);
+            return obj is AutoRenewCardRequestAutoRenewCardsItems other &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.PANID == null && other.PANID == null ||
+                 this.PANID?.Equals(other.PANID) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.ReissueSetting.Equals(other.ReissueSetting));
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
             toStringOutput.Add($"this.ReissueSetting = {this.ReissueSetting}");
         }

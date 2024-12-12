@@ -1,21 +1,21 @@
 // <copyright file="ReplaceCardSettings.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// ReplaceCardSettings.
     /// </summary>
@@ -183,6 +183,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? saveForCardReissue = null,
             string expiryDate = null)
         {
+
             if (selfSelectedEncryptedPIN != null)
             {
                 this.SelfSelectedEncryptedPIN = selfSelectedEncryptedPIN;
@@ -197,14 +198,14 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.SelfSelectedPINSessionKey = selfSelectedPINSessionKey;
             }
-
             this.ValidateFleetId = validateFleetId;
+
             if (cardGroupId != null)
             {
                 this.CardGroupId = cardGroupId;
             }
-
             this.CardDeliveryType = cardDeliveryType;
+
             if (deliveryContactTitle != null)
             {
                 this.DeliveryContactTitle = deliveryContactTitle;
@@ -264,8 +265,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.DeliveryCountryId = deliveryCountryId;
             }
-
             this.PhoneNumber = phoneNumber;
+
             if (emailAddress != null)
             {
                 this.EmailAddress = emailAddress;
@@ -350,14 +351,13 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PINEmailAddress = pINEmailAddress;
             }
-
             this.SaveForPINReminder = saveForPINReminder;
             this.SaveForCardReissue = saveForCardReissue;
+
             if (expiryDate != null)
             {
                 this.ExpiryDate = expiryDate;
             }
-
         }
 
         /// <summary>
@@ -457,9 +457,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Card delivery type.<br />
         /// Mandatory <br />
         /// Allowed Value: <br />
-        /// 1.	Customer Address(Default) <br />
-        /// 2.	New Delivery Address <br />
-        /// 3.	Old Card Address
+        /// 1.    Customer Address(Default) <br />
+        /// 2.    New Delivery Address <br />
+        /// 3.    Old Card Address
         /// </summary>
         [JsonProperty("CardDeliveryType", NullValueHandling = NullValueHandling.Include)]
         public int? CardDeliveryType { get; set; }
@@ -732,9 +732,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// PIN delivery address type selection.<br />
         /// Optional<br />
         /// Allowed Values:<br />
-        /// 1.	Customer Address(Default)<br />
-        /// 2.	Card Address<br />
-        /// 3.	New Delivery Address
+        /// 1.    Customer Address(Default)<br />
+        /// 2.    Card Address<br />
+        /// 3.    New Delivery Address
         /// </summary>
         [JsonProperty("PINDeliveryAddressType")]
         public int? PINDeliveryAddressType
@@ -755,10 +755,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// PIN delivery method.<br />
         /// Mandatory when OrderReplacement Is true.<br />
         /// Allowed Values:<br />
-        /// 1.	Paper<br />
-        /// 2.	Email<br />
-        /// 3.	SMS<br />
-        /// 4.	None
+        /// 1.    Paper<br />
+        /// 2.    Email<br />
+        /// 3.    SMS<br />
+        /// 4.    None
         /// </summary>
         [JsonProperty("PINAdviceType")]
         public int? PINAdviceType
@@ -1098,14 +1098,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"ReplaceCardSettings : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSelfSelectedEncryptedPIN()
         {
@@ -1113,7 +1111,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSelfSelectedPINKeyID()
         {
@@ -1121,7 +1119,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSelfSelectedPINSessionKey()
         {
@@ -1129,7 +1127,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupId()
         {
@@ -1137,7 +1135,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryContactTitle()
         {
@@ -1145,7 +1143,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryContactName()
         {
@@ -1153,7 +1151,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryCompanyName()
         {
@@ -1161,7 +1159,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryAddressLine1()
         {
@@ -1169,7 +1167,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryAddressLine2()
         {
@@ -1177,7 +1175,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryAddressLine3()
         {
@@ -1185,7 +1183,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryZipCode()
         {
@@ -1193,7 +1191,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryCity()
         {
@@ -1201,7 +1199,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryRegionId()
         {
@@ -1209,7 +1207,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryRegion()
         {
@@ -1217,7 +1215,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryCountry()
         {
@@ -1225,7 +1223,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDeliveryCountryId()
         {
@@ -1233,7 +1231,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetEmailAddress()
         {
@@ -1241,7 +1239,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryAddressType()
         {
@@ -1249,7 +1247,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINAdviceType()
         {
@@ -1257,7 +1255,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryContactTitle()
         {
@@ -1265,7 +1263,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryContactName()
         {
@@ -1273,7 +1271,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryCompanyName()
         {
@@ -1281,7 +1279,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryAddressLine1()
         {
@@ -1289,7 +1287,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryAddressLine2()
         {
@@ -1297,7 +1295,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryAddressLine3()
         {
@@ -1305,7 +1303,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryZipCode()
         {
@@ -1313,7 +1311,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryCity()
         {
@@ -1321,7 +1319,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryRegionId()
         {
@@ -1329,7 +1327,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryRegion()
         {
@@ -1337,7 +1335,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryCountry()
         {
@@ -1345,7 +1343,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINDeliveryCountryId()
         {
@@ -1353,7 +1351,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINPhoneNumber()
         {
@@ -1361,7 +1359,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINEmailAddress()
         {
@@ -1369,7 +1367,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiryDate()
         {
@@ -1685,101 +1683,135 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is ReplaceCardSettings other &&                ((this.SelfSelectedEncryptedPIN == null && other.SelfSelectedEncryptedPIN == null) || (this.SelfSelectedEncryptedPIN?.Equals(other.SelfSelectedEncryptedPIN) == true)) &&
-                ((this.SelfSelectedPINKeyID == null && other.SelfSelectedPINKeyID == null) || (this.SelfSelectedPINKeyID?.Equals(other.SelfSelectedPINKeyID) == true)) &&
-                ((this.SelfSelectedPINSessionKey == null && other.SelfSelectedPINSessionKey == null) || (this.SelfSelectedPINSessionKey?.Equals(other.SelfSelectedPINSessionKey) == true)) &&
-                ((this.ValidateFleetId == null && other.ValidateFleetId == null) || (this.ValidateFleetId?.Equals(other.ValidateFleetId) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardDeliveryType == null && other.CardDeliveryType == null) || (this.CardDeliveryType?.Equals(other.CardDeliveryType) == true)) &&
-                ((this.DeliveryContactTitle == null && other.DeliveryContactTitle == null) || (this.DeliveryContactTitle?.Equals(other.DeliveryContactTitle) == true)) &&
-                ((this.DeliveryContactName == null && other.DeliveryContactName == null) || (this.DeliveryContactName?.Equals(other.DeliveryContactName) == true)) &&
-                ((this.DeliveryCompanyName == null && other.DeliveryCompanyName == null) || (this.DeliveryCompanyName?.Equals(other.DeliveryCompanyName) == true)) &&
-                ((this.DeliveryAddressLine1 == null && other.DeliveryAddressLine1 == null) || (this.DeliveryAddressLine1?.Equals(other.DeliveryAddressLine1) == true)) &&
-                ((this.DeliveryAddressLine2 == null && other.DeliveryAddressLine2 == null) || (this.DeliveryAddressLine2?.Equals(other.DeliveryAddressLine2) == true)) &&
-                ((this.DeliveryAddressLine3 == null && other.DeliveryAddressLine3 == null) || (this.DeliveryAddressLine3?.Equals(other.DeliveryAddressLine3) == true)) &&
-                ((this.DeliveryZipCode == null && other.DeliveryZipCode == null) || (this.DeliveryZipCode?.Equals(other.DeliveryZipCode) == true)) &&
-                ((this.DeliveryCity == null && other.DeliveryCity == null) || (this.DeliveryCity?.Equals(other.DeliveryCity) == true)) &&
-                ((this.DeliveryRegionId == null && other.DeliveryRegionId == null) || (this.DeliveryRegionId?.Equals(other.DeliveryRegionId) == true)) &&
-                ((this.DeliveryRegion == null && other.DeliveryRegion == null) || (this.DeliveryRegion?.Equals(other.DeliveryRegion) == true)) &&
-                ((this.DeliveryCountry == null && other.DeliveryCountry == null) || (this.DeliveryCountry?.Equals(other.DeliveryCountry) == true)) &&
-                ((this.DeliveryCountryId == null && other.DeliveryCountryId == null) || (this.DeliveryCountryId?.Equals(other.DeliveryCountryId) == true)) &&
-                ((this.PhoneNumber == null && other.PhoneNumber == null) || (this.PhoneNumber?.Equals(other.PhoneNumber) == true)) &&
-                ((this.EmailAddress == null && other.EmailAddress == null) || (this.EmailAddress?.Equals(other.EmailAddress) == true)) &&
-                ((this.PINDeliveryAddressType == null && other.PINDeliveryAddressType == null) || (this.PINDeliveryAddressType?.Equals(other.PINDeliveryAddressType) == true)) &&
-                ((this.PINAdviceType == null && other.PINAdviceType == null) || (this.PINAdviceType?.Equals(other.PINAdviceType) == true)) &&
-                ((this.PINDeliveryContactTitle == null && other.PINDeliveryContactTitle == null) || (this.PINDeliveryContactTitle?.Equals(other.PINDeliveryContactTitle) == true)) &&
-                ((this.PINDeliveryContactName == null && other.PINDeliveryContactName == null) || (this.PINDeliveryContactName?.Equals(other.PINDeliveryContactName) == true)) &&
-                ((this.PINDeliveryCompanyName == null && other.PINDeliveryCompanyName == null) || (this.PINDeliveryCompanyName?.Equals(other.PINDeliveryCompanyName) == true)) &&
-                ((this.PINDeliveryAddressLine1 == null && other.PINDeliveryAddressLine1 == null) || (this.PINDeliveryAddressLine1?.Equals(other.PINDeliveryAddressLine1) == true)) &&
-                ((this.PINDeliveryAddressLine2 == null && other.PINDeliveryAddressLine2 == null) || (this.PINDeliveryAddressLine2?.Equals(other.PINDeliveryAddressLine2) == true)) &&
-                ((this.PINDeliveryAddressLine3 == null && other.PINDeliveryAddressLine3 == null) || (this.PINDeliveryAddressLine3?.Equals(other.PINDeliveryAddressLine3) == true)) &&
-                ((this.PINDeliveryZipCode == null && other.PINDeliveryZipCode == null) || (this.PINDeliveryZipCode?.Equals(other.PINDeliveryZipCode) == true)) &&
-                ((this.PINDeliveryCity == null && other.PINDeliveryCity == null) || (this.PINDeliveryCity?.Equals(other.PINDeliveryCity) == true)) &&
-                ((this.PINDeliveryRegionId == null && other.PINDeliveryRegionId == null) || (this.PINDeliveryRegionId?.Equals(other.PINDeliveryRegionId) == true)) &&
-                ((this.PINDeliveryRegion == null && other.PINDeliveryRegion == null) || (this.PINDeliveryRegion?.Equals(other.PINDeliveryRegion) == true)) &&
-                ((this.PINDeliveryCountry == null && other.PINDeliveryCountry == null) || (this.PINDeliveryCountry?.Equals(other.PINDeliveryCountry) == true)) &&
-                ((this.PINDeliveryCountryId == null && other.PINDeliveryCountryId == null) || (this.PINDeliveryCountryId?.Equals(other.PINDeliveryCountryId) == true)) &&
-                ((this.PINPhoneNumber == null && other.PINPhoneNumber == null) || (this.PINPhoneNumber?.Equals(other.PINPhoneNumber) == true)) &&
-                ((this.PINEmailAddress == null && other.PINEmailAddress == null) || (this.PINEmailAddress?.Equals(other.PINEmailAddress) == true)) &&
-                ((this.SaveForPINReminder == null && other.SaveForPINReminder == null) || (this.SaveForPINReminder?.Equals(other.SaveForPINReminder) == true)) &&
-                ((this.SaveForCardReissue == null && other.SaveForCardReissue == null) || (this.SaveForCardReissue?.Equals(other.SaveForCardReissue) == true)) &&
-                ((this.ExpiryDate == null && other.ExpiryDate == null) || (this.ExpiryDate?.Equals(other.ExpiryDate) == true));
+            return obj is ReplaceCardSettings other &&
+                (this.SelfSelectedEncryptedPIN == null && other.SelfSelectedEncryptedPIN == null ||
+                 this.SelfSelectedEncryptedPIN?.Equals(other.SelfSelectedEncryptedPIN) == true) &&
+                (this.SelfSelectedPINKeyID == null && other.SelfSelectedPINKeyID == null ||
+                 this.SelfSelectedPINKeyID?.Equals(other.SelfSelectedPINKeyID) == true) &&
+                (this.SelfSelectedPINSessionKey == null && other.SelfSelectedPINSessionKey == null ||
+                 this.SelfSelectedPINSessionKey?.Equals(other.SelfSelectedPINSessionKey) == true) &&
+                (this.ValidateFleetId == null && other.ValidateFleetId == null ||
+                 this.ValidateFleetId?.Equals(other.ValidateFleetId) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardDeliveryType == null && other.CardDeliveryType == null ||
+                 this.CardDeliveryType?.Equals(other.CardDeliveryType) == true) &&
+                (this.DeliveryContactTitle == null && other.DeliveryContactTitle == null ||
+                 this.DeliveryContactTitle?.Equals(other.DeliveryContactTitle) == true) &&
+                (this.DeliveryContactName == null && other.DeliveryContactName == null ||
+                 this.DeliveryContactName?.Equals(other.DeliveryContactName) == true) &&
+                (this.DeliveryCompanyName == null && other.DeliveryCompanyName == null ||
+                 this.DeliveryCompanyName?.Equals(other.DeliveryCompanyName) == true) &&
+                (this.DeliveryAddressLine1 == null && other.DeliveryAddressLine1 == null ||
+                 this.DeliveryAddressLine1?.Equals(other.DeliveryAddressLine1) == true) &&
+                (this.DeliveryAddressLine2 == null && other.DeliveryAddressLine2 == null ||
+                 this.DeliveryAddressLine2?.Equals(other.DeliveryAddressLine2) == true) &&
+                (this.DeliveryAddressLine3 == null && other.DeliveryAddressLine3 == null ||
+                 this.DeliveryAddressLine3?.Equals(other.DeliveryAddressLine3) == true) &&
+                (this.DeliveryZipCode == null && other.DeliveryZipCode == null ||
+                 this.DeliveryZipCode?.Equals(other.DeliveryZipCode) == true) &&
+                (this.DeliveryCity == null && other.DeliveryCity == null ||
+                 this.DeliveryCity?.Equals(other.DeliveryCity) == true) &&
+                (this.DeliveryRegionId == null && other.DeliveryRegionId == null ||
+                 this.DeliveryRegionId?.Equals(other.DeliveryRegionId) == true) &&
+                (this.DeliveryRegion == null && other.DeliveryRegion == null ||
+                 this.DeliveryRegion?.Equals(other.DeliveryRegion) == true) &&
+                (this.DeliveryCountry == null && other.DeliveryCountry == null ||
+                 this.DeliveryCountry?.Equals(other.DeliveryCountry) == true) &&
+                (this.DeliveryCountryId == null && other.DeliveryCountryId == null ||
+                 this.DeliveryCountryId?.Equals(other.DeliveryCountryId) == true) &&
+                (this.PhoneNumber == null && other.PhoneNumber == null ||
+                 this.PhoneNumber?.Equals(other.PhoneNumber) == true) &&
+                (this.EmailAddress == null && other.EmailAddress == null ||
+                 this.EmailAddress?.Equals(other.EmailAddress) == true) &&
+                (this.PINDeliveryAddressType == null && other.PINDeliveryAddressType == null ||
+                 this.PINDeliveryAddressType?.Equals(other.PINDeliveryAddressType) == true) &&
+                (this.PINAdviceType == null && other.PINAdviceType == null ||
+                 this.PINAdviceType?.Equals(other.PINAdviceType) == true) &&
+                (this.PINDeliveryContactTitle == null && other.PINDeliveryContactTitle == null ||
+                 this.PINDeliveryContactTitle?.Equals(other.PINDeliveryContactTitle) == true) &&
+                (this.PINDeliveryContactName == null && other.PINDeliveryContactName == null ||
+                 this.PINDeliveryContactName?.Equals(other.PINDeliveryContactName) == true) &&
+                (this.PINDeliveryCompanyName == null && other.PINDeliveryCompanyName == null ||
+                 this.PINDeliveryCompanyName?.Equals(other.PINDeliveryCompanyName) == true) &&
+                (this.PINDeliveryAddressLine1 == null && other.PINDeliveryAddressLine1 == null ||
+                 this.PINDeliveryAddressLine1?.Equals(other.PINDeliveryAddressLine1) == true) &&
+                (this.PINDeliveryAddressLine2 == null && other.PINDeliveryAddressLine2 == null ||
+                 this.PINDeliveryAddressLine2?.Equals(other.PINDeliveryAddressLine2) == true) &&
+                (this.PINDeliveryAddressLine3 == null && other.PINDeliveryAddressLine3 == null ||
+                 this.PINDeliveryAddressLine3?.Equals(other.PINDeliveryAddressLine3) == true) &&
+                (this.PINDeliveryZipCode == null && other.PINDeliveryZipCode == null ||
+                 this.PINDeliveryZipCode?.Equals(other.PINDeliveryZipCode) == true) &&
+                (this.PINDeliveryCity == null && other.PINDeliveryCity == null ||
+                 this.PINDeliveryCity?.Equals(other.PINDeliveryCity) == true) &&
+                (this.PINDeliveryRegionId == null && other.PINDeliveryRegionId == null ||
+                 this.PINDeliveryRegionId?.Equals(other.PINDeliveryRegionId) == true) &&
+                (this.PINDeliveryRegion == null && other.PINDeliveryRegion == null ||
+                 this.PINDeliveryRegion?.Equals(other.PINDeliveryRegion) == true) &&
+                (this.PINDeliveryCountry == null && other.PINDeliveryCountry == null ||
+                 this.PINDeliveryCountry?.Equals(other.PINDeliveryCountry) == true) &&
+                (this.PINDeliveryCountryId == null && other.PINDeliveryCountryId == null ||
+                 this.PINDeliveryCountryId?.Equals(other.PINDeliveryCountryId) == true) &&
+                (this.PINPhoneNumber == null && other.PINPhoneNumber == null ||
+                 this.PINPhoneNumber?.Equals(other.PINPhoneNumber) == true) &&
+                (this.PINEmailAddress == null && other.PINEmailAddress == null ||
+                 this.PINEmailAddress?.Equals(other.PINEmailAddress) == true) &&
+                (this.SaveForPINReminder == null && other.SaveForPINReminder == null ||
+                 this.SaveForPINReminder?.Equals(other.SaveForPINReminder) == true) &&
+                (this.SaveForCardReissue == null && other.SaveForCardReissue == null ||
+                 this.SaveForCardReissue?.Equals(other.SaveForCardReissue) == true) &&
+                (this.ExpiryDate == null && other.ExpiryDate == null ||
+                 this.ExpiryDate?.Equals(other.ExpiryDate) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.SelfSelectedEncryptedPIN = {(this.SelfSelectedEncryptedPIN == null ? "null" : this.SelfSelectedEncryptedPIN)}");
-            toStringOutput.Add($"this.SelfSelectedPINKeyID = {(this.SelfSelectedPINKeyID == null ? "null" : this.SelfSelectedPINKeyID)}");
-            toStringOutput.Add($"this.SelfSelectedPINSessionKey = {(this.SelfSelectedPINSessionKey == null ? "null" : this.SelfSelectedPINSessionKey)}");
+            toStringOutput.Add($"this.SelfSelectedEncryptedPIN = {this.SelfSelectedEncryptedPIN ?? "null"}");
+            toStringOutput.Add($"this.SelfSelectedPINKeyID = {this.SelfSelectedPINKeyID ?? "null"}");
+            toStringOutput.Add($"this.SelfSelectedPINSessionKey = {this.SelfSelectedPINSessionKey ?? "null"}");
             toStringOutput.Add($"this.ValidateFleetId = {(this.ValidateFleetId == null ? "null" : this.ValidateFleetId.ToString())}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
             toStringOutput.Add($"this.CardDeliveryType = {(this.CardDeliveryType == null ? "null" : this.CardDeliveryType.ToString())}");
-            toStringOutput.Add($"this.DeliveryContactTitle = {(this.DeliveryContactTitle == null ? "null" : this.DeliveryContactTitle)}");
-            toStringOutput.Add($"this.DeliveryContactName = {(this.DeliveryContactName == null ? "null" : this.DeliveryContactName)}");
-            toStringOutput.Add($"this.DeliveryCompanyName = {(this.DeliveryCompanyName == null ? "null" : this.DeliveryCompanyName)}");
-            toStringOutput.Add($"this.DeliveryAddressLine1 = {(this.DeliveryAddressLine1 == null ? "null" : this.DeliveryAddressLine1)}");
-            toStringOutput.Add($"this.DeliveryAddressLine2 = {(this.DeliveryAddressLine2 == null ? "null" : this.DeliveryAddressLine2)}");
-            toStringOutput.Add($"this.DeliveryAddressLine3 = {(this.DeliveryAddressLine3 == null ? "null" : this.DeliveryAddressLine3)}");
-            toStringOutput.Add($"this.DeliveryZipCode = {(this.DeliveryZipCode == null ? "null" : this.DeliveryZipCode)}");
-            toStringOutput.Add($"this.DeliveryCity = {(this.DeliveryCity == null ? "null" : this.DeliveryCity)}");
+            toStringOutput.Add($"this.DeliveryContactTitle = {this.DeliveryContactTitle ?? "null"}");
+            toStringOutput.Add($"this.DeliveryContactName = {this.DeliveryContactName ?? "null"}");
+            toStringOutput.Add($"this.DeliveryCompanyName = {this.DeliveryCompanyName ?? "null"}");
+            toStringOutput.Add($"this.DeliveryAddressLine1 = {this.DeliveryAddressLine1 ?? "null"}");
+            toStringOutput.Add($"this.DeliveryAddressLine2 = {this.DeliveryAddressLine2 ?? "null"}");
+            toStringOutput.Add($"this.DeliveryAddressLine3 = {this.DeliveryAddressLine3 ?? "null"}");
+            toStringOutput.Add($"this.DeliveryZipCode = {this.DeliveryZipCode ?? "null"}");
+            toStringOutput.Add($"this.DeliveryCity = {this.DeliveryCity ?? "null"}");
             toStringOutput.Add($"this.DeliveryRegionId = {(this.DeliveryRegionId == null ? "null" : this.DeliveryRegionId.ToString())}");
-            toStringOutput.Add($"this.DeliveryRegion = {(this.DeliveryRegion == null ? "null" : this.DeliveryRegion)}");
-            toStringOutput.Add($"this.DeliveryCountry = {(this.DeliveryCountry == null ? "null" : this.DeliveryCountry)}");
+            toStringOutput.Add($"this.DeliveryRegion = {this.DeliveryRegion ?? "null"}");
+            toStringOutput.Add($"this.DeliveryCountry = {this.DeliveryCountry ?? "null"}");
             toStringOutput.Add($"this.DeliveryCountryId = {(this.DeliveryCountryId == null ? "null" : this.DeliveryCountryId.ToString())}");
-            toStringOutput.Add($"this.PhoneNumber = {(this.PhoneNumber == null ? "null" : this.PhoneNumber)}");
-            toStringOutput.Add($"this.EmailAddress = {(this.EmailAddress == null ? "null" : this.EmailAddress)}");
+            toStringOutput.Add($"this.PhoneNumber = {this.PhoneNumber ?? "null"}");
+            toStringOutput.Add($"this.EmailAddress = {this.EmailAddress ?? "null"}");
             toStringOutput.Add($"this.PINDeliveryAddressType = {(this.PINDeliveryAddressType == null ? "null" : this.PINDeliveryAddressType.ToString())}");
             toStringOutput.Add($"this.PINAdviceType = {(this.PINAdviceType == null ? "null" : this.PINAdviceType.ToString())}");
-            toStringOutput.Add($"this.PINDeliveryContactTitle = {(this.PINDeliveryContactTitle == null ? "null" : this.PINDeliveryContactTitle)}");
-            toStringOutput.Add($"this.PINDeliveryContactName = {(this.PINDeliveryContactName == null ? "null" : this.PINDeliveryContactName)}");
-            toStringOutput.Add($"this.PINDeliveryCompanyName = {(this.PINDeliveryCompanyName == null ? "null" : this.PINDeliveryCompanyName)}");
-            toStringOutput.Add($"this.PINDeliveryAddressLine1 = {(this.PINDeliveryAddressLine1 == null ? "null" : this.PINDeliveryAddressLine1)}");
-            toStringOutput.Add($"this.PINDeliveryAddressLine2 = {(this.PINDeliveryAddressLine2 == null ? "null" : this.PINDeliveryAddressLine2)}");
-            toStringOutput.Add($"this.PINDeliveryAddressLine3 = {(this.PINDeliveryAddressLine3 == null ? "null" : this.PINDeliveryAddressLine3)}");
-            toStringOutput.Add($"this.PINDeliveryZipCode = {(this.PINDeliveryZipCode == null ? "null" : this.PINDeliveryZipCode)}");
-            toStringOutput.Add($"this.PINDeliveryCity = {(this.PINDeliveryCity == null ? "null" : this.PINDeliveryCity)}");
+            toStringOutput.Add($"this.PINDeliveryContactTitle = {this.PINDeliveryContactTitle ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryContactName = {this.PINDeliveryContactName ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryCompanyName = {this.PINDeliveryCompanyName ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryAddressLine1 = {this.PINDeliveryAddressLine1 ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryAddressLine2 = {this.PINDeliveryAddressLine2 ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryAddressLine3 = {this.PINDeliveryAddressLine3 ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryZipCode = {this.PINDeliveryZipCode ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryCity = {this.PINDeliveryCity ?? "null"}");
             toStringOutput.Add($"this.PINDeliveryRegionId = {(this.PINDeliveryRegionId == null ? "null" : this.PINDeliveryRegionId.ToString())}");
-            toStringOutput.Add($"this.PINDeliveryRegion = {(this.PINDeliveryRegion == null ? "null" : this.PINDeliveryRegion)}");
-            toStringOutput.Add($"this.PINDeliveryCountry = {(this.PINDeliveryCountry == null ? "null" : this.PINDeliveryCountry)}");
+            toStringOutput.Add($"this.PINDeliveryRegion = {this.PINDeliveryRegion ?? "null"}");
+            toStringOutput.Add($"this.PINDeliveryCountry = {this.PINDeliveryCountry ?? "null"}");
             toStringOutput.Add($"this.PINDeliveryCountryId = {(this.PINDeliveryCountryId == null ? "null" : this.PINDeliveryCountryId.ToString())}");
-            toStringOutput.Add($"this.PINPhoneNumber = {(this.PINPhoneNumber == null ? "null" : this.PINPhoneNumber)}");
-            toStringOutput.Add($"this.PINEmailAddress = {(this.PINEmailAddress == null ? "null" : this.PINEmailAddress)}");
+            toStringOutput.Add($"this.PINPhoneNumber = {this.PINPhoneNumber ?? "null"}");
+            toStringOutput.Add($"this.PINEmailAddress = {this.PINEmailAddress ?? "null"}");
             toStringOutput.Add($"this.SaveForPINReminder = {(this.SaveForPINReminder == null ? "null" : this.SaveForPINReminder.ToString())}");
             toStringOutput.Add($"this.SaveForCardReissue = {(this.SaveForCardReissue == null ? "null" : this.SaveForCardReissue.ToString())}");
-            toStringOutput.Add($"this.ExpiryDate = {(this.ExpiryDate == null ? "null" : this.ExpiryDate)}");
+            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
         }
     }
 }

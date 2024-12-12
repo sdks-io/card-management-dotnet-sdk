@@ -1,21 +1,21 @@
 // <copyright file="ShellSiteRestriction.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// ShellSiteRestriction.
     /// </summary>
@@ -81,37 +81,34 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"ShellSiteRestriction : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is ShellSiteRestriction other &&                ((this.Country == null && other.Country == null) || (this.Country?.Equals(other.Country) == true)) &&
-                ((this.Sites == null && other.Sites == null) || (this.Sites?.Equals(other.Sites) == true)) &&
-                ((this.SiteGroups == null && other.SiteGroups == null) || (this.SiteGroups?.Equals(other.SiteGroups) == true)) &&
-                ((this.Exclusive == null && other.Exclusive == null) || (this.Exclusive?.Equals(other.Exclusive) == true));
+            return obj is ShellSiteRestriction other &&
+                (this.Country == null && other.Country == null ||
+                 this.Country?.Equals(other.Country) == true) &&
+                (this.Sites == null && other.Sites == null ||
+                 this.Sites?.Equals(other.Sites) == true) &&
+                (this.SiteGroups == null && other.SiteGroups == null ||
+                 this.SiteGroups?.Equals(other.SiteGroups) == true) &&
+                (this.Exclusive == null && other.Exclusive == null ||
+                 this.Exclusive?.Equals(other.Exclusive) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Country = {(this.Country == null ? "null" : this.Country)}");
+            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
             toStringOutput.Add($"this.Sites = {(this.Sites == null ? "null" : $"[{string.Join(", ", this.Sites)} ]")}");
             toStringOutput.Add($"this.SiteGroups = {(this.SiteGroups == null ? "null" : $"[{string.Join(", ", this.SiteGroups)} ]")}");
             toStringOutput.Add($"this.Exclusive = {(this.Exclusive == null ? "null" : this.Exclusive.ToString())}");

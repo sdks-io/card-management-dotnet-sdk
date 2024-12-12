@@ -1,21 +1,21 @@
 // <copyright file="SummaryRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// SummaryRequest.
     /// </summary>
@@ -155,6 +155,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string reissueSetting = null,
             string requestId = null)
         {
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -199,8 +200,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.CardGroupName = cardGroupName;
             }
-
             this.CardStatus = cardStatus;
+
             if (expiringInDays != null)
             {
                 this.ExpiringInDays = expiringInDays;
@@ -215,11 +216,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PANEndsWith = pANEndsWith;
             }
-
             this.DriverName = driverName;
             this.VehicleRegistrationNumber = vehicleRegistrationNumber;
             this.IncludeCards = includeCards;
             this.ExcludeCards = excludeCards;
+
             if (excludeBundleId != null)
             {
                 this.ExcludeBundleId = excludeBundleId;
@@ -239,11 +240,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.CardTypeCode = cardTypeCode;
             }
-
             this.ExcludePendingRenewalCards = excludePendingRenewalCards;
             this.ExcludeCancelledCards = excludeCancelledCards;
             this.ExcludeReplacedCards = excludeReplacedCards;
             this.ExcludeFraudCards = excludeFraudCards;
+
             if (excludeCardGroupId != null)
             {
                 this.ExcludeCardGroupId = excludeCardGroupId;
@@ -278,13 +279,12 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ExpiryMonth = expiryMonth;
             }
-
             this.ExcludeOldCards = excludeOldCards;
+
             if (reissueSetting != null)
             {
                 this.ReissueSetting = reissueSetting;
             }
-
             this.RequestId = requestId;
         }
 
@@ -854,9 +854,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// If ‘False’, the API will return cards with ReIsssueSetting value is false.<br />
         /// If ‘ALL’, API will return cards with ReIssueSetting value True &amp; False both.<br />
         /// Allowed Values:<br />
-        /// 1.	All<br />
-        /// 2.	True<br />
-        /// 3.	False
+        /// 1.    All<br />
+        /// 2.    True<br />
+        /// 3.    False
         /// </summary>
         [JsonProperty("ReissueSetting")]
         public string ReissueSetting
@@ -883,14 +883,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"SummaryRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -898,7 +896,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -906,7 +904,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -914,7 +912,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCountryCode()
         {
@@ -922,7 +920,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -930,7 +928,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -938,7 +936,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -946,7 +944,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupId()
         {
@@ -954,7 +952,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupName()
         {
@@ -962,7 +960,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiringInDays()
         {
@@ -970,7 +968,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIssuedAfter()
         {
@@ -978,7 +976,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPANEndsWith()
         {
@@ -986,7 +984,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExcludeBundleId()
         {
@@ -994,7 +992,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardSegment()
         {
@@ -1002,7 +1000,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPurchaseCategoryCode()
         {
@@ -1010,7 +1008,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeCode()
         {
@@ -1018,7 +1016,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExcludeCardGroupId()
         {
@@ -1026,7 +1024,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExcludeCardGroupName()
         {
@@ -1034,7 +1032,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCreationDate()
         {
@@ -1042,7 +1040,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetEffectiveDate()
         {
@@ -1050,7 +1048,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetNetwork()
         {
@@ -1058,7 +1056,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCoverage()
         {
@@ -1066,7 +1064,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiryMonth()
         {
@@ -1074,7 +1072,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetReissueSetting()
         {
@@ -1300,52 +1298,82 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is SummaryRequest other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoCountryCode == null && other.ColCoCountryCode == null) || (this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardGroupName == null && other.CardGroupName == null) || (this.CardGroupName?.Equals(other.CardGroupName) == true)) &&
-                ((this.CardStatus == null && other.CardStatus == null) || (this.CardStatus?.Equals(other.CardStatus) == true)) &&
-                ((this.ExpiringInDays == null && other.ExpiringInDays == null) || (this.ExpiringInDays?.Equals(other.ExpiringInDays) == true)) &&
-                ((this.IssuedAfter == null && other.IssuedAfter == null) || (this.IssuedAfter?.Equals(other.IssuedAfter) == true)) &&
-                ((this.PANEndsWith == null && other.PANEndsWith == null) || (this.PANEndsWith?.Equals(other.PANEndsWith) == true)) &&
-                ((this.DriverName == null && other.DriverName == null) || (this.DriverName?.Equals(other.DriverName) == true)) &&
-                ((this.VehicleRegistrationNumber == null && other.VehicleRegistrationNumber == null) || (this.VehicleRegistrationNumber?.Equals(other.VehicleRegistrationNumber) == true)) &&
-                ((this.IncludeCards == null && other.IncludeCards == null) || (this.IncludeCards?.Equals(other.IncludeCards) == true)) &&
-                ((this.ExcludeCards == null && other.ExcludeCards == null) || (this.ExcludeCards?.Equals(other.ExcludeCards) == true)) &&
-                ((this.ExcludeBundleId == null && other.ExcludeBundleId == null) || (this.ExcludeBundleId?.Equals(other.ExcludeBundleId) == true)) &&
-                ((this.CardSegment == null && other.CardSegment == null) || (this.CardSegment?.Equals(other.CardSegment) == true)) &&
-                ((this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null) || (this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true)) &&
-                ((this.CardTypeCode == null && other.CardTypeCode == null) || (this.CardTypeCode?.Equals(other.CardTypeCode) == true)) &&
-                ((this.ExcludePendingRenewalCards == null && other.ExcludePendingRenewalCards == null) || (this.ExcludePendingRenewalCards?.Equals(other.ExcludePendingRenewalCards) == true)) &&
-                ((this.ExcludeCancelledCards == null && other.ExcludeCancelledCards == null) || (this.ExcludeCancelledCards?.Equals(other.ExcludeCancelledCards) == true)) &&
-                ((this.ExcludeReplacedCards == null && other.ExcludeReplacedCards == null) || (this.ExcludeReplacedCards?.Equals(other.ExcludeReplacedCards) == true)) &&
-                ((this.ExcludeFraudCards == null && other.ExcludeFraudCards == null) || (this.ExcludeFraudCards?.Equals(other.ExcludeFraudCards) == true)) &&
-                ((this.ExcludeCardGroupId == null && other.ExcludeCardGroupId == null) || (this.ExcludeCardGroupId?.Equals(other.ExcludeCardGroupId) == true)) &&
-                ((this.ExcludeCardGroupName == null && other.ExcludeCardGroupName == null) || (this.ExcludeCardGroupName?.Equals(other.ExcludeCardGroupName) == true)) &&
-                ((this.CreationDate == null && other.CreationDate == null) || (this.CreationDate?.Equals(other.CreationDate) == true)) &&
-                ((this.EffectiveDate == null && other.EffectiveDate == null) || (this.EffectiveDate?.Equals(other.EffectiveDate) == true)) &&
-                ((this.Network == null && other.Network == null) || (this.Network?.Equals(other.Network) == true)) &&
-                ((this.Coverage == null && other.Coverage == null) || (this.Coverage?.Equals(other.Coverage) == true)) &&
-                ((this.ExpiryMonth == null && other.ExpiryMonth == null) || (this.ExpiryMonth?.Equals(other.ExpiryMonth) == true)) &&
-                ((this.ExcludeOldCards == null && other.ExcludeOldCards == null) || (this.ExcludeOldCards?.Equals(other.ExcludeOldCards) == true)) &&
-                ((this.ReissueSetting == null && other.ReissueSetting == null) || (this.ReissueSetting?.Equals(other.ReissueSetting) == true)) &&
-                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true));
+            return obj is SummaryRequest other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoCountryCode == null && other.ColCoCountryCode == null ||
+                 this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardGroupName == null && other.CardGroupName == null ||
+                 this.CardGroupName?.Equals(other.CardGroupName) == true) &&
+                (this.CardStatus == null && other.CardStatus == null ||
+                 this.CardStatus?.Equals(other.CardStatus) == true) &&
+                (this.ExpiringInDays == null && other.ExpiringInDays == null ||
+                 this.ExpiringInDays?.Equals(other.ExpiringInDays) == true) &&
+                (this.IssuedAfter == null && other.IssuedAfter == null ||
+                 this.IssuedAfter?.Equals(other.IssuedAfter) == true) &&
+                (this.PANEndsWith == null && other.PANEndsWith == null ||
+                 this.PANEndsWith?.Equals(other.PANEndsWith) == true) &&
+                (this.DriverName == null && other.DriverName == null ||
+                 this.DriverName?.Equals(other.DriverName) == true) &&
+                (this.VehicleRegistrationNumber == null && other.VehicleRegistrationNumber == null ||
+                 this.VehicleRegistrationNumber?.Equals(other.VehicleRegistrationNumber) == true) &&
+                (this.IncludeCards == null && other.IncludeCards == null ||
+                 this.IncludeCards?.Equals(other.IncludeCards) == true) &&
+                (this.ExcludeCards == null && other.ExcludeCards == null ||
+                 this.ExcludeCards?.Equals(other.ExcludeCards) == true) &&
+                (this.ExcludeBundleId == null && other.ExcludeBundleId == null ||
+                 this.ExcludeBundleId?.Equals(other.ExcludeBundleId) == true) &&
+                (this.CardSegment == null && other.CardSegment == null ||
+                 this.CardSegment?.Equals(other.CardSegment) == true) &&
+                (this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null ||
+                 this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true) &&
+                (this.CardTypeCode == null && other.CardTypeCode == null ||
+                 this.CardTypeCode?.Equals(other.CardTypeCode) == true) &&
+                (this.ExcludePendingRenewalCards == null && other.ExcludePendingRenewalCards == null ||
+                 this.ExcludePendingRenewalCards?.Equals(other.ExcludePendingRenewalCards) == true) &&
+                (this.ExcludeCancelledCards == null && other.ExcludeCancelledCards == null ||
+                 this.ExcludeCancelledCards?.Equals(other.ExcludeCancelledCards) == true) &&
+                (this.ExcludeReplacedCards == null && other.ExcludeReplacedCards == null ||
+                 this.ExcludeReplacedCards?.Equals(other.ExcludeReplacedCards) == true) &&
+                (this.ExcludeFraudCards == null && other.ExcludeFraudCards == null ||
+                 this.ExcludeFraudCards?.Equals(other.ExcludeFraudCards) == true) &&
+                (this.ExcludeCardGroupId == null && other.ExcludeCardGroupId == null ||
+                 this.ExcludeCardGroupId?.Equals(other.ExcludeCardGroupId) == true) &&
+                (this.ExcludeCardGroupName == null && other.ExcludeCardGroupName == null ||
+                 this.ExcludeCardGroupName?.Equals(other.ExcludeCardGroupName) == true) &&
+                (this.CreationDate == null && other.CreationDate == null ||
+                 this.CreationDate?.Equals(other.CreationDate) == true) &&
+                (this.EffectiveDate == null && other.EffectiveDate == null ||
+                 this.EffectiveDate?.Equals(other.EffectiveDate) == true) &&
+                (this.Network == null && other.Network == null ||
+                 this.Network?.Equals(other.Network) == true) &&
+                (this.Coverage == null && other.Coverage == null ||
+                 this.Coverage?.Equals(other.Coverage) == true) &&
+                (this.ExpiryMonth == null && other.ExpiryMonth == null ||
+                 this.ExpiryMonth?.Equals(other.ExpiryMonth) == true) &&
+                (this.ExcludeOldCards == null && other.ExcludeOldCards == null ||
+                 this.ExcludeOldCards?.Equals(other.ExcludeOldCards) == true) &&
+                (this.ReissueSetting == null && other.ReissueSetting == null ||
+                 this.ReissueSetting?.Equals(other.ReissueSetting) == true) &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -1353,40 +1381,40 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {(this.ColCoCountryCode == null ? "null" : this.ColCoCountryCode)}");
+            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {(this.CardGroupName == null ? "null" : this.CardGroupName)}");
+            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
             toStringOutput.Add($"this.CardStatus = {(this.CardStatus == null ? "null" : $"[{string.Join(", ", this.CardStatus)} ]")}");
             toStringOutput.Add($"this.ExpiringInDays = {(this.ExpiringInDays == null ? "null" : this.ExpiringInDays.ToString())}");
-            toStringOutput.Add($"this.IssuedAfter = {(this.IssuedAfter == null ? "null" : this.IssuedAfter)}");
-            toStringOutput.Add($"this.PANEndsWith = {(this.PANEndsWith == null ? "null" : this.PANEndsWith)}");
+            toStringOutput.Add($"this.IssuedAfter = {this.IssuedAfter ?? "null"}");
+            toStringOutput.Add($"this.PANEndsWith = {this.PANEndsWith ?? "null"}");
             toStringOutput.Add($"this.DriverName = {(this.DriverName == null ? "null" : $"[{string.Join(", ", this.DriverName)} ]")}");
             toStringOutput.Add($"this.VehicleRegistrationNumber = {(this.VehicleRegistrationNumber == null ? "null" : $"[{string.Join(", ", this.VehicleRegistrationNumber)} ]")}");
             toStringOutput.Add($"this.IncludeCards = {(this.IncludeCards == null ? "null" : $"[{string.Join(", ", this.IncludeCards)} ]")}");
             toStringOutput.Add($"this.ExcludeCards = {(this.ExcludeCards == null ? "null" : $"[{string.Join(", ", this.ExcludeCards)} ]")}");
-            toStringOutput.Add($"this.ExcludeBundleId = {(this.ExcludeBundleId == null ? "null" : this.ExcludeBundleId)}");
-            toStringOutput.Add($"this.CardSegment = {(this.CardSegment == null ? "null" : this.CardSegment)}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {(this.PurchaseCategoryCode == null ? "null" : this.PurchaseCategoryCode)}");
-            toStringOutput.Add($"this.CardTypeCode = {(this.CardTypeCode == null ? "null" : this.CardTypeCode)}");
+            toStringOutput.Add($"this.ExcludeBundleId = {this.ExcludeBundleId ?? "null"}");
+            toStringOutput.Add($"this.CardSegment = {this.CardSegment ?? "null"}");
+            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
+            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
             toStringOutput.Add($"this.ExcludePendingRenewalCards = {(this.ExcludePendingRenewalCards == null ? "null" : this.ExcludePendingRenewalCards.ToString())}");
             toStringOutput.Add($"this.ExcludeCancelledCards = {(this.ExcludeCancelledCards == null ? "null" : this.ExcludeCancelledCards.ToString())}");
             toStringOutput.Add($"this.ExcludeReplacedCards = {(this.ExcludeReplacedCards == null ? "null" : this.ExcludeReplacedCards.ToString())}");
             toStringOutput.Add($"this.ExcludeFraudCards = {(this.ExcludeFraudCards == null ? "null" : this.ExcludeFraudCards.ToString())}");
             toStringOutput.Add($"this.ExcludeCardGroupId = {(this.ExcludeCardGroupId == null ? "null" : this.ExcludeCardGroupId.ToString())}");
-            toStringOutput.Add($"this.ExcludeCardGroupName = {(this.ExcludeCardGroupName == null ? "null" : this.ExcludeCardGroupName)}");
-            toStringOutput.Add($"this.CreationDate = {(this.CreationDate == null ? "null" : this.CreationDate)}");
-            toStringOutput.Add($"this.EffectiveDate = {(this.EffectiveDate == null ? "null" : this.EffectiveDate)}");
-            toStringOutput.Add($"this.Network = {(this.Network == null ? "null" : this.Network)}");
-            toStringOutput.Add($"this.Coverage = {(this.Coverage == null ? "null" : this.Coverage)}");
-            toStringOutput.Add($"this.ExpiryMonth = {(this.ExpiryMonth == null ? "null" : this.ExpiryMonth)}");
+            toStringOutput.Add($"this.ExcludeCardGroupName = {this.ExcludeCardGroupName ?? "null"}");
+            toStringOutput.Add($"this.CreationDate = {this.CreationDate ?? "null"}");
+            toStringOutput.Add($"this.EffectiveDate = {this.EffectiveDate ?? "null"}");
+            toStringOutput.Add($"this.Network = {this.Network ?? "null"}");
+            toStringOutput.Add($"this.Coverage = {this.Coverage ?? "null"}");
+            toStringOutput.Add($"this.ExpiryMonth = {this.ExpiryMonth ?? "null"}");
             toStringOutput.Add($"this.ExcludeOldCards = {(this.ExcludeOldCards == null ? "null" : this.ExcludeOldCards.ToString())}");
-            toStringOutput.Add($"this.ReissueSetting = {(this.ReissueSetting == null ? "null" : this.ReissueSetting)}");
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.ReissueSetting = {this.ReissueSetting ?? "null"}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

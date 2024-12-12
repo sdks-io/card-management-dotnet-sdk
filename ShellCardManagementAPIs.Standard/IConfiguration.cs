@@ -1,13 +1,13 @@
 // <copyright file="IConfiguration.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Net;
+using ShellCardManagementAPIs.Standard.Authentication;
+using ShellCardManagementAPIs.Standard.Models;
+
 namespace ShellCardManagementAPIs.Standard
 {
-    using System;
-    using System.Net;
-    using ShellCardManagementAPIs.Standard.Authentication;
-    using ShellCardManagementAPIs.Standard.Models;
-
     /// <summary>
     /// IConfiguration.
     /// </summary>

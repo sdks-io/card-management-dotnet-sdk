@@ -1,21 +1,21 @@
 // <copyright file="PayerDetails.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PayerDetails.
     /// </summary>
@@ -421,6 +421,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string tollsColcoCountryTypeId = null,
             List<Models.CustomerContract> contracts = null)
         {
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
@@ -615,8 +616,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.Day4Run = day4Run;
             }
-
             this.InvoiceDistributionMethods = invoiceDistributionMethods;
+
             if (outputType != null)
             {
                 this.OutputType = outputType;
@@ -636,9 +637,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.InvoiceAccountShortName = invoiceAccountShortName;
             }
-
             this.BestOfIndicator = bestOfIndicator;
             this.IsInternational = isInternational;
+
             if (totalAccounts != null)
             {
                 this.TotalAccounts = totalAccounts;
@@ -718,8 +719,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerTradingName = payerTradingName;
             }
-
             this.Status = status;
+
             if (billingLanguage != null)
             {
                 this.BillingLanguage = billingLanguage;
@@ -754,22 +755,22 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.LineOfBusiness = lineOfBusiness;
             }
-
             this.PrintCreditLimit = printCreditLimit;
+
             if (cardGroupType != null)
             {
                 this.CardGroupType = cardGroupType;
             }
-
             this.RenewCards = renewCards;
             this.AllowSelectPIN = allowSelectPIN;
             this.UseFleetPIN = useFleetPIN;
+
             if (vATRegNumber != null)
             {
                 this.VATRegNumber = vATRegNumber;
             }
-
             this.VATRegNumber2 = vATRegNumber2;
+
             if (registrationNumber != null)
             {
                 this.RegistrationNumber = registrationNumber;
@@ -854,7 +855,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.TemporaryCreditLimitExpiryDate = temporaryCreditLimitExpiryDate;
             }
-
             this.PayerBankAccount = payerBankAccount;
             this.CardDeliveryAddress = cardDeliveryAddress;
             this.CorrespondanceAddress = correspondanceAddress;
@@ -863,6 +863,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.HasActiveVolBasedBonus = hasActiveVolBasedBonus;
             this.HasActiveVolBasedAssociationBonus = hasActiveVolBasedAssociationBonus;
             this.FinanceCurrency = financeCurrency;
+
             if (tollsCustomerId != null)
             {
                 this.TollsCustomerId = tollsCustomerId;
@@ -872,7 +873,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.TollsColcoCountryTypeId = tollsColcoCountryTypeId;
             }
-
             this.Contracts = contracts;
         }
 
@@ -1457,10 +1457,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Billing/Invoice frequency. The frequency in which the transactions will be considered for invoicing in a bulling run
         /// E.g.:
-        /// 1	Daily (all days)
-        /// 2	Daily (only working days)
-        /// 3	Weekly - Monday
-        /// 4	Weekly – Tuesday
+        /// 1    Daily (all days)
+        /// 2    Daily (only working days)
+        /// 3    Weekly - Monday
+        /// 4    Weekly – Tuesday
         /// Etc.
         /// </summary>
         [JsonProperty("BillingFrequencyType")]
@@ -1499,10 +1499,10 @@ namespace ShellCardManagementAPIs.Standard.Models
 
         /// <summary>
         /// Frequency at which the billing process is triggered.E.g.:
-        /// 1	Daily (all days)
-        /// 2	Daily (only working days)
-        /// 3	Weekly - Monday
-        /// 4	Weekly – Tuesday
+        /// 1    Daily (all days)
+        /// 2    Daily (only working days)
+        /// 3    Weekly - Monday
+        /// 4    Weekly – Tuesday
         /// Etc.
         /// </summary>
         [JsonProperty("BillingRunFrequnecy")]
@@ -2568,7 +2568,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// String	Colco country type id in e-TM system
+        /// String    Colco country type id in e-TM system
         /// This field will have value only when ReturnTollsCustomerId is set to true in the request else set to null or empty.
         /// </summary>
         [JsonProperty("TollsColcoCountryTypeId")]
@@ -2596,14 +2596,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PayerDetails : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -2611,7 +2609,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -2619,7 +2617,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountryCode()
         {
@@ -2627,7 +2625,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountry()
         {
@@ -2635,7 +2633,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -2643,7 +2641,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -2651,7 +2649,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerFullName()
         {
@@ -2659,7 +2657,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerShortName()
         {
@@ -2667,7 +2665,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerGroupId()
         {
@@ -2675,7 +2673,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAmountDue()
         {
@@ -2683,7 +2681,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAmountOverdue()
         {
@@ -2691,7 +2689,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAmountNotOverdue()
         {
@@ -2699,7 +2697,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetOutstandingBalance()
         {
@@ -2707,7 +2705,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetUnallocatedPayment()
         {
@@ -2715,7 +2713,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSOACurrencyCode()
         {
@@ -2723,7 +2721,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSOACurrencySymbol()
         {
@@ -2731,7 +2729,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSOACreditLimitCurrencyCode()
         {
@@ -2739,7 +2737,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSOACreditLimitCurrencySymbol()
         {
@@ -2747,7 +2745,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLastPaymentCurrencyCode()
         {
@@ -2755,7 +2753,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLastPaymentCurrencySymbol()
         {
@@ -2763,7 +2761,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLastPaymentAmount()
         {
@@ -2771,7 +2769,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLastPaymentDate()
         {
@@ -2779,7 +2777,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSOALastPaymentAmount()
         {
@@ -2787,7 +2785,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSOALastPaymentDate()
         {
@@ -2795,7 +2793,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrencyCode()
         {
@@ -2803,7 +2801,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrencySymbol()
         {
@@ -2811,7 +2809,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCountryCode()
         {
@@ -2819,7 +2817,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLocalCurrencyCode()
         {
@@ -2827,7 +2825,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLocalCurrencySymbol()
         {
@@ -2835,7 +2833,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLocalCurrencyExchangeRate()
         {
@@ -2843,7 +2841,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLocalCurrencyExchangeRateSoA()
         {
@@ -2851,7 +2849,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingFrequencyTypeId()
         {
@@ -2859,7 +2857,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingFrequencyType()
         {
@@ -2867,7 +2865,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingRunFrequencyTypeId()
         {
@@ -2875,7 +2873,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingRunFrequnecy()
         {
@@ -2883,7 +2881,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDay1Run()
         {
@@ -2891,7 +2889,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDay2Run()
         {
@@ -2899,7 +2897,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDay3Run()
         {
@@ -2907,7 +2905,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDay4Run()
         {
@@ -2915,7 +2913,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetOutputType()
         {
@@ -2923,7 +2921,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoiceAccountID()
         {
@@ -2931,7 +2929,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoiceAccountNumber()
         {
@@ -2939,7 +2937,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoiceAccountShortName()
         {
@@ -2947,7 +2945,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalAccounts()
         {
@@ -2955,7 +2953,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalActiveAccounts()
         {
@@ -2963,7 +2961,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalCards()
         {
@@ -2971,7 +2969,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalActiveCards()
         {
@@ -2979,7 +2977,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalBlockedCards()
         {
@@ -2987,7 +2985,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalCancelledCards()
         {
@@ -2995,7 +2993,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalExpiredCards()
         {
@@ -3003,7 +3001,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalRenewalPendingCards()
         {
@@ -3011,7 +3009,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalReplacedCards()
         {
@@ -3019,7 +3017,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalTemporaryBlockCardsByCustomer()
         {
@@ -3027,7 +3025,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalTemporaryBlockCardsByShell()
         {
@@ -3035,7 +3033,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalNewCards()
         {
@@ -3043,7 +3041,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalFraudCards()
         {
@@ -3051,7 +3049,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalBlockedAccounts()
         {
@@ -3059,7 +3057,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTotalCancelledAccounts()
         {
@@ -3067,7 +3065,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerTradingName()
         {
@@ -3075,7 +3073,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingLanguage()
         {
@@ -3083,7 +3081,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLegalEntity()
         {
@@ -3091,7 +3089,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDateEstablished()
         {
@@ -3099,7 +3097,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCustomerClassification()
         {
@@ -3107,7 +3105,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIndustryClass()
         {
@@ -3115,7 +3113,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMarketingSegmentation()
         {
@@ -3123,7 +3121,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLineOfBusiness()
         {
@@ -3131,7 +3129,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupType()
         {
@@ -3139,7 +3137,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetVATRegNumber()
         {
@@ -3147,7 +3145,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRegistrationNumber()
         {
@@ -3155,7 +3153,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRegistrationNumber2()
         {
@@ -3163,7 +3161,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSalesLedgerBalance()
         {
@@ -3171,7 +3169,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExposure()
         {
@@ -3179,7 +3177,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetOutstandingDebt()
         {
@@ -3187,7 +3185,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAvailableCredit()
         {
@@ -3195,7 +3193,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBand()
         {
@@ -3203,7 +3201,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetGlobalCustomerReferenceId()
         {
@@ -3211,7 +3209,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCreditLimit()
         {
@@ -3219,7 +3217,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCreditLimitInCustomerCurrency()
         {
@@ -3227,7 +3225,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingCurrencyCode()
         {
@@ -3235,7 +3233,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBillingCurrencySymbol()
         {
@@ -3243,7 +3241,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPaymentMethod()
         {
@@ -3251,7 +3249,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPaymentTerms()
         {
@@ -3259,7 +3257,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTemporaryCreditLimitIncrease()
         {
@@ -3267,7 +3265,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTemporaryCreditLimitIncreaseInCustomerCurrency()
         {
@@ -3275,7 +3273,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTemporaryCreditLimitExpiryDate()
         {
@@ -3283,7 +3281,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTollsCustomerId()
         {
@@ -3291,7 +3289,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTollsColcoCountryTypeId()
         {
@@ -4084,122 +4082,222 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PayerDetails other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.CountryCode == null && other.CountryCode == null) || (this.CountryCode?.Equals(other.CountryCode) == true)) &&
-                ((this.Country == null && other.Country == null) || (this.Country?.Equals(other.Country) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.PayerFullName == null && other.PayerFullName == null) || (this.PayerFullName?.Equals(other.PayerFullName) == true)) &&
-                ((this.PayerShortName == null && other.PayerShortName == null) || (this.PayerShortName?.Equals(other.PayerShortName) == true)) &&
-                ((this.PayerGroupId == null && other.PayerGroupId == null) || (this.PayerGroupId?.Equals(other.PayerGroupId) == true)) &&
-                ((this.AmountDue == null && other.AmountDue == null) || (this.AmountDue?.Equals(other.AmountDue) == true)) &&
-                ((this.AmountOverdue == null && other.AmountOverdue == null) || (this.AmountOverdue?.Equals(other.AmountOverdue) == true)) &&
-                ((this.AmountNotOverdue == null && other.AmountNotOverdue == null) || (this.AmountNotOverdue?.Equals(other.AmountNotOverdue) == true)) &&
-                ((this.OutstandingBalance == null && other.OutstandingBalance == null) || (this.OutstandingBalance?.Equals(other.OutstandingBalance) == true)) &&
-                ((this.UnallocatedPayment == null && other.UnallocatedPayment == null) || (this.UnallocatedPayment?.Equals(other.UnallocatedPayment) == true)) &&
-                ((this.SOACurrencyCode == null && other.SOACurrencyCode == null) || (this.SOACurrencyCode?.Equals(other.SOACurrencyCode) == true)) &&
-                ((this.SOACurrencySymbol == null && other.SOACurrencySymbol == null) || (this.SOACurrencySymbol?.Equals(other.SOACurrencySymbol) == true)) &&
-                ((this.SOACreditLimitCurrencyCode == null && other.SOACreditLimitCurrencyCode == null) || (this.SOACreditLimitCurrencyCode?.Equals(other.SOACreditLimitCurrencyCode) == true)) &&
-                ((this.SOACreditLimitCurrencySymbol == null && other.SOACreditLimitCurrencySymbol == null) || (this.SOACreditLimitCurrencySymbol?.Equals(other.SOACreditLimitCurrencySymbol) == true)) &&
-                ((this.LastPaymentCurrencyCode == null && other.LastPaymentCurrencyCode == null) || (this.LastPaymentCurrencyCode?.Equals(other.LastPaymentCurrencyCode) == true)) &&
-                ((this.LastPaymentCurrencySymbol == null && other.LastPaymentCurrencySymbol == null) || (this.LastPaymentCurrencySymbol?.Equals(other.LastPaymentCurrencySymbol) == true)) &&
-                ((this.LastPaymentAmount == null && other.LastPaymentAmount == null) || (this.LastPaymentAmount?.Equals(other.LastPaymentAmount) == true)) &&
-                ((this.LastPaymentDate == null && other.LastPaymentDate == null) || (this.LastPaymentDate?.Equals(other.LastPaymentDate) == true)) &&
-                ((this.SOALastPaymentAmount == null && other.SOALastPaymentAmount == null) || (this.SOALastPaymentAmount?.Equals(other.SOALastPaymentAmount) == true)) &&
-                ((this.SOALastPaymentDate == null && other.SOALastPaymentDate == null) || (this.SOALastPaymentDate?.Equals(other.SOALastPaymentDate) == true)) &&
-                ((this.CurrencyCode == null && other.CurrencyCode == null) || (this.CurrencyCode?.Equals(other.CurrencyCode) == true)) &&
-                ((this.CurrencySymbol == null && other.CurrencySymbol == null) || (this.CurrencySymbol?.Equals(other.CurrencySymbol) == true)) &&
-                ((this.ColCoCountryCode == null && other.ColCoCountryCode == null) || (this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true)) &&
-                ((this.LocalCurrencyCode == null && other.LocalCurrencyCode == null) || (this.LocalCurrencyCode?.Equals(other.LocalCurrencyCode) == true)) &&
-                ((this.LocalCurrencySymbol == null && other.LocalCurrencySymbol == null) || (this.LocalCurrencySymbol?.Equals(other.LocalCurrencySymbol) == true)) &&
-                ((this.LocalCurrencyExchangeRate == null && other.LocalCurrencyExchangeRate == null) || (this.LocalCurrencyExchangeRate?.Equals(other.LocalCurrencyExchangeRate) == true)) &&
-                ((this.LocalCurrencyExchangeRateSoA == null && other.LocalCurrencyExchangeRateSoA == null) || (this.LocalCurrencyExchangeRateSoA?.Equals(other.LocalCurrencyExchangeRateSoA) == true)) &&
-                ((this.BillingFrequencyTypeId == null && other.BillingFrequencyTypeId == null) || (this.BillingFrequencyTypeId?.Equals(other.BillingFrequencyTypeId) == true)) &&
-                ((this.BillingFrequencyType == null && other.BillingFrequencyType == null) || (this.BillingFrequencyType?.Equals(other.BillingFrequencyType) == true)) &&
-                ((this.BillingRunFrequencyTypeId == null && other.BillingRunFrequencyTypeId == null) || (this.BillingRunFrequencyTypeId?.Equals(other.BillingRunFrequencyTypeId) == true)) &&
-                ((this.BillingRunFrequnecy == null && other.BillingRunFrequnecy == null) || (this.BillingRunFrequnecy?.Equals(other.BillingRunFrequnecy) == true)) &&
-                ((this.Day1Run == null && other.Day1Run == null) || (this.Day1Run?.Equals(other.Day1Run) == true)) &&
-                ((this.Day2Run == null && other.Day2Run == null) || (this.Day2Run?.Equals(other.Day2Run) == true)) &&
-                ((this.Day3Run == null && other.Day3Run == null) || (this.Day3Run?.Equals(other.Day3Run) == true)) &&
-                ((this.Day4Run == null && other.Day4Run == null) || (this.Day4Run?.Equals(other.Day4Run) == true)) &&
-                ((this.InvoiceDistributionMethods == null && other.InvoiceDistributionMethods == null) || (this.InvoiceDistributionMethods?.Equals(other.InvoiceDistributionMethods) == true)) &&
-                ((this.OutputType == null && other.OutputType == null) || (this.OutputType?.Equals(other.OutputType) == true)) &&
-                ((this.InvoiceAccountID == null && other.InvoiceAccountID == null) || (this.InvoiceAccountID?.Equals(other.InvoiceAccountID) == true)) &&
-                ((this.InvoiceAccountNumber == null && other.InvoiceAccountNumber == null) || (this.InvoiceAccountNumber?.Equals(other.InvoiceAccountNumber) == true)) &&
-                ((this.InvoiceAccountShortName == null && other.InvoiceAccountShortName == null) || (this.InvoiceAccountShortName?.Equals(other.InvoiceAccountShortName) == true)) &&
-                ((this.BestOfIndicator == null && other.BestOfIndicator == null) || (this.BestOfIndicator?.Equals(other.BestOfIndicator) == true)) &&
-                ((this.IsInternational == null && other.IsInternational == null) || (this.IsInternational?.Equals(other.IsInternational) == true)) &&
-                ((this.TotalAccounts == null && other.TotalAccounts == null) || (this.TotalAccounts?.Equals(other.TotalAccounts) == true)) &&
-                ((this.TotalActiveAccounts == null && other.TotalActiveAccounts == null) || (this.TotalActiveAccounts?.Equals(other.TotalActiveAccounts) == true)) &&
-                ((this.TotalCards == null && other.TotalCards == null) || (this.TotalCards?.Equals(other.TotalCards) == true)) &&
-                ((this.TotalActiveCards == null && other.TotalActiveCards == null) || (this.TotalActiveCards?.Equals(other.TotalActiveCards) == true)) &&
-                ((this.TotalBlockedCards == null && other.TotalBlockedCards == null) || (this.TotalBlockedCards?.Equals(other.TotalBlockedCards) == true)) &&
-                ((this.TotalCancelledCards == null && other.TotalCancelledCards == null) || (this.TotalCancelledCards?.Equals(other.TotalCancelledCards) == true)) &&
-                ((this.TotalExpiredCards == null && other.TotalExpiredCards == null) || (this.TotalExpiredCards?.Equals(other.TotalExpiredCards) == true)) &&
-                ((this.TotalRenewalPendingCards == null && other.TotalRenewalPendingCards == null) || (this.TotalRenewalPendingCards?.Equals(other.TotalRenewalPendingCards) == true)) &&
-                ((this.TotalReplacedCards == null && other.TotalReplacedCards == null) || (this.TotalReplacedCards?.Equals(other.TotalReplacedCards) == true)) &&
-                ((this.TotalTemporaryBlockCardsByCustomer == null && other.TotalTemporaryBlockCardsByCustomer == null) || (this.TotalTemporaryBlockCardsByCustomer?.Equals(other.TotalTemporaryBlockCardsByCustomer) == true)) &&
-                ((this.TotalTemporaryBlockCardsByShell == null && other.TotalTemporaryBlockCardsByShell == null) || (this.TotalTemporaryBlockCardsByShell?.Equals(other.TotalTemporaryBlockCardsByShell) == true)) &&
-                ((this.TotalNewCards == null && other.TotalNewCards == null) || (this.TotalNewCards?.Equals(other.TotalNewCards) == true)) &&
-                ((this.TotalFraudCards == null && other.TotalFraudCards == null) || (this.TotalFraudCards?.Equals(other.TotalFraudCards) == true)) &&
-                ((this.TotalBlockedAccounts == null && other.TotalBlockedAccounts == null) || (this.TotalBlockedAccounts?.Equals(other.TotalBlockedAccounts) == true)) &&
-                ((this.TotalCancelledAccounts == null && other.TotalCancelledAccounts == null) || (this.TotalCancelledAccounts?.Equals(other.TotalCancelledAccounts) == true)) &&
-                ((this.PayerTradingName == null && other.PayerTradingName == null) || (this.PayerTradingName?.Equals(other.PayerTradingName) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.BillingLanguage == null && other.BillingLanguage == null) || (this.BillingLanguage?.Equals(other.BillingLanguage) == true)) &&
-                ((this.LegalEntity == null && other.LegalEntity == null) || (this.LegalEntity?.Equals(other.LegalEntity) == true)) &&
-                ((this.DateEstablished == null && other.DateEstablished == null) || (this.DateEstablished?.Equals(other.DateEstablished) == true)) &&
-                ((this.CustomerClassification == null && other.CustomerClassification == null) || (this.CustomerClassification?.Equals(other.CustomerClassification) == true)) &&
-                ((this.IndustryClass == null && other.IndustryClass == null) || (this.IndustryClass?.Equals(other.IndustryClass) == true)) &&
-                ((this.MarketingSegmentation == null && other.MarketingSegmentation == null) || (this.MarketingSegmentation?.Equals(other.MarketingSegmentation) == true)) &&
-                ((this.LineOfBusiness == null && other.LineOfBusiness == null) || (this.LineOfBusiness?.Equals(other.LineOfBusiness) == true)) &&
-                ((this.PrintCreditLimit == null && other.PrintCreditLimit == null) || (this.PrintCreditLimit?.Equals(other.PrintCreditLimit) == true)) &&
-                ((this.CardGroupType == null && other.CardGroupType == null) || (this.CardGroupType?.Equals(other.CardGroupType) == true)) &&
-                ((this.RenewCards == null && other.RenewCards == null) || (this.RenewCards?.Equals(other.RenewCards) == true)) &&
-                ((this.AllowSelectPIN == null && other.AllowSelectPIN == null) || (this.AllowSelectPIN?.Equals(other.AllowSelectPIN) == true)) &&
-                ((this.UseFleetPIN == null && other.UseFleetPIN == null) || (this.UseFleetPIN?.Equals(other.UseFleetPIN) == true)) &&
-                ((this.VATRegNumber == null && other.VATRegNumber == null) || (this.VATRegNumber?.Equals(other.VATRegNumber) == true)) &&
-                ((this.VATRegNumber2 == null && other.VATRegNumber2 == null) || (this.VATRegNumber2?.Equals(other.VATRegNumber2) == true)) &&
-                ((this.RegistrationNumber == null && other.RegistrationNumber == null) || (this.RegistrationNumber?.Equals(other.RegistrationNumber) == true)) &&
-                ((this.RegistrationNumber2 == null && other.RegistrationNumber2 == null) || (this.RegistrationNumber2?.Equals(other.RegistrationNumber2) == true)) &&
-                ((this.SalesLedgerBalance == null && other.SalesLedgerBalance == null) || (this.SalesLedgerBalance?.Equals(other.SalesLedgerBalance) == true)) &&
-                ((this.Exposure == null && other.Exposure == null) || (this.Exposure?.Equals(other.Exposure) == true)) &&
-                ((this.OutstandingDebt == null && other.OutstandingDebt == null) || (this.OutstandingDebt?.Equals(other.OutstandingDebt) == true)) &&
-                ((this.AvailableCredit == null && other.AvailableCredit == null) || (this.AvailableCredit?.Equals(other.AvailableCredit) == true)) &&
-                ((this.Band == null && other.Band == null) || (this.Band?.Equals(other.Band) == true)) &&
-                ((this.GlobalCustomerReferenceId == null && other.GlobalCustomerReferenceId == null) || (this.GlobalCustomerReferenceId?.Equals(other.GlobalCustomerReferenceId) == true)) &&
-                ((this.CreditLimit == null && other.CreditLimit == null) || (this.CreditLimit?.Equals(other.CreditLimit) == true)) &&
-                ((this.CreditLimitInCustomerCurrency == null && other.CreditLimitInCustomerCurrency == null) || (this.CreditLimitInCustomerCurrency?.Equals(other.CreditLimitInCustomerCurrency) == true)) &&
-                ((this.BillingCurrencyCode == null && other.BillingCurrencyCode == null) || (this.BillingCurrencyCode?.Equals(other.BillingCurrencyCode) == true)) &&
-                ((this.BillingCurrencySymbol == null && other.BillingCurrencySymbol == null) || (this.BillingCurrencySymbol?.Equals(other.BillingCurrencySymbol) == true)) &&
-                ((this.PaymentMethod == null && other.PaymentMethod == null) || (this.PaymentMethod?.Equals(other.PaymentMethod) == true)) &&
-                ((this.PaymentTerms == null && other.PaymentTerms == null) || (this.PaymentTerms?.Equals(other.PaymentTerms) == true)) &&
-                ((this.TemporaryCreditLimitIncrease == null && other.TemporaryCreditLimitIncrease == null) || (this.TemporaryCreditLimitIncrease?.Equals(other.TemporaryCreditLimitIncrease) == true)) &&
-                ((this.TemporaryCreditLimitIncreaseInCustomerCurrency == null && other.TemporaryCreditLimitIncreaseInCustomerCurrency == null) || (this.TemporaryCreditLimitIncreaseInCustomerCurrency?.Equals(other.TemporaryCreditLimitIncreaseInCustomerCurrency) == true)) &&
-                ((this.TemporaryCreditLimitExpiryDate == null && other.TemporaryCreditLimitExpiryDate == null) || (this.TemporaryCreditLimitExpiryDate?.Equals(other.TemporaryCreditLimitExpiryDate) == true)) &&
-                ((this.PayerBankAccount == null && other.PayerBankAccount == null) || (this.PayerBankAccount?.Equals(other.PayerBankAccount) == true)) &&
-                ((this.CardDeliveryAddress == null && other.CardDeliveryAddress == null) || (this.CardDeliveryAddress?.Equals(other.CardDeliveryAddress) == true)) &&
-                ((this.CorrespondanceAddress == null && other.CorrespondanceAddress == null) || (this.CorrespondanceAddress?.Equals(other.CorrespondanceAddress) == true)) &&
-                ((this.BillingAddress == null && other.BillingAddress == null) || (this.BillingAddress?.Equals(other.BillingAddress) == true)) &&
-                ((this.HasActiveVolBasedPricing == null && other.HasActiveVolBasedPricing == null) || (this.HasActiveVolBasedPricing?.Equals(other.HasActiveVolBasedPricing) == true)) &&
-                ((this.HasActiveVolBasedBonus == null && other.HasActiveVolBasedBonus == null) || (this.HasActiveVolBasedBonus?.Equals(other.HasActiveVolBasedBonus) == true)) &&
-                ((this.HasActiveVolBasedAssociationBonus == null && other.HasActiveVolBasedAssociationBonus == null) || (this.HasActiveVolBasedAssociationBonus?.Equals(other.HasActiveVolBasedAssociationBonus) == true)) &&
-                ((this.FinanceCurrency == null && other.FinanceCurrency == null) || (this.FinanceCurrency?.Equals(other.FinanceCurrency) == true)) &&
-                ((this.TollsCustomerId == null && other.TollsCustomerId == null) || (this.TollsCustomerId?.Equals(other.TollsCustomerId) == true)) &&
-                ((this.TollsColcoCountryTypeId == null && other.TollsColcoCountryTypeId == null) || (this.TollsColcoCountryTypeId?.Equals(other.TollsColcoCountryTypeId) == true)) &&
-                ((this.Contracts == null && other.Contracts == null) || (this.Contracts?.Equals(other.Contracts) == true));
+            return obj is PayerDetails other &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.CountryCode == null && other.CountryCode == null ||
+                 this.CountryCode?.Equals(other.CountryCode) == true) &&
+                (this.Country == null && other.Country == null ||
+                 this.Country?.Equals(other.Country) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.PayerFullName == null && other.PayerFullName == null ||
+                 this.PayerFullName?.Equals(other.PayerFullName) == true) &&
+                (this.PayerShortName == null && other.PayerShortName == null ||
+                 this.PayerShortName?.Equals(other.PayerShortName) == true) &&
+                (this.PayerGroupId == null && other.PayerGroupId == null ||
+                 this.PayerGroupId?.Equals(other.PayerGroupId) == true) &&
+                (this.AmountDue == null && other.AmountDue == null ||
+                 this.AmountDue?.Equals(other.AmountDue) == true) &&
+                (this.AmountOverdue == null && other.AmountOverdue == null ||
+                 this.AmountOverdue?.Equals(other.AmountOverdue) == true) &&
+                (this.AmountNotOverdue == null && other.AmountNotOverdue == null ||
+                 this.AmountNotOverdue?.Equals(other.AmountNotOverdue) == true) &&
+                (this.OutstandingBalance == null && other.OutstandingBalance == null ||
+                 this.OutstandingBalance?.Equals(other.OutstandingBalance) == true) &&
+                (this.UnallocatedPayment == null && other.UnallocatedPayment == null ||
+                 this.UnallocatedPayment?.Equals(other.UnallocatedPayment) == true) &&
+                (this.SOACurrencyCode == null && other.SOACurrencyCode == null ||
+                 this.SOACurrencyCode?.Equals(other.SOACurrencyCode) == true) &&
+                (this.SOACurrencySymbol == null && other.SOACurrencySymbol == null ||
+                 this.SOACurrencySymbol?.Equals(other.SOACurrencySymbol) == true) &&
+                (this.SOACreditLimitCurrencyCode == null && other.SOACreditLimitCurrencyCode == null ||
+                 this.SOACreditLimitCurrencyCode?.Equals(other.SOACreditLimitCurrencyCode) == true) &&
+                (this.SOACreditLimitCurrencySymbol == null && other.SOACreditLimitCurrencySymbol == null ||
+                 this.SOACreditLimitCurrencySymbol?.Equals(other.SOACreditLimitCurrencySymbol) == true) &&
+                (this.LastPaymentCurrencyCode == null && other.LastPaymentCurrencyCode == null ||
+                 this.LastPaymentCurrencyCode?.Equals(other.LastPaymentCurrencyCode) == true) &&
+                (this.LastPaymentCurrencySymbol == null && other.LastPaymentCurrencySymbol == null ||
+                 this.LastPaymentCurrencySymbol?.Equals(other.LastPaymentCurrencySymbol) == true) &&
+                (this.LastPaymentAmount == null && other.LastPaymentAmount == null ||
+                 this.LastPaymentAmount?.Equals(other.LastPaymentAmount) == true) &&
+                (this.LastPaymentDate == null && other.LastPaymentDate == null ||
+                 this.LastPaymentDate?.Equals(other.LastPaymentDate) == true) &&
+                (this.SOALastPaymentAmount == null && other.SOALastPaymentAmount == null ||
+                 this.SOALastPaymentAmount?.Equals(other.SOALastPaymentAmount) == true) &&
+                (this.SOALastPaymentDate == null && other.SOALastPaymentDate == null ||
+                 this.SOALastPaymentDate?.Equals(other.SOALastPaymentDate) == true) &&
+                (this.CurrencyCode == null && other.CurrencyCode == null ||
+                 this.CurrencyCode?.Equals(other.CurrencyCode) == true) &&
+                (this.CurrencySymbol == null && other.CurrencySymbol == null ||
+                 this.CurrencySymbol?.Equals(other.CurrencySymbol) == true) &&
+                (this.ColCoCountryCode == null && other.ColCoCountryCode == null ||
+                 this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true) &&
+                (this.LocalCurrencyCode == null && other.LocalCurrencyCode == null ||
+                 this.LocalCurrencyCode?.Equals(other.LocalCurrencyCode) == true) &&
+                (this.LocalCurrencySymbol == null && other.LocalCurrencySymbol == null ||
+                 this.LocalCurrencySymbol?.Equals(other.LocalCurrencySymbol) == true) &&
+                (this.LocalCurrencyExchangeRate == null && other.LocalCurrencyExchangeRate == null ||
+                 this.LocalCurrencyExchangeRate?.Equals(other.LocalCurrencyExchangeRate) == true) &&
+                (this.LocalCurrencyExchangeRateSoA == null && other.LocalCurrencyExchangeRateSoA == null ||
+                 this.LocalCurrencyExchangeRateSoA?.Equals(other.LocalCurrencyExchangeRateSoA) == true) &&
+                (this.BillingFrequencyTypeId == null && other.BillingFrequencyTypeId == null ||
+                 this.BillingFrequencyTypeId?.Equals(other.BillingFrequencyTypeId) == true) &&
+                (this.BillingFrequencyType == null && other.BillingFrequencyType == null ||
+                 this.BillingFrequencyType?.Equals(other.BillingFrequencyType) == true) &&
+                (this.BillingRunFrequencyTypeId == null && other.BillingRunFrequencyTypeId == null ||
+                 this.BillingRunFrequencyTypeId?.Equals(other.BillingRunFrequencyTypeId) == true) &&
+                (this.BillingRunFrequnecy == null && other.BillingRunFrequnecy == null ||
+                 this.BillingRunFrequnecy?.Equals(other.BillingRunFrequnecy) == true) &&
+                (this.Day1Run == null && other.Day1Run == null ||
+                 this.Day1Run?.Equals(other.Day1Run) == true) &&
+                (this.Day2Run == null && other.Day2Run == null ||
+                 this.Day2Run?.Equals(other.Day2Run) == true) &&
+                (this.Day3Run == null && other.Day3Run == null ||
+                 this.Day3Run?.Equals(other.Day3Run) == true) &&
+                (this.Day4Run == null && other.Day4Run == null ||
+                 this.Day4Run?.Equals(other.Day4Run) == true) &&
+                (this.InvoiceDistributionMethods == null && other.InvoiceDistributionMethods == null ||
+                 this.InvoiceDistributionMethods?.Equals(other.InvoiceDistributionMethods) == true) &&
+                (this.OutputType == null && other.OutputType == null ||
+                 this.OutputType?.Equals(other.OutputType) == true) &&
+                (this.InvoiceAccountID == null && other.InvoiceAccountID == null ||
+                 this.InvoiceAccountID?.Equals(other.InvoiceAccountID) == true) &&
+                (this.InvoiceAccountNumber == null && other.InvoiceAccountNumber == null ||
+                 this.InvoiceAccountNumber?.Equals(other.InvoiceAccountNumber) == true) &&
+                (this.InvoiceAccountShortName == null && other.InvoiceAccountShortName == null ||
+                 this.InvoiceAccountShortName?.Equals(other.InvoiceAccountShortName) == true) &&
+                (this.BestOfIndicator == null && other.BestOfIndicator == null ||
+                 this.BestOfIndicator?.Equals(other.BestOfIndicator) == true) &&
+                (this.IsInternational == null && other.IsInternational == null ||
+                 this.IsInternational?.Equals(other.IsInternational) == true) &&
+                (this.TotalAccounts == null && other.TotalAccounts == null ||
+                 this.TotalAccounts?.Equals(other.TotalAccounts) == true) &&
+                (this.TotalActiveAccounts == null && other.TotalActiveAccounts == null ||
+                 this.TotalActiveAccounts?.Equals(other.TotalActiveAccounts) == true) &&
+                (this.TotalCards == null && other.TotalCards == null ||
+                 this.TotalCards?.Equals(other.TotalCards) == true) &&
+                (this.TotalActiveCards == null && other.TotalActiveCards == null ||
+                 this.TotalActiveCards?.Equals(other.TotalActiveCards) == true) &&
+                (this.TotalBlockedCards == null && other.TotalBlockedCards == null ||
+                 this.TotalBlockedCards?.Equals(other.TotalBlockedCards) == true) &&
+                (this.TotalCancelledCards == null && other.TotalCancelledCards == null ||
+                 this.TotalCancelledCards?.Equals(other.TotalCancelledCards) == true) &&
+                (this.TotalExpiredCards == null && other.TotalExpiredCards == null ||
+                 this.TotalExpiredCards?.Equals(other.TotalExpiredCards) == true) &&
+                (this.TotalRenewalPendingCards == null && other.TotalRenewalPendingCards == null ||
+                 this.TotalRenewalPendingCards?.Equals(other.TotalRenewalPendingCards) == true) &&
+                (this.TotalReplacedCards == null && other.TotalReplacedCards == null ||
+                 this.TotalReplacedCards?.Equals(other.TotalReplacedCards) == true) &&
+                (this.TotalTemporaryBlockCardsByCustomer == null && other.TotalTemporaryBlockCardsByCustomer == null ||
+                 this.TotalTemporaryBlockCardsByCustomer?.Equals(other.TotalTemporaryBlockCardsByCustomer) == true) &&
+                (this.TotalTemporaryBlockCardsByShell == null && other.TotalTemporaryBlockCardsByShell == null ||
+                 this.TotalTemporaryBlockCardsByShell?.Equals(other.TotalTemporaryBlockCardsByShell) == true) &&
+                (this.TotalNewCards == null && other.TotalNewCards == null ||
+                 this.TotalNewCards?.Equals(other.TotalNewCards) == true) &&
+                (this.TotalFraudCards == null && other.TotalFraudCards == null ||
+                 this.TotalFraudCards?.Equals(other.TotalFraudCards) == true) &&
+                (this.TotalBlockedAccounts == null && other.TotalBlockedAccounts == null ||
+                 this.TotalBlockedAccounts?.Equals(other.TotalBlockedAccounts) == true) &&
+                (this.TotalCancelledAccounts == null && other.TotalCancelledAccounts == null ||
+                 this.TotalCancelledAccounts?.Equals(other.TotalCancelledAccounts) == true) &&
+                (this.PayerTradingName == null && other.PayerTradingName == null ||
+                 this.PayerTradingName?.Equals(other.PayerTradingName) == true) &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.BillingLanguage == null && other.BillingLanguage == null ||
+                 this.BillingLanguage?.Equals(other.BillingLanguage) == true) &&
+                (this.LegalEntity == null && other.LegalEntity == null ||
+                 this.LegalEntity?.Equals(other.LegalEntity) == true) &&
+                (this.DateEstablished == null && other.DateEstablished == null ||
+                 this.DateEstablished?.Equals(other.DateEstablished) == true) &&
+                (this.CustomerClassification == null && other.CustomerClassification == null ||
+                 this.CustomerClassification?.Equals(other.CustomerClassification) == true) &&
+                (this.IndustryClass == null && other.IndustryClass == null ||
+                 this.IndustryClass?.Equals(other.IndustryClass) == true) &&
+                (this.MarketingSegmentation == null && other.MarketingSegmentation == null ||
+                 this.MarketingSegmentation?.Equals(other.MarketingSegmentation) == true) &&
+                (this.LineOfBusiness == null && other.LineOfBusiness == null ||
+                 this.LineOfBusiness?.Equals(other.LineOfBusiness) == true) &&
+                (this.PrintCreditLimit == null && other.PrintCreditLimit == null ||
+                 this.PrintCreditLimit?.Equals(other.PrintCreditLimit) == true) &&
+                (this.CardGroupType == null && other.CardGroupType == null ||
+                 this.CardGroupType?.Equals(other.CardGroupType) == true) &&
+                (this.RenewCards == null && other.RenewCards == null ||
+                 this.RenewCards?.Equals(other.RenewCards) == true) &&
+                (this.AllowSelectPIN == null && other.AllowSelectPIN == null ||
+                 this.AllowSelectPIN?.Equals(other.AllowSelectPIN) == true) &&
+                (this.UseFleetPIN == null && other.UseFleetPIN == null ||
+                 this.UseFleetPIN?.Equals(other.UseFleetPIN) == true) &&
+                (this.VATRegNumber == null && other.VATRegNumber == null ||
+                 this.VATRegNumber?.Equals(other.VATRegNumber) == true) &&
+                (this.VATRegNumber2 == null && other.VATRegNumber2 == null ||
+                 this.VATRegNumber2?.Equals(other.VATRegNumber2) == true) &&
+                (this.RegistrationNumber == null && other.RegistrationNumber == null ||
+                 this.RegistrationNumber?.Equals(other.RegistrationNumber) == true) &&
+                (this.RegistrationNumber2 == null && other.RegistrationNumber2 == null ||
+                 this.RegistrationNumber2?.Equals(other.RegistrationNumber2) == true) &&
+                (this.SalesLedgerBalance == null && other.SalesLedgerBalance == null ||
+                 this.SalesLedgerBalance?.Equals(other.SalesLedgerBalance) == true) &&
+                (this.Exposure == null && other.Exposure == null ||
+                 this.Exposure?.Equals(other.Exposure) == true) &&
+                (this.OutstandingDebt == null && other.OutstandingDebt == null ||
+                 this.OutstandingDebt?.Equals(other.OutstandingDebt) == true) &&
+                (this.AvailableCredit == null && other.AvailableCredit == null ||
+                 this.AvailableCredit?.Equals(other.AvailableCredit) == true) &&
+                (this.Band == null && other.Band == null ||
+                 this.Band?.Equals(other.Band) == true) &&
+                (this.GlobalCustomerReferenceId == null && other.GlobalCustomerReferenceId == null ||
+                 this.GlobalCustomerReferenceId?.Equals(other.GlobalCustomerReferenceId) == true) &&
+                (this.CreditLimit == null && other.CreditLimit == null ||
+                 this.CreditLimit?.Equals(other.CreditLimit) == true) &&
+                (this.CreditLimitInCustomerCurrency == null && other.CreditLimitInCustomerCurrency == null ||
+                 this.CreditLimitInCustomerCurrency?.Equals(other.CreditLimitInCustomerCurrency) == true) &&
+                (this.BillingCurrencyCode == null && other.BillingCurrencyCode == null ||
+                 this.BillingCurrencyCode?.Equals(other.BillingCurrencyCode) == true) &&
+                (this.BillingCurrencySymbol == null && other.BillingCurrencySymbol == null ||
+                 this.BillingCurrencySymbol?.Equals(other.BillingCurrencySymbol) == true) &&
+                (this.PaymentMethod == null && other.PaymentMethod == null ||
+                 this.PaymentMethod?.Equals(other.PaymentMethod) == true) &&
+                (this.PaymentTerms == null && other.PaymentTerms == null ||
+                 this.PaymentTerms?.Equals(other.PaymentTerms) == true) &&
+                (this.TemporaryCreditLimitIncrease == null && other.TemporaryCreditLimitIncrease == null ||
+                 this.TemporaryCreditLimitIncrease?.Equals(other.TemporaryCreditLimitIncrease) == true) &&
+                (this.TemporaryCreditLimitIncreaseInCustomerCurrency == null && other.TemporaryCreditLimitIncreaseInCustomerCurrency == null ||
+                 this.TemporaryCreditLimitIncreaseInCustomerCurrency?.Equals(other.TemporaryCreditLimitIncreaseInCustomerCurrency) == true) &&
+                (this.TemporaryCreditLimitExpiryDate == null && other.TemporaryCreditLimitExpiryDate == null ||
+                 this.TemporaryCreditLimitExpiryDate?.Equals(other.TemporaryCreditLimitExpiryDate) == true) &&
+                (this.PayerBankAccount == null && other.PayerBankAccount == null ||
+                 this.PayerBankAccount?.Equals(other.PayerBankAccount) == true) &&
+                (this.CardDeliveryAddress == null && other.CardDeliveryAddress == null ||
+                 this.CardDeliveryAddress?.Equals(other.CardDeliveryAddress) == true) &&
+                (this.CorrespondanceAddress == null && other.CorrespondanceAddress == null ||
+                 this.CorrespondanceAddress?.Equals(other.CorrespondanceAddress) == true) &&
+                (this.BillingAddress == null && other.BillingAddress == null ||
+                 this.BillingAddress?.Equals(other.BillingAddress) == true) &&
+                (this.HasActiveVolBasedPricing == null && other.HasActiveVolBasedPricing == null ||
+                 this.HasActiveVolBasedPricing?.Equals(other.HasActiveVolBasedPricing) == true) &&
+                (this.HasActiveVolBasedBonus == null && other.HasActiveVolBasedBonus == null ||
+                 this.HasActiveVolBasedBonus?.Equals(other.HasActiveVolBasedBonus) == true) &&
+                (this.HasActiveVolBasedAssociationBonus == null && other.HasActiveVolBasedAssociationBonus == null ||
+                 this.HasActiveVolBasedAssociationBonus?.Equals(other.HasActiveVolBasedAssociationBonus) == true) &&
+                (this.FinanceCurrency == null && other.FinanceCurrency == null ||
+                 this.FinanceCurrency?.Equals(other.FinanceCurrency) == true) &&
+                (this.TollsCustomerId == null && other.TollsCustomerId == null ||
+                 this.TollsCustomerId?.Equals(other.TollsCustomerId) == true) &&
+                (this.TollsColcoCountryTypeId == null && other.TollsColcoCountryTypeId == null ||
+                 this.TollsColcoCountryTypeId?.Equals(other.TollsColcoCountryTypeId) == true) &&
+                (this.Contracts == null && other.Contracts == null ||
+                 this.Contracts?.Equals(other.Contracts) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -4208,48 +4306,48 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.CountryCode = {(this.CountryCode == null ? "null" : this.CountryCode)}");
-            toStringOutput.Add($"this.Country = {(this.Country == null ? "null" : this.Country)}");
+            toStringOutput.Add($"this.CountryCode = {this.CountryCode ?? "null"}");
+            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
-            toStringOutput.Add($"this.PayerFullName = {(this.PayerFullName == null ? "null" : this.PayerFullName)}");
-            toStringOutput.Add($"this.PayerShortName = {(this.PayerShortName == null ? "null" : this.PayerShortName)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"this.PayerFullName = {this.PayerFullName ?? "null"}");
+            toStringOutput.Add($"this.PayerShortName = {this.PayerShortName ?? "null"}");
             toStringOutput.Add($"this.PayerGroupId = {(this.PayerGroupId == null ? "null" : this.PayerGroupId.ToString())}");
             toStringOutput.Add($"this.AmountDue = {(this.AmountDue == null ? "null" : this.AmountDue.ToString())}");
             toStringOutput.Add($"this.AmountOverdue = {(this.AmountOverdue == null ? "null" : this.AmountOverdue.ToString())}");
             toStringOutput.Add($"this.AmountNotOverdue = {(this.AmountNotOverdue == null ? "null" : this.AmountNotOverdue.ToString())}");
             toStringOutput.Add($"this.OutstandingBalance = {(this.OutstandingBalance == null ? "null" : this.OutstandingBalance.ToString())}");
             toStringOutput.Add($"this.UnallocatedPayment = {(this.UnallocatedPayment == null ? "null" : this.UnallocatedPayment.ToString())}");
-            toStringOutput.Add($"this.SOACurrencyCode = {(this.SOACurrencyCode == null ? "null" : this.SOACurrencyCode)}");
-            toStringOutput.Add($"this.SOACurrencySymbol = {(this.SOACurrencySymbol == null ? "null" : this.SOACurrencySymbol)}");
-            toStringOutput.Add($"this.SOACreditLimitCurrencyCode = {(this.SOACreditLimitCurrencyCode == null ? "null" : this.SOACreditLimitCurrencyCode)}");
-            toStringOutput.Add($"this.SOACreditLimitCurrencySymbol = {(this.SOACreditLimitCurrencySymbol == null ? "null" : this.SOACreditLimitCurrencySymbol)}");
-            toStringOutput.Add($"this.LastPaymentCurrencyCode = {(this.LastPaymentCurrencyCode == null ? "null" : this.LastPaymentCurrencyCode)}");
-            toStringOutput.Add($"this.LastPaymentCurrencySymbol = {(this.LastPaymentCurrencySymbol == null ? "null" : this.LastPaymentCurrencySymbol)}");
+            toStringOutput.Add($"this.SOACurrencyCode = {this.SOACurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.SOACurrencySymbol = {this.SOACurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.SOACreditLimitCurrencyCode = {this.SOACreditLimitCurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.SOACreditLimitCurrencySymbol = {this.SOACreditLimitCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.LastPaymentCurrencyCode = {this.LastPaymentCurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.LastPaymentCurrencySymbol = {this.LastPaymentCurrencySymbol ?? "null"}");
             toStringOutput.Add($"this.LastPaymentAmount = {(this.LastPaymentAmount == null ? "null" : this.LastPaymentAmount.ToString())}");
-            toStringOutput.Add($"this.LastPaymentDate = {(this.LastPaymentDate == null ? "null" : this.LastPaymentDate)}");
+            toStringOutput.Add($"this.LastPaymentDate = {this.LastPaymentDate ?? "null"}");
             toStringOutput.Add($"this.SOALastPaymentAmount = {(this.SOALastPaymentAmount == null ? "null" : this.SOALastPaymentAmount.ToString())}");
-            toStringOutput.Add($"this.SOALastPaymentDate = {(this.SOALastPaymentDate == null ? "null" : this.SOALastPaymentDate)}");
-            toStringOutput.Add($"this.CurrencyCode = {(this.CurrencyCode == null ? "null" : this.CurrencyCode)}");
-            toStringOutput.Add($"this.CurrencySymbol = {(this.CurrencySymbol == null ? "null" : this.CurrencySymbol)}");
-            toStringOutput.Add($"this.ColCoCountryCode = {(this.ColCoCountryCode == null ? "null" : this.ColCoCountryCode)}");
-            toStringOutput.Add($"this.LocalCurrencyCode = {(this.LocalCurrencyCode == null ? "null" : this.LocalCurrencyCode)}");
-            toStringOutput.Add($"this.LocalCurrencySymbol = {(this.LocalCurrencySymbol == null ? "null" : this.LocalCurrencySymbol)}");
+            toStringOutput.Add($"this.SOALastPaymentDate = {this.SOALastPaymentDate ?? "null"}");
+            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.CurrencySymbol = {this.CurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"this.LocalCurrencyCode = {this.LocalCurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.LocalCurrencySymbol = {this.LocalCurrencySymbol ?? "null"}");
             toStringOutput.Add($"this.LocalCurrencyExchangeRate = {(this.LocalCurrencyExchangeRate == null ? "null" : this.LocalCurrencyExchangeRate.ToString())}");
             toStringOutput.Add($"this.LocalCurrencyExchangeRateSoA = {(this.LocalCurrencyExchangeRateSoA == null ? "null" : this.LocalCurrencyExchangeRateSoA.ToString())}");
             toStringOutput.Add($"this.BillingFrequencyTypeId = {(this.BillingFrequencyTypeId == null ? "null" : this.BillingFrequencyTypeId.ToString())}");
-            toStringOutput.Add($"this.BillingFrequencyType = {(this.BillingFrequencyType == null ? "null" : this.BillingFrequencyType)}");
+            toStringOutput.Add($"this.BillingFrequencyType = {this.BillingFrequencyType ?? "null"}");
             toStringOutput.Add($"this.BillingRunFrequencyTypeId = {(this.BillingRunFrequencyTypeId == null ? "null" : this.BillingRunFrequencyTypeId.ToString())}");
-            toStringOutput.Add($"this.BillingRunFrequnecy = {(this.BillingRunFrequnecy == null ? "null" : this.BillingRunFrequnecy)}");
+            toStringOutput.Add($"this.BillingRunFrequnecy = {this.BillingRunFrequnecy ?? "null"}");
             toStringOutput.Add($"this.Day1Run = {(this.Day1Run == null ? "null" : this.Day1Run.ToString())}");
             toStringOutput.Add($"this.Day2Run = {(this.Day2Run == null ? "null" : this.Day2Run.ToString())}");
             toStringOutput.Add($"this.Day3Run = {(this.Day3Run == null ? "null" : this.Day3Run.ToString())}");
             toStringOutput.Add($"this.Day4Run = {(this.Day4Run == null ? "null" : this.Day4Run.ToString())}");
             toStringOutput.Add($"this.InvoiceDistributionMethods = {(this.InvoiceDistributionMethods == null ? "null" : $"[{string.Join(", ", this.InvoiceDistributionMethods)} ]")}");
-            toStringOutput.Add($"this.OutputType = {(this.OutputType == null ? "null" : this.OutputType)}");
+            toStringOutput.Add($"this.OutputType = {this.OutputType ?? "null"}");
             toStringOutput.Add($"this.InvoiceAccountID = {(this.InvoiceAccountID == null ? "null" : this.InvoiceAccountID.ToString())}");
-            toStringOutput.Add($"this.InvoiceAccountNumber = {(this.InvoiceAccountNumber == null ? "null" : this.InvoiceAccountNumber)}");
-            toStringOutput.Add($"this.InvoiceAccountShortName = {(this.InvoiceAccountShortName == null ? "null" : this.InvoiceAccountShortName)}");
+            toStringOutput.Add($"this.InvoiceAccountNumber = {this.InvoiceAccountNumber ?? "null"}");
+            toStringOutput.Add($"this.InvoiceAccountShortName = {this.InvoiceAccountShortName ?? "null"}");
             toStringOutput.Add($"this.BestOfIndicator = {(this.BestOfIndicator == null ? "null" : this.BestOfIndicator.ToString())}");
             toStringOutput.Add($"this.IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
             toStringOutput.Add($"this.TotalAccounts = {(this.TotalAccounts == null ? "null" : this.TotalAccounts.ToString())}");
@@ -4267,39 +4365,39 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.TotalFraudCards = {(this.TotalFraudCards == null ? "null" : this.TotalFraudCards.ToString())}");
             toStringOutput.Add($"this.TotalBlockedAccounts = {(this.TotalBlockedAccounts == null ? "null" : this.TotalBlockedAccounts.ToString())}");
             toStringOutput.Add($"this.TotalCancelledAccounts = {(this.TotalCancelledAccounts == null ? "null" : this.TotalCancelledAccounts.ToString())}");
-            toStringOutput.Add($"this.PayerTradingName = {(this.PayerTradingName == null ? "null" : this.PayerTradingName)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
-            toStringOutput.Add($"this.BillingLanguage = {(this.BillingLanguage == null ? "null" : this.BillingLanguage)}");
-            toStringOutput.Add($"this.LegalEntity = {(this.LegalEntity == null ? "null" : this.LegalEntity)}");
-            toStringOutput.Add($"this.DateEstablished = {(this.DateEstablished == null ? "null" : this.DateEstablished)}");
-            toStringOutput.Add($"this.CustomerClassification = {(this.CustomerClassification == null ? "null" : this.CustomerClassification)}");
-            toStringOutput.Add($"this.IndustryClass = {(this.IndustryClass == null ? "null" : this.IndustryClass)}");
-            toStringOutput.Add($"this.MarketingSegmentation = {(this.MarketingSegmentation == null ? "null" : this.MarketingSegmentation)}");
-            toStringOutput.Add($"this.LineOfBusiness = {(this.LineOfBusiness == null ? "null" : this.LineOfBusiness)}");
+            toStringOutput.Add($"this.PayerTradingName = {this.PayerTradingName ?? "null"}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"this.BillingLanguage = {this.BillingLanguage ?? "null"}");
+            toStringOutput.Add($"this.LegalEntity = {this.LegalEntity ?? "null"}");
+            toStringOutput.Add($"this.DateEstablished = {this.DateEstablished ?? "null"}");
+            toStringOutput.Add($"this.CustomerClassification = {this.CustomerClassification ?? "null"}");
+            toStringOutput.Add($"this.IndustryClass = {this.IndustryClass ?? "null"}");
+            toStringOutput.Add($"this.MarketingSegmentation = {this.MarketingSegmentation ?? "null"}");
+            toStringOutput.Add($"this.LineOfBusiness = {this.LineOfBusiness ?? "null"}");
             toStringOutput.Add($"this.PrintCreditLimit = {(this.PrintCreditLimit == null ? "null" : this.PrintCreditLimit.ToString())}");
-            toStringOutput.Add($"this.CardGroupType = {(this.CardGroupType == null ? "null" : this.CardGroupType)}");
+            toStringOutput.Add($"this.CardGroupType = {this.CardGroupType ?? "null"}");
             toStringOutput.Add($"this.RenewCards = {(this.RenewCards == null ? "null" : this.RenewCards.ToString())}");
             toStringOutput.Add($"this.AllowSelectPIN = {(this.AllowSelectPIN == null ? "null" : this.AllowSelectPIN.ToString())}");
             toStringOutput.Add($"this.UseFleetPIN = {(this.UseFleetPIN == null ? "null" : this.UseFleetPIN.ToString())}");
-            toStringOutput.Add($"this.VATRegNumber = {(this.VATRegNumber == null ? "null" : this.VATRegNumber)}");
-            toStringOutput.Add($"this.VATRegNumber2 = {(this.VATRegNumber2 == null ? "null" : this.VATRegNumber2)}");
-            toStringOutput.Add($"this.RegistrationNumber = {(this.RegistrationNumber == null ? "null" : this.RegistrationNumber)}");
-            toStringOutput.Add($"this.RegistrationNumber2 = {(this.RegistrationNumber2 == null ? "null" : this.RegistrationNumber2)}");
+            toStringOutput.Add($"this.VATRegNumber = {this.VATRegNumber ?? "null"}");
+            toStringOutput.Add($"this.VATRegNumber2 = {this.VATRegNumber2 ?? "null"}");
+            toStringOutput.Add($"this.RegistrationNumber = {this.RegistrationNumber ?? "null"}");
+            toStringOutput.Add($"this.RegistrationNumber2 = {this.RegistrationNumber2 ?? "null"}");
             toStringOutput.Add($"this.SalesLedgerBalance = {(this.SalesLedgerBalance == null ? "null" : this.SalesLedgerBalance.ToString())}");
             toStringOutput.Add($"this.Exposure = {(this.Exposure == null ? "null" : this.Exposure.ToString())}");
             toStringOutput.Add($"this.OutstandingDebt = {(this.OutstandingDebt == null ? "null" : this.OutstandingDebt.ToString())}");
             toStringOutput.Add($"this.AvailableCredit = {(this.AvailableCredit == null ? "null" : this.AvailableCredit.ToString())}");
-            toStringOutput.Add($"this.Band = {(this.Band == null ? "null" : this.Band)}");
-            toStringOutput.Add($"this.GlobalCustomerReferenceId = {(this.GlobalCustomerReferenceId == null ? "null" : this.GlobalCustomerReferenceId)}");
+            toStringOutput.Add($"this.Band = {this.Band ?? "null"}");
+            toStringOutput.Add($"this.GlobalCustomerReferenceId = {this.GlobalCustomerReferenceId ?? "null"}");
             toStringOutput.Add($"this.CreditLimit = {(this.CreditLimit == null ? "null" : this.CreditLimit.ToString())}");
             toStringOutput.Add($"this.CreditLimitInCustomerCurrency = {(this.CreditLimitInCustomerCurrency == null ? "null" : this.CreditLimitInCustomerCurrency.ToString())}");
-            toStringOutput.Add($"this.BillingCurrencyCode = {(this.BillingCurrencyCode == null ? "null" : this.BillingCurrencyCode)}");
-            toStringOutput.Add($"this.BillingCurrencySymbol = {(this.BillingCurrencySymbol == null ? "null" : this.BillingCurrencySymbol)}");
-            toStringOutput.Add($"this.PaymentMethod = {(this.PaymentMethod == null ? "null" : this.PaymentMethod)}");
-            toStringOutput.Add($"this.PaymentTerms = {(this.PaymentTerms == null ? "null" : this.PaymentTerms)}");
+            toStringOutput.Add($"this.BillingCurrencyCode = {this.BillingCurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.BillingCurrencySymbol = {this.BillingCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.PaymentMethod = {this.PaymentMethod ?? "null"}");
+            toStringOutput.Add($"this.PaymentTerms = {this.PaymentTerms ?? "null"}");
             toStringOutput.Add($"this.TemporaryCreditLimitIncrease = {(this.TemporaryCreditLimitIncrease == null ? "null" : this.TemporaryCreditLimitIncrease.ToString())}");
             toStringOutput.Add($"this.TemporaryCreditLimitIncreaseInCustomerCurrency = {(this.TemporaryCreditLimitIncreaseInCustomerCurrency == null ? "null" : this.TemporaryCreditLimitIncreaseInCustomerCurrency.ToString())}");
-            toStringOutput.Add($"this.TemporaryCreditLimitExpiryDate = {(this.TemporaryCreditLimitExpiryDate == null ? "null" : this.TemporaryCreditLimitExpiryDate)}");
+            toStringOutput.Add($"this.TemporaryCreditLimitExpiryDate = {this.TemporaryCreditLimitExpiryDate ?? "null"}");
             toStringOutput.Add($"this.PayerBankAccount = {(this.PayerBankAccount == null ? "null" : $"[{string.Join(", ", this.PayerBankAccount)} ]")}");
             toStringOutput.Add($"this.CardDeliveryAddress = {(this.CardDeliveryAddress == null ? "null" : this.CardDeliveryAddress.ToString())}");
             toStringOutput.Add($"this.CorrespondanceAddress = {(this.CorrespondanceAddress == null ? "null" : this.CorrespondanceAddress.ToString())}");
@@ -4308,8 +4406,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.HasActiveVolBasedBonus = {(this.HasActiveVolBasedBonus == null ? "null" : this.HasActiveVolBasedBonus.ToString())}");
             toStringOutput.Add($"this.HasActiveVolBasedAssociationBonus = {(this.HasActiveVolBasedAssociationBonus == null ? "null" : this.HasActiveVolBasedAssociationBonus.ToString())}");
             toStringOutput.Add($"this.FinanceCurrency = {(this.FinanceCurrency == null ? "null" : this.FinanceCurrency.ToString())}");
-            toStringOutput.Add($"this.TollsCustomerId = {(this.TollsCustomerId == null ? "null" : this.TollsCustomerId)}");
-            toStringOutput.Add($"this.TollsColcoCountryTypeId = {(this.TollsColcoCountryTypeId == null ? "null" : this.TollsColcoCountryTypeId)}");
+            toStringOutput.Add($"this.TollsCustomerId = {this.TollsCustomerId ?? "null"}");
+            toStringOutput.Add($"this.TollsColcoCountryTypeId = {this.TollsColcoCountryTypeId ?? "null"}");
             toStringOutput.Add($"this.Contracts = {(this.Contracts == null ? "null" : $"[{string.Join(", ", this.Contracts)} ]")}");
         }
     }

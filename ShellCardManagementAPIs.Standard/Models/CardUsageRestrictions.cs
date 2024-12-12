@@ -1,21 +1,21 @@
 // <copyright file="CardUsageRestrictions.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardUsageRestrictions.
     /// </summary>
@@ -59,6 +59,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "MonthlyTransactionCount", false },
             { "AnnualTransactionCount", false },
             { "LifeTimeTransactionCount", false },
+        };
+
+        private Dictionary<string, bool> hasPropertySetterCalledFor = new Dictionary<string, bool>
+        {
+            { "AnnualVolumeLimit", false },
         };
 
         /// <summary>
@@ -111,6 +116,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             double? lifeTimeTransactionCount = null,
             bool? isVelocityCeiling = null)
         {
+
             if (level != null)
             {
                 this.Level = level;
@@ -155,8 +161,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.MonthlyVolumeLimit = monthlyVolumeLimit;
             }
-
             this.AnnualVolumeLimit = annualVolumeLimit;
+
             if (lifeTimeVolumeLimit != null)
             {
                 this.LifeTimeVolumeLimit = lifeTimeVolumeLimit;
@@ -196,7 +202,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.LifeTimeTransactionCount = lifeTimeTransactionCount;
             }
-
             this.IsVelocityCeiling = isVelocityCeiling;
         }
 
@@ -373,12 +378,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             get
             {
+                if (!hasPropertySetterCalledFor["AnnualVolumeLimit"] &&
+                    annualVolumeLimit == null)
+                {
+                    return 0; // Default value
+                }
+
                 return this.annualVolumeLimit;
             }
 
             set
             {
                 this.shouldSerialize["AnnualVolumeLimit"] = true;
+                hasPropertySetterCalledFor["AnnualVolumeLimit"] = true;
                 this.annualVolumeLimit = value;
             }
         }
@@ -538,14 +550,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardUsageRestrictions : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLevel()
         {
@@ -553,7 +563,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDailySpendLimit()
         {
@@ -561,7 +571,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetWeeklySpendLimit()
         {
@@ -569,7 +579,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMonthlySpendLimit()
         {
@@ -577,7 +587,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAnnualSpendLimit()
         {
@@ -585,7 +595,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLifeTimeSpendLimit()
         {
@@ -593,7 +603,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDailyVolumeLimit()
         {
@@ -601,7 +611,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetWeeklyVolumeLimit()
         {
@@ -609,7 +619,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMonthlyVolumeLimit()
         {
@@ -617,15 +627,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAnnualVolumeLimit()
         {
             this.shouldSerialize["AnnualVolumeLimit"] = false;
+            this.hasPropertySetterCalledFor["AnnualVolumeLimit"] = false;
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLifeTimeVolumeLimit()
         {
@@ -633,7 +644,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTransactionSpendLimit()
         {
@@ -641,7 +652,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTransactionVolumeLimit()
         {
@@ -649,7 +660,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDailyTransactionCount()
         {
@@ -657,7 +668,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetWeeklyTransactionCount()
         {
@@ -665,7 +676,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMonthlyTransactionCount()
         {
@@ -673,7 +684,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAnnualTransactionCount()
         {
@@ -681,7 +692,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLifeTimeTransactionCount()
         {
@@ -853,43 +864,57 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardUsageRestrictions other &&                ((this.Level == null && other.Level == null) || (this.Level?.Equals(other.Level) == true)) &&
-                ((this.DailySpendLimit == null && other.DailySpendLimit == null) || (this.DailySpendLimit?.Equals(other.DailySpendLimit) == true)) &&
-                ((this.WeeklySpendLimit == null && other.WeeklySpendLimit == null) || (this.WeeklySpendLimit?.Equals(other.WeeklySpendLimit) == true)) &&
-                ((this.MonthlySpendLimit == null && other.MonthlySpendLimit == null) || (this.MonthlySpendLimit?.Equals(other.MonthlySpendLimit) == true)) &&
-                ((this.AnnualSpendLimit == null && other.AnnualSpendLimit == null) || (this.AnnualSpendLimit?.Equals(other.AnnualSpendLimit) == true)) &&
-                ((this.LifeTimeSpendLimit == null && other.LifeTimeSpendLimit == null) || (this.LifeTimeSpendLimit?.Equals(other.LifeTimeSpendLimit) == true)) &&
-                ((this.DailyVolumeLimit == null && other.DailyVolumeLimit == null) || (this.DailyVolumeLimit?.Equals(other.DailyVolumeLimit) == true)) &&
-                ((this.WeeklyVolumeLimit == null && other.WeeklyVolumeLimit == null) || (this.WeeklyVolumeLimit?.Equals(other.WeeklyVolumeLimit) == true)) &&
-                ((this.MonthlyVolumeLimit == null && other.MonthlyVolumeLimit == null) || (this.MonthlyVolumeLimit?.Equals(other.MonthlyVolumeLimit) == true)) &&
-                ((this.AnnualVolumeLimit == null && other.AnnualVolumeLimit == null) || (this.AnnualVolumeLimit?.Equals(other.AnnualVolumeLimit) == true)) &&
-                ((this.LifeTimeVolumeLimit == null && other.LifeTimeVolumeLimit == null) || (this.LifeTimeVolumeLimit?.Equals(other.LifeTimeVolumeLimit) == true)) &&
-                ((this.TransactionSpendLimit == null && other.TransactionSpendLimit == null) || (this.TransactionSpendLimit?.Equals(other.TransactionSpendLimit) == true)) &&
-                ((this.TransactionVolumeLimit == null && other.TransactionVolumeLimit == null) || (this.TransactionVolumeLimit?.Equals(other.TransactionVolumeLimit) == true)) &&
-                ((this.DailyTransactionCount == null && other.DailyTransactionCount == null) || (this.DailyTransactionCount?.Equals(other.DailyTransactionCount) == true)) &&
-                ((this.WeeklyTransactionCount == null && other.WeeklyTransactionCount == null) || (this.WeeklyTransactionCount?.Equals(other.WeeklyTransactionCount) == true)) &&
-                ((this.MonthlyTransactionCount == null && other.MonthlyTransactionCount == null) || (this.MonthlyTransactionCount?.Equals(other.MonthlyTransactionCount) == true)) &&
-                ((this.AnnualTransactionCount == null && other.AnnualTransactionCount == null) || (this.AnnualTransactionCount?.Equals(other.AnnualTransactionCount) == true)) &&
-                ((this.LifeTimeTransactionCount == null && other.LifeTimeTransactionCount == null) || (this.LifeTimeTransactionCount?.Equals(other.LifeTimeTransactionCount) == true)) &&
-                ((this.IsVelocityCeiling == null && other.IsVelocityCeiling == null) || (this.IsVelocityCeiling?.Equals(other.IsVelocityCeiling) == true));
+            return obj is CardUsageRestrictions other &&
+                (this.Level == null && other.Level == null ||
+                 this.Level?.Equals(other.Level) == true) &&
+                (this.DailySpendLimit == null && other.DailySpendLimit == null ||
+                 this.DailySpendLimit?.Equals(other.DailySpendLimit) == true) &&
+                (this.WeeklySpendLimit == null && other.WeeklySpendLimit == null ||
+                 this.WeeklySpendLimit?.Equals(other.WeeklySpendLimit) == true) &&
+                (this.MonthlySpendLimit == null && other.MonthlySpendLimit == null ||
+                 this.MonthlySpendLimit?.Equals(other.MonthlySpendLimit) == true) &&
+                (this.AnnualSpendLimit == null && other.AnnualSpendLimit == null ||
+                 this.AnnualSpendLimit?.Equals(other.AnnualSpendLimit) == true) &&
+                (this.LifeTimeSpendLimit == null && other.LifeTimeSpendLimit == null ||
+                 this.LifeTimeSpendLimit?.Equals(other.LifeTimeSpendLimit) == true) &&
+                (this.DailyVolumeLimit == null && other.DailyVolumeLimit == null ||
+                 this.DailyVolumeLimit?.Equals(other.DailyVolumeLimit) == true) &&
+                (this.WeeklyVolumeLimit == null && other.WeeklyVolumeLimit == null ||
+                 this.WeeklyVolumeLimit?.Equals(other.WeeklyVolumeLimit) == true) &&
+                (this.MonthlyVolumeLimit == null && other.MonthlyVolumeLimit == null ||
+                 this.MonthlyVolumeLimit?.Equals(other.MonthlyVolumeLimit) == true) &&
+                (this.AnnualVolumeLimit == null && other.AnnualVolumeLimit == null ||
+                 this.AnnualVolumeLimit?.Equals(other.AnnualVolumeLimit) == true) &&
+                (this.LifeTimeVolumeLimit == null && other.LifeTimeVolumeLimit == null ||
+                 this.LifeTimeVolumeLimit?.Equals(other.LifeTimeVolumeLimit) == true) &&
+                (this.TransactionSpendLimit == null && other.TransactionSpendLimit == null ||
+                 this.TransactionSpendLimit?.Equals(other.TransactionSpendLimit) == true) &&
+                (this.TransactionVolumeLimit == null && other.TransactionVolumeLimit == null ||
+                 this.TransactionVolumeLimit?.Equals(other.TransactionVolumeLimit) == true) &&
+                (this.DailyTransactionCount == null && other.DailyTransactionCount == null ||
+                 this.DailyTransactionCount?.Equals(other.DailyTransactionCount) == true) &&
+                (this.WeeklyTransactionCount == null && other.WeeklyTransactionCount == null ||
+                 this.WeeklyTransactionCount?.Equals(other.WeeklyTransactionCount) == true) &&
+                (this.MonthlyTransactionCount == null && other.MonthlyTransactionCount == null ||
+                 this.MonthlyTransactionCount?.Equals(other.MonthlyTransactionCount) == true) &&
+                (this.AnnualTransactionCount == null && other.AnnualTransactionCount == null ||
+                 this.AnnualTransactionCount?.Equals(other.AnnualTransactionCount) == true) &&
+                (this.LifeTimeTransactionCount == null && other.LifeTimeTransactionCount == null ||
+                 this.LifeTimeTransactionCount?.Equals(other.LifeTimeTransactionCount) == true) &&
+                (this.IsVelocityCeiling == null && other.IsVelocityCeiling == null ||
+                 this.IsVelocityCeiling?.Equals(other.IsVelocityCeiling) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Level = {(this.Level == null ? "null" : this.Level)}");
+            toStringOutput.Add($"this.Level = {this.Level ?? "null"}");
             toStringOutput.Add($"this.DailySpendLimit = {(this.DailySpendLimit == null ? "null" : this.DailySpendLimit.ToString())}");
             toStringOutput.Add($"this.WeeklySpendLimit = {(this.WeeklySpendLimit == null ? "null" : this.WeeklySpendLimit.ToString())}");
             toStringOutput.Add($"this.MonthlySpendLimit = {(this.MonthlySpendLimit == null ? "null" : this.MonthlySpendLimit.ToString())}");

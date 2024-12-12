@@ -1,21 +1,21 @@
 // <copyright file="BankAccount.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// BankAccount.
     /// </summary>
@@ -89,6 +89,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string swiftCode = null,
             string bankType = null)
         {
+
             if (accountNumber != null)
             {
                 this.AccountNumber = accountNumber;
@@ -153,7 +154,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.BankType = bankType;
             }
-
         }
 
         /// <summary>
@@ -399,14 +399,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"BankAccount : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -414,7 +412,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBankName()
         {
@@ -422,7 +420,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountName()
         {
@@ -430,7 +428,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDateEffective()
         {
@@ -438,7 +436,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDateTerminated()
         {
@@ -446,7 +444,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIBAN()
         {
@@ -454,7 +452,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrencyCode()
         {
@@ -462,7 +460,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrencySymbol()
         {
@@ -470,7 +468,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountryISOCode()
         {
@@ -478,7 +476,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountry()
         {
@@ -486,7 +484,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSortCode()
         {
@@ -494,7 +492,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSwiftCode()
         {
@@ -502,7 +500,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBankType()
         {
@@ -629,49 +627,57 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is BankAccount other &&                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.BankName == null && other.BankName == null) || (this.BankName?.Equals(other.BankName) == true)) &&
-                ((this.AccountName == null && other.AccountName == null) || (this.AccountName?.Equals(other.AccountName) == true)) &&
-                ((this.DateEffective == null && other.DateEffective == null) || (this.DateEffective?.Equals(other.DateEffective) == true)) &&
-                ((this.DateTerminated == null && other.DateTerminated == null) || (this.DateTerminated?.Equals(other.DateTerminated) == true)) &&
-                ((this.IBAN == null && other.IBAN == null) || (this.IBAN?.Equals(other.IBAN) == true)) &&
-                ((this.CurrencyCode == null && other.CurrencyCode == null) || (this.CurrencyCode?.Equals(other.CurrencyCode) == true)) &&
-                ((this.CurrencySymbol == null && other.CurrencySymbol == null) || (this.CurrencySymbol?.Equals(other.CurrencySymbol) == true)) &&
-                ((this.CountryISOCode == null && other.CountryISOCode == null) || (this.CountryISOCode?.Equals(other.CountryISOCode) == true)) &&
-                ((this.Country == null && other.Country == null) || (this.Country?.Equals(other.Country) == true)) &&
-                ((this.SortCode == null && other.SortCode == null) || (this.SortCode?.Equals(other.SortCode) == true)) &&
-                ((this.SwiftCode == null && other.SwiftCode == null) || (this.SwiftCode?.Equals(other.SwiftCode) == true)) &&
-                ((this.BankType == null && other.BankType == null) || (this.BankType?.Equals(other.BankType) == true));
+            return obj is BankAccount other &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.BankName == null && other.BankName == null ||
+                 this.BankName?.Equals(other.BankName) == true) &&
+                (this.AccountName == null && other.AccountName == null ||
+                 this.AccountName?.Equals(other.AccountName) == true) &&
+                (this.DateEffective == null && other.DateEffective == null ||
+                 this.DateEffective?.Equals(other.DateEffective) == true) &&
+                (this.DateTerminated == null && other.DateTerminated == null ||
+                 this.DateTerminated?.Equals(other.DateTerminated) == true) &&
+                (this.IBAN == null && other.IBAN == null ||
+                 this.IBAN?.Equals(other.IBAN) == true) &&
+                (this.CurrencyCode == null && other.CurrencyCode == null ||
+                 this.CurrencyCode?.Equals(other.CurrencyCode) == true) &&
+                (this.CurrencySymbol == null && other.CurrencySymbol == null ||
+                 this.CurrencySymbol?.Equals(other.CurrencySymbol) == true) &&
+                (this.CountryISOCode == null && other.CountryISOCode == null ||
+                 this.CountryISOCode?.Equals(other.CountryISOCode) == true) &&
+                (this.Country == null && other.Country == null ||
+                 this.Country?.Equals(other.Country) == true) &&
+                (this.SortCode == null && other.SortCode == null ||
+                 this.SortCode?.Equals(other.SortCode) == true) &&
+                (this.SwiftCode == null && other.SwiftCode == null ||
+                 this.SwiftCode?.Equals(other.SwiftCode) == true) &&
+                (this.BankType == null && other.BankType == null ||
+                 this.BankType?.Equals(other.BankType) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.BankName = {(this.BankName == null ? "null" : this.BankName)}");
-            toStringOutput.Add($"this.AccountName = {(this.AccountName == null ? "null" : this.AccountName)}");
-            toStringOutput.Add($"this.DateEffective = {(this.DateEffective == null ? "null" : this.DateEffective)}");
-            toStringOutput.Add($"this.DateTerminated = {(this.DateTerminated == null ? "null" : this.DateTerminated)}");
-            toStringOutput.Add($"this.IBAN = {(this.IBAN == null ? "null" : this.IBAN)}");
-            toStringOutput.Add($"this.CurrencyCode = {(this.CurrencyCode == null ? "null" : this.CurrencyCode)}");
-            toStringOutput.Add($"this.CurrencySymbol = {(this.CurrencySymbol == null ? "null" : this.CurrencySymbol)}");
-            toStringOutput.Add($"this.CountryISOCode = {(this.CountryISOCode == null ? "null" : this.CountryISOCode)}");
-            toStringOutput.Add($"this.Country = {(this.Country == null ? "null" : this.Country)}");
-            toStringOutput.Add($"this.SortCode = {(this.SortCode == null ? "null" : this.SortCode)}");
-            toStringOutput.Add($"this.SwiftCode = {(this.SwiftCode == null ? "null" : this.SwiftCode)}");
-            toStringOutput.Add($"this.BankType = {(this.BankType == null ? "null" : this.BankType)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.BankName = {this.BankName ?? "null"}");
+            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"this.DateEffective = {this.DateEffective ?? "null"}");
+            toStringOutput.Add($"this.DateTerminated = {this.DateTerminated ?? "null"}");
+            toStringOutput.Add($"this.IBAN = {this.IBAN ?? "null"}");
+            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.CurrencySymbol = {this.CurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.CountryISOCode = {this.CountryISOCode ?? "null"}");
+            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
+            toStringOutput.Add($"this.SortCode = {this.SortCode ?? "null"}");
+            toStringOutput.Add($"this.SwiftCode = {this.SwiftCode ?? "null"}");
+            toStringOutput.Add($"this.BankType = {this.BankType ?? "null"}");
         }
     }
 }

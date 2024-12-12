@@ -1,16 +1,15 @@
 // <copyright file="CompatibilityFactory.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using APIMatic.Core.Types.Sdk;
+using APIMatic.Core.Utilities;
+using ShellCardManagementAPIs.Standard.Exceptions;
+using ShellCardManagementAPIs.Standard.Http.Client;
+using ShellCardManagementAPIs.Standard.Http.Request;
+using ShellCardManagementAPIs.Standard.Http.Response;
 
 namespace ShellCardManagementAPIs.Standard.Utilities
 {
-    using APIMatic.Core.Types.Sdk;
-    using APIMatic.Core.Utilities;
-    using ShellCardManagementAPIs.Standard.Exceptions;
-    using ShellCardManagementAPIs.Standard.Http.Client;
-    using ShellCardManagementAPIs.Standard.Http.Request;
-    using ShellCardManagementAPIs.Standard.Http.Response;
-
     internal class CompatibilityFactory : ICompatibilityFactory<HttpRequest, HttpResponse, HttpContext, ApiException>
     {
         public ApiException CreateApiException(string reason, CoreContext<CoreRequest, CoreResponse> context) =>

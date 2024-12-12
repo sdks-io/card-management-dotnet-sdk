@@ -208,7 +208,7 @@ string apikey = "apikey6";
 string requestId = "RequestId8";
 PayerRequest body = new PayerRequest
 {
-    Payers = new List<Models.Payers>
+    Payers = new List<Payers>
     {
         new Payers
         {
@@ -650,7 +650,7 @@ AccountRequest body = new AccountRequest
     InvoicePointsOnly = false,
     ColCoId = 14,
     ReturnTollsCustomerId = true,
-    Accounts = new List<Models.Accounts>
+    Accounts = new List<Accounts>
     {
         new Accounts
         {
@@ -972,7 +972,7 @@ CardGroupRequest body = new CardGroupRequest
     ColCoCode = 14,
     PayerId = 123,
     PayerNumber = "GB00123456",
-    Account = new List<Models.Accounts>
+    Account = new List<Accounts>
     {
         new Accounts
         {
@@ -1249,7 +1249,7 @@ CreateCardGroupRequest body = new CreateCardGroupRequest
     AccountNumber = "PH50000844",
     PrintOnCard = true,
     CardGroupName = "GROUP1",
-    Cards = new List<Models.CreateCardGroupRequestCardsItems>
+    Cards = new List<CreateCardGroupRequestCardsItems>
     {
         new CreateCardGroupRequestCardsItems
         {

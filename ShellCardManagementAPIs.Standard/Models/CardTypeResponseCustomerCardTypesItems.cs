@@ -1,21 +1,21 @@
 // <copyright file="CardTypeResponseCustomerCardTypesItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardTypeResponseCustomerCardTypesItems.
     /// </summary>
@@ -136,6 +136,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string colCoCurrencySymbol = null)
         {
             this.CanHavePIN = canHavePIN;
+
             if (cardTypeId != null)
             {
                 this.CardTypeId = cardTypeId;
@@ -155,8 +156,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.CustomerCardTypeId = customerCardTypeId;
             }
-
             this.DayTimeRestrictions = dayTimeRestrictions;
+
             if (defaultPurchaseCategoryId != null)
             {
                 this.DefaultPurchaseCategoryId = defaultPurchaseCategoryId;
@@ -171,7 +172,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ExpiryPeriod = expiryPeriod;
             }
-
             this.IsCRT = isCRT;
             this.IsFleet = isFleet;
             this.IsInternational = isInternational;
@@ -183,6 +183,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.IsActive = isActive;
             this.IsCardAvailableForDownload = isCardAvailableForDownload;
             this.IsCardVisibleToCustomers = isCardVisibleToCustomers;
+
             if (pANLength != null)
             {
                 this.PANLength = pANLength;
@@ -202,7 +203,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.TokenTypeName = tokenTypeName;
             }
-
             this.UsageRestrictions = usageRestrictions;
             this.EMVContactless = eMVContactless;
             this.RFID = rFID;
@@ -211,6 +211,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.OfflinePIN = offlinePIN;
             this.IsDefault = isDefault;
             this.ApplicationsToShowNPIITokens = applicationsToShowNPIITokens;
+
             if (mediumTypeID != null)
             {
                 this.MediumTypeID = mediumTypeID;
@@ -225,7 +226,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ColCoCurrencySymbol = colCoCurrencySymbol;
             }
-
         }
 
         /// <summary>
@@ -631,14 +631,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardTypeResponseCustomerCardTypesItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeId()
         {
@@ -646,7 +644,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardTypeName()
         {
@@ -654,7 +652,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCurrencyCode()
         {
@@ -662,7 +660,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCustomerCardTypeId()
         {
@@ -670,7 +668,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDefaultPurchaseCategoryId()
         {
@@ -678,7 +676,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetEmbossAccountName()
         {
@@ -686,7 +684,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetExpiryPeriod()
         {
@@ -694,7 +692,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPANLength()
         {
@@ -702,7 +700,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPurchaseCategories()
         {
@@ -710,7 +708,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTokenTypeId()
         {
@@ -718,7 +716,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTokenTypeName()
         {
@@ -726,7 +724,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMediumTypeID()
         {
@@ -734,7 +732,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMediumType()
         {
@@ -742,7 +740,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCurrencySymbol()
         {
@@ -878,52 +876,82 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardTypeResponseCustomerCardTypesItems other &&                ((this.CanHavePIN == null && other.CanHavePIN == null) || (this.CanHavePIN?.Equals(other.CanHavePIN) == true)) &&
-                ((this.CardTypeId == null && other.CardTypeId == null) || (this.CardTypeId?.Equals(other.CardTypeId) == true)) &&
-                ((this.CardTypeName == null && other.CardTypeName == null) || (this.CardTypeName?.Equals(other.CardTypeName) == true)) &&
-                ((this.ColCoCurrencyCode == null && other.ColCoCurrencyCode == null) || (this.ColCoCurrencyCode?.Equals(other.ColCoCurrencyCode) == true)) &&
-                ((this.CustomerCardTypeId == null && other.CustomerCardTypeId == null) || (this.CustomerCardTypeId?.Equals(other.CustomerCardTypeId) == true)) &&
-                ((this.DayTimeRestrictions == null && other.DayTimeRestrictions == null) || (this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true)) &&
-                ((this.DefaultPurchaseCategoryId == null && other.DefaultPurchaseCategoryId == null) || (this.DefaultPurchaseCategoryId?.Equals(other.DefaultPurchaseCategoryId) == true)) &&
-                ((this.EmbossAccountName == null && other.EmbossAccountName == null) || (this.EmbossAccountName?.Equals(other.EmbossAccountName) == true)) &&
-                ((this.ExpiryPeriod == null && other.ExpiryPeriod == null) || (this.ExpiryPeriod?.Equals(other.ExpiryPeriod) == true)) &&
-                ((this.IsCRT == null && other.IsCRT == null) || (this.IsCRT?.Equals(other.IsCRT) == true)) &&
-                ((this.IsFleet == null && other.IsFleet == null) || (this.IsFleet?.Equals(other.IsFleet) == true)) &&
-                ((this.IsInternational == null && other.IsInternational == null) || (this.IsInternational?.Equals(other.IsInternational) == true)) &&
-                ((this.IsNational == null && other.IsNational == null) || (this.IsNational?.Equals(other.IsNational) == true)) &&
-                ((this.IsPartnerSitesIncluded == null && other.IsPartnerSitesIncluded == null) || (this.IsPartnerSitesIncluded?.Equals(other.IsPartnerSitesIncluded) == true)) &&
-                ((this.IsShellSitesOnly == null && other.IsShellSitesOnly == null) || (this.IsShellSitesOnly?.Equals(other.IsShellSitesOnly) == true)) &&
-                ((this.IsVirtual == null && other.IsVirtual == null) || (this.IsVirtual?.Equals(other.IsVirtual) == true)) &&
-                ((this.IsVisibleToCustomers == null && other.IsVisibleToCustomers == null) || (this.IsVisibleToCustomers?.Equals(other.IsVisibleToCustomers) == true)) &&
-                ((this.IsActive == null && other.IsActive == null) || (this.IsActive?.Equals(other.IsActive) == true)) &&
-                ((this.IsCardAvailableForDownload == null && other.IsCardAvailableForDownload == null) || (this.IsCardAvailableForDownload?.Equals(other.IsCardAvailableForDownload) == true)) &&
-                ((this.IsCardVisibleToCustomers == null && other.IsCardVisibleToCustomers == null) || (this.IsCardVisibleToCustomers?.Equals(other.IsCardVisibleToCustomers) == true)) &&
-                ((this.PANLength == null && other.PANLength == null) || (this.PANLength?.Equals(other.PANLength) == true)) &&
-                ((this.PurchaseCategories == null && other.PurchaseCategories == null) || (this.PurchaseCategories?.Equals(other.PurchaseCategories) == true)) &&
-                ((this.TokenTypeId == null && other.TokenTypeId == null) || (this.TokenTypeId?.Equals(other.TokenTypeId) == true)) &&
-                ((this.TokenTypeName == null && other.TokenTypeName == null) || (this.TokenTypeName?.Equals(other.TokenTypeName) == true)) &&
-                ((this.UsageRestrictions == null && other.UsageRestrictions == null) || (this.UsageRestrictions?.Equals(other.UsageRestrictions) == true)) &&
-                ((this.EMVContactless == null && other.EMVContactless == null) || (this.EMVContactless?.Equals(other.EMVContactless) == true)) &&
-                ((this.RFID == null && other.RFID == null) || (this.RFID?.Equals(other.RFID) == true)) &&
-                ((this.PINChangeSupported == null && other.PINChangeSupported == null) || (this.PINChangeSupported?.Equals(other.PINChangeSupported) == true)) &&
-                ((this.RequirePIN == null && other.RequirePIN == null) || (this.RequirePIN?.Equals(other.RequirePIN) == true)) &&
-                ((this.OfflinePIN == null && other.OfflinePIN == null) || (this.OfflinePIN?.Equals(other.OfflinePIN) == true)) &&
-                ((this.IsDefault == null && other.IsDefault == null) || (this.IsDefault?.Equals(other.IsDefault) == true)) &&
-                ((this.ApplicationsToShowNPIITokens == null && other.ApplicationsToShowNPIITokens == null) || (this.ApplicationsToShowNPIITokens?.Equals(other.ApplicationsToShowNPIITokens) == true)) &&
-                ((this.MediumTypeID == null && other.MediumTypeID == null) || (this.MediumTypeID?.Equals(other.MediumTypeID) == true)) &&
-                ((this.MediumType == null && other.MediumType == null) || (this.MediumType?.Equals(other.MediumType) == true)) &&
-                ((this.ColCoCurrencySymbol == null && other.ColCoCurrencySymbol == null) || (this.ColCoCurrencySymbol?.Equals(other.ColCoCurrencySymbol) == true));
+            return obj is CardTypeResponseCustomerCardTypesItems other &&
+                (this.CanHavePIN == null && other.CanHavePIN == null ||
+                 this.CanHavePIN?.Equals(other.CanHavePIN) == true) &&
+                (this.CardTypeId == null && other.CardTypeId == null ||
+                 this.CardTypeId?.Equals(other.CardTypeId) == true) &&
+                (this.CardTypeName == null && other.CardTypeName == null ||
+                 this.CardTypeName?.Equals(other.CardTypeName) == true) &&
+                (this.ColCoCurrencyCode == null && other.ColCoCurrencyCode == null ||
+                 this.ColCoCurrencyCode?.Equals(other.ColCoCurrencyCode) == true) &&
+                (this.CustomerCardTypeId == null && other.CustomerCardTypeId == null ||
+                 this.CustomerCardTypeId?.Equals(other.CustomerCardTypeId) == true) &&
+                (this.DayTimeRestrictions == null && other.DayTimeRestrictions == null ||
+                 this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true) &&
+                (this.DefaultPurchaseCategoryId == null && other.DefaultPurchaseCategoryId == null ||
+                 this.DefaultPurchaseCategoryId?.Equals(other.DefaultPurchaseCategoryId) == true) &&
+                (this.EmbossAccountName == null && other.EmbossAccountName == null ||
+                 this.EmbossAccountName?.Equals(other.EmbossAccountName) == true) &&
+                (this.ExpiryPeriod == null && other.ExpiryPeriod == null ||
+                 this.ExpiryPeriod?.Equals(other.ExpiryPeriod) == true) &&
+                (this.IsCRT == null && other.IsCRT == null ||
+                 this.IsCRT?.Equals(other.IsCRT) == true) &&
+                (this.IsFleet == null && other.IsFleet == null ||
+                 this.IsFleet?.Equals(other.IsFleet) == true) &&
+                (this.IsInternational == null && other.IsInternational == null ||
+                 this.IsInternational?.Equals(other.IsInternational) == true) &&
+                (this.IsNational == null && other.IsNational == null ||
+                 this.IsNational?.Equals(other.IsNational) == true) &&
+                (this.IsPartnerSitesIncluded == null && other.IsPartnerSitesIncluded == null ||
+                 this.IsPartnerSitesIncluded?.Equals(other.IsPartnerSitesIncluded) == true) &&
+                (this.IsShellSitesOnly == null && other.IsShellSitesOnly == null ||
+                 this.IsShellSitesOnly?.Equals(other.IsShellSitesOnly) == true) &&
+                (this.IsVirtual == null && other.IsVirtual == null ||
+                 this.IsVirtual?.Equals(other.IsVirtual) == true) &&
+                (this.IsVisibleToCustomers == null && other.IsVisibleToCustomers == null ||
+                 this.IsVisibleToCustomers?.Equals(other.IsVisibleToCustomers) == true) &&
+                (this.IsActive == null && other.IsActive == null ||
+                 this.IsActive?.Equals(other.IsActive) == true) &&
+                (this.IsCardAvailableForDownload == null && other.IsCardAvailableForDownload == null ||
+                 this.IsCardAvailableForDownload?.Equals(other.IsCardAvailableForDownload) == true) &&
+                (this.IsCardVisibleToCustomers == null && other.IsCardVisibleToCustomers == null ||
+                 this.IsCardVisibleToCustomers?.Equals(other.IsCardVisibleToCustomers) == true) &&
+                (this.PANLength == null && other.PANLength == null ||
+                 this.PANLength?.Equals(other.PANLength) == true) &&
+                (this.PurchaseCategories == null && other.PurchaseCategories == null ||
+                 this.PurchaseCategories?.Equals(other.PurchaseCategories) == true) &&
+                (this.TokenTypeId == null && other.TokenTypeId == null ||
+                 this.TokenTypeId?.Equals(other.TokenTypeId) == true) &&
+                (this.TokenTypeName == null && other.TokenTypeName == null ||
+                 this.TokenTypeName?.Equals(other.TokenTypeName) == true) &&
+                (this.UsageRestrictions == null && other.UsageRestrictions == null ||
+                 this.UsageRestrictions?.Equals(other.UsageRestrictions) == true) &&
+                (this.EMVContactless == null && other.EMVContactless == null ||
+                 this.EMVContactless?.Equals(other.EMVContactless) == true) &&
+                (this.RFID == null && other.RFID == null ||
+                 this.RFID?.Equals(other.RFID) == true) &&
+                (this.PINChangeSupported == null && other.PINChangeSupported == null ||
+                 this.PINChangeSupported?.Equals(other.PINChangeSupported) == true) &&
+                (this.RequirePIN == null && other.RequirePIN == null ||
+                 this.RequirePIN?.Equals(other.RequirePIN) == true) &&
+                (this.OfflinePIN == null && other.OfflinePIN == null ||
+                 this.OfflinePIN?.Equals(other.OfflinePIN) == true) &&
+                (this.IsDefault == null && other.IsDefault == null ||
+                 this.IsDefault?.Equals(other.IsDefault) == true) &&
+                (this.ApplicationsToShowNPIITokens == null && other.ApplicationsToShowNPIITokens == null ||
+                 this.ApplicationsToShowNPIITokens?.Equals(other.ApplicationsToShowNPIITokens) == true) &&
+                (this.MediumTypeID == null && other.MediumTypeID == null ||
+                 this.MediumTypeID?.Equals(other.MediumTypeID) == true) &&
+                (this.MediumType == null && other.MediumType == null ||
+                 this.MediumType?.Equals(other.MediumType) == true) &&
+                (this.ColCoCurrencySymbol == null && other.ColCoCurrencySymbol == null ||
+                 this.ColCoCurrencySymbol?.Equals(other.ColCoCurrencySymbol) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -932,12 +960,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.CanHavePIN = {(this.CanHavePIN == null ? "null" : this.CanHavePIN.ToString())}");
             toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeName = {(this.CardTypeName == null ? "null" : this.CardTypeName)}");
-            toStringOutput.Add($"this.ColCoCurrencyCode = {(this.ColCoCurrencyCode == null ? "null" : this.ColCoCurrencyCode)}");
+            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"this.ColCoCurrencyCode = {this.ColCoCurrencyCode ?? "null"}");
             toStringOutput.Add($"this.CustomerCardTypeId = {(this.CustomerCardTypeId == null ? "null" : this.CustomerCardTypeId.ToString())}");
             toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
             toStringOutput.Add($"this.DefaultPurchaseCategoryId = {(this.DefaultPurchaseCategoryId == null ? "null" : this.DefaultPurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.EmbossAccountName = {(this.EmbossAccountName == null ? "null" : this.EmbossAccountName)}");
+            toStringOutput.Add($"this.EmbossAccountName = {this.EmbossAccountName ?? "null"}");
             toStringOutput.Add($"this.ExpiryPeriod = {(this.ExpiryPeriod == null ? "null" : this.ExpiryPeriod.ToString())}");
             toStringOutput.Add($"this.IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
             toStringOutput.Add($"this.IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
@@ -953,7 +981,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.PANLength = {(this.PANLength == null ? "null" : this.PANLength.ToString())}");
             toStringOutput.Add($"this.PurchaseCategories = {(this.PurchaseCategories == null ? "null" : $"[{string.Join(", ", this.PurchaseCategories)} ]")}");
             toStringOutput.Add($"this.TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
-            toStringOutput.Add($"this.TokenTypeName = {(this.TokenTypeName == null ? "null" : this.TokenTypeName)}");
+            toStringOutput.Add($"this.TokenTypeName = {this.TokenTypeName ?? "null"}");
             toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
             toStringOutput.Add($"this.EMVContactless = {(this.EMVContactless == null ? "null" : this.EMVContactless.ToString())}");
             toStringOutput.Add($"this.RFID = {(this.RFID == null ? "null" : this.RFID.ToString())}");
@@ -963,8 +991,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
             toStringOutput.Add($"this.ApplicationsToShowNPIITokens = {(this.ApplicationsToShowNPIITokens == null ? "null" : this.ApplicationsToShowNPIITokens.ToString())}");
             toStringOutput.Add($"this.MediumTypeID = {(this.MediumTypeID == null ? "null" : this.MediumTypeID.ToString())}");
-            toStringOutput.Add($"this.MediumType = {(this.MediumType == null ? "null" : this.MediumType)}");
-            toStringOutput.Add($"this.ColCoCurrencySymbol = {(this.ColCoCurrencySymbol == null ? "null" : this.ColCoCurrencySymbol)}");
+            toStringOutput.Add($"this.MediumType = {this.MediumType ?? "null"}");
+            toStringOutput.Add($"this.ColCoCurrencySymbol = {this.ColCoCurrencySymbol ?? "null"}");
         }
     }
 }

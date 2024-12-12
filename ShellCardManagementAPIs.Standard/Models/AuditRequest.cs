@@ -1,21 +1,21 @@
 // <copyright file="AuditRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// AuditRequest.
     /// </summary>
@@ -86,6 +86,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string toDate = null)
         {
             this.Status = status;
+
             if (payerNumber != null)
             {
                 this.PayerNumber = payerNumber;
@@ -110,10 +111,10 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ColCoId = colCoId;
             }
-
             this.Accounts = accounts;
             this.PageSize = pageSize;
             this.RequestedOperation = requestedOperation;
+
             if (sortOrder != null)
             {
                 this.SortOrder = sortOrder;
@@ -138,19 +139,18 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ToDate = toDate;
             }
-
         }
 
         /// <summary>
         /// Status of requests to be fetched.
-        /// •	Success
-        /// •	Failed
-        /// •	InProgress
-        /// •	Submitted
-        /// •	Rejected
-        /// •	PendingApproval
-        /// •	All
-        /// •	MailedToCSC
+        /// •    Success
+        /// •    Failed
+        /// •    InProgress
+        /// •    Submitted
+        /// •    Rejected
+        /// •    PendingApproval
+        /// •    All
+        /// •    MailedToCSC
         /// Optional
         /// If not passed “All” will be considered as the default value.
         /// </summary>
@@ -276,33 +276,33 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Type of requests to be fetched.
         /// Optional
         /// Allowed values:
-        /// •	OrderCard
-        /// •	CreateCardGroup
-        /// •	PINReminder
-        /// •	MoveCard
-        /// •	UpdateCardStatus
-        /// •	UpdateCardGroup
-        /// •	AutoRenew
-        /// •	BulkCardOrder
-        /// •	BulkCardBlock
-        /// •	BulkCardOrderMultiAccount
-        /// •	MobilePaymentRegistration
-        /// •	UpdateCompanyInfo
-        /// •	BCOSummary
-        /// •	BCOMultiAccountSummary
-        /// •	BCBSummary
-        /// •	FundTransfer
-        /// •	DeliveryAddressUpdate
+        /// •    OrderCard
+        /// •    CreateCardGroup
+        /// •    PINReminder
+        /// •    MoveCard
+        /// •    UpdateCardStatus
+        /// •    UpdateCardGroup
+        /// •    AutoRenew
+        /// •    BulkCardOrder
+        /// •    BulkCardBlock
+        /// •    BulkCardOrderMultiAccount
+        /// •    MobilePaymentRegistration
+        /// •    UpdateCompanyInfo
+        /// •    BCOSummary
+        /// •    BCOMultiAccountSummary
+        /// •    BCBSummary
+        /// •    FundTransfer
+        /// •    DeliveryAddressUpdate
         /// </summary>
         [JsonProperty("RequestedOperation", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> RequestedOperation { get; set; }
 
         /// <summary>
         /// Allowed Sorting Options:
-        /// 1.	SubmittedDateDescending
-        /// 2.	SubmittedDateAscending
-        /// 3.	AccountNumberAscending
-        /// 4.	AccountNumberDescending
+        /// 1.    SubmittedDateDescending
+        /// 2.    SubmittedDateAscending
+        /// 3.    AccountNumberAscending
+        /// 4.    AccountNumberDescending
         /// Optional: Default value is 1
         /// Example value to be passed: 1,3
         /// </summary>
@@ -410,14 +410,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"AuditRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -425,7 +423,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -433,7 +431,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -441,7 +439,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -449,7 +447,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -457,7 +455,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSortOrder()
         {
@@ -465,7 +463,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSearchText()
         {
@@ -473,7 +471,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCurrentPage()
         {
@@ -481,7 +479,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetFromDate()
         {
@@ -489,7 +487,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetToDate()
         {
@@ -589,51 +587,60 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is AuditRequest other &&                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.Accounts == null && other.Accounts == null) || (this.Accounts?.Equals(other.Accounts) == true)) &&
-                ((this.PageSize == null && other.PageSize == null) || (this.PageSize?.Equals(other.PageSize) == true)) &&
-                ((this.RequestedOperation == null && other.RequestedOperation == null) || (this.RequestedOperation?.Equals(other.RequestedOperation) == true)) &&
-                ((this.SortOrder == null && other.SortOrder == null) || (this.SortOrder?.Equals(other.SortOrder) == true)) &&
-                ((this.SearchText == null && other.SearchText == null) || (this.SearchText?.Equals(other.SearchText) == true)) &&
-                ((this.CurrentPage == null && other.CurrentPage == null) || (this.CurrentPage?.Equals(other.CurrentPage) == true)) &&
-                ((this.FromDate == null && other.FromDate == null) || (this.FromDate?.Equals(other.FromDate) == true)) &&
-                ((this.ToDate == null && other.ToDate == null) || (this.ToDate?.Equals(other.ToDate) == true));
+            return obj is AuditRequest other &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.Accounts == null && other.Accounts == null ||
+                 this.Accounts?.Equals(other.Accounts) == true) &&
+                (this.PageSize == null && other.PageSize == null ||
+                 this.PageSize?.Equals(other.PageSize) == true) &&
+                (this.RequestedOperation == null && other.RequestedOperation == null ||
+                 this.RequestedOperation?.Equals(other.RequestedOperation) == true) &&
+                (this.SortOrder == null && other.SortOrder == null ||
+                 this.SortOrder?.Equals(other.SortOrder) == true) &&
+                (this.SearchText == null && other.SearchText == null ||
+                 this.SearchText?.Equals(other.SearchText) == true) &&
+                (this.CurrentPage == null && other.CurrentPage == null ||
+                 this.CurrentPage?.Equals(other.CurrentPage) == true) &&
+                (this.FromDate == null && other.FromDate == null ||
+                 this.FromDate?.Equals(other.FromDate) == true) &&
+                (this.ToDate == null && other.ToDate == null ||
+                 this.ToDate?.Equals(other.ToDate) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.Accounts = {(this.Accounts == null ? "null" : this.Accounts.ToString())}");
             toStringOutput.Add($"this.PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
             toStringOutput.Add($"this.RequestedOperation = {(this.RequestedOperation == null ? "null" : $"[{string.Join(", ", this.RequestedOperation)} ]")}");
-            toStringOutput.Add($"this.SortOrder = {(this.SortOrder == null ? "null" : this.SortOrder)}");
-            toStringOutput.Add($"this.SearchText = {(this.SearchText == null ? "null" : this.SearchText)}");
+            toStringOutput.Add($"this.SortOrder = {this.SortOrder ?? "null"}");
+            toStringOutput.Add($"this.SearchText = {this.SearchText ?? "null"}");
             toStringOutput.Add($"this.CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
-            toStringOutput.Add($"this.FromDate = {(this.FromDate == null ? "null" : this.FromDate)}");
-            toStringOutput.Add($"this.ToDate = {(this.ToDate == null ? "null" : this.ToDate)}");
+            toStringOutput.Add($"this.FromDate = {this.FromDate ?? "null"}");
+            toStringOutput.Add($"this.ToDate = {this.ToDate ?? "null"}");
         }
     }
 }

@@ -1,21 +1,21 @@
 // <copyright file="PayerAccess.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PayerAccess.
     /// </summary>
@@ -72,6 +72,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string payerName = null)
         {
             this.IsDefault = isDefault;
+
             if (colcoId != null)
             {
                 this.ColcoId = colcoId;
@@ -111,7 +112,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerName = payerName;
             }
-
         }
 
         /// <summary>
@@ -274,14 +274,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PayerAccess : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColcoId()
         {
@@ -289,7 +287,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColcoCode()
         {
@@ -297,7 +295,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCountryCode()
         {
@@ -305,7 +303,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerGroupId()
         {
@@ -313,7 +311,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerGroup()
         {
@@ -321,7 +319,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -329,7 +327,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -337,7 +335,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerName()
         {
@@ -419,26 +417,30 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PayerAccess other &&                ((this.IsDefault == null && other.IsDefault == null) || (this.IsDefault?.Equals(other.IsDefault) == true)) &&
-                ((this.ColcoId == null && other.ColcoId == null) || (this.ColcoId?.Equals(other.ColcoId) == true)) &&
-                ((this.ColcoCode == null && other.ColcoCode == null) || (this.ColcoCode?.Equals(other.ColcoCode) == true)) &&
-                ((this.ColCoCountryCode == null && other.ColCoCountryCode == null) || (this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true)) &&
-                ((this.PayerGroupId == null && other.PayerGroupId == null) || (this.PayerGroupId?.Equals(other.PayerGroupId) == true)) &&
-                ((this.PayerGroup == null && other.PayerGroup == null) || (this.PayerGroup?.Equals(other.PayerGroup) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.PayerName == null && other.PayerName == null) || (this.PayerName?.Equals(other.PayerName) == true));
+            return obj is PayerAccess other &&
+                (this.IsDefault == null && other.IsDefault == null ||
+                 this.IsDefault?.Equals(other.IsDefault) == true) &&
+                (this.ColcoId == null && other.ColcoId == null ||
+                 this.ColcoId?.Equals(other.ColcoId) == true) &&
+                (this.ColcoCode == null && other.ColcoCode == null ||
+                 this.ColcoCode?.Equals(other.ColcoCode) == true) &&
+                (this.ColCoCountryCode == null && other.ColCoCountryCode == null ||
+                 this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true) &&
+                (this.PayerGroupId == null && other.PayerGroupId == null ||
+                 this.PayerGroupId?.Equals(other.PayerGroupId) == true) &&
+                (this.PayerGroup == null && other.PayerGroup == null ||
+                 this.PayerGroup?.Equals(other.PayerGroup) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.PayerName == null && other.PayerName == null ||
+                 this.PayerName?.Equals(other.PayerName) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -448,12 +450,12 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
             toStringOutput.Add($"this.ColcoId = {(this.ColcoId == null ? "null" : this.ColcoId.ToString())}");
             toStringOutput.Add($"this.ColcoCode = {(this.ColcoCode == null ? "null" : this.ColcoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {(this.ColCoCountryCode == null ? "null" : this.ColCoCountryCode)}");
+            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
             toStringOutput.Add($"this.PayerGroupId = {(this.PayerGroupId == null ? "null" : this.PayerGroupId.ToString())}");
-            toStringOutput.Add($"this.PayerGroup = {(this.PayerGroup == null ? "null" : this.PayerGroup)}");
+            toStringOutput.Add($"this.PayerGroup = {this.PayerGroup ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
-            toStringOutput.Add($"this.PayerName = {(this.PayerName == null ? "null" : this.PayerName)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"this.PayerName = {this.PayerName ?? "null"}");
         }
     }
 }

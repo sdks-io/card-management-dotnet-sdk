@@ -1,21 +1,21 @@
 // <copyright file="BundleRestrictionUpdate.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// BundleRestrictionUpdate.
     /// </summary>
@@ -24,17 +24,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         private bool? resetDayTimeRestriction;
         private bool? resetLocationRestriction;
         private bool? resetProductRestriction;
-        private Models.UsageRestrictionsCard usageRestrictions;
         private string dayTimeRestrictionProfileId;
-        private Models.ProductRestrictionCard productRestrictions;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
         {
             { "ResetDayTimeRestriction", false },
             { "ResetLocationRestriction", false },
             { "ResetProductRestriction", false },
-            { "UsageRestrictions", false },
             { "DayTimeRestrictionProfileId", false },
-            { "ProductRestrictions", false },
         };
 
         /// <summary>
@@ -60,13 +56,14 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? resetDayTimeRestriction = null,
             bool? resetLocationRestriction = null,
             bool? resetProductRestriction = null,
-            Models.UsageRestrictionsCard usageRestrictions = null,
+            object usageRestrictions = null,
             string dayTimeRestrictionProfileId = null,
             Models.CardDayTimeRestrictions dayTimeRestrictions = null,
-            Models.ProductRestrictionCard productRestrictions = null,
+            object productRestrictions = null,
             string locationRestrictionProfileId = null,
             Models.LocationRestriction locationRestrictions = null)
         {
+
             if (resetDayTimeRestriction != null)
             {
                 this.ResetDayTimeRestriction = resetDayTimeRestriction;
@@ -81,23 +78,14 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ResetProductRestriction = resetProductRestriction;
             }
-
-            if (usageRestrictions != null)
-            {
-                this.UsageRestrictions = usageRestrictions;
-            }
+            this.UsageRestrictions = usageRestrictions;
 
             if (dayTimeRestrictionProfileId != null)
             {
                 this.DayTimeRestrictionProfileId = dayTimeRestrictionProfileId;
             }
-
             this.DayTimeRestrictions = dayTimeRestrictions;
-            if (productRestrictions != null)
-            {
-                this.ProductRestrictions = productRestrictions;
-            }
-
+            this.ProductRestrictions = productRestrictions;
             this.LocationRestrictionProfileId = locationRestrictionProfileId;
             this.LocationRestrictions = locationRestrictions;
         }
@@ -168,20 +156,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Gets or sets UsageRestrictions.
         /// </summary>
-        [JsonProperty("UsageRestrictions")]
-        public Models.UsageRestrictionsCard UsageRestrictions
-        {
-            get
-            {
-                return this.usageRestrictions;
-            }
-
-            set
-            {
-                this.shouldSerialize["UsageRestrictions"] = true;
-                this.usageRestrictions = value;
-            }
-        }
+        [JsonProperty("UsageRestrictions", NullValueHandling = NullValueHandling.Ignore)]
+        public object UsageRestrictions { get; set; }
 
         /// <summary>
         /// Identifier of the day/time restriction profile to be updated for the bundle in Gateway.
@@ -211,20 +187,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Gets or sets ProductRestrictions.
         /// </summary>
-        [JsonProperty("ProductRestrictions")]
-        public Models.ProductRestrictionCard ProductRestrictions
-        {
-            get
-            {
-                return this.productRestrictions;
-            }
-
-            set
-            {
-                this.shouldSerialize["ProductRestrictions"] = true;
-                this.productRestrictions = value;
-            }
-        }
+        [JsonProperty("ProductRestrictions", NullValueHandling = NullValueHandling.Ignore)]
+        public object ProductRestrictions { get; set; }
 
         /// <summary>
         /// Identifier of the location restriction profile to be updated for the bundle in Gateway.
@@ -243,14 +207,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"BundleRestrictionUpdate : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetDayTimeRestriction()
         {
@@ -258,7 +220,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetLocationRestriction()
         {
@@ -266,7 +228,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetProductRestriction()
         {
@@ -274,27 +236,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetUsageRestrictions()
-        {
-            this.shouldSerialize["UsageRestrictions"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDayTimeRestrictionProfileId()
         {
             this.shouldSerialize["DayTimeRestrictionProfileId"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetProductRestrictions()
-        {
-            this.shouldSerialize["ProductRestrictions"] = false;
         }
 
         /// <summary>
@@ -328,52 +274,38 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Checks if the field should be serialized or not.
         /// </summary>
         /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeUsageRestrictions()
-        {
-            return this.shouldSerialize["UsageRestrictions"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
         public bool ShouldSerializeDayTimeRestrictionProfileId()
         {
             return this.shouldSerialize["DayTimeRestrictionProfileId"];
         }
 
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeProductRestrictions()
-        {
-            return this.shouldSerialize["ProductRestrictions"];
-        }
-
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is BundleRestrictionUpdate other &&                ((this.ResetDayTimeRestriction == null && other.ResetDayTimeRestriction == null) || (this.ResetDayTimeRestriction?.Equals(other.ResetDayTimeRestriction) == true)) &&
-                ((this.ResetLocationRestriction == null && other.ResetLocationRestriction == null) || (this.ResetLocationRestriction?.Equals(other.ResetLocationRestriction) == true)) &&
-                ((this.ResetProductRestriction == null && other.ResetProductRestriction == null) || (this.ResetProductRestriction?.Equals(other.ResetProductRestriction) == true)) &&
-                ((this.UsageRestrictions == null && other.UsageRestrictions == null) || (this.UsageRestrictions?.Equals(other.UsageRestrictions) == true)) &&
-                ((this.DayTimeRestrictionProfileId == null && other.DayTimeRestrictionProfileId == null) || (this.DayTimeRestrictionProfileId?.Equals(other.DayTimeRestrictionProfileId) == true)) &&
-                ((this.DayTimeRestrictions == null && other.DayTimeRestrictions == null) || (this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true)) &&
-                ((this.ProductRestrictions == null && other.ProductRestrictions == null) || (this.ProductRestrictions?.Equals(other.ProductRestrictions) == true)) &&
-                ((this.LocationRestrictionProfileId == null && other.LocationRestrictionProfileId == null) || (this.LocationRestrictionProfileId?.Equals(other.LocationRestrictionProfileId) == true)) &&
-                ((this.LocationRestrictions == null && other.LocationRestrictions == null) || (this.LocationRestrictions?.Equals(other.LocationRestrictions) == true));
+            return obj is BundleRestrictionUpdate other &&
+                (this.ResetDayTimeRestriction == null && other.ResetDayTimeRestriction == null ||
+                 this.ResetDayTimeRestriction?.Equals(other.ResetDayTimeRestriction) == true) &&
+                (this.ResetLocationRestriction == null && other.ResetLocationRestriction == null ||
+                 this.ResetLocationRestriction?.Equals(other.ResetLocationRestriction) == true) &&
+                (this.ResetProductRestriction == null && other.ResetProductRestriction == null ||
+                 this.ResetProductRestriction?.Equals(other.ResetProductRestriction) == true) &&
+                (this.UsageRestrictions == null && other.UsageRestrictions == null ||
+                 this.UsageRestrictions?.Equals(other.UsageRestrictions) == true) &&
+                (this.DayTimeRestrictionProfileId == null && other.DayTimeRestrictionProfileId == null ||
+                 this.DayTimeRestrictionProfileId?.Equals(other.DayTimeRestrictionProfileId) == true) &&
+                (this.DayTimeRestrictions == null && other.DayTimeRestrictions == null ||
+                 this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true) &&
+                (this.ProductRestrictions == null && other.ProductRestrictions == null ||
+                 this.ProductRestrictions?.Equals(other.ProductRestrictions) == true) &&
+                (this.LocationRestrictionProfileId == null && other.LocationRestrictionProfileId == null ||
+                 this.LocationRestrictionProfileId?.Equals(other.LocationRestrictionProfileId) == true) &&
+                (this.LocationRestrictions == null && other.LocationRestrictions == null ||
+                 this.LocationRestrictions?.Equals(other.LocationRestrictions) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -383,11 +315,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ResetDayTimeRestriction = {(this.ResetDayTimeRestriction == null ? "null" : this.ResetDayTimeRestriction.ToString())}");
             toStringOutput.Add($"this.ResetLocationRestriction = {(this.ResetLocationRestriction == null ? "null" : this.ResetLocationRestriction.ToString())}");
             toStringOutput.Add($"this.ResetProductRestriction = {(this.ResetProductRestriction == null ? "null" : this.ResetProductRestriction.ToString())}");
-            toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {(this.DayTimeRestrictionProfileId == null ? "null" : this.DayTimeRestrictionProfileId)}");
+            toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
+            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {this.DayTimeRestrictionProfileId ?? "null"}");
             toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
-            toStringOutput.Add($"this.ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictionProfileId = {(this.LocationRestrictionProfileId == null ? "null" : this.LocationRestrictionProfileId)}");
+            toStringOutput.Add($"ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
+            toStringOutput.Add($"this.LocationRestrictionProfileId = {this.LocationRestrictionProfileId ?? "null"}");
             toStringOutput.Add($"this.LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
         }
     }

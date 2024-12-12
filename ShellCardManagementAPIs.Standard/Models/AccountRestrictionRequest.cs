@@ -1,21 +1,21 @@
 // <copyright file="AccountRestrictionRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// AccountRestrictionRequest.
     /// </summary>
@@ -28,7 +28,6 @@ namespace ShellCardManagementAPIs.Standard.Models
         private int? accountId;
         private string accountNumber;
         private bool? resetUsageRestrictions;
-        private Models.UsageRestrictionsCard usageRestrictions;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
         {
             { "ColCoId", false },
@@ -38,7 +37,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "AccountId", false },
             { "AccountNumber", false },
             { "ResetUsageRestrictions", false },
-            { "UsageRestrictions", false },
         };
 
         /// <summary>
@@ -67,8 +65,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? accountId = null,
             string accountNumber = null,
             bool? resetUsageRestrictions = null,
-            Models.UsageRestrictionsCard usageRestrictions = null)
+            object usageRestrictions = null)
         {
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
@@ -103,12 +102,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ResetUsageRestrictions = resetUsageRestrictions;
             }
-
-            if (usageRestrictions != null)
-            {
-                this.UsageRestrictions = usageRestrictions;
-            }
-
+            this.UsageRestrictions = usageRestrictions;
         }
 
         /// <summary>
@@ -259,33 +253,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Gets or sets UsageRestrictions.
         /// </summary>
-        [JsonProperty("UsageRestrictions")]
-        public Models.UsageRestrictionsCard UsageRestrictions
-        {
-            get
-            {
-                return this.usageRestrictions;
-            }
-
-            set
-            {
-                this.shouldSerialize["UsageRestrictions"] = true;
-                this.usageRestrictions = value;
-            }
-        }
+        [JsonProperty("UsageRestrictions", NullValueHandling = NullValueHandling.Ignore)]
+        public object UsageRestrictions { get; set; }
 
         /// <inheritdoc/>
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"AccountRestrictionRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -293,7 +273,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -301,7 +281,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -309,7 +289,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -317,7 +297,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -325,7 +305,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -333,19 +313,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetUsageRestrictions()
         {
             this.shouldSerialize["ResetUsageRestrictions"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetUsageRestrictions()
-        {
-            this.shouldSerialize["UsageRestrictions"] = false;
         }
 
         /// <summary>
@@ -411,37 +383,31 @@ namespace ShellCardManagementAPIs.Standard.Models
             return this.shouldSerialize["ResetUsageRestrictions"];
         }
 
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeUsageRestrictions()
-        {
-            return this.shouldSerialize["UsageRestrictions"];
-        }
-
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is AccountRestrictionRequest other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.ResetUsageRestrictions == null && other.ResetUsageRestrictions == null) || (this.ResetUsageRestrictions?.Equals(other.ResetUsageRestrictions) == true)) &&
-                ((this.UsageRestrictions == null && other.UsageRestrictions == null) || (this.UsageRestrictions?.Equals(other.UsageRestrictions) == true));
+            return obj is AccountRestrictionRequest other &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.ResetUsageRestrictions == null && other.ResetUsageRestrictions == null ||
+                 this.ResetUsageRestrictions?.Equals(other.ResetUsageRestrictions) == true) &&
+                (this.UsageRestrictions == null && other.UsageRestrictions == null ||
+                 this.UsageRestrictions?.Equals(other.UsageRestrictions) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -451,11 +417,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.ResetUsageRestrictions = {(this.ResetUsageRestrictions == null ? "null" : this.ResetUsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
+            toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
         }
     }
 }

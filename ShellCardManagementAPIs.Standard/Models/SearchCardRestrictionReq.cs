@@ -1,21 +1,21 @@
 // <copyright file="SearchCardRestrictionReq.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// SearchCardRestrictionReq.
     /// </summary>
@@ -71,6 +71,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? includeBundleDetails = null,
             bool? includeInheritedLimits = null)
         {
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
@@ -85,15 +86,15 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerId = payerId;
             }
-
             this.PayerNumber = payerNumber;
             this.Accounts = accounts;
+
             if (bundleId != null)
             {
                 this.BundleId = bundleId;
             }
-
             this.Cards = cards;
+
             if (includeLocationRestrictions != null)
             {
                 this.IncludeLocationRestrictions = includeLocationRestrictions;
@@ -108,7 +109,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.IncludeInheritedLimits = includeInheritedLimits;
             }
-
         }
 
         /// <summary>
@@ -279,14 +279,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"SearchCardRestrictionReq : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -294,7 +292,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -302,7 +300,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -310,7 +308,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBundleId()
         {
@@ -318,7 +316,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIncludeLocationRestrictions()
         {
@@ -326,7 +324,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIncludeBundleDetails()
         {
@@ -334,7 +332,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIncludeInheritedLimits()
         {
@@ -407,27 +405,32 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is SearchCardRestrictionReq other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.Accounts == null && other.Accounts == null) || (this.Accounts?.Equals(other.Accounts) == true)) &&
-                ((this.BundleId == null && other.BundleId == null) || (this.BundleId?.Equals(other.BundleId) == true)) &&
-                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.IncludeLocationRestrictions == null && other.IncludeLocationRestrictions == null) || (this.IncludeLocationRestrictions?.Equals(other.IncludeLocationRestrictions) == true)) &&
-                ((this.IncludeBundleDetails == null && other.IncludeBundleDetails == null) || (this.IncludeBundleDetails?.Equals(other.IncludeBundleDetails) == true)) &&
-                ((this.IncludeInheritedLimits == null && other.IncludeInheritedLimits == null) || (this.IncludeInheritedLimits?.Equals(other.IncludeInheritedLimits) == true));
+            return obj is SearchCardRestrictionReq other &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.Accounts == null && other.Accounts == null ||
+                 this.Accounts?.Equals(other.Accounts) == true) &&
+                (this.BundleId == null && other.BundleId == null ||
+                 this.BundleId?.Equals(other.BundleId) == true) &&
+                (this.Cards == null && other.Cards == null ||
+                 this.Cards?.Equals(other.Cards) == true) &&
+                (this.IncludeLocationRestrictions == null && other.IncludeLocationRestrictions == null ||
+                 this.IncludeLocationRestrictions?.Equals(other.IncludeLocationRestrictions) == true) &&
+                (this.IncludeBundleDetails == null && other.IncludeBundleDetails == null ||
+                 this.IncludeBundleDetails?.Equals(other.IncludeBundleDetails) == true) &&
+                (this.IncludeInheritedLimits == null && other.IncludeInheritedLimits == null ||
+                 this.IncludeInheritedLimits?.Equals(other.IncludeInheritedLimits) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -437,9 +440,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.Accounts = {(this.Accounts == null ? "null" : this.Accounts.ToString())}");
-            toStringOutput.Add($"this.BundleId = {(this.BundleId == null ? "null" : this.BundleId)}");
+            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : this.Cards.ToString())}");
             toStringOutput.Add($"this.IncludeLocationRestrictions = {(this.IncludeLocationRestrictions == null ? "null" : this.IncludeLocationRestrictions.ToString())}");
             toStringOutput.Add($"this.IncludeBundleDetails = {(this.IncludeBundleDetails == null ? "null" : this.IncludeBundleDetails.ToString())}");

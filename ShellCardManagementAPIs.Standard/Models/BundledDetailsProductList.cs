@@ -1,21 +1,21 @@
 // <copyright file="BundledDetailsProductList.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// BundledDetailsProductList.
     /// </summary>
@@ -110,33 +110,33 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"BundledDetailsProductList : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is BundledDetailsProductList other &&                ((this.PurchaseCategoryId == null && other.PurchaseCategoryId == null) || (this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true)) &&
-                ((this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null) || (this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true)) &&
-                ((this.Products == null && other.Products == null) || (this.Products?.Equals(other.Products) == true)) &&
-                ((this.ProductGroups == null && other.ProductGroups == null) || (this.ProductGroups?.Equals(other.ProductGroups) == true)) &&
-                ((this.FuelSetId == null && other.FuelSetId == null) || (this.FuelSetId?.Equals(other.FuelSetId) == true)) &&
-                ((this.FuelSetName == null && other.FuelSetName == null) || (this.FuelSetName?.Equals(other.FuelSetName) == true)) &&
-                ((this.NonFuelSets == null && other.NonFuelSets == null) || (this.NonFuelSets?.Equals(other.NonFuelSets) == true));
+            return obj is BundledDetailsProductList other &&
+                (this.PurchaseCategoryId == null && other.PurchaseCategoryId == null ||
+                 this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true) &&
+                (this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null ||
+                 this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true) &&
+                (this.Products == null && other.Products == null ||
+                 this.Products?.Equals(other.Products) == true) &&
+                (this.ProductGroups == null && other.ProductGroups == null ||
+                 this.ProductGroups?.Equals(other.ProductGroups) == true) &&
+                (this.FuelSetId == null && other.FuelSetId == null ||
+                 this.FuelSetId?.Equals(other.FuelSetId) == true) &&
+                (this.FuelSetName == null && other.FuelSetName == null ||
+                 this.FuelSetName?.Equals(other.FuelSetName) == true) &&
+                (this.NonFuelSets == null && other.NonFuelSets == null ||
+                 this.NonFuelSets?.Equals(other.NonFuelSets) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -144,12 +144,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {(this.PurchaseCategoryCode == null ? "null" : this.PurchaseCategoryCode)}");
+            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
             toStringOutput.Add($"this.Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
             toStringOutput.Add($"this.ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
-            toStringOutput.Add($"this.FuelSetId = {(this.FuelSetId == null ? "null" : this.FuelSetId)}");
-            toStringOutput.Add($"this.FuelSetName = {(this.FuelSetName == null ? "null" : this.FuelSetName)}");
-            toStringOutput.Add($"this.NonFuelSets = {(this.NonFuelSets == null ? "null" : this.NonFuelSets)}");
+            toStringOutput.Add($"this.FuelSetId = {this.FuelSetId ?? "null"}");
+            toStringOutput.Add($"this.FuelSetName = {this.FuelSetName ?? "null"}");
+            toStringOutput.Add($"this.NonFuelSets = {this.NonFuelSets ?? "null"}");
         }
     }
 }

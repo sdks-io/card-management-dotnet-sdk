@@ -1,21 +1,21 @@
 // <copyright file="AuditResponseAuditsItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// AuditResponseAuditsItems.
     /// </summary>
@@ -159,6 +159,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? subRequestReference = null,
             string userDisplayName = null)
         {
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -238,8 +239,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ColCoId = colCoId;
             }
-
             this.ErrorCode = errorCode;
+
             if (errorString != null)
             {
                 this.ErrorString = errorString;
@@ -309,7 +310,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.UserDisplayName = userDisplayName;
             }
-
         }
 
         /// <summary>
@@ -740,23 +740,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// User requested operation.
         /// Possible values:
-        /// •	OrderCard
-        /// •	CreateCardGroup
-        /// •	PINReminder
-        /// •	MoveCard
-        /// •	UpdateCardStatus
-        /// •	UpdateCardGroup
-        /// •	AutoRenew
-        /// •	BulkCardOrder
-        /// •	BulkCardBlock
-        /// •	BulkCardOrderMultiAccount
-        /// •	MobilePaymentRegistration
-        /// •	UpdateCompanyInfo
-        /// •	BCOSummary
-        /// •	BCOMultiAccountSummary
-        /// •	BCBSummary
-        /// •	FundTransfer
-        /// •	DeliveryAddressUpdate
+        /// •    OrderCard
+        /// •    CreateCardGroup
+        /// •    PINReminder
+        /// •    MoveCard
+        /// •    UpdateCardStatus
+        /// •    UpdateCardGroup
+        /// •    AutoRenew
+        /// •    BulkCardOrder
+        /// •    BulkCardBlock
+        /// •    BulkCardOrderMultiAccount
+        /// •    MobilePaymentRegistration
+        /// •    UpdateCompanyInfo
+        /// •    BCOSummary
+        /// •    BCOMultiAccountSummary
+        /// •    BCBSummary
+        /// •    FundTransfer
+        /// •    DeliveryAddressUpdate
         /// </summary>
         [JsonProperty("RequestedOperation")]
         public string RequestedOperation
@@ -794,23 +794,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Request type initiated under the requested operation.
         /// Possible values:
-        /// •	OrderCard
-        /// •	CreateCardGroup
-        /// •	PINReminder
-        /// •	MoveCard
-        /// •	UpdateCardStatus
-        /// •	UpdateCardGroup
-        /// •	AutoRenew
-        /// •	BulkCardOrder
-        /// •	BulkCardBlock
-        /// •	BulkCardOrderMultiAccount
-        /// •	MobilePaymentRegistration
-        /// •	UpdateCompanyInfo
-        /// •	BCOSummary
-        /// •	BCOMultiAccountSummary
-        /// •	BCBSummary
-        /// •	FundTransfer
-        /// •	DeliveryAddressUpdate
+        /// •    OrderCard
+        /// •    CreateCardGroup
+        /// •    PINReminder
+        /// •    MoveCard
+        /// •    UpdateCardStatus
+        /// •    UpdateCardGroup
+        /// •    AutoRenew
+        /// •    BulkCardOrder
+        /// •    BulkCardBlock
+        /// •    BulkCardOrderMultiAccount
+        /// •    MobilePaymentRegistration
+        /// •    UpdateCompanyInfo
+        /// •    BCOSummary
+        /// •    BCOMultiAccountSummary
+        /// •    BCBSummary
+        /// •    FundTransfer
+        /// •    DeliveryAddressUpdate
         /// </summary>
         [JsonProperty("RequestType")]
         public string RequestType
@@ -830,13 +830,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Status of the request.
         /// Possible values:
-        /// •	Success
-        /// •	Failed
-        /// •	InProgress
-        /// •	Submitted
-        /// •	Rejected
-        /// •	PendingApproval
-        /// •	MailedToCSC
+        /// •    Success
+        /// •    Failed
+        /// •    InProgress
+        /// •    Submitted
+        /// •    Rejected
+        /// •    PendingApproval
+        /// •    MailedToCSC
         /// </summary>
         [JsonProperty("Status")]
         public string Status
@@ -913,14 +913,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"AuditResponseAuditsItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -928,7 +926,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -936,7 +934,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation1()
         {
@@ -944,7 +942,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation2()
         {
@@ -952,7 +950,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation3()
         {
@@ -960,7 +958,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation4()
         {
@@ -968,7 +966,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation5()
         {
@@ -976,7 +974,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation6()
         {
@@ -984,7 +982,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation7()
         {
@@ -992,7 +990,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation8()
         {
@@ -1000,7 +998,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAdditionalInformation9()
         {
@@ -1008,7 +1006,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupId()
         {
@@ -1016,7 +1014,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupName()
         {
@@ -1024,7 +1022,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardId()
         {
@@ -1032,7 +1030,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -1040,7 +1038,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -1048,7 +1046,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetErrorString()
         {
@@ -1056,7 +1054,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetGlobalRequestID()
         {
@@ -1064,7 +1062,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPAN()
         {
@@ -1072,7 +1070,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -1080,7 +1078,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -1088,7 +1086,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetProcessedOn()
         {
@@ -1096,7 +1094,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestedBy()
         {
@@ -1104,7 +1102,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestedOperation()
         {
@@ -1112,7 +1110,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestReference()
         {
@@ -1120,7 +1118,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestType()
         {
@@ -1128,7 +1126,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetStatus()
         {
@@ -1136,7 +1134,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSubmittedOn()
         {
@@ -1144,7 +1142,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSubRequestReference()
         {
@@ -1152,7 +1150,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetUserDisplayName()
         {
@@ -1432,48 +1430,74 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is AuditResponseAuditsItems other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.AdditionalInformation1 == null && other.AdditionalInformation1 == null) || (this.AdditionalInformation1?.Equals(other.AdditionalInformation1) == true)) &&
-                ((this.AdditionalInformation2 == null && other.AdditionalInformation2 == null) || (this.AdditionalInformation2?.Equals(other.AdditionalInformation2) == true)) &&
-                ((this.AdditionalInformation3 == null && other.AdditionalInformation3 == null) || (this.AdditionalInformation3?.Equals(other.AdditionalInformation3) == true)) &&
-                ((this.AdditionalInformation4 == null && other.AdditionalInformation4 == null) || (this.AdditionalInformation4?.Equals(other.AdditionalInformation4) == true)) &&
-                ((this.AdditionalInformation5 == null && other.AdditionalInformation5 == null) || (this.AdditionalInformation5?.Equals(other.AdditionalInformation5) == true)) &&
-                ((this.AdditionalInformation6 == null && other.AdditionalInformation6 == null) || (this.AdditionalInformation6?.Equals(other.AdditionalInformation6) == true)) &&
-                ((this.AdditionalInformation7 == null && other.AdditionalInformation7 == null) || (this.AdditionalInformation7?.Equals(other.AdditionalInformation7) == true)) &&
-                ((this.AdditionalInformation8 == null && other.AdditionalInformation8 == null) || (this.AdditionalInformation8?.Equals(other.AdditionalInformation8) == true)) &&
-                ((this.AdditionalInformation9 == null && other.AdditionalInformation9 == null) || (this.AdditionalInformation9?.Equals(other.AdditionalInformation9) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardGroupName == null && other.CardGroupName == null) || (this.CardGroupName?.Equals(other.CardGroupName) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ErrorCode == null && other.ErrorCode == null) || (this.ErrorCode?.Equals(other.ErrorCode) == true)) &&
-                ((this.ErrorString == null && other.ErrorString == null) || (this.ErrorString?.Equals(other.ErrorString) == true)) &&
-                ((this.GlobalRequestID == null && other.GlobalRequestID == null) || (this.GlobalRequestID?.Equals(other.GlobalRequestID) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.ProcessedOn == null && other.ProcessedOn == null) || (this.ProcessedOn?.Equals(other.ProcessedOn) == true)) &&
-                ((this.RequestedBy == null && other.RequestedBy == null) || (this.RequestedBy?.Equals(other.RequestedBy) == true)) &&
-                ((this.RequestedOperation == null && other.RequestedOperation == null) || (this.RequestedOperation?.Equals(other.RequestedOperation) == true)) &&
-                ((this.RequestReference == null && other.RequestReference == null) || (this.RequestReference?.Equals(other.RequestReference) == true)) &&
-                ((this.RequestType == null && other.RequestType == null) || (this.RequestType?.Equals(other.RequestType) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.SubmittedOn == null && other.SubmittedOn == null) || (this.SubmittedOn?.Equals(other.SubmittedOn) == true)) &&
-                ((this.SubRequestReference == null && other.SubRequestReference == null) || (this.SubRequestReference?.Equals(other.SubRequestReference) == true)) &&
-                ((this.UserDisplayName == null && other.UserDisplayName == null) || (this.UserDisplayName?.Equals(other.UserDisplayName) == true));
+            return obj is AuditResponseAuditsItems other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.AdditionalInformation1 == null && other.AdditionalInformation1 == null ||
+                 this.AdditionalInformation1?.Equals(other.AdditionalInformation1) == true) &&
+                (this.AdditionalInformation2 == null && other.AdditionalInformation2 == null ||
+                 this.AdditionalInformation2?.Equals(other.AdditionalInformation2) == true) &&
+                (this.AdditionalInformation3 == null && other.AdditionalInformation3 == null ||
+                 this.AdditionalInformation3?.Equals(other.AdditionalInformation3) == true) &&
+                (this.AdditionalInformation4 == null && other.AdditionalInformation4 == null ||
+                 this.AdditionalInformation4?.Equals(other.AdditionalInformation4) == true) &&
+                (this.AdditionalInformation5 == null && other.AdditionalInformation5 == null ||
+                 this.AdditionalInformation5?.Equals(other.AdditionalInformation5) == true) &&
+                (this.AdditionalInformation6 == null && other.AdditionalInformation6 == null ||
+                 this.AdditionalInformation6?.Equals(other.AdditionalInformation6) == true) &&
+                (this.AdditionalInformation7 == null && other.AdditionalInformation7 == null ||
+                 this.AdditionalInformation7?.Equals(other.AdditionalInformation7) == true) &&
+                (this.AdditionalInformation8 == null && other.AdditionalInformation8 == null ||
+                 this.AdditionalInformation8?.Equals(other.AdditionalInformation8) == true) &&
+                (this.AdditionalInformation9 == null && other.AdditionalInformation9 == null ||
+                 this.AdditionalInformation9?.Equals(other.AdditionalInformation9) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardGroupName == null && other.CardGroupName == null ||
+                 this.CardGroupName?.Equals(other.CardGroupName) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ErrorCode == null && other.ErrorCode == null ||
+                 this.ErrorCode?.Equals(other.ErrorCode) == true) &&
+                (this.ErrorString == null && other.ErrorString == null ||
+                 this.ErrorString?.Equals(other.ErrorString) == true) &&
+                (this.GlobalRequestID == null && other.GlobalRequestID == null ||
+                 this.GlobalRequestID?.Equals(other.GlobalRequestID) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.ProcessedOn == null && other.ProcessedOn == null ||
+                 this.ProcessedOn?.Equals(other.ProcessedOn) == true) &&
+                (this.RequestedBy == null && other.RequestedBy == null ||
+                 this.RequestedBy?.Equals(other.RequestedBy) == true) &&
+                (this.RequestedOperation == null && other.RequestedOperation == null ||
+                 this.RequestedOperation?.Equals(other.RequestedOperation) == true) &&
+                (this.RequestReference == null && other.RequestReference == null ||
+                 this.RequestReference?.Equals(other.RequestReference) == true) &&
+                (this.RequestType == null && other.RequestType == null ||
+                 this.RequestType?.Equals(other.RequestType) == true) &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.SubmittedOn == null && other.SubmittedOn == null ||
+                 this.SubmittedOn?.Equals(other.SubmittedOn) == true) &&
+                (this.SubRequestReference == null && other.SubRequestReference == null ||
+                 this.SubRequestReference?.Equals(other.SubRequestReference) == true) &&
+                (this.UserDisplayName == null && other.UserDisplayName == null ||
+                 this.UserDisplayName?.Equals(other.UserDisplayName) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -1481,36 +1505,36 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.AdditionalInformation1 = {(this.AdditionalInformation1 == null ? "null" : this.AdditionalInformation1)}");
-            toStringOutput.Add($"this.AdditionalInformation2 = {(this.AdditionalInformation2 == null ? "null" : this.AdditionalInformation2)}");
-            toStringOutput.Add($"this.AdditionalInformation3 = {(this.AdditionalInformation3 == null ? "null" : this.AdditionalInformation3)}");
-            toStringOutput.Add($"this.AdditionalInformation4 = {(this.AdditionalInformation4 == null ? "null" : this.AdditionalInformation4)}");
-            toStringOutput.Add($"this.AdditionalInformation5 = {(this.AdditionalInformation5 == null ? "null" : this.AdditionalInformation5)}");
-            toStringOutput.Add($"this.AdditionalInformation6 = {(this.AdditionalInformation6 == null ? "null" : this.AdditionalInformation6)}");
-            toStringOutput.Add($"this.AdditionalInformation7 = {(this.AdditionalInformation7 == null ? "null" : this.AdditionalInformation7)}");
-            toStringOutput.Add($"this.AdditionalInformation8 = {(this.AdditionalInformation8 == null ? "null" : this.AdditionalInformation8)}");
-            toStringOutput.Add($"this.AdditionalInformation9 = {(this.AdditionalInformation9 == null ? "null" : this.AdditionalInformation9)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation1 = {this.AdditionalInformation1 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation2 = {this.AdditionalInformation2 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation3 = {this.AdditionalInformation3 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation4 = {this.AdditionalInformation4 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation5 = {this.AdditionalInformation5 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation6 = {this.AdditionalInformation6 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation7 = {this.AdditionalInformation7 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation8 = {this.AdditionalInformation8 ?? "null"}");
+            toStringOutput.Add($"this.AdditionalInformation9 = {this.AdditionalInformation9 ?? "null"}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {(this.CardGroupName == null ? "null" : this.CardGroupName)}");
+            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ErrorCode = {(this.ErrorCode == null ? "null" : this.ErrorCode)}");
-            toStringOutput.Add($"this.ErrorString = {(this.ErrorString == null ? "null" : this.ErrorString)}");
-            toStringOutput.Add($"this.GlobalRequestID = {(this.GlobalRequestID == null ? "null" : this.GlobalRequestID)}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
+            toStringOutput.Add($"this.ErrorCode = {this.ErrorCode ?? "null"}");
+            toStringOutput.Add($"this.ErrorString = {this.ErrorString ?? "null"}");
+            toStringOutput.Add($"this.GlobalRequestID = {this.GlobalRequestID ?? "null"}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
-            toStringOutput.Add($"this.ProcessedOn = {(this.ProcessedOn == null ? "null" : this.ProcessedOn)}");
-            toStringOutput.Add($"this.RequestedBy = {(this.RequestedBy == null ? "null" : this.RequestedBy)}");
-            toStringOutput.Add($"this.RequestedOperation = {(this.RequestedOperation == null ? "null" : this.RequestedOperation)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"this.ProcessedOn = {this.ProcessedOn ?? "null"}");
+            toStringOutput.Add($"this.RequestedBy = {this.RequestedBy ?? "null"}");
+            toStringOutput.Add($"this.RequestedOperation = {this.RequestedOperation ?? "null"}");
             toStringOutput.Add($"this.RequestReference = {(this.RequestReference == null ? "null" : this.RequestReference.ToString())}");
-            toStringOutput.Add($"this.RequestType = {(this.RequestType == null ? "null" : this.RequestType)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
-            toStringOutput.Add($"this.SubmittedOn = {(this.SubmittedOn == null ? "null" : this.SubmittedOn)}");
+            toStringOutput.Add($"this.RequestType = {this.RequestType ?? "null"}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"this.SubmittedOn = {this.SubmittedOn ?? "null"}");
             toStringOutput.Add($"this.SubRequestReference = {(this.SubRequestReference == null ? "null" : this.SubRequestReference.ToString())}");
-            toStringOutput.Add($"this.UserDisplayName = {(this.UserDisplayName == null ? "null" : this.UserDisplayName)}");
+            toStringOutput.Add($"this.UserDisplayName = {this.UserDisplayName ?? "null"}");
         }
     }
 }

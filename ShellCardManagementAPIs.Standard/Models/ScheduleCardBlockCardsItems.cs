@@ -1,21 +1,21 @@
 // <copyright file="ScheduleCardBlockCardsItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// ScheduleCardBlockCardsItems.
     /// </summary>
@@ -46,6 +46,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="payerNumber">PayerNumber.</param>
         /// <param name="cardId">CardId.</param>
         /// <param name="pAN">PAN.</param>
+        /// <param name="pANID">PANID.</param>
         /// <param name="cardExpiryDate">CardExpiryDate.</param>
         /// <param name="fromDate">FromDate.</param>
         /// <param name="toDate">ToDate.</param>
@@ -61,6 +62,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string payerNumber = null,
             int? cardId = null,
             string pAN = null,
+            string pANID = null,
             string cardExpiryDate = null,
             string fromDate = null,
             string toDate = null,
@@ -75,15 +77,16 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.PayerNumber = payerNumber;
             this.CardId = cardId;
             this.PAN = pAN;
+            this.PANID = pANID;
             this.CardExpiryDate = cardExpiryDate;
             this.Action = action;
             this.FromDate = fromDate;
             this.ToDate = toDate;
+
             if (caller != null)
             {
                 this.Caller = caller;
             }
-
             this.NotifyCaller = notifyCaller;
         }
 
@@ -151,6 +154,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         public string PAN { get; set; }
 
         /// <summary>
+        /// Card PAN ID.
+        /// Optional if CardId is given, else mandatory.
+        /// Note: PANID is ignored if CardId is given.
+        /// </summary>
+        [JsonProperty("PANID", NullValueHandling = NullValueHandling.Ignore)]
+        public string PANID { get; set; }
+
+        /// <summary>
         /// Expiry date of the card.
         /// Optional if CardId is passed, else Mandatory.
         /// Format: yyyyMMdd
@@ -163,10 +174,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Action
         /// Mandatory
         /// Possible values are:
-        /// •	AddOrUpdate – adds a new request or updates any existing requests, with overlapping dates, for the card
-        /// •	AddAndOverwriteAll - all the existing requests of the given card will be removed and a new request with the specified FromDate and ToDate will be added.
-        /// •	Delete – deletes any existing request with the same start date and end date for the card
-        /// •	DeleteAll – deletes all saved future dated requests (all block and unblock requests) of the card.
+        /// •    AddOrUpdate – adds a new request or updates any existing requests, with overlapping dates, for the card
+        /// •    AddAndOverwriteAll - all the existing requests of the given card will be removed and a new request with the specified FromDate and ToDate will be added.
+        /// •    Delete – deletes any existing request with the same start date and end date for the card
+        /// •    DeleteAll – deletes all saved future dated requests (all block and unblock requests) of the card.
         /// </summary>
         [JsonProperty("Action")]
         public string Action { get; set; }
@@ -175,17 +186,17 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <![CDATA[
         /// Effective start date of Block / Unblock
         /// Allowed Formats: –
-        /// •	yyyyMMdd
-        /// •	yyyyMMdd HH:mm
+        /// •    yyyyMMdd
+        /// •    yyyyMMdd HH:mm
         /// Eg: 20230512 14:30, 20230512
         /// Optional
         /// Default value:
-        /// •	 If the card status is “Active” then Current date & Time
-        /// •	If the card status is “TemporaryBlock (Customer)” then null.
+        /// •     If the card status is “Active” then Current date & Time
+        /// •    If the card status is “TemporaryBlock (Customer)” then null.
         /// Note:
-        /// •	Time is considered only when “IsTimeSupported” is true else it will be treated as a date.
-        /// •	Time will be passed in UTC time-zone.
-        /// •	If the Card Status is “Temporary Block (Customer)” and FromDate is provided – The fromdate & time is considered as starting period of unblock request.
+        /// •    Time is considered only when “IsTimeSupported” is true else it will be treated as a date.
+        /// •    Time will be passed in UTC time-zone.
+        /// •    If the Card Status is “Temporary Block (Customer)” and FromDate is provided – The fromdate & time is considered as starting period of unblock request.
         /// ]]>
         /// </summary>
         [JsonProperty("FromDate", NullValueHandling = NullValueHandling.Ignore)]
@@ -195,16 +206,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <![CDATA[
         /// Effective end date of Block / Unblock
         /// Allowed Formats: –
-        /// •	yyyyMMdd
-        /// •	yyyyMMdd HH:mm
+        /// •    yyyyMMdd
+        /// •    yyyyMMdd HH:mm
         /// Eg: 20230512 14:30, 20230512
         /// Optional – When the Card status is Active else mandatory.
         /// When not provided, the card will remain blocked until manually unblocked.
         /// Note:
-        /// •	Time is considered only when the “IsTimeSupported” flag is set as true, else it will be considered as only date.
-        /// •	Date & Time passed in the request will be considered in UTC time-zone.
-        /// •	If the card is currently in ‘Temporary Block (Customer)’ status, then this date is treated as the unblock date and is mandatory.
-        /// •	If the Card Status is “Temporary Block (Customer)” and FromDate & ToDate is provided - The request will be considered as a scheduled specific period unblock request.
+        /// •    Time is considered only when the “IsTimeSupported” flag is set as true, else it will be considered as only date.
+        /// •    Date & Time passed in the request will be considered in UTC time-zone.
+        /// •    If the card is currently in ‘Temporary Block (Customer)’ status, then this date is treated as the unblock date and is mandatory.
+        /// •    If the Card Status is “Temporary Block (Customer)” and FromDate & ToDate is provided - The request will be considered as a scheduled specific period unblock request.
         /// ]]>
         /// </summary>
         [JsonProperty("ToDate", NullValueHandling = NullValueHandling.Ignore)]
@@ -243,14 +254,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"ScheduleCardBlockCardsItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCaller()
         {
@@ -269,31 +278,42 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is ScheduleCardBlockCardsItems other &&                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.CardExpiryDate == null && other.CardExpiryDate == null) || (this.CardExpiryDate?.Equals(other.CardExpiryDate) == true)) &&
-                ((this.Action == null && other.Action == null) || (this.Action?.Equals(other.Action) == true)) &&
-                ((this.FromDate == null && other.FromDate == null) || (this.FromDate?.Equals(other.FromDate) == true)) &&
-                ((this.ToDate == null && other.ToDate == null) || (this.ToDate?.Equals(other.ToDate) == true)) &&
-                ((this.Caller == null && other.Caller == null) || (this.Caller?.Equals(other.Caller) == true)) &&
-                ((this.NotifyCaller == null && other.NotifyCaller == null) || (this.NotifyCaller?.Equals(other.NotifyCaller) == true));
+            return obj is ScheduleCardBlockCardsItems other &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.PANID == null && other.PANID == null ||
+                 this.PANID?.Equals(other.PANID) == true) &&
+                (this.CardExpiryDate == null && other.CardExpiryDate == null ||
+                 this.CardExpiryDate?.Equals(other.CardExpiryDate) == true) &&
+                (this.Action == null && other.Action == null ||
+                 this.Action?.Equals(other.Action) == true) &&
+                (this.FromDate == null && other.FromDate == null ||
+                 this.FromDate?.Equals(other.FromDate) == true) &&
+                (this.ToDate == null && other.ToDate == null ||
+                 this.ToDate?.Equals(other.ToDate) == true) &&
+                (this.Caller == null && other.Caller == null ||
+                 this.Caller?.Equals(other.Caller) == true) &&
+                (this.NotifyCaller == null && other.NotifyCaller == null ||
+                 this.NotifyCaller?.Equals(other.NotifyCaller) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -303,16 +323,17 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
-            toStringOutput.Add($"this.CardExpiryDate = {(this.CardExpiryDate == null ? "null" : this.CardExpiryDate)}");
-            toStringOutput.Add($"this.Action = {(this.Action == null ? "null" : this.Action)}");
-            toStringOutput.Add($"this.FromDate = {(this.FromDate == null ? "null" : this.FromDate)}");
-            toStringOutput.Add($"this.ToDate = {(this.ToDate == null ? "null" : this.ToDate)}");
-            toStringOutput.Add($"this.Caller = {(this.Caller == null ? "null" : this.Caller)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.PANID = {this.PANID ?? "null"}");
+            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
+            toStringOutput.Add($"this.Action = {this.Action ?? "null"}");
+            toStringOutput.Add($"this.FromDate = {this.FromDate ?? "null"}");
+            toStringOutput.Add($"this.ToDate = {this.ToDate ?? "null"}");
+            toStringOutput.Add($"this.Caller = {this.Caller ?? "null"}");
             toStringOutput.Add($"this.NotifyCaller = {(this.NotifyCaller == null ? "null" : this.NotifyCaller.ToString())}");
         }
     }

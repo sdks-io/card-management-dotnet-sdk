@@ -23,7 +23,7 @@ Documentation for accessing and setting credentials for BasicAuth.
 You must provide credentials in the client as shown in the following code snippet.
 
 ```csharp
-ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient client = new ShellCardManagementAPIs.Standard.ShellCardManagementAPIsClient.Builder()
+ShellCardManagementAPIsClient client = new ShellCardManagementAPIsClient.Builder()
     .BasicAuthCredentials(
         new BasicAuthModel.Builder(
             "Username",

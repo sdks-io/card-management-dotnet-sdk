@@ -1,21 +1,21 @@
 // <copyright file="UsageRestrictionsCard.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// UsageRestrictionsCard.
     /// </summary>
@@ -101,6 +101,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             double? annualTransactionCount = null,
             double? lifeTimeTransactionCount = null)
         {
+
             if (dailySpend != null)
             {
                 this.DailySpend = dailySpend;
@@ -145,14 +146,14 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.MonthlyVolume = monthlyVolume;
             }
-
             this.PerTransactionVolume = perTransactionVolume;
+
             if (annualVolume != null)
             {
                 this.AnnualVolume = annualVolume;
             }
-
             this.LifeTimeVolume = lifeTimeVolume;
+
             if (dailyTransactionCount != null)
             {
                 this.DailyTransactionCount = dailyTransactionCount;
@@ -177,7 +178,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.LifeTimeTransactionCount = lifeTimeTransactionCount;
             }
-
         }
 
         /// <summary>
@@ -483,14 +483,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"UsageRestrictionsCard : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDailySpend()
         {
@@ -498,7 +496,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetWeeklySpend()
         {
@@ -506,7 +504,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMonthlySpend()
         {
@@ -514,7 +512,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPerTransactionSpend()
         {
@@ -522,7 +520,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAnnualSpend()
         {
@@ -530,7 +528,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLifeTimeSpend()
         {
@@ -538,7 +536,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDailyVolume()
         {
@@ -546,7 +544,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetWeeklyVolume()
         {
@@ -554,7 +552,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMonthlyVolume()
         {
@@ -562,7 +560,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAnnualVolume()
         {
@@ -570,7 +568,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDailyTransactionCount()
         {
@@ -578,7 +576,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetWeeklyTransactionCount()
         {
@@ -586,7 +584,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMonthlyTransactionCount()
         {
@@ -594,7 +592,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAnnualTransactionCount()
         {
@@ -602,7 +600,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetLifeTimeTransactionCount()
         {
@@ -747,34 +745,46 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is UsageRestrictionsCard other &&                ((this.DailySpend == null && other.DailySpend == null) || (this.DailySpend?.Equals(other.DailySpend) == true)) &&
-                ((this.WeeklySpend == null && other.WeeklySpend == null) || (this.WeeklySpend?.Equals(other.WeeklySpend) == true)) &&
-                ((this.MonthlySpend == null && other.MonthlySpend == null) || (this.MonthlySpend?.Equals(other.MonthlySpend) == true)) &&
-                ((this.PerTransactionSpend == null && other.PerTransactionSpend == null) || (this.PerTransactionSpend?.Equals(other.PerTransactionSpend) == true)) &&
-                ((this.AnnualSpend == null && other.AnnualSpend == null) || (this.AnnualSpend?.Equals(other.AnnualSpend) == true)) &&
-                ((this.LifeTimeSpend == null && other.LifeTimeSpend == null) || (this.LifeTimeSpend?.Equals(other.LifeTimeSpend) == true)) &&
-                ((this.DailyVolume == null && other.DailyVolume == null) || (this.DailyVolume?.Equals(other.DailyVolume) == true)) &&
-                ((this.WeeklyVolume == null && other.WeeklyVolume == null) || (this.WeeklyVolume?.Equals(other.WeeklyVolume) == true)) &&
-                ((this.MonthlyVolume == null && other.MonthlyVolume == null) || (this.MonthlyVolume?.Equals(other.MonthlyVolume) == true)) &&
-                ((this.PerTransactionVolume == null && other.PerTransactionVolume == null) || (this.PerTransactionVolume?.Equals(other.PerTransactionVolume) == true)) &&
-                ((this.AnnualVolume == null && other.AnnualVolume == null) || (this.AnnualVolume?.Equals(other.AnnualVolume) == true)) &&
-                ((this.LifeTimeVolume == null && other.LifeTimeVolume == null) || (this.LifeTimeVolume?.Equals(other.LifeTimeVolume) == true)) &&
-                ((this.DailyTransactionCount == null && other.DailyTransactionCount == null) || (this.DailyTransactionCount?.Equals(other.DailyTransactionCount) == true)) &&
-                ((this.WeeklyTransactionCount == null && other.WeeklyTransactionCount == null) || (this.WeeklyTransactionCount?.Equals(other.WeeklyTransactionCount) == true)) &&
-                ((this.MonthlyTransactionCount == null && other.MonthlyTransactionCount == null) || (this.MonthlyTransactionCount?.Equals(other.MonthlyTransactionCount) == true)) &&
-                ((this.AnnualTransactionCount == null && other.AnnualTransactionCount == null) || (this.AnnualTransactionCount?.Equals(other.AnnualTransactionCount) == true)) &&
-                ((this.LifeTimeTransactionCount == null && other.LifeTimeTransactionCount == null) || (this.LifeTimeTransactionCount?.Equals(other.LifeTimeTransactionCount) == true));
+            return obj is UsageRestrictionsCard other &&
+                (this.DailySpend == null && other.DailySpend == null ||
+                 this.DailySpend?.Equals(other.DailySpend) == true) &&
+                (this.WeeklySpend == null && other.WeeklySpend == null ||
+                 this.WeeklySpend?.Equals(other.WeeklySpend) == true) &&
+                (this.MonthlySpend == null && other.MonthlySpend == null ||
+                 this.MonthlySpend?.Equals(other.MonthlySpend) == true) &&
+                (this.PerTransactionSpend == null && other.PerTransactionSpend == null ||
+                 this.PerTransactionSpend?.Equals(other.PerTransactionSpend) == true) &&
+                (this.AnnualSpend == null && other.AnnualSpend == null ||
+                 this.AnnualSpend?.Equals(other.AnnualSpend) == true) &&
+                (this.LifeTimeSpend == null && other.LifeTimeSpend == null ||
+                 this.LifeTimeSpend?.Equals(other.LifeTimeSpend) == true) &&
+                (this.DailyVolume == null && other.DailyVolume == null ||
+                 this.DailyVolume?.Equals(other.DailyVolume) == true) &&
+                (this.WeeklyVolume == null && other.WeeklyVolume == null ||
+                 this.WeeklyVolume?.Equals(other.WeeklyVolume) == true) &&
+                (this.MonthlyVolume == null && other.MonthlyVolume == null ||
+                 this.MonthlyVolume?.Equals(other.MonthlyVolume) == true) &&
+                (this.PerTransactionVolume == null && other.PerTransactionVolume == null ||
+                 this.PerTransactionVolume?.Equals(other.PerTransactionVolume) == true) &&
+                (this.AnnualVolume == null && other.AnnualVolume == null ||
+                 this.AnnualVolume?.Equals(other.AnnualVolume) == true) &&
+                (this.LifeTimeVolume == null && other.LifeTimeVolume == null ||
+                 this.LifeTimeVolume?.Equals(other.LifeTimeVolume) == true) &&
+                (this.DailyTransactionCount == null && other.DailyTransactionCount == null ||
+                 this.DailyTransactionCount?.Equals(other.DailyTransactionCount) == true) &&
+                (this.WeeklyTransactionCount == null && other.WeeklyTransactionCount == null ||
+                 this.WeeklyTransactionCount?.Equals(other.WeeklyTransactionCount) == true) &&
+                (this.MonthlyTransactionCount == null && other.MonthlyTransactionCount == null ||
+                 this.MonthlyTransactionCount?.Equals(other.MonthlyTransactionCount) == true) &&
+                (this.AnnualTransactionCount == null && other.AnnualTransactionCount == null ||
+                 this.AnnualTransactionCount?.Equals(other.AnnualTransactionCount) == true) &&
+                (this.LifeTimeTransactionCount == null && other.LifeTimeTransactionCount == null ||
+                 this.LifeTimeTransactionCount?.Equals(other.LifeTimeTransactionCount) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>

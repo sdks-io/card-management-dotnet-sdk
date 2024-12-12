@@ -1,21 +1,21 @@
 // <copyright file="SearchAccountLimitResponse.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// SearchAccountLimitResponse.
     /// </summary>
@@ -53,11 +53,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             List<Models.AccountVelocityLimit> velocityLimits = null,
             Models.ErrorStatus error = null)
         {
+
             if (requestId != null)
             {
                 this.RequestId = requestId;
             }
-
             this.AccountId = accountId;
             this.AccountNumber = accountNumber;
             this.ReferenceProduct = referenceProduct;
@@ -127,14 +127,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"SearchAccountLimitResponse : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestId()
         {
@@ -153,35 +151,37 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is SearchAccountLimitResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.ReferenceProduct == null && other.ReferenceProduct == null) || (this.ReferenceProduct?.Equals(other.ReferenceProduct) == true)) &&
-                ((this.RestrictionCondition == null && other.RestrictionCondition == null) || (this.RestrictionCondition?.Equals(other.RestrictionCondition) == true)) &&
-                ((this.VelocityLimits == null && other.VelocityLimits == null) || (this.VelocityLimits?.Equals(other.VelocityLimits) == true)) &&
-                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
+            return obj is SearchAccountLimitResponse other &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.ReferenceProduct == null && other.ReferenceProduct == null ||
+                 this.ReferenceProduct?.Equals(other.ReferenceProduct) == true) &&
+                (this.RestrictionCondition == null && other.RestrictionCondition == null ||
+                 this.RestrictionCondition?.Equals(other.RestrictionCondition) == true) &&
+                (this.VelocityLimits == null && other.VelocityLimits == null ||
+                 this.VelocityLimits?.Equals(other.VelocityLimits) == true) &&
+                (this.Error == null && other.Error == null ||
+                 this.Error?.Equals(other.Error) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.ReferenceProduct = {(this.ReferenceProduct == null ? "null" : this.ReferenceProduct)}");
-            toStringOutput.Add($"this.RestrictionCondition = {(this.RestrictionCondition == null ? "null" : this.RestrictionCondition)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.ReferenceProduct = {this.ReferenceProduct ?? "null"}");
+            toStringOutput.Add($"this.RestrictionCondition = {this.RestrictionCondition ?? "null"}");
             toStringOutput.Add($"this.VelocityLimits = {(this.VelocityLimits == null ? "null" : $"[{string.Join(", ", this.VelocityLimits)} ]")}");
             toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }

@@ -1,21 +1,21 @@
 // <copyright file="RestrictionCardList.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// RestrictionCardList.
     /// </summary>
@@ -435,61 +435,89 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"RestrictionCardList : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is RestrictionCardList other &&                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.ExpiryDate == null && other.ExpiryDate == null) || (this.ExpiryDate?.Equals(other.ExpiryDate) == true)) &&
-                ((this.StatusId == null && other.StatusId == null) || (this.StatusId?.Equals(other.StatusId) == true)) &&
-                ((this.StatusDescription == null && other.StatusDescription == null) || (this.StatusDescription?.Equals(other.StatusDescription) == true)) &&
-                ((this.DriverName == null && other.DriverName == null) || (this.DriverName?.Equals(other.DriverName) == true)) &&
-                ((this.VRN == null && other.VRN == null) || (this.VRN?.Equals(other.VRN) == true)) &&
-                ((this.IssueDate == null && other.IssueDate == null) || (this.IssueDate?.Equals(other.IssueDate) == true)) &&
-                ((this.IssueNumber == null && other.IssueNumber == null) || (this.IssueNumber?.Equals(other.IssueNumber) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.AccountName == null && other.AccountName == null) || (this.AccountName?.Equals(other.AccountName) == true)) &&
-                ((this.AccountShortName == null && other.AccountShortName == null) || (this.AccountShortName?.Equals(other.AccountShortName) == true)) &&
-                ((this.CurrencyCode == null && other.CurrencyCode == null) || (this.CurrencyCode?.Equals(other.CurrencyCode) == true)) &&
-                ((this.ColCoCurrencyCode == null && other.ColCoCurrencyCode == null) || (this.ColCoCurrencyCode?.Equals(other.ColCoCurrencyCode) == true)) &&
-                ((this.ColCoCurrencySymbol == null && other.ColCoCurrencySymbol == null) || (this.ColCoCurrencySymbol?.Equals(other.ColCoCurrencySymbol) == true)) &&
-                ((this.RestrictionCurrencyCode == null && other.RestrictionCurrencyCode == null) || (this.RestrictionCurrencyCode?.Equals(other.RestrictionCurrencyCode) == true)) &&
-                ((this.RestrictionCurrencySymbol == null && other.RestrictionCurrencySymbol == null) || (this.RestrictionCurrencySymbol?.Equals(other.RestrictionCurrencySymbol) == true)) &&
-                ((this.PurchaseCategoryId == null && other.PurchaseCategoryId == null) || (this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true)) &&
-                ((this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null) || (this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true)) &&
-                ((this.PurchaseCategoryName == null && other.PurchaseCategoryName == null) || (this.PurchaseCategoryName?.Equals(other.PurchaseCategoryName) == true)) &&
-                ((this.IsSuperseded == null && other.IsSuperseded == null) || (this.IsSuperseded?.Equals(other.IsSuperseded) == true)) &&
-                ((this.IsVirtualCard == null && other.IsVirtualCard == null) || (this.IsVirtualCard?.Equals(other.IsVirtualCard) == true)) &&
-                ((this.IsNational == null && other.IsNational == null) || (this.IsNational?.Equals(other.IsNational) == true)) &&
-                ((this.IsInternational == null && other.IsInternational == null) || (this.IsInternational?.Equals(other.IsInternational) == true)) &&
-                ((this.IsCRT == null && other.IsCRT == null) || (this.IsCRT?.Equals(other.IsCRT) == true)) &&
-                ((this.IsFleet == null && other.IsFleet == null) || (this.IsFleet?.Equals(other.IsFleet) == true)) &&
-                ((this.IsShellSitesOnly == null && other.IsShellSitesOnly == null) || (this.IsShellSitesOnly?.Equals(other.IsShellSitesOnly) == true)) &&
-                ((this.IsPartnerSitesIncluded == null && other.IsPartnerSitesIncluded == null) || (this.IsPartnerSitesIncluded?.Equals(other.IsPartnerSitesIncluded) == true)) &&
-                ((this.CardTypeId == null && other.CardTypeId == null) || (this.CardTypeId?.Equals(other.CardTypeId) == true)) &&
-                ((this.CardTypeCode == null && other.CardTypeCode == null) || (this.CardTypeCode?.Equals(other.CardTypeCode) == true)) &&
-                ((this.CardTypeName == null && other.CardTypeName == null) || (this.CardTypeName?.Equals(other.CardTypeName) == true)) &&
-                ((this.BundleId == null && other.BundleId == null) || (this.BundleId?.Equals(other.BundleId) == true)) &&
-                ((this.MediumTypeID == null && other.MediumTypeID == null) || (this.MediumTypeID?.Equals(other.MediumTypeID) == true)) &&
-                ((this.MediumType == null && other.MediumType == null) || (this.MediumType?.Equals(other.MediumType) == true));
+            return obj is RestrictionCardList other &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.ExpiryDate == null && other.ExpiryDate == null ||
+                 this.ExpiryDate?.Equals(other.ExpiryDate) == true) &&
+                (this.StatusId == null && other.StatusId == null ||
+                 this.StatusId?.Equals(other.StatusId) == true) &&
+                (this.StatusDescription == null && other.StatusDescription == null ||
+                 this.StatusDescription?.Equals(other.StatusDescription) == true) &&
+                (this.DriverName == null && other.DriverName == null ||
+                 this.DriverName?.Equals(other.DriverName) == true) &&
+                (this.VRN == null && other.VRN == null ||
+                 this.VRN?.Equals(other.VRN) == true) &&
+                (this.IssueDate == null && other.IssueDate == null ||
+                 this.IssueDate?.Equals(other.IssueDate) == true) &&
+                (this.IssueNumber == null && other.IssueNumber == null ||
+                 this.IssueNumber?.Equals(other.IssueNumber) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.AccountName == null && other.AccountName == null ||
+                 this.AccountName?.Equals(other.AccountName) == true) &&
+                (this.AccountShortName == null && other.AccountShortName == null ||
+                 this.AccountShortName?.Equals(other.AccountShortName) == true) &&
+                (this.CurrencyCode == null && other.CurrencyCode == null ||
+                 this.CurrencyCode?.Equals(other.CurrencyCode) == true) &&
+                (this.ColCoCurrencyCode == null && other.ColCoCurrencyCode == null ||
+                 this.ColCoCurrencyCode?.Equals(other.ColCoCurrencyCode) == true) &&
+                (this.ColCoCurrencySymbol == null && other.ColCoCurrencySymbol == null ||
+                 this.ColCoCurrencySymbol?.Equals(other.ColCoCurrencySymbol) == true) &&
+                (this.RestrictionCurrencyCode == null && other.RestrictionCurrencyCode == null ||
+                 this.RestrictionCurrencyCode?.Equals(other.RestrictionCurrencyCode) == true) &&
+                (this.RestrictionCurrencySymbol == null && other.RestrictionCurrencySymbol == null ||
+                 this.RestrictionCurrencySymbol?.Equals(other.RestrictionCurrencySymbol) == true) &&
+                (this.PurchaseCategoryId == null && other.PurchaseCategoryId == null ||
+                 this.PurchaseCategoryId?.Equals(other.PurchaseCategoryId) == true) &&
+                (this.PurchaseCategoryCode == null && other.PurchaseCategoryCode == null ||
+                 this.PurchaseCategoryCode?.Equals(other.PurchaseCategoryCode) == true) &&
+                (this.PurchaseCategoryName == null && other.PurchaseCategoryName == null ||
+                 this.PurchaseCategoryName?.Equals(other.PurchaseCategoryName) == true) &&
+                (this.IsSuperseded == null && other.IsSuperseded == null ||
+                 this.IsSuperseded?.Equals(other.IsSuperseded) == true) &&
+                (this.IsVirtualCard == null && other.IsVirtualCard == null ||
+                 this.IsVirtualCard?.Equals(other.IsVirtualCard) == true) &&
+                (this.IsNational == null && other.IsNational == null ||
+                 this.IsNational?.Equals(other.IsNational) == true) &&
+                (this.IsInternational == null && other.IsInternational == null ||
+                 this.IsInternational?.Equals(other.IsInternational) == true) &&
+                (this.IsCRT == null && other.IsCRT == null ||
+                 this.IsCRT?.Equals(other.IsCRT) == true) &&
+                (this.IsFleet == null && other.IsFleet == null ||
+                 this.IsFleet?.Equals(other.IsFleet) == true) &&
+                (this.IsShellSitesOnly == null && other.IsShellSitesOnly == null ||
+                 this.IsShellSitesOnly?.Equals(other.IsShellSitesOnly) == true) &&
+                (this.IsPartnerSitesIncluded == null && other.IsPartnerSitesIncluded == null ||
+                 this.IsPartnerSitesIncluded?.Equals(other.IsPartnerSitesIncluded) == true) &&
+                (this.CardTypeId == null && other.CardTypeId == null ||
+                 this.CardTypeId?.Equals(other.CardTypeId) == true) &&
+                (this.CardTypeCode == null && other.CardTypeCode == null ||
+                 this.CardTypeCode?.Equals(other.CardTypeCode) == true) &&
+                (this.CardTypeName == null && other.CardTypeName == null ||
+                 this.CardTypeName?.Equals(other.CardTypeName) == true) &&
+                (this.BundleId == null && other.BundleId == null ||
+                 this.BundleId?.Equals(other.BundleId) == true) &&
+                (this.MediumTypeID == null && other.MediumTypeID == null ||
+                 this.MediumTypeID?.Equals(other.MediumTypeID) == true) &&
+                (this.MediumType == null && other.MediumType == null ||
+                 this.MediumType?.Equals(other.MediumType) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -497,26 +525,26 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
-            toStringOutput.Add($"this.ExpiryDate = {(this.ExpiryDate == null ? "null" : this.ExpiryDate)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
             toStringOutput.Add($"this.StatusId = {(this.StatusId == null ? "null" : this.StatusId.ToString())}");
-            toStringOutput.Add($"this.StatusDescription = {(this.StatusDescription == null ? "null" : this.StatusDescription)}");
-            toStringOutput.Add($"this.DriverName = {(this.DriverName == null ? "null" : this.DriverName)}");
-            toStringOutput.Add($"this.VRN = {(this.VRN == null ? "null" : this.VRN)}");
-            toStringOutput.Add($"this.IssueDate = {(this.IssueDate == null ? "null" : this.IssueDate)}");
+            toStringOutput.Add($"this.StatusDescription = {this.StatusDescription ?? "null"}");
+            toStringOutput.Add($"this.DriverName = {this.DriverName ?? "null"}");
+            toStringOutput.Add($"this.VRN = {this.VRN ?? "null"}");
+            toStringOutput.Add($"this.IssueDate = {this.IssueDate ?? "null"}");
             toStringOutput.Add($"this.IssueNumber = {(this.IssueNumber == null ? "null" : this.IssueNumber.ToString())}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.AccountName = {(this.AccountName == null ? "null" : this.AccountName)}");
-            toStringOutput.Add($"this.AccountShortName = {(this.AccountShortName == null ? "null" : this.AccountShortName)}");
-            toStringOutput.Add($"this.CurrencyCode = {(this.CurrencyCode == null ? "null" : this.CurrencyCode)}");
-            toStringOutput.Add($"this.ColCoCurrencyCode = {(this.ColCoCurrencyCode == null ? "null" : this.ColCoCurrencyCode)}");
-            toStringOutput.Add($"this.ColCoCurrencySymbol = {(this.ColCoCurrencySymbol == null ? "null" : this.ColCoCurrencySymbol)}");
-            toStringOutput.Add($"this.RestrictionCurrencyCode = {(this.RestrictionCurrencyCode == null ? "null" : this.RestrictionCurrencyCode)}");
-            toStringOutput.Add($"this.RestrictionCurrencySymbol = {(this.RestrictionCurrencySymbol == null ? "null" : this.RestrictionCurrencySymbol)}");
-            toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId)}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {(this.PurchaseCategoryCode == null ? "null" : this.PurchaseCategoryCode)}");
-            toStringOutput.Add($"this.PurchaseCategoryName = {(this.PurchaseCategoryName == null ? "null" : this.PurchaseCategoryName)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
+            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.ColCoCurrencyCode = {this.ColCoCurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.ColCoCurrencySymbol = {this.ColCoCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.RestrictionCurrencyCode = {this.RestrictionCurrencyCode ?? "null"}");
+            toStringOutput.Add($"this.RestrictionCurrencySymbol = {this.RestrictionCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"this.PurchaseCategoryId = {this.PurchaseCategoryId ?? "null"}");
+            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
+            toStringOutput.Add($"this.PurchaseCategoryName = {this.PurchaseCategoryName ?? "null"}");
             toStringOutput.Add($"this.IsSuperseded = {(this.IsSuperseded == null ? "null" : this.IsSuperseded.ToString())}");
             toStringOutput.Add($"this.IsVirtualCard = {(this.IsVirtualCard == null ? "null" : this.IsVirtualCard.ToString())}");
             toStringOutput.Add($"this.IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
@@ -526,11 +554,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
             toStringOutput.Add($"this.IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
             toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeCode = {(this.CardTypeCode == null ? "null" : this.CardTypeCode)}");
-            toStringOutput.Add($"this.CardTypeName = {(this.CardTypeName == null ? "null" : this.CardTypeName)}");
-            toStringOutput.Add($"this.BundleId = {(this.BundleId == null ? "null" : this.BundleId)}");
+            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
+            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
             toStringOutput.Add($"this.MediumTypeID = {(this.MediumTypeID == null ? "null" : this.MediumTypeID.ToString())}");
-            toStringOutput.Add($"this.MediumType = {(this.MediumType == null ? "null" : this.MediumType)}");
+            toStringOutput.Add($"this.MediumType = {this.MediumType ?? "null"}");
         }
     }
 }

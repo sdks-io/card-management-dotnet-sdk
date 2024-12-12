@@ -1,21 +1,21 @@
 // <copyright file="PINAdviceTypes.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PINAdviceTypes.
     /// </summary>
@@ -45,11 +45,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? isCardOrderOption = null,
             bool? isPINReminderOption = null)
         {
+
             if (pINAdviceTypeID != null)
             {
                 this.PINAdviceTypeID = pINAdviceTypeID;
             }
-
             this.IsCardOrderOption = isCardOrderOption;
             this.IsPINReminderOption = isPINReminderOption;
         }
@@ -57,10 +57,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Id of of PIN advice type.
         /// Possible Values:
-        /// 1.	Paper
-        /// 2.	Email
-        /// 3.	SMS
-        /// 4.	None
+        /// 1.    Paper
+        /// 2.    Email
+        /// 3.    SMS
+        /// 4.    None
         /// </summary>
         [JsonProperty("PINAdviceTypeID")]
         public int? PINAdviceTypeID
@@ -93,14 +93,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PINAdviceTypes : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPINAdviceTypeID()
         {
@@ -119,20 +117,18 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PINAdviceTypes other &&                ((this.PINAdviceTypeID == null && other.PINAdviceTypeID == null) || (this.PINAdviceTypeID?.Equals(other.PINAdviceTypeID) == true)) &&
-                ((this.IsCardOrderOption == null && other.IsCardOrderOption == null) || (this.IsCardOrderOption?.Equals(other.IsCardOrderOption) == true)) &&
-                ((this.IsPINReminderOption == null && other.IsPINReminderOption == null) || (this.IsPINReminderOption?.Equals(other.IsPINReminderOption) == true));
+            return obj is PINAdviceTypes other &&
+                (this.PINAdviceTypeID == null && other.PINAdviceTypeID == null ||
+                 this.PINAdviceTypeID?.Equals(other.PINAdviceTypeID) == true) &&
+                (this.IsCardOrderOption == null && other.IsCardOrderOption == null ||
+                 this.IsCardOrderOption?.Equals(other.IsCardOrderOption) == true) &&
+                (this.IsPINReminderOption == null && other.IsPINReminderOption == null ||
+                 this.IsPINReminderOption?.Equals(other.IsPINReminderOption) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>

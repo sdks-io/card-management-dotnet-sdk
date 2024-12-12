@@ -1,21 +1,21 @@
 // <copyright file="CardManagementV1CancelRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardManagementV1CancelRequest.
     /// </summary>
@@ -48,6 +48,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string reasonText = null)
         {
             this.Cards = cards;
+
             if (reasonId != null)
             {
                 this.ReasonId = reasonId;
@@ -57,7 +58,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ReasonText = reasonText;
             }
-
         }
 
         /// <summary>
@@ -124,14 +124,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardManagementV1CancelRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetReasonId()
         {
@@ -139,7 +137,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetReasonText()
         {
@@ -167,20 +165,18 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardManagementV1CancelRequest other &&                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.ReasonId == null && other.ReasonId == null) || (this.ReasonId?.Equals(other.ReasonId) == true)) &&
-                ((this.ReasonText == null && other.ReasonText == null) || (this.ReasonText?.Equals(other.ReasonText) == true));
+            return obj is CardManagementV1CancelRequest other &&
+                (this.Cards == null && other.Cards == null ||
+                 this.Cards?.Equals(other.Cards) == true) &&
+                (this.ReasonId == null && other.ReasonId == null ||
+                 this.ReasonId?.Equals(other.ReasonId) == true) &&
+                (this.ReasonText == null && other.ReasonText == null ||
+                 this.ReasonText?.Equals(other.ReasonText) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -189,7 +185,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
             toStringOutput.Add($"this.ReasonId = {(this.ReasonId == null ? "null" : this.ReasonId.ToString())}");
-            toStringOutput.Add($"this.ReasonText = {(this.ReasonText == null ? "null" : this.ReasonText)}");
+            toStringOutput.Add($"this.ReasonText = {this.ReasonText ?? "null"}");
         }
     }
 }

@@ -1,28 +1,28 @@
 // <copyright file="CardController.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using APIMatic.Core;
+using APIMatic.Core.Types;
+using APIMatic.Core.Utilities;
+using APIMatic.Core.Utilities.Date.Xml;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Exceptions;
+using ShellCardManagementAPIs.Standard.Http.Client;
+using ShellCardManagementAPIs.Standard.Utilities;
+using System.Net.Http;
+
 namespace ShellCardManagementAPIs.Standard.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Dynamic;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using APIMatic.Core;
-    using APIMatic.Core.Types;
-    using APIMatic.Core.Utilities;
-    using APIMatic.Core.Utilities.Date.Xml;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Exceptions;
-    using ShellCardManagementAPIs.Standard.Http.Client;
-    using ShellCardManagementAPIs.Standard.Utilities;
-    using System.Net.Http;
-
     /// <summary>
     /// CardController.
     /// </summary>
@@ -887,8 +887,8 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <summary>
         /// This operation allows  update the approval status of Mobile Payment Registration requests requiring for Fleet Manager approval.
         /// If the approval status is:.
-        /// *	“Approved” then the request status will be changed to Pending for processing. .
-        /// *	“Rejected” then status will be updated to “CI” (Failed) with appropriate error message. .
+        /// *    “Approved” then the request status will be changed to Pending for processing. .
+        /// *    “Rejected” then status will be updated to “CI” (Failed) with appropriate error message. .
         /// </summary>
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Request body.</param>
@@ -901,8 +901,8 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <summary>
         /// This operation allows  update the approval status of Mobile Payment Registration requests requiring for Fleet Manager approval.
         /// If the approval status is:.
-        /// *	“Approved” then the request status will be changed to Pending for processing. .
-        /// *	“Rejected” then status will be updated to “CI” (Failed) with appropriate error message. .
+        /// *    “Approved” then the request status will be changed to Pending for processing. .
+        /// *    “Rejected” then status will be updated to “CI” (Failed) with appropriate error message. .
         /// </summary>
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Request body.</param>

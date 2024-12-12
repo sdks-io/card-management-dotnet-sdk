@@ -1,21 +1,21 @@
 // <copyright file="UpdateBundleResponse.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// UpdateBundleResponse.
     /// </summary>
@@ -53,11 +53,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             Models.ErrorStatus usageRestrictionStatus = null,
             Models.ErrorStatus error = null)
         {
+
             if (requestId != null)
             {
                 this.RequestId = requestId;
             }
-
             this.RequestActionStatus = requestActionStatus;
             this.DayTimeRestrictionStatus = dayTimeRestrictionStatus;
             this.LocationRestrictionStatus = locationRestrictionStatus;
@@ -124,14 +124,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"UpdateBundleResponse : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestId()
         {
@@ -150,31 +148,33 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is UpdateBundleResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.RequestActionStatus == null && other.RequestActionStatus == null) || (this.RequestActionStatus?.Equals(other.RequestActionStatus) == true)) &&
-                ((this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null) || (this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true)) &&
-                ((this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null) || (this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true)) &&
-                ((this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null) || (this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true)) &&
-                ((this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null) || (this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true)) &&
-                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
+            return obj is UpdateBundleResponse other &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true) &&
+                (this.RequestActionStatus == null && other.RequestActionStatus == null ||
+                 this.RequestActionStatus?.Equals(other.RequestActionStatus) == true) &&
+                (this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null ||
+                 this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true) &&
+                (this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null ||
+                 this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true) &&
+                (this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null ||
+                 this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true) &&
+                (this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null ||
+                 this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true) &&
+                (this.Error == null && other.Error == null ||
+                 this.Error?.Equals(other.Error) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
             toStringOutput.Add($"this.RequestActionStatus = {(this.RequestActionStatus == null ? "null" : this.RequestActionStatus.ToString())}");
             toStringOutput.Add($"this.DayTimeRestrictionStatus = {(this.DayTimeRestrictionStatus == null ? "null" : this.DayTimeRestrictionStatus.ToString())}");
             toStringOutput.Add($"this.LocationRestrictionStatus = {(this.LocationRestrictionStatus == null ? "null" : this.LocationRestrictionStatus.ToString())}");

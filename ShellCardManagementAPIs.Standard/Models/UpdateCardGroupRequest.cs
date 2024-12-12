@@ -1,21 +1,21 @@
 // <copyright file="UpdateCardGroupRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// UpdateCardGroupRequest.
     /// </summary>
@@ -161,8 +161,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Populate this field if the value needs to be updated. Otherwise set to ‘null’.
         /// Optional
         /// Note:
-        /// 1)	If a card type is passed, the cardgorup will allow cards with same card type to be moved in to the card group.
-        /// 2)	Pass ‘-1’ to remove the card type from the card group.
+        /// 1)    If a card type is passed, the cardgorup will allow cards with same card type to be moved in to the card group.
+        /// 2)    Pass ‘-1’ to remove the card type from the card group.
         /// </summary>
         [JsonProperty("CardTypeId", NullValueHandling = NullValueHandling.Ignore)]
         public int? CardTypeId { get; set; }
@@ -218,42 +218,51 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"UpdateCardGroupRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is UpdateCardGroupRequest other &&                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.CardGroupId == null && other.CardGroupId == null) || (this.CardGroupId?.Equals(other.CardGroupId) == true)) &&
-                ((this.CardGroupName == null && other.CardGroupName == null) || (this.CardGroupName?.Equals(other.CardGroupName) == true)) &&
-                ((this.PrintOnCard == null && other.PrintOnCard == null) || (this.PrintOnCard?.Equals(other.PrintOnCard) == true)) &&
-                ((this.CardTypeId == null && other.CardTypeId == null) || (this.CardTypeId?.Equals(other.CardTypeId) == true)) &&
-                ((this.TerminateCardGroup == null && other.TerminateCardGroup == null) || (this.TerminateCardGroup?.Equals(other.TerminateCardGroup) == true)) &&
-                ((this.MoveCards == null && other.MoveCards == null) || (this.MoveCards?.Equals(other.MoveCards) == true)) &&
-                ((this.TargetAccountId == null && other.TargetAccountId == null) || (this.TargetAccountId?.Equals(other.TargetAccountId) == true)) &&
-                ((this.TargetAccountNumber == null && other.TargetAccountNumber == null) || (this.TargetAccountNumber?.Equals(other.TargetAccountNumber) == true)) &&
-                ((this.TargetNewCardGroupName == null && other.TargetNewCardGroupName == null) || (this.TargetNewCardGroupName?.Equals(other.TargetNewCardGroupName) == true)) &&
-                ((this.TargetCardGroupId == null && other.TargetCardGroupId == null) || (this.TargetCardGroupId?.Equals(other.TargetCardGroupId) == true));
+            return obj is UpdateCardGroupRequest other &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.CardGroupId == null && other.CardGroupId == null ||
+                 this.CardGroupId?.Equals(other.CardGroupId) == true) &&
+                (this.CardGroupName == null && other.CardGroupName == null ||
+                 this.CardGroupName?.Equals(other.CardGroupName) == true) &&
+                (this.PrintOnCard == null && other.PrintOnCard == null ||
+                 this.PrintOnCard?.Equals(other.PrintOnCard) == true) &&
+                (this.CardTypeId == null && other.CardTypeId == null ||
+                 this.CardTypeId?.Equals(other.CardTypeId) == true) &&
+                (this.TerminateCardGroup == null && other.TerminateCardGroup == null ||
+                 this.TerminateCardGroup?.Equals(other.TerminateCardGroup) == true) &&
+                (this.MoveCards == null && other.MoveCards == null ||
+                 this.MoveCards?.Equals(other.MoveCards) == true) &&
+                (this.TargetAccountId == null && other.TargetAccountId == null ||
+                 this.TargetAccountId?.Equals(other.TargetAccountId) == true) &&
+                (this.TargetAccountNumber == null && other.TargetAccountNumber == null ||
+                 this.TargetAccountNumber?.Equals(other.TargetAccountNumber) == true) &&
+                (this.TargetNewCardGroupName == null && other.TargetNewCardGroupName == null ||
+                 this.TargetNewCardGroupName?.Equals(other.TargetNewCardGroupName) == true) &&
+                (this.TargetCardGroupId == null && other.TargetCardGroupId == null ||
+                 this.TargetCardGroupId?.Equals(other.TargetCardGroupId) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -262,19 +271,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
             toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {(this.CardGroupName == null ? "null" : this.CardGroupName)}");
+            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
             toStringOutput.Add($"this.PrintOnCard = {(this.PrintOnCard == null ? "null" : this.PrintOnCard.ToString())}");
             toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
             toStringOutput.Add($"this.TerminateCardGroup = {(this.TerminateCardGroup == null ? "null" : this.TerminateCardGroup.ToString())}");
             toStringOutput.Add($"this.MoveCards = {(this.MoveCards == null ? "null" : this.MoveCards.ToString())}");
             toStringOutput.Add($"this.TargetAccountId = {(this.TargetAccountId == null ? "null" : this.TargetAccountId.ToString())}");
-            toStringOutput.Add($"this.TargetAccountNumber = {(this.TargetAccountNumber == null ? "null" : this.TargetAccountNumber)}");
-            toStringOutput.Add($"this.TargetNewCardGroupName = {(this.TargetNewCardGroupName == null ? "null" : this.TargetNewCardGroupName)}");
+            toStringOutput.Add($"this.TargetAccountNumber = {this.TargetAccountNumber ?? "null"}");
+            toStringOutput.Add($"this.TargetNewCardGroupName = {this.TargetNewCardGroupName ?? "null"}");
             toStringOutput.Add($"this.TargetCardGroupId = {(this.TargetCardGroupId == null ? "null" : this.TargetCardGroupId.ToString())}");
         }
     }

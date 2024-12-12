@@ -1,21 +1,21 @@
 // <copyright file="PurchaseCategory1AllOf0.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// PurchaseCategory1AllOf0.
     /// </summary>
@@ -88,14 +88,14 @@ namespace ShellCardManagementAPIs.Standard.Models
 
         /// <summary>
         /// Purchase category Title by given language code.
-        /// 1.	Basic
-        /// 2.	Essentials
-        /// 3.	Extra
-        /// 4.	Premium
-        /// 5.	Basic and LNG
-        /// 6.	Essentials and LNG
-        /// 7.	Extra and LNG
-        /// 8.	Premium and LNG
+        /// 1.    Basic
+        /// 2.    Essentials
+        /// 3.    Extra
+        /// 4.    Premium
+        /// 5.    Basic and LNG
+        /// 6.    Essentials and LNG
+        /// 7.    Extra and LNG
+        /// 8.    Premium and LNG
         /// Note: Purchase Category name (GFN) is returned when Title does not exist for the given language Code and default language code (en-GB).
         /// </summary>
         [JsonProperty("Title", NullValueHandling = NullValueHandling.Ignore)]
@@ -121,33 +121,32 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"PurchaseCategory1AllOf0 : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is PurchaseCategory1AllOf0 other &&                ((this.Id == null && other.Id == null) || (this.Id?.Equals(other.Id) == true)) &&
-                ((this.Code == null && other.Code == null) || (this.Code?.Equals(other.Code) == true)) &&
-                ((this.Name == null && other.Name == null) || (this.Name?.Equals(other.Name) == true)) &&
-                this.IsVisible.Equals(other.IsVisible) &&
-                ((this.ProductGroups == null && other.ProductGroups == null) || (this.ProductGroups?.Equals(other.ProductGroups) == true)) &&
-                ((this.Title == null && other.Title == null) || (this.Title?.Equals(other.Title) == true)) &&
-                ((this.Description == null && other.Description == null) || (this.Description?.Equals(other.Description) == true));
+            return obj is PurchaseCategory1AllOf0 other &&
+                (this.Id == null && other.Id == null ||
+                 this.Id?.Equals(other.Id) == true) &&
+                (this.Code == null && other.Code == null ||
+                 this.Code?.Equals(other.Code) == true) &&
+                (this.Name == null && other.Name == null ||
+                 this.Name?.Equals(other.Name) == true) &&
+                (this.IsVisible.Equals(other.IsVisible)) &&
+                (this.ProductGroups == null && other.ProductGroups == null ||
+                 this.ProductGroups?.Equals(other.ProductGroups) == true) &&
+                (this.Title == null && other.Title == null ||
+                 this.Title?.Equals(other.Title) == true) &&
+                (this.Description == null && other.Description == null ||
+                 this.Description?.Equals(other.Description) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -155,12 +154,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.Id = {(this.Id == null ? "null" : this.Id.ToString())}");
-            toStringOutput.Add($"this.Code = {(this.Code == null ? "null" : this.Code)}");
-            toStringOutput.Add($"this.Name = {(this.Name == null ? "null" : this.Name)}");
+            toStringOutput.Add($"this.Code = {this.Code ?? "null"}");
+            toStringOutput.Add($"this.Name = {this.Name ?? "null"}");
             toStringOutput.Add($"this.IsVisible = {this.IsVisible}");
             toStringOutput.Add($"this.ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
-            toStringOutput.Add($"this.Title = {(this.Title == null ? "null" : this.Title)}");
-            toStringOutput.Add($"this.Description = {(this.Description == null ? "null" : this.Description)}");
+            toStringOutput.Add($"this.Title = {this.Title ?? "null"}");
+            toStringOutput.Add($"this.Description = {this.Description ?? "null"}");
         }
     }
 }

@@ -17,7 +17,7 @@
 | `AllowFleetIdInput` | `bool?` | Optional | True/False.<br>When false, users should not be allowed to enable Fleet Id prompt option while ordering cards under this account. |
 | `Band` | `string` | Optional | Band Id and Description of the Payer in Card Platform<br>e.g. (Id – Description):<br>1-Platinum<br>2-Gold<br>3-Silver<br>4-Bronze |
 | `BillingAddress` | [`Address`](../../doc/models/address.md) | Optional | - |
-| `CardGroupPosition` | `string` | Optional | Card group position at –<br>•	Payer – Payer level<br>•	Account – Account level |
+| `CardGroupPosition` | `string` | Optional | Card group position at –<br>•    Payer – Payer level<br>•    Account – Account level |
 | `CorrespondenceAddress` | [`Address`](../../doc/models/address.md) | Optional | - |
 | `DeliveryAddresses` | [`List<DeliveryAddresses>`](../../doc/models/delivery-addresses.md) | Optional | - |
 | `FleetPin` | `bool?` | Optional | Is Fleet Pin optional enabled for the selected account |

@@ -1,21 +1,21 @@
 // <copyright file="FleetmanagementV1UserLoggedinuserRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// FleetmanagementV1UserLoggedinuserRequest.
     /// </summary>
@@ -55,6 +55,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             this.IncludePayerGroup = includePayerGroup;
             this.IncludeEIDDetails = includeEIDDetails;
+
             if (requestedAPIName != null)
             {
                 this.RequestedAPIName = requestedAPIName;
@@ -69,7 +70,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerNumber = payerNumber;
             }
-
         }
 
         /// <summary>
@@ -153,14 +153,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"FleetmanagementV1UserLoggedinuserRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestedAPIName()
         {
@@ -168,7 +166,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -176,7 +174,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -213,22 +211,22 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is FleetmanagementV1UserLoggedinuserRequest other &&                ((this.IncludePayerGroup == null && other.IncludePayerGroup == null) || (this.IncludePayerGroup?.Equals(other.IncludePayerGroup) == true)) &&
-                ((this.IncludeEIDDetails == null && other.IncludeEIDDetails == null) || (this.IncludeEIDDetails?.Equals(other.IncludeEIDDetails) == true)) &&
-                ((this.RequestedAPIName == null && other.RequestedAPIName == null) || (this.RequestedAPIName?.Equals(other.RequestedAPIName) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true));
+            return obj is FleetmanagementV1UserLoggedinuserRequest other &&
+                (this.IncludePayerGroup == null && other.IncludePayerGroup == null ||
+                 this.IncludePayerGroup?.Equals(other.IncludePayerGroup) == true) &&
+                (this.IncludeEIDDetails == null && other.IncludeEIDDetails == null ||
+                 this.IncludeEIDDetails?.Equals(other.IncludeEIDDetails) == true) &&
+                (this.RequestedAPIName == null && other.RequestedAPIName == null ||
+                 this.RequestedAPIName?.Equals(other.RequestedAPIName) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -237,9 +235,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.IncludePayerGroup = {(this.IncludePayerGroup == null ? "null" : this.IncludePayerGroup.ToString())}");
             toStringOutput.Add($"this.IncludeEIDDetails = {(this.IncludeEIDDetails == null ? "null" : this.IncludeEIDDetails.ToString())}");
-            toStringOutput.Add($"this.RequestedAPIName = {(this.RequestedAPIName == null ? "null" : this.RequestedAPIName)}");
+            toStringOutput.Add($"this.RequestedAPIName = {this.RequestedAPIName ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
         }
     }
 }

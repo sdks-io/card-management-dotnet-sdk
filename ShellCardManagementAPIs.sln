@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellCardManagementAPIs.Standard", "ShellCardManagementAPIs.Standard/ShellCardManagementAPIs.Standard.csproj", "{655b9032-815a-4676-bf5a-a125d3f775d8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellCardManagementAPIs.Standard", "ShellCardManagementAPIs.Standard/ShellCardManagementAPIs.Standard.csproj", "{2fc1b654-97e9-488d-823c-95ac085e39b4}"
 EndProject
 Global
     GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,10 +10,10 @@ Global
         Release|Any CPU = Release|Any CPU
     EndGlobalSection
     GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {655b9032-815a-4676-bf5a-a125d3f775d8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {655b9032-815a-4676-bf5a-a125d3f775d8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {655b9032-815a-4676-bf5a-a125d3f775d8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {655b9032-815a-4676-bf5a-a125d3f775d8}.Release|Any CPU.Build.0 = Release|Any CPU
+        {2fc1b654-97e9-488d-823c-95ac085e39b4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {2fc1b654-97e9-488d-823c-95ac085e39b4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {2fc1b654-97e9-488d-823c-95ac085e39b4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {2fc1b654-97e9-488d-823c-95ac085e39b4}.Release|Any CPU.Build.0 = Release|Any CPU
     EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

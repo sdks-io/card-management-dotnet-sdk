@@ -1,21 +1,21 @@
 // <copyright file="CreateBundleResponse.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CreateBundleResponse.
     /// </summary>
@@ -61,11 +61,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             Models.BundleCardRestrictionStatus cards = null,
             Models.ErrorStatus error = null)
         {
+
             if (requestId != null)
             {
                 this.RequestId = requestId;
             }
-
             this.BundleCreationStatus = bundleCreationStatus;
             this.BundleId = bundleId;
             this.DayTimeRestrictionStatus = dayTimeRestrictionStatus;
@@ -160,14 +160,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CreateBundleResponse : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestId()
         {
@@ -186,41 +184,47 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CreateBundleResponse other &&                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.BundleCreationStatus == null && other.BundleCreationStatus == null) || (this.BundleCreationStatus?.Equals(other.BundleCreationStatus) == true)) &&
-                ((this.BundleId == null && other.BundleId == null) || (this.BundleId?.Equals(other.BundleId) == true)) &&
-                ((this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null) || (this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true)) &&
-                ((this.DayTimeRestrictionProfileId == null && other.DayTimeRestrictionProfileId == null) || (this.DayTimeRestrictionProfileId?.Equals(other.DayTimeRestrictionProfileId) == true)) &&
-                ((this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null) || (this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true)) &&
-                ((this.LocationRestrictionProfileId == null && other.LocationRestrictionProfileId == null) || (this.LocationRestrictionProfileId?.Equals(other.LocationRestrictionProfileId) == true)) &&
-                ((this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null) || (this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true)) &&
-                ((this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null) || (this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true)) &&
-                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true));
+            return obj is CreateBundleResponse other &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true) &&
+                (this.BundleCreationStatus == null && other.BundleCreationStatus == null ||
+                 this.BundleCreationStatus?.Equals(other.BundleCreationStatus) == true) &&
+                (this.BundleId == null && other.BundleId == null ||
+                 this.BundleId?.Equals(other.BundleId) == true) &&
+                (this.DayTimeRestrictionStatus == null && other.DayTimeRestrictionStatus == null ||
+                 this.DayTimeRestrictionStatus?.Equals(other.DayTimeRestrictionStatus) == true) &&
+                (this.DayTimeRestrictionProfileId == null && other.DayTimeRestrictionProfileId == null ||
+                 this.DayTimeRestrictionProfileId?.Equals(other.DayTimeRestrictionProfileId) == true) &&
+                (this.LocationRestrictionStatus == null && other.LocationRestrictionStatus == null ||
+                 this.LocationRestrictionStatus?.Equals(other.LocationRestrictionStatus) == true) &&
+                (this.LocationRestrictionProfileId == null && other.LocationRestrictionProfileId == null ||
+                 this.LocationRestrictionProfileId?.Equals(other.LocationRestrictionProfileId) == true) &&
+                (this.UsageRestrictionStatus == null && other.UsageRestrictionStatus == null ||
+                 this.UsageRestrictionStatus?.Equals(other.UsageRestrictionStatus) == true) &&
+                (this.ProductRestrictionStatus == null && other.ProductRestrictionStatus == null ||
+                 this.ProductRestrictionStatus?.Equals(other.ProductRestrictionStatus) == true) &&
+                (this.Cards == null && other.Cards == null ||
+                 this.Cards?.Equals(other.Cards) == true) &&
+                (this.Error == null && other.Error == null ||
+                 this.Error?.Equals(other.Error) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
             toStringOutput.Add($"this.BundleCreationStatus = {(this.BundleCreationStatus == null ? "null" : this.BundleCreationStatus.ToString())}");
-            toStringOutput.Add($"this.BundleId = {(this.BundleId == null ? "null" : this.BundleId)}");
+            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
             toStringOutput.Add($"this.DayTimeRestrictionStatus = {(this.DayTimeRestrictionStatus == null ? "null" : this.DayTimeRestrictionStatus.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {(this.DayTimeRestrictionProfileId == null ? "null" : this.DayTimeRestrictionProfileId)}");
+            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {this.DayTimeRestrictionProfileId ?? "null"}");
             toStringOutput.Add($"this.LocationRestrictionStatus = {(this.LocationRestrictionStatus == null ? "null" : this.LocationRestrictionStatus.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictionProfileId = {(this.LocationRestrictionProfileId == null ? "null" : this.LocationRestrictionProfileId)}");
+            toStringOutput.Add($"this.LocationRestrictionProfileId = {this.LocationRestrictionProfileId ?? "null"}");
             toStringOutput.Add($"this.UsageRestrictionStatus = {(this.UsageRestrictionStatus == null ? "null" : this.UsageRestrictionStatus.ToString())}");
             toStringOutput.Add($"this.ProductRestrictionStatus = {(this.ProductRestrictionStatus == null ? "null" : this.ProductRestrictionStatus.ToString())}");
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : this.Cards.ToString())}");

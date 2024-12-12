@@ -1,21 +1,21 @@
 // <copyright file="LocationRestriction.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// LocationRestriction.
     /// </summary>
@@ -75,30 +75,27 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"LocationRestriction : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is LocationRestriction other &&                ((this.CountryRestrictions == null && other.CountryRestrictions == null) || (this.CountryRestrictions?.Equals(other.CountryRestrictions) == true)) &&
-                ((this.NetworkRestrictions == null && other.NetworkRestrictions == null) || (this.NetworkRestrictions?.Equals(other.NetworkRestrictions) == true)) &&
-                ((this.ShellSiteRestrictions == null && other.ShellSiteRestrictions == null) || (this.ShellSiteRestrictions?.Equals(other.ShellSiteRestrictions) == true)) &&
-                ((this.PartnerSiteRestrictions == null && other.PartnerSiteRestrictions == null) || (this.PartnerSiteRestrictions?.Equals(other.PartnerSiteRestrictions) == true));
+            return obj is LocationRestriction other &&
+                (this.CountryRestrictions == null && other.CountryRestrictions == null ||
+                 this.CountryRestrictions?.Equals(other.CountryRestrictions) == true) &&
+                (this.NetworkRestrictions == null && other.NetworkRestrictions == null ||
+                 this.NetworkRestrictions?.Equals(other.NetworkRestrictions) == true) &&
+                (this.ShellSiteRestrictions == null && other.ShellSiteRestrictions == null ||
+                 this.ShellSiteRestrictions?.Equals(other.ShellSiteRestrictions) == true) &&
+                (this.PartnerSiteRestrictions == null && other.PartnerSiteRestrictions == null ||
+                 this.PartnerSiteRestrictions?.Equals(other.PartnerSiteRestrictions) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>

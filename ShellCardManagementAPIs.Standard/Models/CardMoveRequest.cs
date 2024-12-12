@@ -1,21 +1,21 @@
 // <copyright file="CardMoveRequest.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardMoveRequest.
     /// </summary>
@@ -67,6 +67,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? targetCardGroupId = null,
             string targetNewCardGroupName = null)
         {
+
             if (colCoCode != null)
             {
                 this.ColCoCode = colCoCode;
@@ -91,7 +92,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerId = payerId;
             }
-
             this.Cards = cards;
             this.TargetAccountId = targetAccountId;
             this.TargetAccountNumber = targetAccountNumber;
@@ -223,14 +223,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardMoveRequest : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -238,7 +236,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -246,7 +244,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCountryCode()
         {
@@ -254,7 +252,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -262,7 +260,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -317,27 +315,32 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardMoveRequest other &&                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCountryCode == null && other.ColCoCountryCode == null) || (this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.Cards == null && other.Cards == null) || (this.Cards?.Equals(other.Cards) == true)) &&
-                ((this.TargetAccountId == null && other.TargetAccountId == null) || (this.TargetAccountId?.Equals(other.TargetAccountId) == true)) &&
-                ((this.TargetAccountNumber == null && other.TargetAccountNumber == null) || (this.TargetAccountNumber?.Equals(other.TargetAccountNumber) == true)) &&
-                ((this.TargetCardGroupId == null && other.TargetCardGroupId == null) || (this.TargetCardGroupId?.Equals(other.TargetCardGroupId) == true)) &&
-                ((this.TargetNewCardGroupName == null && other.TargetNewCardGroupName == null) || (this.TargetNewCardGroupName?.Equals(other.TargetNewCardGroupName) == true));
+            return obj is CardMoveRequest other &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCountryCode == null && other.ColCoCountryCode == null ||
+                 this.ColCoCountryCode?.Equals(other.ColCoCountryCode) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.Cards == null && other.Cards == null ||
+                 this.Cards?.Equals(other.Cards) == true) &&
+                (this.TargetAccountId == null && other.TargetAccountId == null ||
+                 this.TargetAccountId?.Equals(other.TargetAccountId) == true) &&
+                (this.TargetAccountNumber == null && other.TargetAccountNumber == null ||
+                 this.TargetAccountNumber?.Equals(other.TargetAccountNumber) == true) &&
+                (this.TargetCardGroupId == null && other.TargetCardGroupId == null ||
+                 this.TargetCardGroupId?.Equals(other.TargetCardGroupId) == true) &&
+                (this.TargetNewCardGroupName == null && other.TargetNewCardGroupName == null ||
+                 this.TargetNewCardGroupName?.Equals(other.TargetNewCardGroupName) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -346,14 +349,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {(this.ColCoCountryCode == null ? "null" : this.ColCoCountryCode)}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
             toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
             toStringOutput.Add($"this.TargetAccountId = {(this.TargetAccountId == null ? "null" : this.TargetAccountId.ToString())}");
-            toStringOutput.Add($"this.TargetAccountNumber = {(this.TargetAccountNumber == null ? "null" : this.TargetAccountNumber)}");
+            toStringOutput.Add($"this.TargetAccountNumber = {this.TargetAccountNumber ?? "null"}");
             toStringOutput.Add($"this.TargetCardGroupId = {(this.TargetCardGroupId == null ? "null" : this.TargetCardGroupId.ToString())}");
-            toStringOutput.Add($"this.TargetNewCardGroupName = {(this.TargetNewCardGroupName == null ? "null" : this.TargetNewCardGroupName)}");
+            toStringOutput.Add($"this.TargetNewCardGroupName = {this.TargetNewCardGroupName ?? "null"}");
         }
     }
 }

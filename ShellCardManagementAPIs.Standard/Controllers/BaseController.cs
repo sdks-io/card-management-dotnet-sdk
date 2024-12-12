@@ -1,18 +1,18 @@
 // <copyright file="BaseController.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using APIMatic.Core;
+using APIMatic.Core.Http.Configuration;
+using APIMatic.Core.Response;
+using ShellCardManagementAPIs.Standard.Exceptions;
+using ShellCardManagementAPIs.Standard.Http.Client;
+using ShellCardManagementAPIs.Standard.Http.Request;
+using ShellCardManagementAPIs.Standard.Http.Response;
+using ShellCardManagementAPIs.Standard.Utilities;
+using System;
+
 namespace ShellCardManagementAPIs.Standard.Controllers
 {
-    using APIMatic.Core;
-    using APIMatic.Core.Http.Configuration;
-    using APIMatic.Core.Response;
-    using ShellCardManagementAPIs.Standard.Exceptions;
-    using ShellCardManagementAPIs.Standard.Http.Client;
-    using ShellCardManagementAPIs.Standard.Http.Request;
-    using ShellCardManagementAPIs.Standard.Http.Response;
-    using ShellCardManagementAPIs.Standard.Utilities;
-    using System;
-
     /// <summary>
     /// The base class for all controller classes.
     /// </summary>

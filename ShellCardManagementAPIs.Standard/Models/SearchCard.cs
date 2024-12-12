@@ -1,21 +1,21 @@
 // <copyright file="SearchCard.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// SearchCard.
     /// </summary>
@@ -41,10 +41,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// </summary>
         /// <param name="cardId">CardId.</param>
         /// <param name="pAN">PAN.</param>
+        /// <param name="pANID">PANID.</param>
         public SearchCard(
             int? cardId = null,
-            string pAN = null)
+            string pAN = null,
+            double? pANID = null)
         {
+
             if (cardId != null)
             {
                 this.CardId = cardId;
@@ -54,7 +57,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PAN = pAN;
             }
-
+            this.PANID = pANID;
         }
 
         /// <summary>
@@ -96,18 +99,24 @@ namespace ShellCardManagementAPIs.Standard.Models
             }
         }
 
+        /// <summary>
+        /// Card PANID
+        ///  optional id cardid given, else mandatory
+        /// Note: PANID is ignored if CardId is given.
+        /// </summary>
+        [JsonProperty("PANID", NullValueHandling = NullValueHandling.Ignore)]
+        public double? PANID { get; set; }
+
         /// <inheritdoc/>
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"SearchCard : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardId()
         {
@@ -115,7 +124,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPAN()
         {
@@ -143,19 +152,18 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is SearchCard other &&                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true));
+            return obj is SearchCard other &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.PANID == null && other.PANID == null ||
+                 this.PANID?.Equals(other.PANID) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -163,7 +171,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
         }
     }
 }

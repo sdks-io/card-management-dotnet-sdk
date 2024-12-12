@@ -1,21 +1,21 @@
 // <copyright file="DeliveryAddresses.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// DeliveryAddresses.
     /// </summary>
@@ -113,6 +113,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string zipCode = null,
             int? addressType = null)
         {
+
             if (addressId != null)
             {
                 this.AddressId = addressId;
@@ -207,7 +208,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.AddressType = addressType;
             }
-
         }
 
         /// <summary>
@@ -560,14 +560,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"DeliveryAddresses : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAddressId()
         {
@@ -575,7 +573,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAddressLine1()
         {
@@ -583,7 +581,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAddressLine2()
         {
@@ -591,7 +589,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAddressLine3()
         {
@@ -599,7 +597,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCity()
         {
@@ -607,7 +605,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCompanyName()
         {
@@ -615,7 +613,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactForeName()
         {
@@ -623,7 +621,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactLastName()
         {
@@ -631,7 +629,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactMiddleName()
         {
@@ -639,7 +637,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactTitle()
         {
@@ -647,7 +645,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountry()
         {
@@ -655,7 +653,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountryId()
         {
@@ -663,7 +661,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCountryISOCode()
         {
@@ -671,7 +669,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetFax()
         {
@@ -679,7 +677,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRegion()
         {
@@ -687,7 +685,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRegionId()
         {
@@ -695,7 +693,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetTelephone()
         {
@@ -703,7 +701,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetZipCode()
         {
@@ -711,7 +709,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAddressType()
         {
@@ -892,36 +890,50 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is DeliveryAddresses other &&                ((this.AddressId == null && other.AddressId == null) || (this.AddressId?.Equals(other.AddressId) == true)) &&
-                ((this.AddressLine1 == null && other.AddressLine1 == null) || (this.AddressLine1?.Equals(other.AddressLine1) == true)) &&
-                ((this.AddressLine2 == null && other.AddressLine2 == null) || (this.AddressLine2?.Equals(other.AddressLine2) == true)) &&
-                ((this.AddressLine3 == null && other.AddressLine3 == null) || (this.AddressLine3?.Equals(other.AddressLine3) == true)) &&
-                ((this.City == null && other.City == null) || (this.City?.Equals(other.City) == true)) &&
-                ((this.CompanyName == null && other.CompanyName == null) || (this.CompanyName?.Equals(other.CompanyName) == true)) &&
-                ((this.ContactForeName == null && other.ContactForeName == null) || (this.ContactForeName?.Equals(other.ContactForeName) == true)) &&
-                ((this.ContactLastName == null && other.ContactLastName == null) || (this.ContactLastName?.Equals(other.ContactLastName) == true)) &&
-                ((this.ContactMiddleName == null && other.ContactMiddleName == null) || (this.ContactMiddleName?.Equals(other.ContactMiddleName) == true)) &&
-                ((this.ContactTitle == null && other.ContactTitle == null) || (this.ContactTitle?.Equals(other.ContactTitle) == true)) &&
-                ((this.Country == null && other.Country == null) || (this.Country?.Equals(other.Country) == true)) &&
-                ((this.CountryId == null && other.CountryId == null) || (this.CountryId?.Equals(other.CountryId) == true)) &&
-                ((this.CountryISOCode == null && other.CountryISOCode == null) || (this.CountryISOCode?.Equals(other.CountryISOCode) == true)) &&
-                ((this.Fax == null && other.Fax == null) || (this.Fax?.Equals(other.Fax) == true)) &&
-                ((this.Region == null && other.Region == null) || (this.Region?.Equals(other.Region) == true)) &&
-                ((this.RegionId == null && other.RegionId == null) || (this.RegionId?.Equals(other.RegionId) == true)) &&
-                ((this.Telephone == null && other.Telephone == null) || (this.Telephone?.Equals(other.Telephone) == true)) &&
-                ((this.ZipCode == null && other.ZipCode == null) || (this.ZipCode?.Equals(other.ZipCode) == true)) &&
-                ((this.AddressType == null && other.AddressType == null) || (this.AddressType?.Equals(other.AddressType) == true));
+            return obj is DeliveryAddresses other &&
+                (this.AddressId == null && other.AddressId == null ||
+                 this.AddressId?.Equals(other.AddressId) == true) &&
+                (this.AddressLine1 == null && other.AddressLine1 == null ||
+                 this.AddressLine1?.Equals(other.AddressLine1) == true) &&
+                (this.AddressLine2 == null && other.AddressLine2 == null ||
+                 this.AddressLine2?.Equals(other.AddressLine2) == true) &&
+                (this.AddressLine3 == null && other.AddressLine3 == null ||
+                 this.AddressLine3?.Equals(other.AddressLine3) == true) &&
+                (this.City == null && other.City == null ||
+                 this.City?.Equals(other.City) == true) &&
+                (this.CompanyName == null && other.CompanyName == null ||
+                 this.CompanyName?.Equals(other.CompanyName) == true) &&
+                (this.ContactForeName == null && other.ContactForeName == null ||
+                 this.ContactForeName?.Equals(other.ContactForeName) == true) &&
+                (this.ContactLastName == null && other.ContactLastName == null ||
+                 this.ContactLastName?.Equals(other.ContactLastName) == true) &&
+                (this.ContactMiddleName == null && other.ContactMiddleName == null ||
+                 this.ContactMiddleName?.Equals(other.ContactMiddleName) == true) &&
+                (this.ContactTitle == null && other.ContactTitle == null ||
+                 this.ContactTitle?.Equals(other.ContactTitle) == true) &&
+                (this.Country == null && other.Country == null ||
+                 this.Country?.Equals(other.Country) == true) &&
+                (this.CountryId == null && other.CountryId == null ||
+                 this.CountryId?.Equals(other.CountryId) == true) &&
+                (this.CountryISOCode == null && other.CountryISOCode == null ||
+                 this.CountryISOCode?.Equals(other.CountryISOCode) == true) &&
+                (this.Fax == null && other.Fax == null ||
+                 this.Fax?.Equals(other.Fax) == true) &&
+                (this.Region == null && other.Region == null ||
+                 this.Region?.Equals(other.Region) == true) &&
+                (this.RegionId == null && other.RegionId == null ||
+                 this.RegionId?.Equals(other.RegionId) == true) &&
+                (this.Telephone == null && other.Telephone == null ||
+                 this.Telephone?.Equals(other.Telephone) == true) &&
+                (this.ZipCode == null && other.ZipCode == null ||
+                 this.ZipCode?.Equals(other.ZipCode) == true) &&
+                (this.AddressType == null && other.AddressType == null ||
+                 this.AddressType?.Equals(other.AddressType) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -929,23 +941,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AddressId = {(this.AddressId == null ? "null" : this.AddressId.ToString())}");
-            toStringOutput.Add($"this.AddressLine1 = {(this.AddressLine1 == null ? "null" : this.AddressLine1)}");
-            toStringOutput.Add($"this.AddressLine2 = {(this.AddressLine2 == null ? "null" : this.AddressLine2)}");
-            toStringOutput.Add($"this.AddressLine3 = {(this.AddressLine3 == null ? "null" : this.AddressLine3)}");
-            toStringOutput.Add($"this.City = {(this.City == null ? "null" : this.City)}");
-            toStringOutput.Add($"this.CompanyName = {(this.CompanyName == null ? "null" : this.CompanyName)}");
-            toStringOutput.Add($"this.ContactForeName = {(this.ContactForeName == null ? "null" : this.ContactForeName)}");
-            toStringOutput.Add($"this.ContactLastName = {(this.ContactLastName == null ? "null" : this.ContactLastName)}");
-            toStringOutput.Add($"this.ContactMiddleName = {(this.ContactMiddleName == null ? "null" : this.ContactMiddleName)}");
-            toStringOutput.Add($"this.ContactTitle = {(this.ContactTitle == null ? "null" : this.ContactTitle)}");
-            toStringOutput.Add($"this.Country = {(this.Country == null ? "null" : this.Country)}");
+            toStringOutput.Add($"this.AddressLine1 = {this.AddressLine1 ?? "null"}");
+            toStringOutput.Add($"this.AddressLine2 = {this.AddressLine2 ?? "null"}");
+            toStringOutput.Add($"this.AddressLine3 = {this.AddressLine3 ?? "null"}");
+            toStringOutput.Add($"this.City = {this.City ?? "null"}");
+            toStringOutput.Add($"this.CompanyName = {this.CompanyName ?? "null"}");
+            toStringOutput.Add($"this.ContactForeName = {this.ContactForeName ?? "null"}");
+            toStringOutput.Add($"this.ContactLastName = {this.ContactLastName ?? "null"}");
+            toStringOutput.Add($"this.ContactMiddleName = {this.ContactMiddleName ?? "null"}");
+            toStringOutput.Add($"this.ContactTitle = {this.ContactTitle ?? "null"}");
+            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
             toStringOutput.Add($"this.CountryId = {(this.CountryId == null ? "null" : this.CountryId.ToString())}");
-            toStringOutput.Add($"this.CountryISOCode = {(this.CountryISOCode == null ? "null" : this.CountryISOCode)}");
-            toStringOutput.Add($"this.Fax = {(this.Fax == null ? "null" : this.Fax)}");
-            toStringOutput.Add($"this.Region = {(this.Region == null ? "null" : this.Region)}");
+            toStringOutput.Add($"this.CountryISOCode = {this.CountryISOCode ?? "null"}");
+            toStringOutput.Add($"this.Fax = {this.Fax ?? "null"}");
+            toStringOutput.Add($"this.Region = {this.Region ?? "null"}");
             toStringOutput.Add($"this.RegionId = {(this.RegionId == null ? "null" : this.RegionId.ToString())}");
-            toStringOutput.Add($"this.Telephone = {(this.Telephone == null ? "null" : this.Telephone)}");
-            toStringOutput.Add($"this.ZipCode = {(this.ZipCode == null ? "null" : this.ZipCode)}");
+            toStringOutput.Add($"this.Telephone = {this.Telephone ?? "null"}");
+            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
             toStringOutput.Add($"this.AddressType = {(this.AddressType == null ? "null" : this.AddressType.ToString())}");
         }
     }

@@ -1,21 +1,21 @@
 // <copyright file="CustomerContract.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CustomerContract.
     /// </summary>
@@ -45,6 +45,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string partnerId = null,
             string partnerName = null)
         {
+
             if (partnerId != null)
             {
                 this.PartnerId = partnerId;
@@ -54,7 +55,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PartnerName = partnerName;
             }
-
         }
 
         /// <summary>
@@ -97,14 +97,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CustomerContract : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPartnerId()
         {
@@ -112,7 +110,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPartnerName()
         {
@@ -140,27 +138,24 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CustomerContract other &&                ((this.PartnerId == null && other.PartnerId == null) || (this.PartnerId?.Equals(other.PartnerId) == true)) &&
-                ((this.PartnerName == null && other.PartnerName == null) || (this.PartnerName?.Equals(other.PartnerName) == true));
+            return obj is CustomerContract other &&
+                (this.PartnerId == null && other.PartnerId == null ||
+                 this.PartnerId?.Equals(other.PartnerId) == true) &&
+                (this.PartnerName == null && other.PartnerName == null ||
+                 this.PartnerName?.Equals(other.PartnerName) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PartnerId = {(this.PartnerId == null ? "null" : this.PartnerId)}");
-            toStringOutput.Add($"this.PartnerName = {(this.PartnerName == null ? "null" : this.PartnerName)}");
+            toStringOutput.Add($"this.PartnerId = {this.PartnerId ?? "null"}");
+            toStringOutput.Add($"this.PartnerName = {this.PartnerName ?? "null"}");
         }
     }
 }

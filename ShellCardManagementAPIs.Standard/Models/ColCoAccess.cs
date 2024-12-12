@@ -1,21 +1,21 @@
 // <copyright file="ColCoAccess.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// ColCoAccess.
     /// </summary>
@@ -53,6 +53,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string colCoCountryName = null,
             string issuingCountryNumber = null)
         {
+
             if (colCoId != null)
             {
                 this.ColCoId = colCoId;
@@ -72,7 +73,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.IssuingCountryNumber = issuingCountryNumber;
             }
-
         }
 
         /// <summary>
@@ -152,14 +152,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"ColCoAccess : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -167,7 +165,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -175,7 +173,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCountryName()
         {
@@ -183,7 +181,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIssuingCountryNumber()
         {
@@ -229,31 +227,30 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is ColCoAccess other &&                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoCountryName == null && other.ColCoCountryName == null) || (this.ColCoCountryName?.Equals(other.ColCoCountryName) == true)) &&
-                ((this.IssuingCountryNumber == null && other.IssuingCountryNumber == null) || (this.IssuingCountryNumber?.Equals(other.IssuingCountryNumber) == true));
+            return obj is ColCoAccess other &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoCountryName == null && other.ColCoCountryName == null ||
+                 this.ColCoCountryName?.Equals(other.ColCoCountryName) == true) &&
+                (this.IssuingCountryNumber == null && other.IssuingCountryNumber == null ||
+                 this.IssuingCountryNumber?.Equals(other.IssuingCountryNumber) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId)}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode)}");
-            toStringOutput.Add($"this.ColCoCountryName = {(this.ColCoCountryName == null ? "null" : this.ColCoCountryName)}");
-            toStringOutput.Add($"this.IssuingCountryNumber = {(this.IssuingCountryNumber == null ? "null" : this.IssuingCountryNumber)}");
+            toStringOutput.Add($"this.ColCoId = {this.ColCoId ?? "null"}");
+            toStringOutput.Add($"this.ColCoCode = {this.ColCoCode ?? "null"}");
+            toStringOutput.Add($"this.ColCoCountryName = {this.ColCoCountryName ?? "null"}");
+            toStringOutput.Add($"this.IssuingCountryNumber = {this.IssuingCountryNumber ?? "null"}");
         }
     }
 }

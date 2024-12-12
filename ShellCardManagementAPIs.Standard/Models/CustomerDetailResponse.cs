@@ -1,21 +1,21 @@
 // <copyright file="CustomerDetailResponse.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CustomerDetailResponse.
     /// </summary>
@@ -135,6 +135,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? pINChangeAllowedByCardholder = null,
             bool? pINChangeAllowedFromFleetPIN = null)
         {
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -159,22 +160,22 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.AccountTradingName = accountTradingName;
             }
-
             this.AllowFleetIdInput = allowFleetIdInput;
+
             if (band != null)
             {
                 this.Band = band;
             }
-
             this.BillingAddress = billingAddress;
+
             if (cardGroupPosition != null)
             {
                 this.CardGroupPosition = cardGroupPosition;
             }
-
             this.CorrespondenceAddress = correspondenceAddress;
             this.DeliveryAddresses = deliveryAddresses;
             this.FleetPin = fleetPin;
+
             if (fullName != null)
             {
                 this.FullName = fullName;
@@ -234,14 +235,13 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.DefaultPINAdviceType = defaultPINAdviceType;
             }
-
             this.PINAdviceTypes = pINAdviceTypes;
             this.Error = error;
+
             if (requestId != null)
             {
                 this.RequestId = requestId;
             }
-
             this.PINChangeAllowedByCardholder = pINChangeAllowedByCardholder;
             this.PINChangeAllowedFromFleetPIN = pINChangeAllowedFromFleetPIN;
         }
@@ -374,8 +374,8 @@ namespace ShellCardManagementAPIs.Standard.Models
 
         /// <summary>
         /// Card group position at –
-        /// •	Payer – Payer level
-        /// •	Account – Account level
+        /// •    Payer – Payer level
+        /// •    Account – Account level
         /// </summary>
         [JsonProperty("CardGroupPosition")]
         public string CardGroupPosition
@@ -624,10 +624,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Default PIN AdviceType of the customer.
         /// Possible Values:
-        /// 1.	Paper
-        /// 2.	Email
-        /// 3.	SMS
-        /// 4.	None
+        /// 1.    Paper
+        /// 2.    Email
+        /// 3.    SMS
+        /// 4.    None
         /// </summary>
         [JsonProperty("DefaultPINAdviceType")]
         public int? DefaultPINAdviceType
@@ -690,14 +690,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CustomerDetailResponse : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -705,7 +703,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountName()
         {
@@ -713,7 +711,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -721,7 +719,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountShortName()
         {
@@ -729,7 +727,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountTradingName()
         {
@@ -737,7 +735,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetBand()
         {
@@ -745,7 +743,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardGroupPosition()
         {
@@ -753,7 +751,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetFullName()
         {
@@ -761,7 +759,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoiceCustomerId()
         {
@@ -769,7 +767,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetInvoiceCustomerShortName()
         {
@@ -777,7 +775,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetIsInvoicePoint()
         {
@@ -785,7 +783,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetMarketingSegmentation()
         {
@@ -793,7 +791,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetVATNumber()
         {
@@ -801,7 +799,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -809,7 +807,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerName()
         {
@@ -817,7 +815,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -825,7 +823,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetSelfSelectedPin()
         {
@@ -833,7 +831,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetStatus()
         {
@@ -841,7 +839,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDefaultPINAdviceType()
         {
@@ -849,7 +847,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRequestId()
         {
@@ -1039,46 +1037,70 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CustomerDetailResponse other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountName == null && other.AccountName == null) || (this.AccountName?.Equals(other.AccountName) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.AccountShortName == null && other.AccountShortName == null) || (this.AccountShortName?.Equals(other.AccountShortName) == true)) &&
-                ((this.AccountTradingName == null && other.AccountTradingName == null) || (this.AccountTradingName?.Equals(other.AccountTradingName) == true)) &&
-                ((this.AllowFleetIdInput == null && other.AllowFleetIdInput == null) || (this.AllowFleetIdInput?.Equals(other.AllowFleetIdInput) == true)) &&
-                ((this.Band == null && other.Band == null) || (this.Band?.Equals(other.Band) == true)) &&
-                ((this.BillingAddress == null && other.BillingAddress == null) || (this.BillingAddress?.Equals(other.BillingAddress) == true)) &&
-                ((this.CardGroupPosition == null && other.CardGroupPosition == null) || (this.CardGroupPosition?.Equals(other.CardGroupPosition) == true)) &&
-                ((this.CorrespondenceAddress == null && other.CorrespondenceAddress == null) || (this.CorrespondenceAddress?.Equals(other.CorrespondenceAddress) == true)) &&
-                ((this.DeliveryAddresses == null && other.DeliveryAddresses == null) || (this.DeliveryAddresses?.Equals(other.DeliveryAddresses) == true)) &&
-                ((this.FleetPin == null && other.FleetPin == null) || (this.FleetPin?.Equals(other.FleetPin) == true)) &&
-                ((this.FullName == null && other.FullName == null) || (this.FullName?.Equals(other.FullName) == true)) &&
-                ((this.InvoiceCustomerId == null && other.InvoiceCustomerId == null) || (this.InvoiceCustomerId?.Equals(other.InvoiceCustomerId) == true)) &&
-                ((this.InvoiceCustomerShortName == null && other.InvoiceCustomerShortName == null) || (this.InvoiceCustomerShortName?.Equals(other.InvoiceCustomerShortName) == true)) &&
-                ((this.IsInvoicePoint == null && other.IsInvoicePoint == null) || (this.IsInvoicePoint?.Equals(other.IsInvoicePoint) == true)) &&
-                ((this.MarketingSegmentation == null && other.MarketingSegmentation == null) || (this.MarketingSegmentation?.Equals(other.MarketingSegmentation) == true)) &&
-                ((this.VATNumber == null && other.VATNumber == null) || (this.VATNumber?.Equals(other.VATNumber) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerName == null && other.PayerName == null) || (this.PayerName?.Equals(other.PayerName) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true)) &&
-                ((this.SelfSelectedPin == null && other.SelfSelectedPin == null) || (this.SelfSelectedPin?.Equals(other.SelfSelectedPin) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.DefaultPINAdviceType == null && other.DefaultPINAdviceType == null) || (this.DefaultPINAdviceType?.Equals(other.DefaultPINAdviceType) == true)) &&
-                ((this.PINAdviceTypes == null && other.PINAdviceTypes == null) || (this.PINAdviceTypes?.Equals(other.PINAdviceTypes) == true)) &&
-                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true)) &&
-                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true)) &&
-                ((this.PINChangeAllowedByCardholder == null && other.PINChangeAllowedByCardholder == null) || (this.PINChangeAllowedByCardholder?.Equals(other.PINChangeAllowedByCardholder) == true)) &&
-                ((this.PINChangeAllowedFromFleetPIN == null && other.PINChangeAllowedFromFleetPIN == null) || (this.PINChangeAllowedFromFleetPIN?.Equals(other.PINChangeAllowedFromFleetPIN) == true));
+            return obj is CustomerDetailResponse other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountName == null && other.AccountName == null ||
+                 this.AccountName?.Equals(other.AccountName) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.AccountShortName == null && other.AccountShortName == null ||
+                 this.AccountShortName?.Equals(other.AccountShortName) == true) &&
+                (this.AccountTradingName == null && other.AccountTradingName == null ||
+                 this.AccountTradingName?.Equals(other.AccountTradingName) == true) &&
+                (this.AllowFleetIdInput == null && other.AllowFleetIdInput == null ||
+                 this.AllowFleetIdInput?.Equals(other.AllowFleetIdInput) == true) &&
+                (this.Band == null && other.Band == null ||
+                 this.Band?.Equals(other.Band) == true) &&
+                (this.BillingAddress == null && other.BillingAddress == null ||
+                 this.BillingAddress?.Equals(other.BillingAddress) == true) &&
+                (this.CardGroupPosition == null && other.CardGroupPosition == null ||
+                 this.CardGroupPosition?.Equals(other.CardGroupPosition) == true) &&
+                (this.CorrespondenceAddress == null && other.CorrespondenceAddress == null ||
+                 this.CorrespondenceAddress?.Equals(other.CorrespondenceAddress) == true) &&
+                (this.DeliveryAddresses == null && other.DeliveryAddresses == null ||
+                 this.DeliveryAddresses?.Equals(other.DeliveryAddresses) == true) &&
+                (this.FleetPin == null && other.FleetPin == null ||
+                 this.FleetPin?.Equals(other.FleetPin) == true) &&
+                (this.FullName == null && other.FullName == null ||
+                 this.FullName?.Equals(other.FullName) == true) &&
+                (this.InvoiceCustomerId == null && other.InvoiceCustomerId == null ||
+                 this.InvoiceCustomerId?.Equals(other.InvoiceCustomerId) == true) &&
+                (this.InvoiceCustomerShortName == null && other.InvoiceCustomerShortName == null ||
+                 this.InvoiceCustomerShortName?.Equals(other.InvoiceCustomerShortName) == true) &&
+                (this.IsInvoicePoint == null && other.IsInvoicePoint == null ||
+                 this.IsInvoicePoint?.Equals(other.IsInvoicePoint) == true) &&
+                (this.MarketingSegmentation == null && other.MarketingSegmentation == null ||
+                 this.MarketingSegmentation?.Equals(other.MarketingSegmentation) == true) &&
+                (this.VATNumber == null && other.VATNumber == null ||
+                 this.VATNumber?.Equals(other.VATNumber) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerName == null && other.PayerName == null ||
+                 this.PayerName?.Equals(other.PayerName) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true) &&
+                (this.SelfSelectedPin == null && other.SelfSelectedPin == null ||
+                 this.SelfSelectedPin?.Equals(other.SelfSelectedPin) == true) &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.DefaultPINAdviceType == null && other.DefaultPINAdviceType == null ||
+                 this.DefaultPINAdviceType?.Equals(other.DefaultPINAdviceType) == true) &&
+                (this.PINAdviceTypes == null && other.PINAdviceTypes == null ||
+                 this.PINAdviceTypes?.Equals(other.PINAdviceTypes) == true) &&
+                (this.Error == null && other.Error == null ||
+                 this.Error?.Equals(other.Error) == true) &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true) &&
+                (this.PINChangeAllowedByCardholder == null && other.PINChangeAllowedByCardholder == null ||
+                 this.PINChangeAllowedByCardholder?.Equals(other.PINChangeAllowedByCardholder) == true) &&
+                (this.PINChangeAllowedFromFleetPIN == null && other.PINChangeAllowedFromFleetPIN == null ||
+                 this.PINChangeAllowedFromFleetPIN?.Equals(other.PINChangeAllowedFromFleetPIN) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -1086,32 +1108,32 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountName = {(this.AccountName == null ? "null" : this.AccountName)}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.AccountShortName = {(this.AccountShortName == null ? "null" : this.AccountShortName)}");
-            toStringOutput.Add($"this.AccountTradingName = {(this.AccountTradingName == null ? "null" : this.AccountTradingName)}");
+            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
+            toStringOutput.Add($"this.AccountTradingName = {this.AccountTradingName ?? "null"}");
             toStringOutput.Add($"this.AllowFleetIdInput = {(this.AllowFleetIdInput == null ? "null" : this.AllowFleetIdInput.ToString())}");
-            toStringOutput.Add($"this.Band = {(this.Band == null ? "null" : this.Band)}");
+            toStringOutput.Add($"this.Band = {this.Band ?? "null"}");
             toStringOutput.Add($"this.BillingAddress = {(this.BillingAddress == null ? "null" : this.BillingAddress.ToString())}");
-            toStringOutput.Add($"this.CardGroupPosition = {(this.CardGroupPosition == null ? "null" : this.CardGroupPosition)}");
+            toStringOutput.Add($"this.CardGroupPosition = {this.CardGroupPosition ?? "null"}");
             toStringOutput.Add($"this.CorrespondenceAddress = {(this.CorrespondenceAddress == null ? "null" : this.CorrespondenceAddress.ToString())}");
             toStringOutput.Add($"this.DeliveryAddresses = {(this.DeliveryAddresses == null ? "null" : $"[{string.Join(", ", this.DeliveryAddresses)} ]")}");
             toStringOutput.Add($"this.FleetPin = {(this.FleetPin == null ? "null" : this.FleetPin.ToString())}");
-            toStringOutput.Add($"this.FullName = {(this.FullName == null ? "null" : this.FullName)}");
+            toStringOutput.Add($"this.FullName = {this.FullName ?? "null"}");
             toStringOutput.Add($"this.InvoiceCustomerId = {(this.InvoiceCustomerId == null ? "null" : this.InvoiceCustomerId.ToString())}");
-            toStringOutput.Add($"this.InvoiceCustomerShortName = {(this.InvoiceCustomerShortName == null ? "null" : this.InvoiceCustomerShortName)}");
+            toStringOutput.Add($"this.InvoiceCustomerShortName = {this.InvoiceCustomerShortName ?? "null"}");
             toStringOutput.Add($"this.IsInvoicePoint = {(this.IsInvoicePoint == null ? "null" : this.IsInvoicePoint.ToString())}");
-            toStringOutput.Add($"this.MarketingSegmentation = {(this.MarketingSegmentation == null ? "null" : this.MarketingSegmentation)}");
-            toStringOutput.Add($"this.VATNumber = {(this.VATNumber == null ? "null" : this.VATNumber)}");
+            toStringOutput.Add($"this.MarketingSegmentation = {this.MarketingSegmentation ?? "null"}");
+            toStringOutput.Add($"this.VATNumber = {this.VATNumber ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerName = {(this.PayerName == null ? "null" : this.PayerName)}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerName = {this.PayerName ?? "null"}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
             toStringOutput.Add($"this.SelfSelectedPin = {(this.SelfSelectedPin == null ? "null" : this.SelfSelectedPin.ToString())}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
             toStringOutput.Add($"this.DefaultPINAdviceType = {(this.DefaultPINAdviceType == null ? "null" : this.DefaultPINAdviceType.ToString())}");
             toStringOutput.Add($"this.PINAdviceTypes = {(this.PINAdviceTypes == null ? "null" : $"[{string.Join(", ", this.PINAdviceTypes)} ]")}");
             toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
             toStringOutput.Add($"this.PINChangeAllowedByCardholder = {(this.PINChangeAllowedByCardholder == null ? "null" : this.PINChangeAllowedByCardholder.ToString())}");
             toStringOutput.Add($"this.PINChangeAllowedFromFleetPIN = {(this.PINChangeAllowedFromFleetPIN == null ? "null" : this.PINChangeAllowedFromFleetPIN.ToString())}");
         }

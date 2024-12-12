@@ -1,21 +1,21 @@
 // <copyright file="RestrictionCardsList.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// RestrictionCardsList.
     /// </summary>
@@ -27,8 +27,6 @@ namespace ShellCardManagementAPIs.Standard.Models
         private bool? resetDayTimeRestrictions;
         private bool? resetProductRestrictions;
         private bool? resetLocationRestrictions;
-        private Models.UsageRestrictionsCard usageRestrictions;
-        private Models.ProductRestrictionCard productRestrictions;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
         {
             { "AccountId", false },
@@ -37,8 +35,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "ResetDayTimeRestrictions", false },
             { "ResetProductRestrictions", false },
             { "ResetLocationRestrictions", false },
-            { "UsageRestrictions", false },
-            { "ProductRestrictions", false },
         };
 
         /// <summary>
@@ -70,11 +66,12 @@ namespace ShellCardManagementAPIs.Standard.Models
             bool? resetDayTimeRestrictions = null,
             bool? resetProductRestrictions = null,
             bool? resetLocationRestrictions = null,
-            Models.UsageRestrictionsCard usageRestrictions = null,
-            Models.DayTimeRestriction dayTimeRestrictions = null,
-            Models.ProductRestrictionCard productRestrictions = null,
+            object usageRestrictions = null,
+            Models.DayTimeRestrictions dayTimeRestrictions = null,
+            object productRestrictions = null,
             Models.LocationRestriction locationRestrictions = null)
         {
+
             if (accountId != null)
             {
                 this.AccountId = accountId;
@@ -89,8 +86,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PAN = pAN;
             }
-
             this.ResetUsageRestrictions = resetUsageRestrictions;
+
             if (resetDayTimeRestrictions != null)
             {
                 this.ResetDayTimeRestrictions = resetDayTimeRestrictions;
@@ -105,18 +102,9 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ResetLocationRestrictions = resetLocationRestrictions;
             }
-
-            if (usageRestrictions != null)
-            {
-                this.UsageRestrictions = usageRestrictions;
-            }
-
+            this.UsageRestrictions = usageRestrictions;
             this.DayTimeRestrictions = dayTimeRestrictions;
-            if (productRestrictions != null)
-            {
-                this.ProductRestrictions = productRestrictions;
-            }
-
+            this.ProductRestrictions = productRestrictions;
             this.LocationRestrictions = locationRestrictions;
         }
 
@@ -164,7 +152,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Optional if CardId is given, else mandatory.
         /// Example: 7002051006629890645
         /// Note:
-        /// •	PAN is ignored if CardId is given.
+        /// •    PAN is ignored if CardId is given.
         /// When PAN matches with multiple cards, the restriction will be applied on the latest issued card.
         /// </summary>
         [JsonProperty("PAN")]
@@ -250,44 +238,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Gets or sets UsageRestrictions.
         /// </summary>
-        [JsonProperty("UsageRestrictions")]
-        public Models.UsageRestrictionsCard UsageRestrictions
-        {
-            get
-            {
-                return this.usageRestrictions;
-            }
-
-            set
-            {
-                this.shouldSerialize["UsageRestrictions"] = true;
-                this.usageRestrictions = value;
-            }
-        }
+        [JsonProperty("UsageRestrictions", NullValueHandling = NullValueHandling.Ignore)]
+        public object UsageRestrictions { get; set; }
 
         /// <summary>
-        /// Details of the day/time restrictions such as weekdays and time range in which transactions should be allowed on the card.
+        /// Gets or sets DayTimeRestrictions.
         /// </summary>
         [JsonProperty("DayTimeRestrictions", NullValueHandling = NullValueHandling.Ignore)]
-        public Models.DayTimeRestriction DayTimeRestrictions { get; set; }
+        public Models.DayTimeRestrictions DayTimeRestrictions { get; set; }
 
         /// <summary>
         /// Gets or sets ProductRestrictions.
         /// </summary>
-        [JsonProperty("ProductRestrictions")]
-        public Models.ProductRestrictionCard ProductRestrictions
-        {
-            get
-            {
-                return this.productRestrictions;
-            }
-
-            set
-            {
-                this.shouldSerialize["ProductRestrictions"] = true;
-                this.productRestrictions = value;
-            }
-        }
+        [JsonProperty("ProductRestrictions", NullValueHandling = NullValueHandling.Ignore)]
+        public object ProductRestrictions { get; set; }
 
         /// <summary>
         /// Gets or sets LocationRestrictions.
@@ -299,14 +263,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"RestrictionCardsList : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -314,7 +276,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardId()
         {
@@ -322,7 +284,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPAN()
         {
@@ -330,7 +292,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetDayTimeRestrictions()
         {
@@ -338,7 +300,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetProductRestrictions()
         {
@@ -346,27 +308,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetResetLocationRestrictions()
         {
             this.shouldSerialize["ResetLocationRestrictions"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetUsageRestrictions()
-        {
-            this.shouldSerialize["UsageRestrictions"] = false;
-        }
-
-        /// <summary>
-        /// Marks the field to not be serailized.
-        /// </summary>
-        public void UnsetProductRestrictions()
-        {
-            this.shouldSerialize["ProductRestrictions"] = false;
         }
 
         /// <summary>
@@ -423,49 +369,37 @@ namespace ShellCardManagementAPIs.Standard.Models
             return this.shouldSerialize["ResetLocationRestrictions"];
         }
 
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeUsageRestrictions()
-        {
-            return this.shouldSerialize["UsageRestrictions"];
-        }
-
-        /// <summary>
-        /// Checks if the field should be serialized or not.
-        /// </summary>
-        /// <returns>A boolean weather the field should be serialized or not.</returns>
-        public bool ShouldSerializeProductRestrictions()
-        {
-            return this.shouldSerialize["ProductRestrictions"];
-        }
-
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is RestrictionCardsList other &&                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.ResetUsageRestrictions == null && other.ResetUsageRestrictions == null) || (this.ResetUsageRestrictions?.Equals(other.ResetUsageRestrictions) == true)) &&
-                ((this.ResetDayTimeRestrictions == null && other.ResetDayTimeRestrictions == null) || (this.ResetDayTimeRestrictions?.Equals(other.ResetDayTimeRestrictions) == true)) &&
-                ((this.ResetProductRestrictions == null && other.ResetProductRestrictions == null) || (this.ResetProductRestrictions?.Equals(other.ResetProductRestrictions) == true)) &&
-                ((this.ResetLocationRestrictions == null && other.ResetLocationRestrictions == null) || (this.ResetLocationRestrictions?.Equals(other.ResetLocationRestrictions) == true)) &&
-                ((this.UsageRestrictions == null && other.UsageRestrictions == null) || (this.UsageRestrictions?.Equals(other.UsageRestrictions) == true)) &&
-                ((this.DayTimeRestrictions == null && other.DayTimeRestrictions == null) || (this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true)) &&
-                ((this.ProductRestrictions == null && other.ProductRestrictions == null) || (this.ProductRestrictions?.Equals(other.ProductRestrictions) == true)) &&
-                ((this.LocationRestrictions == null && other.LocationRestrictions == null) || (this.LocationRestrictions?.Equals(other.LocationRestrictions) == true));
+            return obj is RestrictionCardsList other &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.ResetUsageRestrictions == null && other.ResetUsageRestrictions == null ||
+                 this.ResetUsageRestrictions?.Equals(other.ResetUsageRestrictions) == true) &&
+                (this.ResetDayTimeRestrictions == null && other.ResetDayTimeRestrictions == null ||
+                 this.ResetDayTimeRestrictions?.Equals(other.ResetDayTimeRestrictions) == true) &&
+                (this.ResetProductRestrictions == null && other.ResetProductRestrictions == null ||
+                 this.ResetProductRestrictions?.Equals(other.ResetProductRestrictions) == true) &&
+                (this.ResetLocationRestrictions == null && other.ResetLocationRestrictions == null ||
+                 this.ResetLocationRestrictions?.Equals(other.ResetLocationRestrictions) == true) &&
+                (this.UsageRestrictions == null && other.UsageRestrictions == null ||
+                 this.UsageRestrictions?.Equals(other.UsageRestrictions) == true) &&
+                (this.DayTimeRestrictions == null && other.DayTimeRestrictions == null ||
+                 this.DayTimeRestrictions?.Equals(other.DayTimeRestrictions) == true) &&
+                (this.ProductRestrictions == null && other.ProductRestrictions == null ||
+                 this.ProductRestrictions?.Equals(other.ProductRestrictions) == true) &&
+                (this.LocationRestrictions == null && other.LocationRestrictions == null ||
+                 this.LocationRestrictions?.Equals(other.LocationRestrictions) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -474,14 +408,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         {
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
             toStringOutput.Add($"this.ResetUsageRestrictions = {(this.ResetUsageRestrictions == null ? "null" : this.ResetUsageRestrictions.ToString())}");
             toStringOutput.Add($"this.ResetDayTimeRestrictions = {(this.ResetDayTimeRestrictions == null ? "null" : this.ResetDayTimeRestrictions.ToString())}");
             toStringOutput.Add($"this.ResetProductRestrictions = {(this.ResetProductRestrictions == null ? "null" : this.ResetProductRestrictions.ToString())}");
             toStringOutput.Add($"this.ResetLocationRestrictions = {(this.ResetLocationRestrictions == null ? "null" : this.ResetLocationRestrictions.ToString())}");
-            toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
+            toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
             toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
-            toStringOutput.Add($"this.ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
+            toStringOutput.Add($"ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
             toStringOutput.Add($"this.LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
         }
     }

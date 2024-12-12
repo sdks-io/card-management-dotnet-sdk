@@ -1,21 +1,21 @@
 // <copyright file="Role.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// Role.
     /// </summary>
@@ -95,39 +95,38 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"Role : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is Role other &&                ((this.RoleName == null && other.RoleName == null) || (this.RoleName?.Equals(other.RoleName) == true)) &&
-                ((this.IsCustomerAdmin == null && other.IsCustomerAdmin == null) || (this.IsCustomerAdmin?.Equals(other.IsCustomerAdmin) == true)) &&
-                ((this.IsCustomerUser == null && other.IsCustomerUser == null) || (this.IsCustomerUser?.Equals(other.IsCustomerUser) == true)) &&
-                ((this.IsShellAdmin == null && other.IsShellAdmin == null) || (this.IsShellAdmin?.Equals(other.IsShellAdmin) == true)) &&
-                ((this.IsServiceAccount == null && other.IsServiceAccount == null) || (this.IsServiceAccount?.Equals(other.IsServiceAccount) == true)) &&
-                ((this.IsUserAdmin == null && other.IsUserAdmin == null) || (this.IsUserAdmin?.Equals(other.IsUserAdmin) == true));
+            return obj is Role other &&
+                (this.RoleName == null && other.RoleName == null ||
+                 this.RoleName?.Equals(other.RoleName) == true) &&
+                (this.IsCustomerAdmin == null && other.IsCustomerAdmin == null ||
+                 this.IsCustomerAdmin?.Equals(other.IsCustomerAdmin) == true) &&
+                (this.IsCustomerUser == null && other.IsCustomerUser == null ||
+                 this.IsCustomerUser?.Equals(other.IsCustomerUser) == true) &&
+                (this.IsShellAdmin == null && other.IsShellAdmin == null ||
+                 this.IsShellAdmin?.Equals(other.IsShellAdmin) == true) &&
+                (this.IsServiceAccount == null && other.IsServiceAccount == null ||
+                 this.IsServiceAccount?.Equals(other.IsServiceAccount) == true) &&
+                (this.IsUserAdmin == null && other.IsUserAdmin == null ||
+                 this.IsUserAdmin?.Equals(other.IsUserAdmin) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RoleName = {(this.RoleName == null ? "null" : this.RoleName)}");
+            toStringOutput.Add($"this.RoleName = {this.RoleName ?? "null"}");
             toStringOutput.Add($"this.IsCustomerAdmin = {(this.IsCustomerAdmin == null ? "null" : this.IsCustomerAdmin.ToString())}");
             toStringOutput.Add($"this.IsCustomerUser = {(this.IsCustomerUser == null ? "null" : this.IsCustomerUser.ToString())}");
             toStringOutput.Add($"this.IsShellAdmin = {(this.IsShellAdmin == null ? "null" : this.IsShellAdmin.ToString())}");

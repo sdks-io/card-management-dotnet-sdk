@@ -1,21 +1,21 @@
 // <copyright file="SubmittedCard.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// SubmittedCard.
     /// </summary>
@@ -30,6 +30,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         private int? colCoCode;
         private int? colCoId;
         private string pAN;
+        private double? pANID;
+        private string maskedPAN;
         private int? payerId;
         private string payerNumber;
         private Dictionary<string, bool> shouldSerialize = new Dictionary<string, bool>
@@ -43,6 +45,8 @@ namespace ShellCardManagementAPIs.Standard.Models
             { "ColCoCode", false },
             { "ColCoId", false },
             { "PAN", false },
+            { "PANID", false },
+            { "MaskedPAN", false },
             { "PayerId", false },
             { "PayerNumber", false },
         };
@@ -66,6 +70,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="colCoCode">ColCoCode.</param>
         /// <param name="colCoId">ColCoId.</param>
         /// <param name="pAN">PAN.</param>
+        /// <param name="pANID">PANID.</param>
+        /// <param name="maskedPAN">MaskedPAN.</param>
         /// <param name="payerId">PayerId.</param>
         /// <param name="payerNumber">PayerNumber.</param>
         public SubmittedCard(
@@ -78,9 +84,12 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? colCoCode = null,
             int? colCoId = null,
             string pAN = null,
+            double? pANID = null,
+            string maskedPAN = null,
             int? payerId = null,
             string payerNumber = null)
         {
+
             if (replacementCardReference != null)
             {
                 this.ReplacementCardReference = replacementCardReference;
@@ -126,6 +135,16 @@ namespace ShellCardManagementAPIs.Standard.Models
                 this.PAN = pAN;
             }
 
+            if (pANID != null)
+            {
+                this.PANID = pANID;
+            }
+
+            if (maskedPAN != null)
+            {
+                this.MaskedPAN = maskedPAN;
+            }
+
             if (payerId != null)
             {
                 this.PayerId = payerId;
@@ -135,7 +154,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.PayerNumber = payerNumber;
             }
-
         }
 
         /// <summary>
@@ -310,6 +328,42 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
+        /// PANID of the card
+        /// </summary>
+        [JsonProperty("PANID")]
+        public double? PANID
+        {
+            get
+            {
+                return this.pANID;
+            }
+
+            set
+            {
+                this.shouldSerialize["PANID"] = true;
+                this.pANID = value;
+            }
+        }
+
+        /// <summary>
+        /// Card PAN
+        /// </summary>
+        [JsonProperty("MaskedPAN")]
+        public string MaskedPAN
+        {
+            get
+            {
+                return this.maskedPAN;
+            }
+
+            set
+            {
+                this.shouldSerialize["MaskedPAN"] = true;
+                this.maskedPAN = value;
+            }
+        }
+
+        /// <summary>
         /// Payer id of the customer.<br />
         /// Optional if PayerNumber is passed, else Mandatory.
         /// </summary>
@@ -351,14 +405,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"SubmittedCard : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetReplacementCardReference()
         {
@@ -366,7 +418,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetUpdateCardReference()
         {
@@ -374,7 +426,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountId()
         {
@@ -382,7 +434,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetAccountNumber()
         {
@@ -390,7 +442,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardExpiryDate()
         {
@@ -398,7 +450,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetCardId()
         {
@@ -406,7 +458,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoCode()
         {
@@ -414,7 +466,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetColCoId()
         {
@@ -422,7 +474,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPAN()
         {
@@ -430,7 +482,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
+        /// </summary>
+        public void UnsetPANID()
+        {
+            this.shouldSerialize["PANID"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serialized.
+        /// </summary>
+        public void UnsetMaskedPAN()
+        {
+            this.shouldSerialize["MaskedPAN"] = false;
+        }
+
+        /// <summary>
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerId()
         {
@@ -438,7 +506,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetPayerNumber()
         {
@@ -530,6 +598,24 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Checks if the field should be serialized or not.
         /// </summary>
         /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializePANID()
+        {
+            return this.shouldSerialize["PANID"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
+        public bool ShouldSerializeMaskedPAN()
+        {
+            return this.shouldSerialize["MaskedPAN"];
+        }
+
+        /// <summary>
+        /// Checks if the field should be serialized or not.
+        /// </summary>
+        /// <returns>A boolean weather the field should be serialized or not.</returns>
         public bool ShouldSerializePayerId()
         {
             return this.shouldSerialize["PayerId"];
@@ -547,28 +633,38 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is SubmittedCard other &&                ((this.ReplacementCardReference == null && other.ReplacementCardReference == null) || (this.ReplacementCardReference?.Equals(other.ReplacementCardReference) == true)) &&
-                ((this.UpdateCardReference == null && other.UpdateCardReference == null) || (this.UpdateCardReference?.Equals(other.UpdateCardReference) == true)) &&
-                ((this.AccountId == null && other.AccountId == null) || (this.AccountId?.Equals(other.AccountId) == true)) &&
-                ((this.AccountNumber == null && other.AccountNumber == null) || (this.AccountNumber?.Equals(other.AccountNumber) == true)) &&
-                ((this.CardExpiryDate == null && other.CardExpiryDate == null) || (this.CardExpiryDate?.Equals(other.CardExpiryDate) == true)) &&
-                ((this.CardId == null && other.CardId == null) || (this.CardId?.Equals(other.CardId) == true)) &&
-                ((this.ColCoCode == null && other.ColCoCode == null) || (this.ColCoCode?.Equals(other.ColCoCode) == true)) &&
-                ((this.ColCoId == null && other.ColCoId == null) || (this.ColCoId?.Equals(other.ColCoId) == true)) &&
-                ((this.PAN == null && other.PAN == null) || (this.PAN?.Equals(other.PAN) == true)) &&
-                ((this.PayerId == null && other.PayerId == null) || (this.PayerId?.Equals(other.PayerId) == true)) &&
-                ((this.PayerNumber == null && other.PayerNumber == null) || (this.PayerNumber?.Equals(other.PayerNumber) == true));
+            return obj is SubmittedCard other &&
+                (this.ReplacementCardReference == null && other.ReplacementCardReference == null ||
+                 this.ReplacementCardReference?.Equals(other.ReplacementCardReference) == true) &&
+                (this.UpdateCardReference == null && other.UpdateCardReference == null ||
+                 this.UpdateCardReference?.Equals(other.UpdateCardReference) == true) &&
+                (this.AccountId == null && other.AccountId == null ||
+                 this.AccountId?.Equals(other.AccountId) == true) &&
+                (this.AccountNumber == null && other.AccountNumber == null ||
+                 this.AccountNumber?.Equals(other.AccountNumber) == true) &&
+                (this.CardExpiryDate == null && other.CardExpiryDate == null ||
+                 this.CardExpiryDate?.Equals(other.CardExpiryDate) == true) &&
+                (this.CardId == null && other.CardId == null ||
+                 this.CardId?.Equals(other.CardId) == true) &&
+                (this.ColCoCode == null && other.ColCoCode == null ||
+                 this.ColCoCode?.Equals(other.ColCoCode) == true) &&
+                (this.ColCoId == null && other.ColCoId == null ||
+                 this.ColCoId?.Equals(other.ColCoId) == true) &&
+                (this.PAN == null && other.PAN == null ||
+                 this.PAN?.Equals(other.PAN) == true) &&
+                (this.PANID == null && other.PANID == null ||
+                 this.PANID?.Equals(other.PANID) == true) &&
+                (this.MaskedPAN == null && other.MaskedPAN == null ||
+                 this.MaskedPAN?.Equals(other.MaskedPAN) == true) &&
+                (this.PayerId == null && other.PayerId == null ||
+                 this.PayerId?.Equals(other.PayerId) == true) &&
+                (this.PayerNumber == null && other.PayerNumber == null ||
+                 this.PayerNumber?.Equals(other.PayerNumber) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -578,14 +674,16 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.ReplacementCardReference = {(this.ReplacementCardReference == null ? "null" : this.ReplacementCardReference.ToString())}");
             toStringOutput.Add($"this.UpdateCardReference = {(this.UpdateCardReference == null ? "null" : this.UpdateCardReference.ToString())}");
             toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {(this.AccountNumber == null ? "null" : this.AccountNumber)}");
-            toStringOutput.Add($"this.CardExpiryDate = {(this.CardExpiryDate == null ? "null" : this.CardExpiryDate)}");
+            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
             toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
             toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
             toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN)}");
+            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
+            toStringOutput.Add($"this.MaskedPAN = {this.MaskedPAN ?? "null"}");
             toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {(this.PayerNumber == null ? "null" : this.PayerNumber)}");
+            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
         }
     }
 }

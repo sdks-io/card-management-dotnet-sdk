@@ -121,24 +121,26 @@ SearchCardRequest body = new SearchCardRequest
         ExcludeCancelledCards = true,
         ExcludeCardGroupId = 425,
         ExcludeCardGroupName = "CARDGRP2",
-        ExcludeCards = new List<Models.SearchCard>
+        ExcludeCards = new List<SearchCard>
         {
             new SearchCard
             {
                 CardId = 466907,
                 PAN = "7077327290224795811",
+                PANID = 17350065,
             },
         },
         ExcludeFraudCards = false,
         ExcludePendingRenewalCards = true,
         ExcludeReplacedCards = false,
         ExpiryMonth = "052022",
-        IncludeCards = new List<Models.SearchCard>
+        IncludeCards = new List<SearchCard>
         {
             new SearchCard
             {
                 CardId = 466906,
                 PAN = "7077327290224795801",
+                PANID = 17350065,
             },
         },
         IncludeIntermediateStatus = false,
@@ -227,6 +229,8 @@ catch (ApiException e)
       "LocalCurrencySymbol": "Kč",
       "OdometerInput": true,
       "PAN": "7077327290223410782",
+      "MaskedPAN": "7077327******410782",
+      "PANID": 17350064,
       "PurchaseCategoryCode": "3",
       "PurchaseCategoryId": 103,
       "PurchaseCategoryName": "3 - No Restriction",
@@ -336,7 +340,7 @@ CardSummaryRequest body = new CardSummaryRequest
             "5A2 7512",
             "5A2 7514",
         },
-        IncludeCards = new List<Models.SearchCard>
+        IncludeCards = new List<SearchCard>
         {
             new SearchCard
             {
@@ -344,7 +348,7 @@ CardSummaryRequest body = new CardSummaryRequest
                 PAN = "7077327290224795801",
             },
         },
-        ExcludeCards = new List<Models.SearchCard>
+        ExcludeCards = new List<SearchCard>
         {
             new SearchCard
             {
@@ -481,7 +485,7 @@ CardordercardAsync(
 string requestId = "RequestId8";
 CardManagementV1OrdercardRequest body = new CardManagementV1OrdercardRequest
 {
-    CardDetails = new List<Models.CardDetail>
+    CardDetails = new List<CardDetail>
     {
         new CardDetail
         {
@@ -696,6 +700,8 @@ catch (ApiException e)
       "CardGroupName": "null",
       "CardId": 41008,
       "CardPAN": "7077187910757000712",
+      "MaskedPAN": "707718******000712",
+      "PANID": 17285721,
       "CardTypeCode": "7077187",
       "CardTypeId": 704,
       "CardTypeName": "NL CRT Nat. Shell + partnernetwerk",
@@ -796,7 +802,7 @@ CardcancelAsync(
 string requestId = "RequestId8";
 CardManagementV1CancelRequest body = new CardManagementV1CancelRequest
 {
-    Cards = new List<Models.UpdateCard>
+    Cards = new List<UpdateCard>
     {
         new UpdateCard
         {
@@ -981,7 +987,7 @@ CardupdatestatusAsync(
 string requestId = "RequestId8";
 CardManagementV1UpdatestatusRequest body = new CardManagementV1UpdatestatusRequest
 {
-    Cards = new List<Models.UpdateCard>
+    Cards = new List<UpdateCard>
     {
         new UpdateCard
         {
@@ -1037,6 +1043,7 @@ CardManagementV1UpdatestatusRequest body = new CardManagementV1UpdatestatusReque
             ColCoCode = 32,
             ColCoId = 32,
             PAN = "7077327290223410816",
+            PANID = 17350064,
             PayerId = 1223,
             PayerNumber = "CZ00000928",
         },
@@ -1079,6 +1086,8 @@ catch (ApiException e)
       "ColCoCode": 32,
       "ColCoId": 32,
       "PAN": "7077327290223421201",
+      "PANID": 17352931,
+      "MaskedPAN": "7077327******421201",
       "PayerId": 1227,
       "PayerNumber": "CZ00000927"
     }
@@ -1475,7 +1484,7 @@ CardMoveRequest body = new CardMoveRequest
     ColCoCountryCode = "PH",
     PayerNumber = "PH50000843",
     PayerId = 853,
-    Cards = new List<Models.CardMoveRequestCardsItems>
+    Cards = new List<CardMoveRequestCardsItems>
     {
         new CardMoveRequestCardsItems
         {
@@ -1601,7 +1610,7 @@ CardManagementV1PinreminderRequest body = new CardManagementV1PinreminderRequest
     AccountNumber = "CZ00000927",
     ColCoCode = 32,
     PayerNumber = "CZ00000927",
-    PINReminderCardDetails = new List<Models.PINReminderCardDetails>
+    PINReminderCardDetails = new List<PINReminderCardDetails>
     {
         new PINReminderCardDetails
         {
@@ -1729,7 +1738,7 @@ string requestId = "RequestId8";
 ScheduleCardBlockRequest body = new ScheduleCardBlockRequest
 {
     IsTimeSupported = true,
-    ScheduleCardBlockCards = new List<Models.ScheduleCardBlockCardsItems>
+    ScheduleCardBlockCards = new List<ScheduleCardBlockCardsItems>
     {
         new ScheduleCardBlockCardsItems
         {
@@ -1742,6 +1751,7 @@ ScheduleCardBlockRequest body = new ScheduleCardBlockRequest
             PayerNumber = "CZ00000928",
             CardId = 234,
             PAN = "7077327290223418348",
+            PANID = "130128",
             CardExpiryDate = "20240731",
             FromDate = "20230701 14:30",
             ToDate = "20230731 16:30",
@@ -1843,7 +1853,7 @@ AutoRenewCardRequest body = new AutoRenewCardRequest
     ColCoCode = 32,
     PayerNumber = "CZ00000928",
     PayerId = 1227,
-    AutoRenewCards = new List<Models.AutoRenewCardRequestAutoRenewCardsItems>
+    AutoRenewCards = new List<AutoRenewCardRequestAutoRenewCardsItems>
     {
         new AutoRenewCardRequestAutoRenewCardsItems
         {
@@ -1851,6 +1861,7 @@ AutoRenewCardRequest body = new AutoRenewCardRequest
             AccountNumber = "CZ00000929",
             AccountId = 1229,
             PAN = "7077327290223440243",
+            PANID = 17240826,
             CardId = 446472,
         },
     },
@@ -1880,7 +1891,8 @@ catch (ApiException e)
   "Data": [
     {
       "AutoRenewReferenceId": 226,
-      "CardIdAndPAN": "446472;7077327290223440243"
+      "CardIdAndPAN": "446472;7077327290223440243",
+      "PANID": 17240826
     }
   ]
 }
@@ -1932,7 +1944,7 @@ UpdateMPayRegStatusRequest body = new UpdateMPayRegStatusRequest
     ColCoCode = 32,
     PayerId = 1223,
     PayerNumber = "CZ00000923",
-    MPayRequests = new List<Models.UpdateMPayRegStatusRequestMPayRequestsItems>
+    MPayRequests = new List<UpdateMPayRegStatusRequestMPayRequestsItems>
     {
         new UpdateMPayRegStatusRequestMPayRequestsItems
         {
@@ -2072,7 +2084,7 @@ DeliveryAddressUpdateRequest body = new DeliveryAddressUpdateRequest
     PayerNumber = "GB000000123",
     AccountId = 12356,
     AccountNumber = "GB000000124",
-    DeliveryAddressUpdates = new List<Models.DeliveryAddressUpdate>
+    DeliveryAddressUpdates = new List<DeliveryAddressUpdate>
     {
         new DeliveryAddressUpdate
         {

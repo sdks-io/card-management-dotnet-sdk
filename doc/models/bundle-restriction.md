@@ -9,11 +9,11 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `DayTimeRestrictionAction` | `string` | Optional | The value indicates what actions to be performed with respect to day time restriction.<br>Mandatory<br>Allowed values –<br>•	Add: Apply the given restriction on the bundle.<br>•	Default: No Day/Time restriction will be applied on the bundle in Gateway. |
-| `LocationRestrictionAction` | `string` | Optional | The value indicates what actions to be performed with respect to location restriction.<br>Mandatory<br>Allowed values –<br>•	Add: Apply the given restriction on the bundle.<br>•	Default: No location restriction will be applied on the bundle in Gateway. |
-| `UsageRestrictions` | [`UsageRestrictionsCard`](../../doc/models/usage-restrictions-card.md) | Optional | - |
-| `DayTimeRestrictions` | [`DayTimeRestriction`](../../doc/models/day-time-restriction.md) | Optional | Details of the day/time restrictions such as weekdays and time range in which transactions should be allowed on the card. |
-| `ProductRestrictions` | [`ProductRestrictionCard`](../../doc/models/product-restriction-card.md) | Optional | - |
+| `DayTimeRestrictionAction` | `string` | Optional | The value indicates what actions to be performed with respect to day time restriction.<br>Mandatory<br>Allowed values –<br>•    Add: Apply the given restriction on the bundle.<br>•    Default: No Day/Time restriction will be applied on the bundle in Gateway. |
+| `LocationRestrictionAction` | `string` | Optional | The value indicates what actions to be performed with respect to location restriction.<br>Mandatory<br>Allowed values –<br>•    Add: Apply the given restriction on the bundle.<br>•    Default: No location restriction will be applied on the bundle in Gateway. |
+| `UsageRestrictions` | `object` | Optional | - |
+| `DayTimeRestrictions` | [`DayTimeRestrictions`](../../doc/models/day-time-restrictions.md) | Optional | - |
+| `ProductRestrictions` | `object` | Optional | - |
 | `LocationRestrictions` | [`LocationRestriction`](../../doc/models/location-restriction.md) | Optional | - |
 
 ## Example (as JSON)
@@ -23,11 +23,8 @@
   "DayTimeRestrictionAction": "DayTimeRestrictionAction8",
   "LocationRestrictionAction": "LocationRestrictionAction6",
   "UsageRestrictions": {
-    "DailySpend": 7.72,
-    "WeeklySpend": 10.22,
-    "MonthlySpend": 48.66,
-    "PerTransactionSpend": 17.28,
-    "AnnualSpend": 223.08
+    "key1": "val1",
+    "key2": "val2"
   },
   "DayTimeRestrictions": {
     "Monday": false,
@@ -37,13 +34,8 @@
     "Friday": false
   },
   "ProductRestrictions": {
-    "Products": [
-      "Products4"
-    ],
-    "ProductGroups": [
-      "ProductGroups3",
-      "ProductGroups4"
-    ]
+    "key1": "val1",
+    "key2": "val2"
   }
 }
 ```

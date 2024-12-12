@@ -1,21 +1,21 @@
 // <copyright file="CreateCardGroupResponse.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CreateCardGroupResponse.
     /// </summary>
@@ -97,32 +97,31 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CreateCardGroupResponse : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CreateCardGroupResponse other &&                ((this.MainReference == null && other.MainReference == null) || (this.MainReference?.Equals(other.MainReference) == true)) &&
-                ((this.NewCardGroupReference == null && other.NewCardGroupReference == null) || (this.NewCardGroupReference?.Equals(other.NewCardGroupReference) == true)) &&
-                ((this.SuccessfulRequests == null && other.SuccessfulRequests == null) || (this.SuccessfulRequests?.Equals(other.SuccessfulRequests) == true)) &&
-                ((this.ErrorCards == null && other.ErrorCards == null) || (this.ErrorCards?.Equals(other.ErrorCards) == true)) &&
-                ((this.Error == null && other.Error == null) || (this.Error?.Equals(other.Error) == true)) &&
-                ((this.RequestId == null && other.RequestId == null) || (this.RequestId?.Equals(other.RequestId) == true));
+            return obj is CreateCardGroupResponse other &&
+                (this.MainReference == null && other.MainReference == null ||
+                 this.MainReference?.Equals(other.MainReference) == true) &&
+                (this.NewCardGroupReference == null && other.NewCardGroupReference == null ||
+                 this.NewCardGroupReference?.Equals(other.NewCardGroupReference) == true) &&
+                (this.SuccessfulRequests == null && other.SuccessfulRequests == null ||
+                 this.SuccessfulRequests?.Equals(other.SuccessfulRequests) == true) &&
+                (this.ErrorCards == null && other.ErrorCards == null ||
+                 this.ErrorCards?.Equals(other.ErrorCards) == true) &&
+                (this.Error == null && other.Error == null ||
+                 this.Error?.Equals(other.Error) == true) &&
+                (this.RequestId == null && other.RequestId == null ||
+                 this.RequestId?.Equals(other.RequestId) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -134,7 +133,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             toStringOutput.Add($"this.SuccessfulRequests = {(this.SuccessfulRequests == null ? "null" : $"[{string.Join(", ", this.SuccessfulRequests)} ]")}");
             toStringOutput.Add($"this.ErrorCards = {(this.ErrorCards == null ? "null" : $"[{string.Join(", ", this.ErrorCards)} ]")}");
             toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {(this.RequestId == null ? "null" : this.RequestId)}");
+            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

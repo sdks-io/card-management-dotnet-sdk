@@ -1,21 +1,21 @@
 // <copyright file="UsageRestriction.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// UsageRestriction.
     /// </summary>
@@ -275,8 +275,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <summary>
         /// Usage limit is applied on the card from this level.
         /// Valid values –
-        /// •	Inherited
-        /// •	Card
+        /// •    Inherited
+        /// •    Card
         /// When Card level usage restrictions are not present, the API will return the inherited restrictions.
         /// Note: -This field is deprecated. Instead, use ‘Override’.
         /// </summary>
@@ -831,112 +831,184 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"UsageRestriction : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is UsageRestriction other &&                ((this.Level == null && other.Level == null) || (this.Level?.Equals(other.Level) == true)) &&
-                ((this.DailySpend == null && other.DailySpend == null) || (this.DailySpend?.Equals(other.DailySpend) == true)) &&
-                ((this.DailySpendAccumulated == null && other.DailySpendAccumulated == null) || (this.DailySpendAccumulated?.Equals(other.DailySpendAccumulated) == true)) &&
-                ((this.DailySpendBalance == null && other.DailySpendBalance == null) || (this.DailySpendBalance?.Equals(other.DailySpendBalance) == true)) &&
-                ((this.DailySpendOverride == null && other.DailySpendOverride == null) || (this.DailySpendOverride?.Equals(other.DailySpendOverride) == true)) &&
-                ((this.DailySpendThreshold == null && other.DailySpendThreshold == null) || (this.DailySpendThreshold?.Equals(other.DailySpendThreshold) == true)) &&
-                ((this.WeeklySpend == null && other.WeeklySpend == null) || (this.WeeklySpend?.Equals(other.WeeklySpend) == true)) &&
-                ((this.WeeklySpendAccumulated == null && other.WeeklySpendAccumulated == null) || (this.WeeklySpendAccumulated?.Equals(other.WeeklySpendAccumulated) == true)) &&
-                ((this.WeeklySpendBalance == null && other.WeeklySpendBalance == null) || (this.WeeklySpendBalance?.Equals(other.WeeklySpendBalance) == true)) &&
-                ((this.WeeklySpendOverride == null && other.WeeklySpendOverride == null) || (this.WeeklySpendOverride?.Equals(other.WeeklySpendOverride) == true)) &&
-                ((this.WeeklySpendThreshold == null && other.WeeklySpendThreshold == null) || (this.WeeklySpendThreshold?.Equals(other.WeeklySpendThreshold) == true)) &&
-                ((this.MonthlySpend == null && other.MonthlySpend == null) || (this.MonthlySpend?.Equals(other.MonthlySpend) == true)) &&
-                ((this.MonthlySpendAccumulated == null && other.MonthlySpendAccumulated == null) || (this.MonthlySpendAccumulated?.Equals(other.MonthlySpendAccumulated) == true)) &&
-                ((this.MonthlySpendBalance == null && other.MonthlySpendBalance == null) || (this.MonthlySpendBalance?.Equals(other.MonthlySpendBalance) == true)) &&
-                ((this.MonthlySpendOverride == null && other.MonthlySpendOverride == null) || (this.MonthlySpendOverride?.Equals(other.MonthlySpendOverride) == true)) &&
-                ((this.PerTransactionSpend == null && other.PerTransactionSpend == null) || (this.PerTransactionSpend?.Equals(other.PerTransactionSpend) == true)) &&
-                ((this.PerTransactionSpendOverride == null && other.PerTransactionSpendOverride == null) || (this.PerTransactionSpendOverride?.Equals(other.PerTransactionSpendOverride) == true)) &&
-                ((this.AnnualSpend == null && other.AnnualSpend == null) || (this.AnnualSpend?.Equals(other.AnnualSpend) == true)) &&
-                ((this.AnnualSpendAccumulated == null && other.AnnualSpendAccumulated == null) || (this.AnnualSpendAccumulated?.Equals(other.AnnualSpendAccumulated) == true)) &&
-                ((this.AnnualSpendBalance == null && other.AnnualSpendBalance == null) || (this.AnnualSpendBalance?.Equals(other.AnnualSpendBalance) == true)) &&
-                ((this.AnnualSpendOverride == null && other.AnnualSpendOverride == null) || (this.AnnualSpendOverride?.Equals(other.AnnualSpendOverride) == true)) &&
-                ((this.AnnualSpendThreshold == null && other.AnnualSpendThreshold == null) || (this.AnnualSpendThreshold?.Equals(other.AnnualSpendThreshold) == true)) &&
-                ((this.LifeTimeSpend == null && other.LifeTimeSpend == null) || (this.LifeTimeSpend?.Equals(other.LifeTimeSpend) == true)) &&
-                ((this.LifeTimeSpendAccumulated == null && other.LifeTimeSpendAccumulated == null) || (this.LifeTimeSpendAccumulated?.Equals(other.LifeTimeSpendAccumulated) == true)) &&
-                ((this.LifeTimeSpendBalance == null && other.LifeTimeSpendBalance == null) || (this.LifeTimeSpendBalance?.Equals(other.LifeTimeSpendBalance) == true)) &&
-                ((this.LifeTimeSpendOverride == null && other.LifeTimeSpendOverride == null) || (this.LifeTimeSpendOverride?.Equals(other.LifeTimeSpendOverride) == true)) &&
-                ((this.LifeTimeSpendThreshold == null && other.LifeTimeSpendThreshold == null) || (this.LifeTimeSpendThreshold?.Equals(other.LifeTimeSpendThreshold) == true)) &&
-                ((this.DailyVolume == null && other.DailyVolume == null) || (this.DailyVolume?.Equals(other.DailyVolume) == true)) &&
-                ((this.DailyVolumeAccumulated == null && other.DailyVolumeAccumulated == null) || (this.DailyVolumeAccumulated?.Equals(other.DailyVolumeAccumulated) == true)) &&
-                ((this.DailyVolumeBalance == null && other.DailyVolumeBalance == null) || (this.DailyVolumeBalance?.Equals(other.DailyVolumeBalance) == true)) &&
-                ((this.DailyVolumeOverride == null && other.DailyVolumeOverride == null) || (this.DailyVolumeOverride?.Equals(other.DailyVolumeOverride) == true)) &&
-                ((this.DailyVolumeThreshold == null && other.DailyVolumeThreshold == null) || (this.DailyVolumeThreshold?.Equals(other.DailyVolumeThreshold) == true)) &&
-                ((this.WeeklyVolume == null && other.WeeklyVolume == null) || (this.WeeklyVolume?.Equals(other.WeeklyVolume) == true)) &&
-                ((this.WeeklyVolumeAccumulated == null && other.WeeklyVolumeAccumulated == null) || (this.WeeklyVolumeAccumulated?.Equals(other.WeeklyVolumeAccumulated) == true)) &&
-                ((this.WeeklyVolumeBalance == null && other.WeeklyVolumeBalance == null) || (this.WeeklyVolumeBalance?.Equals(other.WeeklyVolumeBalance) == true)) &&
-                ((this.WeeklyVolumeOverride == null && other.WeeklyVolumeOverride == null) || (this.WeeklyVolumeOverride?.Equals(other.WeeklyVolumeOverride) == true)) &&
-                ((this.WeeklyVolumeThreshold == null && other.WeeklyVolumeThreshold == null) || (this.WeeklyVolumeThreshold?.Equals(other.WeeklyVolumeThreshold) == true)) &&
-                ((this.MonthlyVolume == null && other.MonthlyVolume == null) || (this.MonthlyVolume?.Equals(other.MonthlyVolume) == true)) &&
-                ((this.MonthlyVolumeAccumulated == null && other.MonthlyVolumeAccumulated == null) || (this.MonthlyVolumeAccumulated?.Equals(other.MonthlyVolumeAccumulated) == true)) &&
-                ((this.MonthlyVolumeBalance == null && other.MonthlyVolumeBalance == null) || (this.MonthlyVolumeBalance?.Equals(other.MonthlyVolumeBalance) == true)) &&
-                ((this.MonthlyVolumeOverride == null && other.MonthlyVolumeOverride == null) || (this.MonthlyVolumeOverride?.Equals(other.MonthlyVolumeOverride) == true)) &&
-                ((this.MonthlyVolumeThreshold == null && other.MonthlyVolumeThreshold == null) || (this.MonthlyVolumeThreshold?.Equals(other.MonthlyVolumeThreshold) == true)) &&
-                ((this.PerTransactionVolume == null && other.PerTransactionVolume == null) || (this.PerTransactionVolume?.Equals(other.PerTransactionVolume) == true)) &&
-                ((this.PerTransactionVolumeOverride == null && other.PerTransactionVolumeOverride == null) || (this.PerTransactionVolumeOverride?.Equals(other.PerTransactionVolumeOverride) == true)) &&
-                ((this.AnnualVolume == null && other.AnnualVolume == null) || (this.AnnualVolume?.Equals(other.AnnualVolume) == true)) &&
-                ((this.AnnualVolumeAccumulated == null && other.AnnualVolumeAccumulated == null) || (this.AnnualVolumeAccumulated?.Equals(other.AnnualVolumeAccumulated) == true)) &&
-                ((this.AnnualVolumeBalance == null && other.AnnualVolumeBalance == null) || (this.AnnualVolumeBalance?.Equals(other.AnnualVolumeBalance) == true)) &&
-                ((this.AnnualVolumeOverride == null && other.AnnualVolumeOverride == null) || (this.AnnualVolumeOverride?.Equals(other.AnnualVolumeOverride) == true)) &&
-                ((this.AnnualVolumeThreshold == null && other.AnnualVolumeThreshold == null) || (this.AnnualVolumeThreshold?.Equals(other.AnnualVolumeThreshold) == true)) &&
-                ((this.LifeTimeVolume == null && other.LifeTimeVolume == null) || (this.LifeTimeVolume?.Equals(other.LifeTimeVolume) == true)) &&
-                ((this.LifeTimeVolumeAccumulated == null && other.LifeTimeVolumeAccumulated == null) || (this.LifeTimeVolumeAccumulated?.Equals(other.LifeTimeVolumeAccumulated) == true)) &&
-                ((this.LifeTimeVolumeBalance == null && other.LifeTimeVolumeBalance == null) || (this.LifeTimeVolumeBalance?.Equals(other.LifeTimeVolumeBalance) == true)) &&
-                ((this.LifeTimeVolumeOverride == null && other.LifeTimeVolumeOverride == null) || (this.LifeTimeVolumeOverride?.Equals(other.LifeTimeVolumeOverride) == true)) &&
-                ((this.LifeTimeVolumeThreshold == null && other.LifeTimeVolumeThreshold == null) || (this.LifeTimeVolumeThreshold?.Equals(other.LifeTimeVolumeThreshold) == true)) &&
-                ((this.DailyTransactionCount == null && other.DailyTransactionCount == null) || (this.DailyTransactionCount?.Equals(other.DailyTransactionCount) == true)) &&
-                ((this.DailyTransactionAccumulated == null && other.DailyTransactionAccumulated == null) || (this.DailyTransactionAccumulated?.Equals(other.DailyTransactionAccumulated) == true)) &&
-                ((this.DailyTransactionBalance == null && other.DailyTransactionBalance == null) || (this.DailyTransactionBalance?.Equals(other.DailyTransactionBalance) == true)) &&
-                ((this.DailyTransactionOverride == null && other.DailyTransactionOverride == null) || (this.DailyTransactionOverride?.Equals(other.DailyTransactionOverride) == true)) &&
-                ((this.DailyTransactionThreshold == null && other.DailyTransactionThreshold == null) || (this.DailyTransactionThreshold?.Equals(other.DailyTransactionThreshold) == true)) &&
-                ((this.WeeklyTransactionCount == null && other.WeeklyTransactionCount == null) || (this.WeeklyTransactionCount?.Equals(other.WeeklyTransactionCount) == true)) &&
-                ((this.WeeklyTransactionAccumulated == null && other.WeeklyTransactionAccumulated == null) || (this.WeeklyTransactionAccumulated?.Equals(other.WeeklyTransactionAccumulated) == true)) &&
-                ((this.WeeklyTransactionBalance == null && other.WeeklyTransactionBalance == null) || (this.WeeklyTransactionBalance?.Equals(other.WeeklyTransactionBalance) == true)) &&
-                ((this.WeeklyTransactionOverride == null && other.WeeklyTransactionOverride == null) || (this.WeeklyTransactionOverride?.Equals(other.WeeklyTransactionOverride) == true)) &&
-                ((this.WeeklyTransactionThreshold == null && other.WeeklyTransactionThreshold == null) || (this.WeeklyTransactionThreshold?.Equals(other.WeeklyTransactionThreshold) == true)) &&
-                ((this.MonthlyTransactionCount == null && other.MonthlyTransactionCount == null) || (this.MonthlyTransactionCount?.Equals(other.MonthlyTransactionCount) == true)) &&
-                ((this.MonthlyTransactionAccumulated == null && other.MonthlyTransactionAccumulated == null) || (this.MonthlyTransactionAccumulated?.Equals(other.MonthlyTransactionAccumulated) == true)) &&
-                ((this.MonthlyTransactionBalance == null && other.MonthlyTransactionBalance == null) || (this.MonthlyTransactionBalance?.Equals(other.MonthlyTransactionBalance) == true)) &&
-                ((this.MonthlyTransactionOverride == null && other.MonthlyTransactionOverride == null) || (this.MonthlyTransactionOverride?.Equals(other.MonthlyTransactionOverride) == true)) &&
-                ((this.MonthlyTransactionThreshold == null && other.MonthlyTransactionThreshold == null) || (this.MonthlyTransactionThreshold?.Equals(other.MonthlyTransactionThreshold) == true)) &&
-                ((this.AnnualTransactionCount == null && other.AnnualTransactionCount == null) || (this.AnnualTransactionCount?.Equals(other.AnnualTransactionCount) == true)) &&
-                ((this.AnnualTransactionAccumulated == null && other.AnnualTransactionAccumulated == null) || (this.AnnualTransactionAccumulated?.Equals(other.AnnualTransactionAccumulated) == true)) &&
-                ((this.AnnualTransactionBalance == null && other.AnnualTransactionBalance == null) || (this.AnnualTransactionBalance?.Equals(other.AnnualTransactionBalance) == true)) &&
-                ((this.AnnualTransactionOverride == null && other.AnnualTransactionOverride == null) || (this.AnnualTransactionOverride?.Equals(other.AnnualTransactionOverride) == true)) &&
-                ((this.AnnualTransactionThreshold == null && other.AnnualTransactionThreshold == null) || (this.AnnualTransactionThreshold?.Equals(other.AnnualTransactionThreshold) == true)) &&
-                ((this.LifeTimeTransactionCount == null && other.LifeTimeTransactionCount == null) || (this.LifeTimeTransactionCount?.Equals(other.LifeTimeTransactionCount) == true)) &&
-                ((this.LifeTimeTransactionAccumulated == null && other.LifeTimeTransactionAccumulated == null) || (this.LifeTimeTransactionAccumulated?.Equals(other.LifeTimeTransactionAccumulated) == true)) &&
-                ((this.LifeTimeTransactionBalance == null && other.LifeTimeTransactionBalance == null) || (this.LifeTimeTransactionBalance?.Equals(other.LifeTimeTransactionBalance) == true)) &&
-                ((this.LifeTimeTransactionOverride == null && other.LifeTimeTransactionOverride == null) || (this.LifeTimeTransactionOverride?.Equals(other.LifeTimeTransactionOverride) == true)) &&
-                ((this.LifeTimeTransactionThreshold == null && other.LifeTimeTransactionThreshold == null) || (this.LifeTimeTransactionThreshold?.Equals(other.LifeTimeTransactionThreshold) == true));
+            return obj is UsageRestriction other &&
+                (this.Level == null && other.Level == null ||
+                 this.Level?.Equals(other.Level) == true) &&
+                (this.DailySpend == null && other.DailySpend == null ||
+                 this.DailySpend?.Equals(other.DailySpend) == true) &&
+                (this.DailySpendAccumulated == null && other.DailySpendAccumulated == null ||
+                 this.DailySpendAccumulated?.Equals(other.DailySpendAccumulated) == true) &&
+                (this.DailySpendBalance == null && other.DailySpendBalance == null ||
+                 this.DailySpendBalance?.Equals(other.DailySpendBalance) == true) &&
+                (this.DailySpendOverride == null && other.DailySpendOverride == null ||
+                 this.DailySpendOverride?.Equals(other.DailySpendOverride) == true) &&
+                (this.DailySpendThreshold == null && other.DailySpendThreshold == null ||
+                 this.DailySpendThreshold?.Equals(other.DailySpendThreshold) == true) &&
+                (this.WeeklySpend == null && other.WeeklySpend == null ||
+                 this.WeeklySpend?.Equals(other.WeeklySpend) == true) &&
+                (this.WeeklySpendAccumulated == null && other.WeeklySpendAccumulated == null ||
+                 this.WeeklySpendAccumulated?.Equals(other.WeeklySpendAccumulated) == true) &&
+                (this.WeeklySpendBalance == null && other.WeeklySpendBalance == null ||
+                 this.WeeklySpendBalance?.Equals(other.WeeklySpendBalance) == true) &&
+                (this.WeeklySpendOverride == null && other.WeeklySpendOverride == null ||
+                 this.WeeklySpendOverride?.Equals(other.WeeklySpendOverride) == true) &&
+                (this.WeeklySpendThreshold == null && other.WeeklySpendThreshold == null ||
+                 this.WeeklySpendThreshold?.Equals(other.WeeklySpendThreshold) == true) &&
+                (this.MonthlySpend == null && other.MonthlySpend == null ||
+                 this.MonthlySpend?.Equals(other.MonthlySpend) == true) &&
+                (this.MonthlySpendAccumulated == null && other.MonthlySpendAccumulated == null ||
+                 this.MonthlySpendAccumulated?.Equals(other.MonthlySpendAccumulated) == true) &&
+                (this.MonthlySpendBalance == null && other.MonthlySpendBalance == null ||
+                 this.MonthlySpendBalance?.Equals(other.MonthlySpendBalance) == true) &&
+                (this.MonthlySpendOverride == null && other.MonthlySpendOverride == null ||
+                 this.MonthlySpendOverride?.Equals(other.MonthlySpendOverride) == true) &&
+                (this.PerTransactionSpend == null && other.PerTransactionSpend == null ||
+                 this.PerTransactionSpend?.Equals(other.PerTransactionSpend) == true) &&
+                (this.PerTransactionSpendOverride == null && other.PerTransactionSpendOverride == null ||
+                 this.PerTransactionSpendOverride?.Equals(other.PerTransactionSpendOverride) == true) &&
+                (this.AnnualSpend == null && other.AnnualSpend == null ||
+                 this.AnnualSpend?.Equals(other.AnnualSpend) == true) &&
+                (this.AnnualSpendAccumulated == null && other.AnnualSpendAccumulated == null ||
+                 this.AnnualSpendAccumulated?.Equals(other.AnnualSpendAccumulated) == true) &&
+                (this.AnnualSpendBalance == null && other.AnnualSpendBalance == null ||
+                 this.AnnualSpendBalance?.Equals(other.AnnualSpendBalance) == true) &&
+                (this.AnnualSpendOverride == null && other.AnnualSpendOverride == null ||
+                 this.AnnualSpendOverride?.Equals(other.AnnualSpendOverride) == true) &&
+                (this.AnnualSpendThreshold == null && other.AnnualSpendThreshold == null ||
+                 this.AnnualSpendThreshold?.Equals(other.AnnualSpendThreshold) == true) &&
+                (this.LifeTimeSpend == null && other.LifeTimeSpend == null ||
+                 this.LifeTimeSpend?.Equals(other.LifeTimeSpend) == true) &&
+                (this.LifeTimeSpendAccumulated == null && other.LifeTimeSpendAccumulated == null ||
+                 this.LifeTimeSpendAccumulated?.Equals(other.LifeTimeSpendAccumulated) == true) &&
+                (this.LifeTimeSpendBalance == null && other.LifeTimeSpendBalance == null ||
+                 this.LifeTimeSpendBalance?.Equals(other.LifeTimeSpendBalance) == true) &&
+                (this.LifeTimeSpendOverride == null && other.LifeTimeSpendOverride == null ||
+                 this.LifeTimeSpendOverride?.Equals(other.LifeTimeSpendOverride) == true) &&
+                (this.LifeTimeSpendThreshold == null && other.LifeTimeSpendThreshold == null ||
+                 this.LifeTimeSpendThreshold?.Equals(other.LifeTimeSpendThreshold) == true) &&
+                (this.DailyVolume == null && other.DailyVolume == null ||
+                 this.DailyVolume?.Equals(other.DailyVolume) == true) &&
+                (this.DailyVolumeAccumulated == null && other.DailyVolumeAccumulated == null ||
+                 this.DailyVolumeAccumulated?.Equals(other.DailyVolumeAccumulated) == true) &&
+                (this.DailyVolumeBalance == null && other.DailyVolumeBalance == null ||
+                 this.DailyVolumeBalance?.Equals(other.DailyVolumeBalance) == true) &&
+                (this.DailyVolumeOverride == null && other.DailyVolumeOverride == null ||
+                 this.DailyVolumeOverride?.Equals(other.DailyVolumeOverride) == true) &&
+                (this.DailyVolumeThreshold == null && other.DailyVolumeThreshold == null ||
+                 this.DailyVolumeThreshold?.Equals(other.DailyVolumeThreshold) == true) &&
+                (this.WeeklyVolume == null && other.WeeklyVolume == null ||
+                 this.WeeklyVolume?.Equals(other.WeeklyVolume) == true) &&
+                (this.WeeklyVolumeAccumulated == null && other.WeeklyVolumeAccumulated == null ||
+                 this.WeeklyVolumeAccumulated?.Equals(other.WeeklyVolumeAccumulated) == true) &&
+                (this.WeeklyVolumeBalance == null && other.WeeklyVolumeBalance == null ||
+                 this.WeeklyVolumeBalance?.Equals(other.WeeklyVolumeBalance) == true) &&
+                (this.WeeklyVolumeOverride == null && other.WeeklyVolumeOverride == null ||
+                 this.WeeklyVolumeOverride?.Equals(other.WeeklyVolumeOverride) == true) &&
+                (this.WeeklyVolumeThreshold == null && other.WeeklyVolumeThreshold == null ||
+                 this.WeeklyVolumeThreshold?.Equals(other.WeeklyVolumeThreshold) == true) &&
+                (this.MonthlyVolume == null && other.MonthlyVolume == null ||
+                 this.MonthlyVolume?.Equals(other.MonthlyVolume) == true) &&
+                (this.MonthlyVolumeAccumulated == null && other.MonthlyVolumeAccumulated == null ||
+                 this.MonthlyVolumeAccumulated?.Equals(other.MonthlyVolumeAccumulated) == true) &&
+                (this.MonthlyVolumeBalance == null && other.MonthlyVolumeBalance == null ||
+                 this.MonthlyVolumeBalance?.Equals(other.MonthlyVolumeBalance) == true) &&
+                (this.MonthlyVolumeOverride == null && other.MonthlyVolumeOverride == null ||
+                 this.MonthlyVolumeOverride?.Equals(other.MonthlyVolumeOverride) == true) &&
+                (this.MonthlyVolumeThreshold == null && other.MonthlyVolumeThreshold == null ||
+                 this.MonthlyVolumeThreshold?.Equals(other.MonthlyVolumeThreshold) == true) &&
+                (this.PerTransactionVolume == null && other.PerTransactionVolume == null ||
+                 this.PerTransactionVolume?.Equals(other.PerTransactionVolume) == true) &&
+                (this.PerTransactionVolumeOverride == null && other.PerTransactionVolumeOverride == null ||
+                 this.PerTransactionVolumeOverride?.Equals(other.PerTransactionVolumeOverride) == true) &&
+                (this.AnnualVolume == null && other.AnnualVolume == null ||
+                 this.AnnualVolume?.Equals(other.AnnualVolume) == true) &&
+                (this.AnnualVolumeAccumulated == null && other.AnnualVolumeAccumulated == null ||
+                 this.AnnualVolumeAccumulated?.Equals(other.AnnualVolumeAccumulated) == true) &&
+                (this.AnnualVolumeBalance == null && other.AnnualVolumeBalance == null ||
+                 this.AnnualVolumeBalance?.Equals(other.AnnualVolumeBalance) == true) &&
+                (this.AnnualVolumeOverride == null && other.AnnualVolumeOverride == null ||
+                 this.AnnualVolumeOverride?.Equals(other.AnnualVolumeOverride) == true) &&
+                (this.AnnualVolumeThreshold == null && other.AnnualVolumeThreshold == null ||
+                 this.AnnualVolumeThreshold?.Equals(other.AnnualVolumeThreshold) == true) &&
+                (this.LifeTimeVolume == null && other.LifeTimeVolume == null ||
+                 this.LifeTimeVolume?.Equals(other.LifeTimeVolume) == true) &&
+                (this.LifeTimeVolumeAccumulated == null && other.LifeTimeVolumeAccumulated == null ||
+                 this.LifeTimeVolumeAccumulated?.Equals(other.LifeTimeVolumeAccumulated) == true) &&
+                (this.LifeTimeVolumeBalance == null && other.LifeTimeVolumeBalance == null ||
+                 this.LifeTimeVolumeBalance?.Equals(other.LifeTimeVolumeBalance) == true) &&
+                (this.LifeTimeVolumeOverride == null && other.LifeTimeVolumeOverride == null ||
+                 this.LifeTimeVolumeOverride?.Equals(other.LifeTimeVolumeOverride) == true) &&
+                (this.LifeTimeVolumeThreshold == null && other.LifeTimeVolumeThreshold == null ||
+                 this.LifeTimeVolumeThreshold?.Equals(other.LifeTimeVolumeThreshold) == true) &&
+                (this.DailyTransactionCount == null && other.DailyTransactionCount == null ||
+                 this.DailyTransactionCount?.Equals(other.DailyTransactionCount) == true) &&
+                (this.DailyTransactionAccumulated == null && other.DailyTransactionAccumulated == null ||
+                 this.DailyTransactionAccumulated?.Equals(other.DailyTransactionAccumulated) == true) &&
+                (this.DailyTransactionBalance == null && other.DailyTransactionBalance == null ||
+                 this.DailyTransactionBalance?.Equals(other.DailyTransactionBalance) == true) &&
+                (this.DailyTransactionOverride == null && other.DailyTransactionOverride == null ||
+                 this.DailyTransactionOverride?.Equals(other.DailyTransactionOverride) == true) &&
+                (this.DailyTransactionThreshold == null && other.DailyTransactionThreshold == null ||
+                 this.DailyTransactionThreshold?.Equals(other.DailyTransactionThreshold) == true) &&
+                (this.WeeklyTransactionCount == null && other.WeeklyTransactionCount == null ||
+                 this.WeeklyTransactionCount?.Equals(other.WeeklyTransactionCount) == true) &&
+                (this.WeeklyTransactionAccumulated == null && other.WeeklyTransactionAccumulated == null ||
+                 this.WeeklyTransactionAccumulated?.Equals(other.WeeklyTransactionAccumulated) == true) &&
+                (this.WeeklyTransactionBalance == null && other.WeeklyTransactionBalance == null ||
+                 this.WeeklyTransactionBalance?.Equals(other.WeeklyTransactionBalance) == true) &&
+                (this.WeeklyTransactionOverride == null && other.WeeklyTransactionOverride == null ||
+                 this.WeeklyTransactionOverride?.Equals(other.WeeklyTransactionOverride) == true) &&
+                (this.WeeklyTransactionThreshold == null && other.WeeklyTransactionThreshold == null ||
+                 this.WeeklyTransactionThreshold?.Equals(other.WeeklyTransactionThreshold) == true) &&
+                (this.MonthlyTransactionCount == null && other.MonthlyTransactionCount == null ||
+                 this.MonthlyTransactionCount?.Equals(other.MonthlyTransactionCount) == true) &&
+                (this.MonthlyTransactionAccumulated == null && other.MonthlyTransactionAccumulated == null ||
+                 this.MonthlyTransactionAccumulated?.Equals(other.MonthlyTransactionAccumulated) == true) &&
+                (this.MonthlyTransactionBalance == null && other.MonthlyTransactionBalance == null ||
+                 this.MonthlyTransactionBalance?.Equals(other.MonthlyTransactionBalance) == true) &&
+                (this.MonthlyTransactionOverride == null && other.MonthlyTransactionOverride == null ||
+                 this.MonthlyTransactionOverride?.Equals(other.MonthlyTransactionOverride) == true) &&
+                (this.MonthlyTransactionThreshold == null && other.MonthlyTransactionThreshold == null ||
+                 this.MonthlyTransactionThreshold?.Equals(other.MonthlyTransactionThreshold) == true) &&
+                (this.AnnualTransactionCount == null && other.AnnualTransactionCount == null ||
+                 this.AnnualTransactionCount?.Equals(other.AnnualTransactionCount) == true) &&
+                (this.AnnualTransactionAccumulated == null && other.AnnualTransactionAccumulated == null ||
+                 this.AnnualTransactionAccumulated?.Equals(other.AnnualTransactionAccumulated) == true) &&
+                (this.AnnualTransactionBalance == null && other.AnnualTransactionBalance == null ||
+                 this.AnnualTransactionBalance?.Equals(other.AnnualTransactionBalance) == true) &&
+                (this.AnnualTransactionOverride == null && other.AnnualTransactionOverride == null ||
+                 this.AnnualTransactionOverride?.Equals(other.AnnualTransactionOverride) == true) &&
+                (this.AnnualTransactionThreshold == null && other.AnnualTransactionThreshold == null ||
+                 this.AnnualTransactionThreshold?.Equals(other.AnnualTransactionThreshold) == true) &&
+                (this.LifeTimeTransactionCount == null && other.LifeTimeTransactionCount == null ||
+                 this.LifeTimeTransactionCount?.Equals(other.LifeTimeTransactionCount) == true) &&
+                (this.LifeTimeTransactionAccumulated == null && other.LifeTimeTransactionAccumulated == null ||
+                 this.LifeTimeTransactionAccumulated?.Equals(other.LifeTimeTransactionAccumulated) == true) &&
+                (this.LifeTimeTransactionBalance == null && other.LifeTimeTransactionBalance == null ||
+                 this.LifeTimeTransactionBalance?.Equals(other.LifeTimeTransactionBalance) == true) &&
+                (this.LifeTimeTransactionOverride == null && other.LifeTimeTransactionOverride == null ||
+                 this.LifeTimeTransactionOverride?.Equals(other.LifeTimeTransactionOverride) == true) &&
+                (this.LifeTimeTransactionThreshold == null && other.LifeTimeTransactionThreshold == null ||
+                 this.LifeTimeTransactionThreshold?.Equals(other.LifeTimeTransactionThreshold) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Level = {(this.Level == null ? "null" : this.Level)}");
+            toStringOutput.Add($"this.Level = {this.Level ?? "null"}");
             toStringOutput.Add($"this.DailySpend = {(this.DailySpend == null ? "null" : this.DailySpend.ToString())}");
             toStringOutput.Add($"this.DailySpendAccumulated = {(this.DailySpendAccumulated == null ? "null" : this.DailySpendAccumulated.ToString())}");
             toStringOutput.Add($"this.DailySpendBalance = {(this.DailySpendBalance == null ? "null" : this.DailySpendBalance.ToString())}");

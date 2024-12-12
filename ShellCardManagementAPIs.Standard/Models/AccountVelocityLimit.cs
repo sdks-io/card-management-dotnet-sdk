@@ -1,21 +1,21 @@
 // <copyright file="AccountVelocityLimit.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// AccountVelocityLimit.
     /// </summary>
@@ -121,47 +121,48 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"AccountVelocityLimit : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is AccountVelocityLimit other &&                ((this.Type == null && other.Type == null) || (this.Type?.Equals(other.Type) == true)) &&
-                ((this.Period == null && other.Period == null) || (this.Period?.Equals(other.Period) == true)) &&
-                ((this.Limit == null && other.Limit == null) || (this.Limit?.Equals(other.Limit) == true)) &&
-                ((this.Accumulation == null && other.Accumulation == null) || (this.Accumulation?.Equals(other.Accumulation) == true)) &&
-                ((this.Balance == null && other.Balance == null) || (this.Balance?.Equals(other.Balance) == true)) &&
-                ((this.MOverride == null && other.MOverride == null) || (this.MOverride?.Equals(other.MOverride) == true)) &&
-                ((this.ProductGroup == null && other.ProductGroup == null) || (this.ProductGroup?.Equals(other.ProductGroup) == true)) &&
-                ((this.Threshold == null && other.Threshold == null) || (this.Threshold?.Equals(other.Threshold) == true));
+            return obj is AccountVelocityLimit other &&
+                (this.Type == null && other.Type == null ||
+                 this.Type?.Equals(other.Type) == true) &&
+                (this.Period == null && other.Period == null ||
+                 this.Period?.Equals(other.Period) == true) &&
+                (this.Limit == null && other.Limit == null ||
+                 this.Limit?.Equals(other.Limit) == true) &&
+                (this.Accumulation == null && other.Accumulation == null ||
+                 this.Accumulation?.Equals(other.Accumulation) == true) &&
+                (this.Balance == null && other.Balance == null ||
+                 this.Balance?.Equals(other.Balance) == true) &&
+                (this.MOverride == null && other.MOverride == null ||
+                 this.MOverride?.Equals(other.MOverride) == true) &&
+                (this.ProductGroup == null && other.ProductGroup == null ||
+                 this.ProductGroup?.Equals(other.ProductGroup) == true) &&
+                (this.Threshold == null && other.Threshold == null ||
+                 this.Threshold?.Equals(other.Threshold) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Type = {(this.Type == null ? "null" : this.Type)}");
-            toStringOutput.Add($"this.Period = {(this.Period == null ? "null" : this.Period)}");
+            toStringOutput.Add($"this.Type = {this.Type ?? "null"}");
+            toStringOutput.Add($"this.Period = {this.Period ?? "null"}");
             toStringOutput.Add($"this.Limit = {(this.Limit == null ? "null" : this.Limit.ToString())}");
             toStringOutput.Add($"this.Accumulation = {(this.Accumulation == null ? "null" : this.Accumulation.ToString())}");
             toStringOutput.Add($"this.Balance = {(this.Balance == null ? "null" : this.Balance.ToString())}");
             toStringOutput.Add($"this.MOverride = {(this.MOverride == null ? "null" : this.MOverride.ToString())}");
-            toStringOutput.Add($"this.ProductGroup = {(this.ProductGroup == null ? "null" : this.ProductGroup)}");
+            toStringOutput.Add($"this.ProductGroup = {this.ProductGroup ?? "null"}");
             toStringOutput.Add($"this.Threshold = {(this.Threshold == null ? "null" : this.Threshold.ToString())}");
         }
     }

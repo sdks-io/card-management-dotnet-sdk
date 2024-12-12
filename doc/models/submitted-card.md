@@ -20,6 +20,8 @@ Response entity object for SubmittedCard list <br/>Note: This list will be empty
 | `ColCoCode` | `int?` | Optional | Collecting company code of the customer. <br /><br>Optional if ColCoId is passed, else Mandatory.<br /> |
 | `ColCoId` | `int?` | Optional | Collecting company id of the customer. <br /><br>Optional if ColCoCode is passed, else Mandatory.<br /> |
 | `PAN` | `string` | Optional | PAN of the card.<br /><br>Optional if CardId is passed, else Mandatory.<br /> |
+| `PANID` | `double?` | Optional | PANID of the card |
+| `MaskedPAN` | `string` | Optional | Card PAN |
 | `PayerId` | `int?` | Optional | Payer id of the customer.<br /><br>Optional if PayerNumber is passed, else Mandatory. |
 | `PayerNumber` | `string` | Optional | PayerNumber of the customer.<br /><br>Optional if PayerId is passed, else Mandatory. |
 

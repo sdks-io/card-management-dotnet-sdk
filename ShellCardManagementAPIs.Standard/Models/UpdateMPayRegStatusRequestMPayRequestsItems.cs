@@ -1,21 +1,21 @@
 // <copyright file="UpdateMPayRegStatusRequestMPayRequestsItems.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// UpdateMPayRegStatusRequestMPayRequestsItems.
     /// </summary>
@@ -62,7 +62,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// Status of mobile payment registration request
         /// Mandatory.
         /// Allowed values –
-        /// •	Approved
+        /// •    Approved
         /// •   Rejected
         /// </summary>
         [JsonProperty("Status", NullValueHandling = NullValueHandling.Ignore)]
@@ -93,42 +93,40 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"UpdateMPayRegStatusRequestMPayRequestsItems : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is UpdateMPayRegStatusRequestMPayRequestsItems other &&                ((this.GlobalRequestID == null && other.GlobalRequestID == null) || (this.GlobalRequestID?.Equals(other.GlobalRequestID) == true)) &&
-                ((this.Status == null && other.Status == null) || (this.Status?.Equals(other.Status) == true)) &&
-                ((this.ApproverUserID == null && other.ApproverUserID == null) || (this.ApproverUserID?.Equals(other.ApproverUserID) == true)) &&
-                ((this.ApproverUserDisplayName == null && other.ApproverUserDisplayName == null) || (this.ApproverUserDisplayName?.Equals(other.ApproverUserDisplayName) == true)) &&
-                ((this.Reason == null && other.Reason == null) || (this.Reason?.Equals(other.Reason) == true));
+            return obj is UpdateMPayRegStatusRequestMPayRequestsItems other &&
+                (this.GlobalRequestID == null && other.GlobalRequestID == null ||
+                 this.GlobalRequestID?.Equals(other.GlobalRequestID) == true) &&
+                (this.Status == null && other.Status == null ||
+                 this.Status?.Equals(other.Status) == true) &&
+                (this.ApproverUserID == null && other.ApproverUserID == null ||
+                 this.ApproverUserID?.Equals(other.ApproverUserID) == true) &&
+                (this.ApproverUserDisplayName == null && other.ApproverUserDisplayName == null ||
+                 this.ApproverUserDisplayName?.Equals(other.ApproverUserDisplayName) == true) &&
+                (this.Reason == null && other.Reason == null ||
+                 this.Reason?.Equals(other.Reason) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.GlobalRequestID = {(this.GlobalRequestID == null ? "null" : this.GlobalRequestID)}");
-            toStringOutput.Add($"this.Status = {(this.Status == null ? "null" : this.Status)}");
-            toStringOutput.Add($"this.ApproverUserID = {(this.ApproverUserID == null ? "null" : this.ApproverUserID)}");
-            toStringOutput.Add($"this.ApproverUserDisplayName = {(this.ApproverUserDisplayName == null ? "null" : this.ApproverUserDisplayName)}");
-            toStringOutput.Add($"this.Reason = {(this.Reason == null ? "null" : this.Reason)}");
+            toStringOutput.Add($"this.GlobalRequestID = {this.GlobalRequestID ?? "null"}");
+            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"this.ApproverUserID = {this.ApproverUserID ?? "null"}");
+            toStringOutput.Add($"this.ApproverUserDisplayName = {this.ApproverUserDisplayName ?? "null"}");
+            toStringOutput.Add($"this.Reason = {this.Reason ?? "null"}");
         }
     }
 }

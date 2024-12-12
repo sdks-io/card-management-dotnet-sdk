@@ -1,21 +1,21 @@
 // <copyright file="InvoiceDistributionMethod.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// InvoiceDistributionMethod.
     /// </summary>
@@ -52,6 +52,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             string outputType = null)
         {
             this.IsPrimary = isPrimary;
+
             if (frequencyType != null)
             {
                 this.FrequencyType = frequencyType;
@@ -66,7 +67,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.OutputType = outputType;
             }
-
         }
 
         /// <summary>
@@ -149,14 +149,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"InvoiceDistributionMethod : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetFrequencyType()
         {
@@ -164,7 +162,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetDistributionMethod()
         {
@@ -172,7 +170,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetOutputType()
         {
@@ -209,21 +207,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is InvoiceDistributionMethod other &&                ((this.IsPrimary == null && other.IsPrimary == null) || (this.IsPrimary?.Equals(other.IsPrimary) == true)) &&
-                ((this.FrequencyType == null && other.FrequencyType == null) || (this.FrequencyType?.Equals(other.FrequencyType) == true)) &&
-                ((this.DistributionMethod == null && other.DistributionMethod == null) || (this.DistributionMethod?.Equals(other.DistributionMethod) == true)) &&
-                ((this.OutputType == null && other.OutputType == null) || (this.OutputType?.Equals(other.OutputType) == true));
+            return obj is InvoiceDistributionMethod other &&
+                (this.IsPrimary == null && other.IsPrimary == null ||
+                 this.IsPrimary?.Equals(other.IsPrimary) == true) &&
+                (this.FrequencyType == null && other.FrequencyType == null ||
+                 this.FrequencyType?.Equals(other.FrequencyType) == true) &&
+                (this.DistributionMethod == null && other.DistributionMethod == null ||
+                 this.DistributionMethod?.Equals(other.DistributionMethod) == true) &&
+                (this.OutputType == null && other.OutputType == null ||
+                 this.OutputType?.Equals(other.OutputType) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
@@ -231,9 +228,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         protected void ToString(List<string> toStringOutput)
         {
             toStringOutput.Add($"this.IsPrimary = {(this.IsPrimary == null ? "null" : this.IsPrimary.ToString())}");
-            toStringOutput.Add($"this.FrequencyType = {(this.FrequencyType == null ? "null" : this.FrequencyType)}");
-            toStringOutput.Add($"this.DistributionMethod = {(this.DistributionMethod == null ? "null" : this.DistributionMethod)}");
-            toStringOutput.Add($"this.OutputType = {(this.OutputType == null ? "null" : this.OutputType)}");
+            toStringOutput.Add($"this.FrequencyType = {this.FrequencyType ?? "null"}");
+            toStringOutput.Add($"this.DistributionMethod = {this.DistributionMethod ?? "null"}");
+            toStringOutput.Add($"this.OutputType = {this.OutputType ?? "null"}");
         }
     }
 }

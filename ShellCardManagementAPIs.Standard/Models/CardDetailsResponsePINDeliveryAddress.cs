@@ -1,21 +1,21 @@
 // <copyright file="CardDetailsResponsePINDeliveryAddress.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APIMatic.Core.Utilities.Converters;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ShellCardManagementAPIs.Standard;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using APIMatic.Core.Utilities.Converters;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-    using ShellCardManagementAPIs.Standard;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// CardDetailsResponsePINDeliveryAddress.
     /// </summary>
@@ -79,6 +79,7 @@ namespace ShellCardManagementAPIs.Standard.Models
             int? regionId = null,
             string region = null)
         {
+
             if (contactForeName != null)
             {
                 this.ContactForeName = contactForeName;
@@ -98,7 +99,6 @@ namespace ShellCardManagementAPIs.Standard.Models
             {
                 this.ContactTitle = contactTitle;
             }
-
             this.CompanyName = companyName;
             this.AddressId = addressId;
             this.AddressLine1 = addressLine1;
@@ -106,11 +106,11 @@ namespace ShellCardManagementAPIs.Standard.Models
             this.AddressLine3 = addressLine3;
             this.ZipCode = zipCode;
             this.City = city;
+
             if (regionId != null)
             {
                 this.RegionId = regionId;
             }
-
             this.Region = region;
             this.CountryId = countryId;
             this.CountryISOCode = countryISOCode;
@@ -277,14 +277,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public override string ToString()
         {
             var toStringOutput = new List<string>();
-
             this.ToString(toStringOutput);
-
             return $"CardDetailsResponsePINDeliveryAddress : ({string.Join(", ", toStringOutput)})";
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactForeName()
         {
@@ -292,7 +290,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactMiddleName()
         {
@@ -300,7 +298,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactLastName()
         {
@@ -308,7 +306,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetContactTitle()
         {
@@ -316,7 +314,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Marks the field to not be serailized.
+        /// Marks the field to not be serialized.
         /// </summary>
         public void UnsetRegionId()
         {
@@ -371,55 +369,64 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
 
-            if (obj == this)
-            {
-                return true;
-            }
-            return obj is CardDetailsResponsePINDeliveryAddress other &&                ((this.ContactForeName == null && other.ContactForeName == null) || (this.ContactForeName?.Equals(other.ContactForeName) == true)) &&
-                ((this.ContactMiddleName == null && other.ContactMiddleName == null) || (this.ContactMiddleName?.Equals(other.ContactMiddleName) == true)) &&
-                ((this.ContactLastName == null && other.ContactLastName == null) || (this.ContactLastName?.Equals(other.ContactLastName) == true)) &&
-                ((this.ContactTitle == null && other.ContactTitle == null) || (this.ContactTitle?.Equals(other.ContactTitle) == true)) &&
-                ((this.CompanyName == null && other.CompanyName == null) || (this.CompanyName?.Equals(other.CompanyName) == true)) &&
-                this.AddressId.Equals(other.AddressId) &&
-                ((this.AddressLine1 == null && other.AddressLine1 == null) || (this.AddressLine1?.Equals(other.AddressLine1) == true)) &&
-                ((this.AddressLine2 == null && other.AddressLine2 == null) || (this.AddressLine2?.Equals(other.AddressLine2) == true)) &&
-                ((this.AddressLine3 == null && other.AddressLine3 == null) || (this.AddressLine3?.Equals(other.AddressLine3) == true)) &&
-                ((this.ZipCode == null && other.ZipCode == null) || (this.ZipCode?.Equals(other.ZipCode) == true)) &&
-                ((this.City == null && other.City == null) || (this.City?.Equals(other.City) == true)) &&
-                ((this.RegionId == null && other.RegionId == null) || (this.RegionId?.Equals(other.RegionId) == true)) &&
-                ((this.Region == null && other.Region == null) || (this.Region?.Equals(other.Region) == true)) &&
-                this.CountryId.Equals(other.CountryId) &&
-                ((this.CountryISOCode == null && other.CountryISOCode == null) || (this.CountryISOCode?.Equals(other.CountryISOCode) == true)) &&
-                ((this.Country == null && other.Country == null) || (this.Country?.Equals(other.Country) == true));
+            return obj is CardDetailsResponsePINDeliveryAddress other &&
+                (this.ContactForeName == null && other.ContactForeName == null ||
+                 this.ContactForeName?.Equals(other.ContactForeName) == true) &&
+                (this.ContactMiddleName == null && other.ContactMiddleName == null ||
+                 this.ContactMiddleName?.Equals(other.ContactMiddleName) == true) &&
+                (this.ContactLastName == null && other.ContactLastName == null ||
+                 this.ContactLastName?.Equals(other.ContactLastName) == true) &&
+                (this.ContactTitle == null && other.ContactTitle == null ||
+                 this.ContactTitle?.Equals(other.ContactTitle) == true) &&
+                (this.CompanyName == null && other.CompanyName == null ||
+                 this.CompanyName?.Equals(other.CompanyName) == true) &&
+                (this.AddressId.Equals(other.AddressId)) &&
+                (this.AddressLine1 == null && other.AddressLine1 == null ||
+                 this.AddressLine1?.Equals(other.AddressLine1) == true) &&
+                (this.AddressLine2 == null && other.AddressLine2 == null ||
+                 this.AddressLine2?.Equals(other.AddressLine2) == true) &&
+                (this.AddressLine3 == null && other.AddressLine3 == null ||
+                 this.AddressLine3?.Equals(other.AddressLine3) == true) &&
+                (this.ZipCode == null && other.ZipCode == null ||
+                 this.ZipCode?.Equals(other.ZipCode) == true) &&
+                (this.City == null && other.City == null ||
+                 this.City?.Equals(other.City) == true) &&
+                (this.RegionId == null && other.RegionId == null ||
+                 this.RegionId?.Equals(other.RegionId) == true) &&
+                (this.Region == null && other.Region == null ||
+                 this.Region?.Equals(other.Region) == true) &&
+                (this.CountryId.Equals(other.CountryId)) &&
+                (this.CountryISOCode == null && other.CountryISOCode == null ||
+                 this.CountryISOCode?.Equals(other.CountryISOCode) == true) &&
+                (this.Country == null && other.Country == null ||
+                 this.Country?.Equals(other.Country) == true);
         }
-        
+
         /// <summary>
         /// ToString overload.
         /// </summary>
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ContactForeName = {(this.ContactForeName == null ? "null" : this.ContactForeName)}");
-            toStringOutput.Add($"this.ContactMiddleName = {(this.ContactMiddleName == null ? "null" : this.ContactMiddleName)}");
-            toStringOutput.Add($"this.ContactLastName = {(this.ContactLastName == null ? "null" : this.ContactLastName)}");
-            toStringOutput.Add($"this.ContactTitle = {(this.ContactTitle == null ? "null" : this.ContactTitle)}");
-            toStringOutput.Add($"this.CompanyName = {(this.CompanyName == null ? "null" : this.CompanyName)}");
+            toStringOutput.Add($"this.ContactForeName = {this.ContactForeName ?? "null"}");
+            toStringOutput.Add($"this.ContactMiddleName = {this.ContactMiddleName ?? "null"}");
+            toStringOutput.Add($"this.ContactLastName = {this.ContactLastName ?? "null"}");
+            toStringOutput.Add($"this.ContactTitle = {this.ContactTitle ?? "null"}");
+            toStringOutput.Add($"this.CompanyName = {this.CompanyName ?? "null"}");
             toStringOutput.Add($"this.AddressId = {this.AddressId}");
-            toStringOutput.Add($"this.AddressLine1 = {(this.AddressLine1 == null ? "null" : this.AddressLine1)}");
-            toStringOutput.Add($"this.AddressLine2 = {(this.AddressLine2 == null ? "null" : this.AddressLine2)}");
-            toStringOutput.Add($"this.AddressLine3 = {(this.AddressLine3 == null ? "null" : this.AddressLine3)}");
-            toStringOutput.Add($"this.ZipCode = {(this.ZipCode == null ? "null" : this.ZipCode)}");
-            toStringOutput.Add($"this.City = {(this.City == null ? "null" : this.City)}");
+            toStringOutput.Add($"this.AddressLine1 = {this.AddressLine1 ?? "null"}");
+            toStringOutput.Add($"this.AddressLine2 = {this.AddressLine2 ?? "null"}");
+            toStringOutput.Add($"this.AddressLine3 = {this.AddressLine3 ?? "null"}");
+            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
+            toStringOutput.Add($"this.City = {this.City ?? "null"}");
             toStringOutput.Add($"this.RegionId = {(this.RegionId == null ? "null" : this.RegionId.ToString())}");
-            toStringOutput.Add($"this.Region = {(this.Region == null ? "null" : this.Region)}");
+            toStringOutput.Add($"this.Region = {this.Region ?? "null"}");
             toStringOutput.Add($"this.CountryId = {this.CountryId}");
-            toStringOutput.Add($"this.CountryISOCode = {(this.CountryISOCode == null ? "null" : this.CountryISOCode)}");
-            toStringOutput.Add($"this.Country = {(this.Country == null ? "null" : this.Country)}");
+            toStringOutput.Add($"this.CountryISOCode = {this.CountryISOCode ?? "null"}");
+            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
         }
     }
 }

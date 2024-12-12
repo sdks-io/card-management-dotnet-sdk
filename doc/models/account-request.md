@@ -9,7 +9,7 @@
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `Status` | `string` | Optional | Account Status.<br>Optional if StatusList is passed, else mandatory.<br>Ignored if StatusList is passed.<br>Allowed values:<br>•	ALL<br>•	ACTIVE<br>•	BLOCKED<br>•	CANCELLED<br>•	CREDITLOCK<br>•	DELINQUENCYLOCK |
+| `Status` | `string` | Optional | Account Status.<br>Optional if StatusList is passed, else mandatory.<br>Ignored if StatusList is passed.<br>Allowed values:<br>•    ALL<br>•    ACTIVE<br>•    BLOCKED<br>•    CANCELLED<br>•    CREDITLOCK<br>•    DELINQUENCYLOCK |
 | `IncludeCardSummary` | `bool?` | Optional | Include card summary details in the response.<br><br>When passed as false, the card summary related parameters on response will be set to null.<br><br>Optional – default value: true.<br>**Default**: `true` |
 | `PayerId` | `int?` | Optional | Payer id of the customer.<br>Optional if PayerNumber is passed, else Mandatory. |
 | `PayerNumber` | `string` | Optional | PayerNumber of the customer.<br>Optional if PayerId is passed, else Mandatory. |
@@ -23,7 +23,7 @@
 | `ReturnTollsCustomerId` | `bool?` | Optional | Return e-Toll Customer details When True. |
 | `Accounts` | [`List<Accounts>`](../../doc/models/accounts.md) | Optional | - |
 | `AccountName` | `string` | Optional | Account Name of the customer.<br>Optional.<br>Minimum of 4 characters should be provided else not considered.<br>Accounts those have the entered value at any part of the Name will be returned. |
-| `StatusList` | `List<string>` | Optional | Account Statuses.<br>Optional<br>Multiple statuses are allowed to be included in the search criteria.<br>Allowed values:<br>•	ACTIVE<br>•	BLOCKED<br>•	CANCELLED<br>•	CREDITLOCK<br>•	DELINQUENCYLOCK |
+| `StatusList` | `List<string>` | Optional | Account Statuses.<br>Optional<br>Multiple statuses are allowed to be included in the search criteria.<br>Allowed values:<br>•    ACTIVE<br>•    BLOCKED<br>•    CANCELLED<br>•    CREDITLOCK<br>•    DELINQUENCYLOCK |
 
 ## Example (as JSON)
 

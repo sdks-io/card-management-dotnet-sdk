@@ -1,19 +1,18 @@
 // <copyright file="ShellCardManagementAPIsClient.cs" company="APIMatic">
 // Copyright (c) APIMatic. All rights reserved.
 // </copyright>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using APIMatic.Core;
+using APIMatic.Core.Authentication;
+using ShellCardManagementAPIs.Standard.Authentication;
+using ShellCardManagementAPIs.Standard.Controllers;
+using ShellCardManagementAPIs.Standard.Http.Client;
+using ShellCardManagementAPIs.Standard.Utilities;
+
 namespace ShellCardManagementAPIs.Standard
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using APIMatic.Core;
-    using APIMatic.Core.Authentication;
-    using APIMatic.Core.Types;
-    using ShellCardManagementAPIs.Standard.Authentication;
-    using ShellCardManagementAPIs.Standard.Controllers;
-    using ShellCardManagementAPIs.Standard.Http.Client;
-    using ShellCardManagementAPIs.Standard.Utilities;
-
     /// <summary>
     /// The gateway for the SDK. This class acts as a factory for Controller and
     /// holds the configuration of the SDK.
@@ -42,6 +41,7 @@ namespace ShellCardManagementAPIs.Standard
 
         private readonly GlobalConfiguration globalConfiguration;
         private const string userAgent = "APIMATIC 3.0";
+        private readonly HttpCallback httpCallback;
         private readonly Lazy<CustomerController> customer;
         private readonly Lazy<RestrictionController> restriction;
         private readonly Lazy<CardController> card;
@@ -51,9 +51,11 @@ namespace ShellCardManagementAPIs.Standard
             Environment environment,
             BasicAuthModel basicAuthModel,
             BearerTokenModel bearerTokenModel,
+            HttpCallback httpCallback,
             IHttpClientConfiguration httpClientConfiguration)
         {
             this.Environment = environment;
+            this.httpCallback = httpCallback;
             this.HttpClientConfiguration = httpClientConfiguration;
             BasicAuthModel = basicAuthModel;
             var basicAuthManager = new BasicAuthManager(basicAuthModel);
@@ -65,6 +67,7 @@ namespace ShellCardManagementAPIs.Standard
                     {"BasicAuth", basicAuthManager},
                     {"BearerToken", bearerTokenManager},
                 })
+                .ApiCallback(httpCallback)
                 .HttpConfiguration(httpClientConfiguration)
                 .ServerUrls(EnvironmentsMap[environment], Server.Shell)
                 .UserAgent(userAgent)
@@ -114,6 +117,10 @@ namespace ShellCardManagementAPIs.Standard
         /// </summary>
         public Environment Environment { get; }
 
+        /// <summary>
+        /// Gets http callback.
+        /// </summary>
+        public HttpCallback HttpCallback => this.httpCallback;
 
         /// <summary>
         /// Gets the credentials to use with BasicAuth.
@@ -154,6 +161,7 @@ namespace ShellCardManagementAPIs.Standard
         {
             Builder builder = new Builder()
                 .Environment(this.Environment)
+                .HttpCallback(httpCallback)
                 .HttpClientConfig(config => config.Build());
 
             if (BasicAuthModel != null)
@@ -222,6 +230,7 @@ namespace ShellCardManagementAPIs.Standard
             private BasicAuthModel basicAuthModel = new BasicAuthModel();
             private BearerTokenModel bearerTokenModel = new BearerTokenModel();
             private HttpClientConfiguration.Builder httpClientConfig = new HttpClientConfiguration.Builder();
+            private HttpCallback httpCallback;
 
             /// <summary>
             /// Sets credentials for BasicAuth.
@@ -283,7 +292,17 @@ namespace ShellCardManagementAPIs.Standard
             }
 
 
-           
+
+            /// <summary>
+            /// Sets the HttpCallback for the Builder.
+            /// </summary>
+            /// <param name="httpCallback"> http callback. </param>
+            /// <returns>Builder.</returns>
+            public Builder HttpCallback(HttpCallback httpCallback)
+            {
+                this.httpCallback = httpCallback;
+                return this;
+            }
 
             /// <summary>
             /// Creates an object of the ShellCardManagementAPIsClient using the values provided for the builder.
@@ -303,6 +322,7 @@ namespace ShellCardManagementAPIs.Standard
                     environment,
                     basicAuthModel,
                     bearerTokenModel,
+                    httpCallback,
                     httpClientConfig.Build());
             }
         }
