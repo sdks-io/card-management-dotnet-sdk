@@ -156,14 +156,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Type = {this.Type ?? "null"}");
-            toStringOutput.Add($"this.Period = {this.Period ?? "null"}");
-            toStringOutput.Add($"this.Limit = {(this.Limit == null ? "null" : this.Limit.ToString())}");
-            toStringOutput.Add($"this.Accumulation = {(this.Accumulation == null ? "null" : this.Accumulation.ToString())}");
-            toStringOutput.Add($"this.Balance = {(this.Balance == null ? "null" : this.Balance.ToString())}");
-            toStringOutput.Add($"this.MOverride = {(this.MOverride == null ? "null" : this.MOverride.ToString())}");
-            toStringOutput.Add($"this.ProductGroup = {this.ProductGroup ?? "null"}");
-            toStringOutput.Add($"this.Threshold = {(this.Threshold == null ? "null" : this.Threshold.ToString())}");
+            toStringOutput.Add($"Type = {this.Type ?? "null"}");
+            toStringOutput.Add($"Period = {this.Period ?? "null"}");
+            toStringOutput.Add($"Limit = {(this.Limit == null ? "null" : this.Limit.ToString())}");
+            toStringOutput.Add($"Accumulation = {(this.Accumulation == null ? "null" : this.Accumulation.ToString())}");
+            toStringOutput.Add($"Balance = {(this.Balance == null ? "null" : this.Balance.ToString())}");
+            toStringOutput.Add($"MOverride = {(this.MOverride == null ? "null" : this.MOverride.ToString())}");
+            toStringOutput.Add($"ProductGroup = {this.ProductGroup ?? "null"}");
+            toStringOutput.Add($"Threshold = {(this.Threshold == null ? "null" : this.Threshold.ToString())}");
         }
     }
 }

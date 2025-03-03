@@ -653,21 +653,21 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.IncludeCardSummary = {(this.IncludeCardSummary == null ? "null" : this.IncludeCardSummary.ToString())}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
-            toStringOutput.Add($"this.InvoicePointsOnly = {(this.InvoicePointsOnly == null ? "null" : this.InvoicePointsOnly.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ReturnTollsCustomerId = {(this.ReturnTollsCustomerId == null ? "null" : this.ReturnTollsCustomerId.ToString())}");
-            toStringOutput.Add($"this.Accounts = {(this.Accounts == null ? "null" : $"[{string.Join(", ", this.Accounts)} ]")}");
-            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
-            toStringOutput.Add($"this.StatusList = {(this.StatusList == null ? "null" : $"[{string.Join(", ", this.StatusList)} ]")}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"IncludeCardSummary = {(this.IncludeCardSummary == null ? "null" : this.IncludeCardSummary.ToString())}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
+            toStringOutput.Add($"InvoicePointsOnly = {(this.InvoicePointsOnly == null ? "null" : this.InvoicePointsOnly.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"ReturnTollsCustomerId = {(this.ReturnTollsCustomerId == null ? "null" : this.ReturnTollsCustomerId.ToString())}");
+            toStringOutput.Add($"Accounts = {(this.Accounts == null ? "null" : $"[{string.Join(", ", this.Accounts)} ]")}");
+            toStringOutput.Add($"AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"StatusList = {(this.StatusList == null ? "null" : $"[{string.Join(", ", this.StatusList)} ]")}");
         }
     }
 }

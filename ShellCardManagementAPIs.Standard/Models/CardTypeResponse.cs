@@ -91,9 +91,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CustomerCardTypes = {(this.CustomerCardTypes == null ? "null" : $"[{string.Join(", ", this.CustomerCardTypes)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"CustomerCardTypes = {(this.CustomerCardTypes == null ? "null" : $"[{string.Join(", ", this.CustomerCardTypes)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

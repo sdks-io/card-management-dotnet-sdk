@@ -395,14 +395,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColcoId = {(this.ColcoId == null ? "null" : this.ColcoId.ToString())}");
-            toStringOutput.Add($"this.ColcoCode = {(this.ColcoCode == null ? "null" : this.ColcoCode.ToString())}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerName = {this.PayerName ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"ColcoId = {(this.ColcoId == null ? "null" : this.ColcoId.ToString())}");
+            toStringOutput.Add($"ColcoCode = {(this.ColcoCode == null ? "null" : this.ColcoCode.ToString())}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PayerName = {this.PayerName ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountName = {this.AccountName ?? "null"}");
         }
     }
 }

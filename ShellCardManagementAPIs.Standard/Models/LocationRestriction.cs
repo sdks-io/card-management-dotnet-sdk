@@ -102,10 +102,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CountryRestrictions = {(this.CountryRestrictions == null ? "null" : this.CountryRestrictions.ToString())}");
-            toStringOutput.Add($"this.NetworkRestrictions = {(this.NetworkRestrictions == null ? "null" : $"[{string.Join(", ", this.NetworkRestrictions)} ]")}");
-            toStringOutput.Add($"this.ShellSiteRestrictions = {(this.ShellSiteRestrictions == null ? "null" : $"[{string.Join(", ", this.ShellSiteRestrictions)} ]")}");
-            toStringOutput.Add($"this.PartnerSiteRestrictions = {(this.PartnerSiteRestrictions == null ? "null" : $"[{string.Join(", ", this.PartnerSiteRestrictions)} ]")}");
+            toStringOutput.Add($"CountryRestrictions = {(this.CountryRestrictions == null ? "null" : this.CountryRestrictions.ToString())}");
+            toStringOutput.Add($"NetworkRestrictions = {(this.NetworkRestrictions == null ? "null" : $"[{string.Join(", ", this.NetworkRestrictions)} ]")}");
+            toStringOutput.Add($"ShellSiteRestrictions = {(this.ShellSiteRestrictions == null ? "null" : $"[{string.Join(", ", this.ShellSiteRestrictions)} ]")}");
+            toStringOutput.Add($"PartnerSiteRestrictions = {(this.PartnerSiteRestrictions == null ? "null" : $"[{string.Join(", ", this.PartnerSiteRestrictions)} ]")}");
         }
     }
 }

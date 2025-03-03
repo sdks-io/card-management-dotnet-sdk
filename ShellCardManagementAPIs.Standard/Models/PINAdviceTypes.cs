@@ -135,9 +135,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PINAdviceTypeID = {(this.PINAdviceTypeID == null ? "null" : this.PINAdviceTypeID.ToString())}");
-            toStringOutput.Add($"this.IsCardOrderOption = {(this.IsCardOrderOption == null ? "null" : this.IsCardOrderOption.ToString())}");
-            toStringOutput.Add($"this.IsPINReminderOption = {(this.IsPINReminderOption == null ? "null" : this.IsPINReminderOption.ToString())}");
+            toStringOutput.Add($"PINAdviceTypeID = {(this.PINAdviceTypeID == null ? "null" : this.PINAdviceTypeID.ToString())}");
+            toStringOutput.Add($"IsCardOrderOption = {(this.IsCardOrderOption == null ? "null" : this.IsCardOrderOption.ToString())}");
+            toStringOutput.Add($"IsPINReminderOption = {(this.IsPINReminderOption == null ? "null" : this.IsPINReminderOption.ToString())}");
         }
     }
 }

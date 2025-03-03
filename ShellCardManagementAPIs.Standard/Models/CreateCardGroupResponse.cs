@@ -128,12 +128,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
-            toStringOutput.Add($"this.NewCardGroupReference = {(this.NewCardGroupReference == null ? "null" : this.NewCardGroupReference.ToString())}");
-            toStringOutput.Add($"this.SuccessfulRequests = {(this.SuccessfulRequests == null ? "null" : $"[{string.Join(", ", this.SuccessfulRequests)} ]")}");
-            toStringOutput.Add($"this.ErrorCards = {(this.ErrorCards == null ? "null" : $"[{string.Join(", ", this.ErrorCards)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
+            toStringOutput.Add($"NewCardGroupReference = {(this.NewCardGroupReference == null ? "null" : this.NewCardGroupReference.ToString())}");
+            toStringOutput.Add($"SuccessfulRequests = {(this.SuccessfulRequests == null ? "null" : $"[{string.Join(", ", this.SuccessfulRequests)} ]")}");
+            toStringOutput.Add($"ErrorCards = {(this.ErrorCards == null ? "null" : $"[{string.Join(", ", this.ErrorCards)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

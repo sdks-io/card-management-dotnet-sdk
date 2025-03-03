@@ -1380,41 +1380,41 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
-            toStringOutput.Add($"this.CardStatus = {(this.CardStatus == null ? "null" : $"[{string.Join(", ", this.CardStatus)} ]")}");
-            toStringOutput.Add($"this.ExpiringInDays = {(this.ExpiringInDays == null ? "null" : this.ExpiringInDays.ToString())}");
-            toStringOutput.Add($"this.IssuedAfter = {this.IssuedAfter ?? "null"}");
-            toStringOutput.Add($"this.PANEndsWith = {this.PANEndsWith ?? "null"}");
-            toStringOutput.Add($"this.DriverName = {(this.DriverName == null ? "null" : $"[{string.Join(", ", this.DriverName)} ]")}");
-            toStringOutput.Add($"this.VehicleRegistrationNumber = {(this.VehicleRegistrationNumber == null ? "null" : $"[{string.Join(", ", this.VehicleRegistrationNumber)} ]")}");
-            toStringOutput.Add($"this.IncludeCards = {(this.IncludeCards == null ? "null" : $"[{string.Join(", ", this.IncludeCards)} ]")}");
-            toStringOutput.Add($"this.ExcludeCards = {(this.ExcludeCards == null ? "null" : $"[{string.Join(", ", this.ExcludeCards)} ]")}");
-            toStringOutput.Add($"this.ExcludeBundleId = {this.ExcludeBundleId ?? "null"}");
-            toStringOutput.Add($"this.CardSegment = {this.CardSegment ?? "null"}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
-            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
-            toStringOutput.Add($"this.ExcludePendingRenewalCards = {(this.ExcludePendingRenewalCards == null ? "null" : this.ExcludePendingRenewalCards.ToString())}");
-            toStringOutput.Add($"this.ExcludeCancelledCards = {(this.ExcludeCancelledCards == null ? "null" : this.ExcludeCancelledCards.ToString())}");
-            toStringOutput.Add($"this.ExcludeReplacedCards = {(this.ExcludeReplacedCards == null ? "null" : this.ExcludeReplacedCards.ToString())}");
-            toStringOutput.Add($"this.ExcludeFraudCards = {(this.ExcludeFraudCards == null ? "null" : this.ExcludeFraudCards.ToString())}");
-            toStringOutput.Add($"this.ExcludeCardGroupId = {(this.ExcludeCardGroupId == null ? "null" : this.ExcludeCardGroupId.ToString())}");
-            toStringOutput.Add($"this.ExcludeCardGroupName = {this.ExcludeCardGroupName ?? "null"}");
-            toStringOutput.Add($"this.CreationDate = {this.CreationDate ?? "null"}");
-            toStringOutput.Add($"this.EffectiveDate = {this.EffectiveDate ?? "null"}");
-            toStringOutput.Add($"this.Network = {this.Network ?? "null"}");
-            toStringOutput.Add($"this.Coverage = {this.Coverage ?? "null"}");
-            toStringOutput.Add($"this.ExpiryMonth = {this.ExpiryMonth ?? "null"}");
-            toStringOutput.Add($"this.ExcludeOldCards = {(this.ExcludeOldCards == null ? "null" : this.ExcludeOldCards.ToString())}");
-            toStringOutput.Add($"this.ReissueSetting = {this.ReissueSetting ?? "null"}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
+            toStringOutput.Add($"CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"CardStatus = {(this.CardStatus == null ? "null" : $"[{string.Join(", ", this.CardStatus)} ]")}");
+            toStringOutput.Add($"ExpiringInDays = {(this.ExpiringInDays == null ? "null" : this.ExpiringInDays.ToString())}");
+            toStringOutput.Add($"IssuedAfter = {this.IssuedAfter ?? "null"}");
+            toStringOutput.Add($"PANEndsWith = {this.PANEndsWith ?? "null"}");
+            toStringOutput.Add($"DriverName = {(this.DriverName == null ? "null" : $"[{string.Join(", ", this.DriverName)} ]")}");
+            toStringOutput.Add($"VehicleRegistrationNumber = {(this.VehicleRegistrationNumber == null ? "null" : $"[{string.Join(", ", this.VehicleRegistrationNumber)} ]")}");
+            toStringOutput.Add($"IncludeCards = {(this.IncludeCards == null ? "null" : $"[{string.Join(", ", this.IncludeCards)} ]")}");
+            toStringOutput.Add($"ExcludeCards = {(this.ExcludeCards == null ? "null" : $"[{string.Join(", ", this.ExcludeCards)} ]")}");
+            toStringOutput.Add($"ExcludeBundleId = {this.ExcludeBundleId ?? "null"}");
+            toStringOutput.Add($"CardSegment = {this.CardSegment ?? "null"}");
+            toStringOutput.Add($"PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
+            toStringOutput.Add($"CardTypeCode = {this.CardTypeCode ?? "null"}");
+            toStringOutput.Add($"ExcludePendingRenewalCards = {(this.ExcludePendingRenewalCards == null ? "null" : this.ExcludePendingRenewalCards.ToString())}");
+            toStringOutput.Add($"ExcludeCancelledCards = {(this.ExcludeCancelledCards == null ? "null" : this.ExcludeCancelledCards.ToString())}");
+            toStringOutput.Add($"ExcludeReplacedCards = {(this.ExcludeReplacedCards == null ? "null" : this.ExcludeReplacedCards.ToString())}");
+            toStringOutput.Add($"ExcludeFraudCards = {(this.ExcludeFraudCards == null ? "null" : this.ExcludeFraudCards.ToString())}");
+            toStringOutput.Add($"ExcludeCardGroupId = {(this.ExcludeCardGroupId == null ? "null" : this.ExcludeCardGroupId.ToString())}");
+            toStringOutput.Add($"ExcludeCardGroupName = {this.ExcludeCardGroupName ?? "null"}");
+            toStringOutput.Add($"CreationDate = {this.CreationDate ?? "null"}");
+            toStringOutput.Add($"EffectiveDate = {this.EffectiveDate ?? "null"}");
+            toStringOutput.Add($"Network = {this.Network ?? "null"}");
+            toStringOutput.Add($"Coverage = {this.Coverage ?? "null"}");
+            toStringOutput.Add($"ExpiryMonth = {this.ExpiryMonth ?? "null"}");
+            toStringOutput.Add($"ExcludeOldCards = {(this.ExcludeOldCards == null ? "null" : this.ExcludeOldCards.ToString())}");
+            toStringOutput.Add($"ReissueSetting = {this.ReissueSetting ?? "null"}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

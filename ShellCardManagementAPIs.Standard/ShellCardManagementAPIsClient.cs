@@ -60,8 +60,8 @@ namespace ShellCardManagementAPIs.Standard
             BasicAuthModel = basicAuthModel;
             var basicAuthManager = new BasicAuthManager(basicAuthModel);
             BearerTokenModel = bearerTokenModel;
-            var bearerTokenManager = new BearerTokenManager(bearerTokenModel);
-            bearerTokenManager.ApplyGlobalConfiguration(() => OAuthAuthorizationController);
+            var bearerTokenManager = new BearerTokenManager(bearerTokenModel,
+                () => OAuthAuthorizationController);
             globalConfiguration = new GlobalConfiguration.Builder()
                 .AuthManagers(new Dictionary<string, AuthManager> {
                     {"BasicAuth", basicAuthManager},

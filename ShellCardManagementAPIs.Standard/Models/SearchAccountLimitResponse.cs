@@ -177,13 +177,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.ReferenceProduct = {this.ReferenceProduct ?? "null"}");
-            toStringOutput.Add($"this.RestrictionCondition = {this.RestrictionCondition ?? "null"}");
-            toStringOutput.Add($"this.VelocityLimits = {(this.VelocityLimits == null ? "null" : $"[{string.Join(", ", this.VelocityLimits)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"ReferenceProduct = {this.ReferenceProduct ?? "null"}");
+            toStringOutput.Add($"RestrictionCondition = {this.RestrictionCondition ?? "null"}");
+            toStringOutput.Add($"VelocityLimits = {(this.VelocityLimits == null ? "null" : $"[{string.Join(", ", this.VelocityLimits)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

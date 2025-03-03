@@ -143,13 +143,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
-            toStringOutput.Add($"this.Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
-            toStringOutput.Add($"this.ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
-            toStringOutput.Add($"this.FuelSetId = {this.FuelSetId ?? "null"}");
-            toStringOutput.Add($"this.FuelSetName = {this.FuelSetName ?? "null"}");
-            toStringOutput.Add($"this.NonFuelSets = {this.NonFuelSets ?? "null"}");
+            toStringOutput.Add($"PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
+            toStringOutput.Add($"PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
+            toStringOutput.Add($"Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
+            toStringOutput.Add($"ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
+            toStringOutput.Add($"FuelSetId = {this.FuelSetId ?? "null"}");
+            toStringOutput.Add($"FuelSetName = {this.FuelSetName ?? "null"}");
+            toStringOutput.Add($"NonFuelSets = {this.NonFuelSets ?? "null"}");
         }
     }
 }

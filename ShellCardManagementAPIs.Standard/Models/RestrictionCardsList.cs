@@ -406,17 +406,17 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.ResetUsageRestrictions = {(this.ResetUsageRestrictions == null ? "null" : this.ResetUsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.ResetDayTimeRestrictions = {(this.ResetDayTimeRestrictions == null ? "null" : this.ResetDayTimeRestrictions.ToString())}");
-            toStringOutput.Add($"this.ResetProductRestrictions = {(this.ResetProductRestrictions == null ? "null" : this.ResetProductRestrictions.ToString())}");
-            toStringOutput.Add($"this.ResetLocationRestrictions = {(this.ResetLocationRestrictions == null ? "null" : this.ResetLocationRestrictions.ToString())}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"ResetUsageRestrictions = {(this.ResetUsageRestrictions == null ? "null" : this.ResetUsageRestrictions.ToString())}");
+            toStringOutput.Add($"ResetDayTimeRestrictions = {(this.ResetDayTimeRestrictions == null ? "null" : this.ResetDayTimeRestrictions.ToString())}");
+            toStringOutput.Add($"ResetProductRestrictions = {(this.ResetProductRestrictions == null ? "null" : this.ResetProductRestrictions.ToString())}");
+            toStringOutput.Add($"ResetLocationRestrictions = {(this.ResetLocationRestrictions == null ? "null" : this.ResetLocationRestrictions.ToString())}");
             toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
+            toStringOutput.Add($"DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
             toStringOutput.Add($"ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
+            toStringOutput.Add($"LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
         }
     }
 }

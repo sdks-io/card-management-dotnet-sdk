@@ -259,11 +259,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
-            toStringOutput.Add($"this.PAN = {(this.PAN == null ? "null" : this.PAN.ToString())}");
-            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.ReferenceId = {(this.ReferenceId == null ? "null" : this.ReferenceId.ToString())}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
+            toStringOutput.Add($"PAN = {(this.PAN == null ? "null" : this.PAN.ToString())}");
+            toStringOutput.Add($"CardExpiryDate = {this.CardExpiryDate ?? "null"}");
+            toStringOutput.Add($"ReferenceId = {(this.ReferenceId == null ? "null" : this.ReferenceId.ToString())}");
         }
     }
 }

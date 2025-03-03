@@ -21,17 +21,20 @@ namespace ShellCardManagementAPIs.Standard.Authentication
     /// </summary>
     public class BearerTokenManager : AuthManager, IBearerTokenCredentials
     {
-        private Func<OAuthAuthorizationController> oAuthApi;
+        private readonly Func<OAuthAuthorizationController> getOAuthController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BearerTokenManager"/> class.
         /// </summary>
         /// <param name="bearerToken"> OAuth 2 Client Cridentials Model.</param>
-        internal BearerTokenManager(BearerTokenModel bearerToken)
+        /// <param name="getOAuthController">A function that provides an instance of <see cref="OAuthAuthorizationController"/>.</param>
+        internal BearerTokenManager(BearerTokenModel bearerToken,
+            Func<OAuthAuthorizationController> getOAuthController)
         {
             OAuthClientId = bearerToken?.OAuthClientId;
             OAuthClientSecret = bearerToken?.OAuthClientSecret;
             OAuthToken = bearerToken?.OAuthToken;
+            this.getOAuthController = getOAuthController;
             OAuthClockSkew = bearerToken?.OAuthClockSkew;
             OAuthTokenProvider = bearerToken?.OAuthTokenProvider;
             OAuthOnTokenUpdate = bearerToken?.OAuthOnTokenUpdate;
@@ -106,7 +109,7 @@ namespace ShellCardManagementAPIs.Standard.Authentication
         /// <returns>Models.OAuthToken.</returns>
         public async Task<Models.OAuthToken> FetchTokenAsync(Dictionary<string, object> additionalParameters = null)
         {
-            var token = await oAuthApi?.Invoke().RequestTokenBearerTokenAsync(BuildBasicAuthHeader(), fieldParameters: additionalParameters);
+            var token = await getOAuthController().RequestTokenBearerTokenAsync(BuildBasicAuthHeader(), fieldParameters: additionalParameters).ConfigureAwait(false);
 
             if (token.ExpiresIn != null && token.ExpiresIn != 0)
             {
@@ -131,21 +134,16 @@ namespace ShellCardManagementAPIs.Standard.Authentication
                && this.OAuthToken.Expiry < (long)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
 
-        public void ApplyGlobalConfiguration(Func<OAuthAuthorizationController> controllerGetter)
-        {
-            oAuthApi = controllerGetter;
-        }
-
         /// <inheritdoc />
         public override async Task Apply(RequestBuilder requestBuilder)
         {
-            var token = await FetchOrReturnToken(); 
+            var token = await FetchOrReturnToken().ConfigureAwait(false);
             Parameters(authParameter => authParameter
                 .Header(headerParameter => headerParameter
                     .Setup("Authorization",
                         token?.AccessToken == null ? null : $"Bearer {token.AccessToken}"
                     ).Required()));
-            await base.Apply(requestBuilder);
+            await base.Apply(requestBuilder).ConfigureAwait(false);
         }
 
         private async Task<OAuthToken> FetchOrReturnToken()
@@ -153,14 +151,14 @@ namespace ShellCardManagementAPIs.Standard.Authentication
             if (OAuthTokenAutoRefresh != null && !OAuthTokenAutoRefresh.IsTokenExpired(OAuthClockSkew))
                 return OAuthTokenAutoRefresh;
 
-            await semaphoreSlim.WaitAsync();
+            await semaphoreSlim.WaitAsync().ConfigureAwait(false);
             try
             {
                 if (OAuthTokenAutoRefresh != null && !OAuthTokenAutoRefresh.IsTokenExpired(OAuthClockSkew))
                     return OAuthTokenAutoRefresh;
                 OAuthTokenAutoRefresh = OAuthTokenProvider != null
-                    ? await OAuthTokenProvider(this, OAuthTokenAutoRefresh)
-                    : await FetchTokenAsync();
+                    ? await OAuthTokenProvider(this, OAuthTokenAutoRefresh).ConfigureAwait(false)
+                    : await FetchTokenAsync().ConfigureAwait(false);
             }
             finally
             {

@@ -80,8 +80,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Faultstring = {this.Faultstring ?? "null"}");
-            toStringOutput.Add($"this.Detail = {(this.Detail == null ? "null" : this.Detail.ToString())}");
+            toStringOutput.Add($"Faultstring = {this.Faultstring ?? "null"}");
+            toStringOutput.Add($"Detail = {(this.Detail == null ? "null" : this.Detail.ToString())}");
         }
     }
 }

@@ -126,12 +126,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.Data = {(this.Data == null ? "null" : $"[{string.Join(", ", this.Data)} ]")}");
-            toStringOutput.Add($"this.MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
-            toStringOutput.Add($"this.OrderReplacementReference = {(this.OrderReplacementReference == null ? "null" : this.OrderReplacementReference.ToString())}");
-            toStringOutput.Add($"this.Errors = {(this.Errors == null ? "null" : $"[{string.Join(", ", this.Errors)} ]")}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"Data = {(this.Data == null ? "null" : $"[{string.Join(", ", this.Data)} ]")}");
+            toStringOutput.Add($"MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
+            toStringOutput.Add($"OrderReplacementReference = {(this.OrderReplacementReference == null ? "null" : this.OrderReplacementReference.ToString())}");
+            toStringOutput.Add($"Errors = {(this.Errors == null ? "null" : $"[{string.Join(", ", this.Errors)} ]")}");
         }
     }
 }

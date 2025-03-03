@@ -702,20 +702,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.DeliveryContactTitle = {this.DeliveryContactTitle ?? "null"}");
-            toStringOutput.Add($"this.DeliveryContactName = {this.DeliveryContactName ?? "null"}");
-            toStringOutput.Add($"this.DeliveryCompanyName = {this.DeliveryCompanyName ?? "null"}");
-            toStringOutput.Add($"this.DeliveryAddressLine1 = {this.DeliveryAddressLine1 ?? "null"}");
-            toStringOutput.Add($"this.DeliveryAddressLine2 = {this.DeliveryAddressLine2 ?? "null"}");
-            toStringOutput.Add($"this.DeliveryAddressLine3 = {this.DeliveryAddressLine3 ?? "null"}");
-            toStringOutput.Add($"this.DeliveryZipCode = {this.DeliveryZipCode ?? "null"}");
-            toStringOutput.Add($"this.DeliveryCity = {this.DeliveryCity ?? "null"}");
-            toStringOutput.Add($"this.DeliveryRegionId = {(this.DeliveryRegionId == null ? "null" : this.DeliveryRegionId.ToString())}");
-            toStringOutput.Add($"this.DeliveryRegion = {this.DeliveryRegion ?? "null"}");
-            toStringOutput.Add($"this.DeliveryCountry = {this.DeliveryCountry ?? "null"}");
-            toStringOutput.Add($"this.PhoneNumber = {this.PhoneNumber ?? "null"}");
-            toStringOutput.Add($"this.EmailAddress = {this.EmailAddress ?? "null"}");
-            toStringOutput.Add($"this.SaveForPINReminder = {(this.SaveForPINReminder == null ? "null" : this.SaveForPINReminder.ToString())}");
+            toStringOutput.Add($"DeliveryContactTitle = {this.DeliveryContactTitle ?? "null"}");
+            toStringOutput.Add($"DeliveryContactName = {this.DeliveryContactName ?? "null"}");
+            toStringOutput.Add($"DeliveryCompanyName = {this.DeliveryCompanyName ?? "null"}");
+            toStringOutput.Add($"DeliveryAddressLine1 = {this.DeliveryAddressLine1 ?? "null"}");
+            toStringOutput.Add($"DeliveryAddressLine2 = {this.DeliveryAddressLine2 ?? "null"}");
+            toStringOutput.Add($"DeliveryAddressLine3 = {this.DeliveryAddressLine3 ?? "null"}");
+            toStringOutput.Add($"DeliveryZipCode = {this.DeliveryZipCode ?? "null"}");
+            toStringOutput.Add($"DeliveryCity = {this.DeliveryCity ?? "null"}");
+            toStringOutput.Add($"DeliveryRegionId = {(this.DeliveryRegionId == null ? "null" : this.DeliveryRegionId.ToString())}");
+            toStringOutput.Add($"DeliveryRegion = {this.DeliveryRegion ?? "null"}");
+            toStringOutput.Add($"DeliveryCountry = {this.DeliveryCountry ?? "null"}");
+            toStringOutput.Add($"PhoneNumber = {this.PhoneNumber ?? "null"}");
+            toStringOutput.Add($"EmailAddress = {this.EmailAddress ?? "null"}");
+            toStringOutput.Add($"SaveForPINReminder = {(this.SaveForPINReminder == null ? "null" : this.SaveForPINReminder.ToString())}");
         }
     }
 }

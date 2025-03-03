@@ -114,10 +114,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.FromDate = {this.FromDate ?? "null"}");
-            toStringOutput.Add($"this.ToDate = {this.ToDate ?? "null"}");
-            toStringOutput.Add($"this.ReferenceId = {(this.ReferenceId == null ? "null" : this.ReferenceId.ToString())}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"FromDate = {this.FromDate ?? "null"}");
+            toStringOutput.Add($"ToDate = {this.ToDate ?? "null"}");
+            toStringOutput.Add($"ReferenceId = {(this.ReferenceId == null ? "null" : this.ReferenceId.ToString())}");
         }
     }
 }

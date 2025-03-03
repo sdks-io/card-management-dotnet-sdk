@@ -347,16 +347,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
-            toStringOutput.Add($"this.TargetAccountId = {(this.TargetAccountId == null ? "null" : this.TargetAccountId.ToString())}");
-            toStringOutput.Add($"this.TargetAccountNumber = {this.TargetAccountNumber ?? "null"}");
-            toStringOutput.Add($"this.TargetCardGroupId = {(this.TargetCardGroupId == null ? "null" : this.TargetCardGroupId.ToString())}");
-            toStringOutput.Add($"this.TargetNewCardGroupName = {this.TargetNewCardGroupName ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
+            toStringOutput.Add($"TargetAccountId = {(this.TargetAccountId == null ? "null" : this.TargetAccountId.ToString())}");
+            toStringOutput.Add($"TargetAccountNumber = {this.TargetAccountNumber ?? "null"}");
+            toStringOutput.Add($"TargetCardGroupId = {(this.TargetCardGroupId == null ? "null" : this.TargetCardGroupId.ToString())}");
+            toStringOutput.Add($"TargetNewCardGroupName = {this.TargetNewCardGroupName ?? "null"}");
         }
     }
 }

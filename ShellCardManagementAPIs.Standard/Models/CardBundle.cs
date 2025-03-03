@@ -102,10 +102,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
-            toStringOutput.Add($"this.ExternalBundleId = {this.ExternalBundleId ?? "null"}");
-            toStringOutput.Add($"this.Description = {this.Description ?? "null"}");
-            toStringOutput.Add($"this.TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
+            toStringOutput.Add($"BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"ExternalBundleId = {this.ExternalBundleId ?? "null"}");
+            toStringOutput.Add($"Description = {this.Description ?? "null"}");
+            toStringOutput.Add($"TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
         }
     }
 }

@@ -154,8 +154,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PartnerId = {this.PartnerId ?? "null"}");
-            toStringOutput.Add($"this.PartnerName = {this.PartnerName ?? "null"}");
+            toStringOutput.Add($"PartnerId = {this.PartnerId ?? "null"}");
+            toStringOutput.Add($"PartnerName = {this.PartnerName ?? "null"}");
         }
     }
 }

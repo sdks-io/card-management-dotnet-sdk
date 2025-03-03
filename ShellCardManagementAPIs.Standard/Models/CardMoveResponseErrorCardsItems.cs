@@ -338,12 +338,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.ValidationErrorCode = {this.ValidationErrorCode ?? "null"}");
-            toStringOutput.Add($"this.ValidationErrorDescription = {this.ValidationErrorDescription ?? "null"}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"ValidationErrorCode = {this.ValidationErrorCode ?? "null"}");
+            toStringOutput.Add($"ValidationErrorDescription = {this.ValidationErrorDescription ?? "null"}");
         }
     }
 }

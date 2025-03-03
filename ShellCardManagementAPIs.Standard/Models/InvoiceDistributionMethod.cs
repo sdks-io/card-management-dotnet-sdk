@@ -227,10 +227,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.IsPrimary = {(this.IsPrimary == null ? "null" : this.IsPrimary.ToString())}");
-            toStringOutput.Add($"this.FrequencyType = {this.FrequencyType ?? "null"}");
-            toStringOutput.Add($"this.DistributionMethod = {this.DistributionMethod ?? "null"}");
-            toStringOutput.Add($"this.OutputType = {this.OutputType ?? "null"}");
+            toStringOutput.Add($"IsPrimary = {(this.IsPrimary == null ? "null" : this.IsPrimary.ToString())}");
+            toStringOutput.Add($"FrequencyType = {this.FrequencyType ?? "null"}");
+            toStringOutput.Add($"DistributionMethod = {this.DistributionMethod ?? "null"}");
+            toStringOutput.Add($"OutputType = {this.OutputType ?? "null"}");
         }
     }
 }

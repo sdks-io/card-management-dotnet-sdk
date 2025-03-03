@@ -607,7 +607,30 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Gets or sets StatusId.
+        /// <![CDATA[
+        /// Possible Id’s and description:
+        /// * 1  Active
+        /// * 7  Blocked Card
+        /// * 8  Expired
+        /// * 9  Cancelled
+        /// * 10  New
+        /// * 23  Pending Renewal
+        /// * 31  Replaced
+        /// * 41  Temporary Block (Customer)
+        /// * 42  Temporary Block (Shell)
+        /// * 43  Fraud
+        /// * 101 Active (Block in progress) *
+        /// * 102 Blocked Card (Unblock in progress) *
+        /// * 103 Active (Cancel in progress) *
+        /// * 104 Active (Marked as damaged) *
+        /// * 105 New (Cancel as damaged) *
+        /// * 106 Active(Scheduled for block) ”#
+        /// * 107 Blocked Card(Scheduled for unblock)*#
+        /// * 108 Blocked Card (Cancel in progress) *
+        /// > Note:
+        /// •  Items marked with * are intermediate statuses  to indicate that there are pending requests in progress. , The response can contain these intermediate statuses only if the IncludeIntermediateStatus flag is true.
+        /// •  The placeholder “<Shell Card Platform Status>” in the items marked with # will be replaced with the Shell Card Platform status description. E.g., “Active (Scheduled for block)”
+        /// ]]>
         /// </summary>
         [JsonProperty("StatusId", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseStatusIdEnum? StatusId { get; set; }
@@ -654,7 +677,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         public bool? FleetIdPrompt { get; set; }
 
         /// <summary>
-        /// Gets or sets PINType.
+        /// PIN type:
+        ///   * `Card` - Card PIN
+        ///   * `Fleet` - Fleet PIN
         /// </summary>
         [JsonProperty("PINType", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponsePINTypeEnum? PINType { get; set; }
@@ -702,25 +727,149 @@ namespace ShellCardManagementAPIs.Standard.Models
         public object ReissueSetting { get; set; }
 
         /// <summary>
-        /// Gets or sets InternationalPOSLanguageID.
+        /// POS language identifier. Language Id:
+        ///   * `1` - German
+        ///   * `2` - French
+        ///   * `3` - Bulgarian
+        ///   * `4` - Croatian
+        ///   * `5` - Czech
+        ///   * `6` - Danish
+        ///   * `7` - Finnish
+        ///   * `8` - English
+        ///   * `9` - Greek
+        ///   * `10` - Chinese
+        ///   * `11` - Hungarian
+        ///   * `12` - Italian
+        ///   * `13` - Luxembourgish
+        ///   * `14` - Malay
+        ///   * `15` - Dutch
+        ///   * `16` - Norwegian, Bokmal
+        ///   * `17` - Urdu
+        ///   * `18` - Polish
+        ///   * `19` - Portuguese
+        ///   * `20` - Romanian
+        ///   * `21` - Russian
+        ///   * `22` - Slovak
+        ///   * `23` - Slovenian
+        ///   * `24` - Spanish
+        ///   * `25` - Swedish
+        ///   * `26` - Turkish
+        ///   * `27` - Thai
+        ///   * `28` - Filipino
+        ///   * `29` - Estonian
+        ///   * `30` - Latvian
+        ///   * `31` - Lithuanian
         /// </summary>
         [JsonProperty("InternationalPOSLanguageID", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseInternationalPOSLanguageIDEnum? InternationalPOSLanguageID { get; set; }
 
         /// <summary>
-        /// Gets or sets InternationalPOSLanguageCode.
+        /// POS language code. Language code:
+        ///   * `deu` - German
+        ///   * `fra` - French
+        ///   * `bul` - Bulgarian
+        ///   * `hrv` - Croatian
+        ///   * `ces` - Czech
+        ///   * `dan` - Danish
+        ///   * `fin` - Finnish
+        ///   * `eng` - English
+        ///   * `ell` - Greek
+        ///   * `zho` - Chinese
+        ///   * `hun` - Hungarian
+        ///   * `ita` - Italian
+        ///   * `ltz` - Luxembourgish
+        ///   * `msa` - Malay
+        ///   * `nld` - Dutch
+        ///   * `nob` - Norwegian, Bokmal
+        ///   * `urd` - Urdu
+        ///   * `pol` - Polish
+        ///   * `por` - Portuguese
+        ///   * `ron` - Romanian
+        ///   * `rus` - Russian
+        ///   * `slk` - Slovak
+        ///   * `slv` - Slovenian
+        ///   * `spa` - Spanish
+        ///   * `swe` - Swedish
+        ///   * `tur` - Turkish
+        ///   * `tha` - Thai
+        ///   * `fil` - Filipino
+        ///   * `est` - Estonian
+        ///   * `lav` - Latvian
+        ///   * `lit` - Lithuanian
         /// </summary>
         [JsonProperty("InternationalPOSLanguageCode", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseInternationalPOSLanguageCodeEnum? InternationalPOSLanguageCode { get; set; }
 
         /// <summary>
-        /// Gets or sets LocalPOSLanguageID.
+        /// POS language identifier. Language Id:
+        ///   * `1` - German
+        ///   * `2` - French
+        ///   * `3` - Bulgarian
+        ///   * `4` - Croatian
+        ///   * `5` - Czech
+        ///   * `6` - Danish
+        ///   * `7` - Finnish
+        ///   * `8` - English
+        ///   * `9` - Greek
+        ///   * `10` - Chinese
+        ///   * `11` - Hungarian
+        ///   * `12` - Italian
+        ///   * `13` - Luxembourgish
+        ///   * `14` - Malay
+        ///   * `15` - Dutch
+        ///   * `16` - Norwegian, Bokmal
+        ///   * `17` - Urdu
+        ///   * `18` - Polish
+        ///   * `19` - Portuguese
+        ///   * `20` - Romanian
+        ///   * `21` - Russian
+        ///   * `22` - Slovak
+        ///   * `23` - Slovenian
+        ///   * `24` - Spanish
+        ///   * `25` - Swedish
+        ///   * `26` - Turkish
+        ///   * `27` - Thai
+        ///   * `28` - Filipino
+        ///   * `29` - Estonian
+        ///   * `30` - Latvian
+        ///   * `31` - Lithuanian
         /// </summary>
         [JsonProperty("LocalPOSLanguageID", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseInternationalPOSLanguageIDEnum? LocalPOSLanguageID { get; set; }
 
         /// <summary>
-        /// Gets or sets LocalPOSLanguageCode.
+        /// POS language code. Language code:
+        ///   * `deu` - German
+        ///   * `fra` - French
+        ///   * `bul` - Bulgarian
+        ///   * `hrv` - Croatian
+        ///   * `ces` - Czech
+        ///   * `dan` - Danish
+        ///   * `fin` - Finnish
+        ///   * `eng` - English
+        ///   * `ell` - Greek
+        ///   * `zho` - Chinese
+        ///   * `hun` - Hungarian
+        ///   * `ita` - Italian
+        ///   * `ltz` - Luxembourgish
+        ///   * `msa` - Malay
+        ///   * `nld` - Dutch
+        ///   * `nob` - Norwegian, Bokmal
+        ///   * `urd` - Urdu
+        ///   * `pol` - Polish
+        ///   * `por` - Portuguese
+        ///   * `ron` - Romanian
+        ///   * `rus` - Russian
+        ///   * `slk` - Slovak
+        ///   * `slv` - Slovenian
+        ///   * `spa` - Spanish
+        ///   * `swe` - Swedish
+        ///   * `tur` - Turkish
+        ///   * `tha` - Thai
+        ///   * `fil` - Filipino
+        ///   * `est` - Estonian
+        ///   * `lav` - Latvian
+        ///   * `lit` - Lithuanian
         /// </summary>
         [JsonProperty("LocalPOSLanguageCode", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseInternationalPOSLanguageCodeEnum? LocalPOSLanguageCode { get; set; }
@@ -1144,7 +1293,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Gets or sets RenewedCardReissueSetting.
+        /// Reissue setting of the renewed new card. Reissue Setting:
+        ///   * `True` - Card will be sent to production
+        ///   * `False` - Parent Card is Dormant or the Card is not to be produced
         /// </summary>
         [JsonProperty("RenewedCardReissueSetting", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailsResponseRenewedCardReissueSettingEnum? RenewedCardReissueSetting { get; set; }
@@ -1955,77 +2106,77 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.LocalCurrencyCode = {this.LocalCurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.LocalCurrencySymbol = {this.LocalCurrencySymbol ?? "null"}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.StatusId = {(this.StatusId == null ? "null" : this.StatusId.ToString())}");
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.OdometerPrompt = {(this.OdometerPrompt == null ? "null" : this.OdometerPrompt.ToString())}");
-            toStringOutput.Add($"this.FleetIdPrompt = {(this.FleetIdPrompt == null ? "null" : this.FleetIdPrompt.ToString())}");
-            toStringOutput.Add($"this.PINType = {(this.PINType == null ? "null" : this.PINType.ToString())}");
-            toStringOutput.Add($"this.HasPIN = {(this.HasPIN == null ? "null" : this.HasPIN.ToString())}");
-            toStringOutput.Add($"this.IsSelfSelectedPIN = {(this.IsSelfSelectedPIN == null ? "null" : this.IsSelfSelectedPIN.ToString())}");
-            toStringOutput.Add($"this.TemporaryBlockAllowed = {(this.TemporaryBlockAllowed == null ? "null" : this.TemporaryBlockAllowed.ToString())}");
-            toStringOutput.Add($"this.UnblockAllowed = {(this.UnblockAllowed == null ? "null" : this.UnblockAllowed.ToString())}");
-            toStringOutput.Add($"this.PermanentBlockAllowed = {(this.PermanentBlockAllowed == null ? "null" : this.PermanentBlockAllowed.ToString())}");
-            toStringOutput.Add($"this.IssueNumber = {(this.IssueNumber == null ? "null" : this.IssueNumber.ToString())}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountShortName = {this.AccountShortName ?? "null"}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"LocalCurrencyCode = {this.LocalCurrencyCode ?? "null"}");
+            toStringOutput.Add($"LocalCurrencySymbol = {this.LocalCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"StatusId = {(this.StatusId == null ? "null" : this.StatusId.ToString())}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"OdometerPrompt = {(this.OdometerPrompt == null ? "null" : this.OdometerPrompt.ToString())}");
+            toStringOutput.Add($"FleetIdPrompt = {(this.FleetIdPrompt == null ? "null" : this.FleetIdPrompt.ToString())}");
+            toStringOutput.Add($"PINType = {(this.PINType == null ? "null" : this.PINType.ToString())}");
+            toStringOutput.Add($"HasPIN = {(this.HasPIN == null ? "null" : this.HasPIN.ToString())}");
+            toStringOutput.Add($"IsSelfSelectedPIN = {(this.IsSelfSelectedPIN == null ? "null" : this.IsSelfSelectedPIN.ToString())}");
+            toStringOutput.Add($"TemporaryBlockAllowed = {(this.TemporaryBlockAllowed == null ? "null" : this.TemporaryBlockAllowed.ToString())}");
+            toStringOutput.Add($"UnblockAllowed = {(this.UnblockAllowed == null ? "null" : this.UnblockAllowed.ToString())}");
+            toStringOutput.Add($"PermanentBlockAllowed = {(this.PermanentBlockAllowed == null ? "null" : this.PermanentBlockAllowed.ToString())}");
+            toStringOutput.Add($"IssueNumber = {(this.IssueNumber == null ? "null" : this.IssueNumber.ToString())}");
             toStringOutput.Add($"ReissueSetting = {(this.ReissueSetting == null ? "null" : this.ReissueSetting.ToString())}");
-            toStringOutput.Add($"this.InternationalPOSLanguageID = {(this.InternationalPOSLanguageID == null ? "null" : this.InternationalPOSLanguageID.ToString())}");
-            toStringOutput.Add($"this.InternationalPOSLanguageCode = {(this.InternationalPOSLanguageCode == null ? "null" : this.InternationalPOSLanguageCode.ToString())}");
-            toStringOutput.Add($"this.LocalPOSLanguageID = {(this.LocalPOSLanguageID == null ? "null" : this.LocalPOSLanguageID.ToString())}");
-            toStringOutput.Add($"this.LocalPOSLanguageCode = {(this.LocalPOSLanguageCode == null ? "null" : this.LocalPOSLanguageCode.ToString())}");
-            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
-            toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
-            toStringOutput.Add($"this.TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
-            toStringOutput.Add($"this.TokenTypeName = {this.TokenTypeName ?? "null"}");
-            toStringOutput.Add($"this.IsChipCard = {(this.IsChipCard == null ? "null" : this.IsChipCard.ToString())}");
-            toStringOutput.Add($"this.IsMagStripCard = {(this.IsMagStripCard == null ? "null" : this.IsMagStripCard.ToString())}");
-            toStringOutput.Add($"this.IsVirtualCard = {(this.IsVirtualCard == null ? "null" : this.IsVirtualCard.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
-            toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategoryName = {this.PurchaseCategoryName ?? "null"}");
-            toStringOutput.Add($"this.IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
-            toStringOutput.Add($"this.IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
-            toStringOutput.Add($"this.IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
-            toStringOutput.Add($"this.IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
-            toStringOutput.Add($"this.IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
-            toStringOutput.Add($"this.IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
-            toStringOutput.Add($"this.FuelSets = {(this.FuelSets == null ? "null" : $"[{string.Join(", ", this.FuelSets)} ]")}");
-            toStringOutput.Add($"this.NonFuelSets = {(this.NonFuelSets == null ? "null" : $"[{string.Join(", ", this.NonFuelSets)} ]")}");
-            toStringOutput.Add($"this.IssuedDate = {this.IssuedDate ?? "null"}");
-            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.LastUsedDate = {this.LastUsedDate ?? "null"}");
-            toStringOutput.Add($"this.MisuseDate = {this.MisuseDate ?? "null"}");
-            toStringOutput.Add($"this.Temperature = {this.Temperature ?? "null"}");
-            toStringOutput.Add($"this.DriverName = {this.DriverName ?? "null"}");
-            toStringOutput.Add($"this.VRN = {this.VRN ?? "null"}");
-            toStringOutput.Add($"this.EmbossText = {this.EmbossText ?? "null"}");
-            toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
-            toStringOutput.Add($"this.RenewalDate = {this.RenewalDate ?? "null"}");
-            toStringOutput.Add($"this.RenewedCardId = {(this.RenewedCardId == null ? "null" : this.RenewedCardId.ToString())}");
-            toStringOutput.Add($"this.RenewedCardStatusId = {(this.RenewedCardStatusId == null ? "null" : this.RenewedCardStatusId.ToString())}");
-            toStringOutput.Add($"this.RenewedCardStatus = {this.RenewedCardStatus ?? "null"}");
-            toStringOutput.Add($"this.RenewedCardExpiryDate = {this.RenewedCardExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.RenewedCardIssueNumber = {(this.RenewedCardIssueNumber == null ? "null" : this.RenewedCardIssueNumber.ToString())}");
-            toStringOutput.Add($"this.RenewedCardReissueSetting = {(this.RenewedCardReissueSetting == null ? "null" : this.RenewedCardReissueSetting.ToString())}");
-            toStringOutput.Add($"this.CreationDate = {this.CreationDate ?? "null"}");
-            toStringOutput.Add($"this.EffectiveDate = {this.EffectiveDate ?? "null"}");
-            toStringOutput.Add($"this.LastModifiedDate = {this.LastModifiedDate ?? "null"}");
-            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
-            toStringOutput.Add($"this.CardDeliveryAddress = {(this.CardDeliveryAddress == null ? "null" : this.CardDeliveryAddress.ToString())}");
-            toStringOutput.Add($"this.PINDeliveryAddress = {(this.PINDeliveryAddress == null ? "null" : this.PINDeliveryAddress.ToString())}");
-            toStringOutput.Add($"this.CardBlockSchedules = {(this.CardBlockSchedules == null ? "null" : $"[{string.Join(", ", this.CardBlockSchedules)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"InternationalPOSLanguageID = {(this.InternationalPOSLanguageID == null ? "null" : this.InternationalPOSLanguageID.ToString())}");
+            toStringOutput.Add($"InternationalPOSLanguageCode = {(this.InternationalPOSLanguageCode == null ? "null" : this.InternationalPOSLanguageCode.ToString())}");
+            toStringOutput.Add($"LocalPOSLanguageID = {(this.LocalPOSLanguageID == null ? "null" : this.LocalPOSLanguageID.ToString())}");
+            toStringOutput.Add($"LocalPOSLanguageCode = {(this.LocalPOSLanguageCode == null ? "null" : this.LocalPOSLanguageCode.ToString())}");
+            toStringOutput.Add($"CardTypeCode = {this.CardTypeCode ?? "null"}");
+            toStringOutput.Add($"CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
+            toStringOutput.Add($"CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
+            toStringOutput.Add($"TokenTypeName = {this.TokenTypeName ?? "null"}");
+            toStringOutput.Add($"IsChipCard = {(this.IsChipCard == null ? "null" : this.IsChipCard.ToString())}");
+            toStringOutput.Add($"IsMagStripCard = {(this.IsMagStripCard == null ? "null" : this.IsMagStripCard.ToString())}");
+            toStringOutput.Add($"IsVirtualCard = {(this.IsVirtualCard == null ? "null" : this.IsVirtualCard.ToString())}");
+            toStringOutput.Add($"PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
+            toStringOutput.Add($"PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
+            toStringOutput.Add($"PurchaseCategoryName = {this.PurchaseCategoryName ?? "null"}");
+            toStringOutput.Add($"IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
+            toStringOutput.Add($"IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
+            toStringOutput.Add($"IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
+            toStringOutput.Add($"IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
+            toStringOutput.Add($"IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
+            toStringOutput.Add($"IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
+            toStringOutput.Add($"FuelSets = {(this.FuelSets == null ? "null" : $"[{string.Join(", ", this.FuelSets)} ]")}");
+            toStringOutput.Add($"NonFuelSets = {(this.NonFuelSets == null ? "null" : $"[{string.Join(", ", this.NonFuelSets)} ]")}");
+            toStringOutput.Add($"IssuedDate = {this.IssuedDate ?? "null"}");
+            toStringOutput.Add($"ExpiryDate = {this.ExpiryDate ?? "null"}");
+            toStringOutput.Add($"LastUsedDate = {this.LastUsedDate ?? "null"}");
+            toStringOutput.Add($"MisuseDate = {this.MisuseDate ?? "null"}");
+            toStringOutput.Add($"Temperature = {this.Temperature ?? "null"}");
+            toStringOutput.Add($"DriverName = {this.DriverName ?? "null"}");
+            toStringOutput.Add($"VRN = {this.VRN ?? "null"}");
+            toStringOutput.Add($"EmbossText = {this.EmbossText ?? "null"}");
+            toStringOutput.Add($"CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
+            toStringOutput.Add($"CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"RenewalDate = {this.RenewalDate ?? "null"}");
+            toStringOutput.Add($"RenewedCardId = {(this.RenewedCardId == null ? "null" : this.RenewedCardId.ToString())}");
+            toStringOutput.Add($"RenewedCardStatusId = {(this.RenewedCardStatusId == null ? "null" : this.RenewedCardStatusId.ToString())}");
+            toStringOutput.Add($"RenewedCardStatus = {this.RenewedCardStatus ?? "null"}");
+            toStringOutput.Add($"RenewedCardExpiryDate = {this.RenewedCardExpiryDate ?? "null"}");
+            toStringOutput.Add($"RenewedCardIssueNumber = {(this.RenewedCardIssueNumber == null ? "null" : this.RenewedCardIssueNumber.ToString())}");
+            toStringOutput.Add($"RenewedCardReissueSetting = {(this.RenewedCardReissueSetting == null ? "null" : this.RenewedCardReissueSetting.ToString())}");
+            toStringOutput.Add($"CreationDate = {this.CreationDate ?? "null"}");
+            toStringOutput.Add($"EffectiveDate = {this.EffectiveDate ?? "null"}");
+            toStringOutput.Add($"LastModifiedDate = {this.LastModifiedDate ?? "null"}");
+            toStringOutput.Add($"BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"CardDeliveryAddress = {(this.CardDeliveryAddress == null ? "null" : this.CardDeliveryAddress.ToString())}");
+            toStringOutput.Add($"PINDeliveryAddress = {(this.PINDeliveryAddress == null ? "null" : this.PINDeliveryAddress.ToString())}");
+            toStringOutput.Add($"CardBlockSchedules = {(this.CardBlockSchedules == null ? "null" : $"[{string.Join(", ", this.CardBlockSchedules)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

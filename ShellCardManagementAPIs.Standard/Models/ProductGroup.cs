@@ -128,12 +128,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ReferenceId = {(this.ReferenceId == null ? "null" : this.ReferenceId.ToString())}");
-            toStringOutput.Add($"this.ProductGroupId = {this.ProductGroupId ?? "null"}");
-            toStringOutput.Add($"this.Name = {this.Name ?? "null"}");
-            toStringOutput.Add($"this.IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
-            toStringOutput.Add($"this.IsFuelType = {(this.IsFuelType == null ? "null" : this.IsFuelType.ToString())}");
-            toStringOutput.Add($"this.Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
+            toStringOutput.Add($"ReferenceId = {(this.ReferenceId == null ? "null" : this.ReferenceId.ToString())}");
+            toStringOutput.Add($"ProductGroupId = {this.ProductGroupId ?? "null"}");
+            toStringOutput.Add($"Name = {this.Name ?? "null"}");
+            toStringOutput.Add($"IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
+            toStringOutput.Add($"IsFuelType = {(this.IsFuelType == null ? "null" : this.IsFuelType.ToString())}");
+            toStringOutput.Add($"Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
         }
     }
 }

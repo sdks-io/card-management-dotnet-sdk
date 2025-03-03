@@ -91,9 +91,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.Reference = {(this.Reference == null ? "null" : this.Reference.ToString())}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"Reference = {(this.Reference == null ? "null" : this.Reference.ToString())}");
         }
     }
 }

@@ -79,8 +79,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ProductRestrictionId = {this.ProductRestrictionId}");
-            toStringOutput.Add($"this.Description = {this.Description ?? "null"}");
+            toStringOutput.Add($"ProductRestrictionId = {this.ProductRestrictionId}");
+            toStringOutput.Add($"Description = {this.Description ?? "null"}");
         }
     }
 }

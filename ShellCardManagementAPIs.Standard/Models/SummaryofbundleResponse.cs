@@ -188,14 +188,14 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.CountOfCardsNotInBundle = {(this.CountOfCardsNotInBundle == null ? "null" : this.CountOfCardsNotInBundle.ToString())}");
-            toStringOutput.Add($"this.CardBundles = {(this.CardBundles == null ? "null" : this.CardBundles.ToString())}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"CountOfCardsNotInBundle = {(this.CountOfCardsNotInBundle == null ? "null" : this.CountOfCardsNotInBundle.ToString())}");
+            toStringOutput.Add($"CardBundles = {(this.CardBundles == null ? "null" : this.CardBundles.ToString())}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

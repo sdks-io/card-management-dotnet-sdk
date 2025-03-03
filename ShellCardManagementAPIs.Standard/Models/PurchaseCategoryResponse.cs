@@ -80,8 +80,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PurchaseCategories = {(this.PurchaseCategories == null ? "null" : $"[{string.Join(", ", this.PurchaseCategories)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"PurchaseCategories = {(this.PurchaseCategories == null ? "null" : $"[{string.Join(", ", this.PurchaseCategories)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

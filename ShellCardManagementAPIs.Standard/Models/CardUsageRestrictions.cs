@@ -914,25 +914,25 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Level = {this.Level ?? "null"}");
-            toStringOutput.Add($"this.DailySpendLimit = {(this.DailySpendLimit == null ? "null" : this.DailySpendLimit.ToString())}");
-            toStringOutput.Add($"this.WeeklySpendLimit = {(this.WeeklySpendLimit == null ? "null" : this.WeeklySpendLimit.ToString())}");
-            toStringOutput.Add($"this.MonthlySpendLimit = {(this.MonthlySpendLimit == null ? "null" : this.MonthlySpendLimit.ToString())}");
-            toStringOutput.Add($"this.AnnualSpendLimit = {(this.AnnualSpendLimit == null ? "null" : this.AnnualSpendLimit.ToString())}");
-            toStringOutput.Add($"this.LifeTimeSpendLimit = {(this.LifeTimeSpendLimit == null ? "null" : this.LifeTimeSpendLimit.ToString())}");
-            toStringOutput.Add($"this.DailyVolumeLimit = {(this.DailyVolumeLimit == null ? "null" : this.DailyVolumeLimit.ToString())}");
-            toStringOutput.Add($"this.WeeklyVolumeLimit = {(this.WeeklyVolumeLimit == null ? "null" : this.WeeklyVolumeLimit.ToString())}");
-            toStringOutput.Add($"this.MonthlyVolumeLimit = {(this.MonthlyVolumeLimit == null ? "null" : this.MonthlyVolumeLimit.ToString())}");
-            toStringOutput.Add($"this.AnnualVolumeLimit = {(this.AnnualVolumeLimit == null ? "null" : this.AnnualVolumeLimit.ToString())}");
-            toStringOutput.Add($"this.LifeTimeVolumeLimit = {(this.LifeTimeVolumeLimit == null ? "null" : this.LifeTimeVolumeLimit.ToString())}");
-            toStringOutput.Add($"this.TransactionSpendLimit = {(this.TransactionSpendLimit == null ? "null" : this.TransactionSpendLimit.ToString())}");
-            toStringOutput.Add($"this.TransactionVolumeLimit = {(this.TransactionVolumeLimit == null ? "null" : this.TransactionVolumeLimit.ToString())}");
-            toStringOutput.Add($"this.DailyTransactionCount = {(this.DailyTransactionCount == null ? "null" : this.DailyTransactionCount.ToString())}");
-            toStringOutput.Add($"this.WeeklyTransactionCount = {(this.WeeklyTransactionCount == null ? "null" : this.WeeklyTransactionCount.ToString())}");
-            toStringOutput.Add($"this.MonthlyTransactionCount = {(this.MonthlyTransactionCount == null ? "null" : this.MonthlyTransactionCount.ToString())}");
-            toStringOutput.Add($"this.AnnualTransactionCount = {(this.AnnualTransactionCount == null ? "null" : this.AnnualTransactionCount.ToString())}");
-            toStringOutput.Add($"this.LifeTimeTransactionCount = {(this.LifeTimeTransactionCount == null ? "null" : this.LifeTimeTransactionCount.ToString())}");
-            toStringOutput.Add($"this.IsVelocityCeiling = {(this.IsVelocityCeiling == null ? "null" : this.IsVelocityCeiling.ToString())}");
+            toStringOutput.Add($"Level = {this.Level ?? "null"}");
+            toStringOutput.Add($"DailySpendLimit = {(this.DailySpendLimit == null ? "null" : this.DailySpendLimit.ToString())}");
+            toStringOutput.Add($"WeeklySpendLimit = {(this.WeeklySpendLimit == null ? "null" : this.WeeklySpendLimit.ToString())}");
+            toStringOutput.Add($"MonthlySpendLimit = {(this.MonthlySpendLimit == null ? "null" : this.MonthlySpendLimit.ToString())}");
+            toStringOutput.Add($"AnnualSpendLimit = {(this.AnnualSpendLimit == null ? "null" : this.AnnualSpendLimit.ToString())}");
+            toStringOutput.Add($"LifeTimeSpendLimit = {(this.LifeTimeSpendLimit == null ? "null" : this.LifeTimeSpendLimit.ToString())}");
+            toStringOutput.Add($"DailyVolumeLimit = {(this.DailyVolumeLimit == null ? "null" : this.DailyVolumeLimit.ToString())}");
+            toStringOutput.Add($"WeeklyVolumeLimit = {(this.WeeklyVolumeLimit == null ? "null" : this.WeeklyVolumeLimit.ToString())}");
+            toStringOutput.Add($"MonthlyVolumeLimit = {(this.MonthlyVolumeLimit == null ? "null" : this.MonthlyVolumeLimit.ToString())}");
+            toStringOutput.Add($"AnnualVolumeLimit = {(this.AnnualVolumeLimit == null ? "null" : this.AnnualVolumeLimit.ToString())}");
+            toStringOutput.Add($"LifeTimeVolumeLimit = {(this.LifeTimeVolumeLimit == null ? "null" : this.LifeTimeVolumeLimit.ToString())}");
+            toStringOutput.Add($"TransactionSpendLimit = {(this.TransactionSpendLimit == null ? "null" : this.TransactionSpendLimit.ToString())}");
+            toStringOutput.Add($"TransactionVolumeLimit = {(this.TransactionVolumeLimit == null ? "null" : this.TransactionVolumeLimit.ToString())}");
+            toStringOutput.Add($"DailyTransactionCount = {(this.DailyTransactionCount == null ? "null" : this.DailyTransactionCount.ToString())}");
+            toStringOutput.Add($"WeeklyTransactionCount = {(this.WeeklyTransactionCount == null ? "null" : this.WeeklyTransactionCount.ToString())}");
+            toStringOutput.Add($"MonthlyTransactionCount = {(this.MonthlyTransactionCount == null ? "null" : this.MonthlyTransactionCount.ToString())}");
+            toStringOutput.Add($"AnnualTransactionCount = {(this.AnnualTransactionCount == null ? "null" : this.AnnualTransactionCount.ToString())}");
+            toStringOutput.Add($"LifeTimeTransactionCount = {(this.LifeTimeTransactionCount == null ? "null" : this.LifeTimeTransactionCount.ToString())}");
+            toStringOutput.Add($"IsVelocityCeiling = {(this.IsVelocityCeiling == null ? "null" : this.IsVelocityCeiling.ToString())}");
         }
     }
 }

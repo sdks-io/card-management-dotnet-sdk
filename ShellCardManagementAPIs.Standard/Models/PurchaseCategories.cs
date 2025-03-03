@@ -136,11 +136,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Id = {(this.Id == null ? "null" : this.Id.ToString())}");
-            toStringOutput.Add($"this.Code = {this.Code ?? "null"}");
-            toStringOutput.Add($"this.Name = {this.Name ?? "null"}");
-            toStringOutput.Add($"this.IsVisible = {(this.IsVisible == null ? "null" : this.IsVisible.ToString())}");
-            toStringOutput.Add($"this.ProductGroups = {this.ProductGroups ?? "null"}");
+            toStringOutput.Add($"Id = {(this.Id == null ? "null" : this.Id.ToString())}");
+            toStringOutput.Add($"Code = {this.Code ?? "null"}");
+            toStringOutput.Add($"Name = {this.Name ?? "null"}");
+            toStringOutput.Add($"IsVisible = {(this.IsVisible == null ? "null" : this.IsVisible.ToString())}");
+            toStringOutput.Add($"ProductGroups = {this.ProductGroups ?? "null"}");
         }
     }
 }

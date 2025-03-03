@@ -200,10 +200,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
-            toStringOutput.Add($"this.ReasonId = {(this.ReasonId == null ? "null" : this.ReasonId.ToString())}");
-            toStringOutput.Add($"this.ReasonText = {this.ReasonText ?? "null"}");
-            toStringOutput.Add($"this.TargetStatus = {this.TargetStatus ?? "null"}");
+            toStringOutput.Add($"Cards = {(this.Cards == null ? "null" : $"[{string.Join(", ", this.Cards)} ]")}");
+            toStringOutput.Add($"ReasonId = {(this.ReasonId == null ? "null" : this.ReasonId.ToString())}");
+            toStringOutput.Add($"ReasonText = {this.ReasonText ?? "null"}");
+            toStringOutput.Add($"TargetStatus = {this.TargetStatus ?? "null"}");
         }
     }
 }

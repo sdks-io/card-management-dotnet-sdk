@@ -269,22 +269,22 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
-            toStringOutput.Add($"this.PrintOnCard = {(this.PrintOnCard == null ? "null" : this.PrintOnCard.ToString())}");
-            toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.TerminateCardGroup = {(this.TerminateCardGroup == null ? "null" : this.TerminateCardGroup.ToString())}");
-            toStringOutput.Add($"this.MoveCards = {(this.MoveCards == null ? "null" : this.MoveCards.ToString())}");
-            toStringOutput.Add($"this.TargetAccountId = {(this.TargetAccountId == null ? "null" : this.TargetAccountId.ToString())}");
-            toStringOutput.Add($"this.TargetAccountNumber = {this.TargetAccountNumber ?? "null"}");
-            toStringOutput.Add($"this.TargetNewCardGroupName = {this.TargetNewCardGroupName ?? "null"}");
-            toStringOutput.Add($"this.TargetCardGroupId = {(this.TargetCardGroupId == null ? "null" : this.TargetCardGroupId.ToString())}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
+            toStringOutput.Add($"CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"PrintOnCard = {(this.PrintOnCard == null ? "null" : this.PrintOnCard.ToString())}");
+            toStringOutput.Add($"CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
+            toStringOutput.Add($"TerminateCardGroup = {(this.TerminateCardGroup == null ? "null" : this.TerminateCardGroup.ToString())}");
+            toStringOutput.Add($"MoveCards = {(this.MoveCards == null ? "null" : this.MoveCards.ToString())}");
+            toStringOutput.Add($"TargetAccountId = {(this.TargetAccountId == null ? "null" : this.TargetAccountId.ToString())}");
+            toStringOutput.Add($"TargetAccountNumber = {this.TargetAccountNumber ?? "null"}");
+            toStringOutput.Add($"TargetNewCardGroupName = {this.TargetNewCardGroupName ?? "null"}");
+            toStringOutput.Add($"TargetCardGroupId = {(this.TargetCardGroupId == null ? "null" : this.TargetCardGroupId.ToString())}");
         }
     }
 }

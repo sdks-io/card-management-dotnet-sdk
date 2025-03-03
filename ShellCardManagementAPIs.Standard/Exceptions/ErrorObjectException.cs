@@ -50,5 +50,25 @@ namespace ShellCardManagementAPIs.Standard.Exceptions
         /// </summary>
         [JsonProperty("Errors", NullValueHandling = NullValueHandling.Ignore)]
         public List<Models.ErrorDetails> Errors { get; set; }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            var toStringOutput = new List<string>();
+            this.ToString(toStringOutput);
+            return $"ErrorObjectException : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// ToString overload.
+        /// </summary>
+        /// <param name="toStringOutput">List of strings.</param>
+        protected void ToString(List<string> toStringOutput)
+        {
+            base.ToString(toStringOutput);
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"Errors = {(this.Errors == null ? "null" : $"[{string.Join(", ", this.Errors)} ]")}");
+        }
     }
 }

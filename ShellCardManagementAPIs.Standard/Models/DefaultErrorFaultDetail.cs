@@ -69,7 +69,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Errorcode = {this.Errorcode ?? "null"}");
+            toStringOutput.Add($"Errorcode = {this.Errorcode ?? "null"}");
         }
     }
 }

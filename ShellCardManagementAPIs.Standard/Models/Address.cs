@@ -614,18 +614,18 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AddressId = {(this.AddressId == null ? "null" : this.AddressId.ToString())}");
-            toStringOutput.Add($"this.AddressLine1 = {this.AddressLine1 ?? "null"}");
-            toStringOutput.Add($"this.AddressLine2 = {this.AddressLine2 ?? "null"}");
-            toStringOutput.Add($"this.AddressLine3 = {this.AddressLine3 ?? "null"}");
-            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
-            toStringOutput.Add($"this.City = {this.City ?? "null"}");
-            toStringOutput.Add($"this.RegionId = {(this.RegionId == null ? "null" : this.RegionId.ToString())}");
-            toStringOutput.Add($"this.CountryISOCode = {this.CountryISOCode ?? "null"}");
-            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
-            toStringOutput.Add($"this.Telephone = {this.Telephone ?? "null"}");
-            toStringOutput.Add($"this.EmailAddress = {this.EmailAddress ?? "null"}");
-            toStringOutput.Add($"this.Fax = {this.Fax ?? "null"}");
+            toStringOutput.Add($"AddressId = {(this.AddressId == null ? "null" : this.AddressId.ToString())}");
+            toStringOutput.Add($"AddressLine1 = {this.AddressLine1 ?? "null"}");
+            toStringOutput.Add($"AddressLine2 = {this.AddressLine2 ?? "null"}");
+            toStringOutput.Add($"AddressLine3 = {this.AddressLine3 ?? "null"}");
+            toStringOutput.Add($"ZipCode = {this.ZipCode ?? "null"}");
+            toStringOutput.Add($"City = {this.City ?? "null"}");
+            toStringOutput.Add($"RegionId = {(this.RegionId == null ? "null" : this.RegionId.ToString())}");
+            toStringOutput.Add($"CountryISOCode = {this.CountryISOCode ?? "null"}");
+            toStringOutput.Add($"Country = {this.Country ?? "null"}");
+            toStringOutput.Add($"Telephone = {this.Telephone ?? "null"}");
+            toStringOutput.Add($"EmailAddress = {this.EmailAddress ?? "null"}");
+            toStringOutput.Add($"Fax = {this.Fax ?? "null"}");
         }
     }
 }

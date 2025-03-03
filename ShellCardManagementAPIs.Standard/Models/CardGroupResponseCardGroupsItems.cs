@@ -1078,28 +1078,28 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
-            toStringOutput.Add($"this.ActiveCards = {(this.ActiveCards == null ? "null" : this.ActiveCards.ToString())}");
-            toStringOutput.Add($"this.BlockedCards = {(this.BlockedCards == null ? "null" : this.BlockedCards.ToString())}");
-            toStringOutput.Add($"this.CancelledCards = {(this.CancelledCards == null ? "null" : this.CancelledCards.ToString())}");
-            toStringOutput.Add($"this.CardDeliveryPoint = {(this.CardDeliveryPoint == null ? "null" : this.CardDeliveryPoint.ToString())}");
-            toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
-            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
-            toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
-            toStringOutput.Add($"this.ExpiredCards = {(this.ExpiredCards == null ? "null" : this.ExpiredCards.ToString())}");
-            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.PrintOnCard = {(this.PrintOnCard == null ? "null" : this.PrintOnCard.ToString())}");
-            toStringOutput.Add($"this.RenewalPendingCards = {(this.RenewalPendingCards == null ? "null" : this.RenewalPendingCards.ToString())}");
-            toStringOutput.Add($"this.ReplacedCards = {(this.ReplacedCards == null ? "null" : this.ReplacedCards.ToString())}");
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.TemporaryBlockByCustomer = {(this.TemporaryBlockByCustomer == null ? "null" : this.TemporaryBlockByCustomer.ToString())}");
-            toStringOutput.Add($"this.TemporaryBlockByShell = {(this.TemporaryBlockByShell == null ? "null" : this.TemporaryBlockByShell.ToString())}");
-            toStringOutput.Add($"this.TerminatedDate = {this.TerminatedDate ?? "null"}");
-            toStringOutput.Add($"this.TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountShortName = {this.AccountShortName ?? "null"}");
+            toStringOutput.Add($"ActiveCards = {(this.ActiveCards == null ? "null" : this.ActiveCards.ToString())}");
+            toStringOutput.Add($"BlockedCards = {(this.BlockedCards == null ? "null" : this.BlockedCards.ToString())}");
+            toStringOutput.Add($"CancelledCards = {(this.CancelledCards == null ? "null" : this.CancelledCards.ToString())}");
+            toStringOutput.Add($"CardDeliveryPoint = {(this.CardDeliveryPoint == null ? "null" : this.CardDeliveryPoint.ToString())}");
+            toStringOutput.Add($"CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
+            toStringOutput.Add($"CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"CardTypeCode = {this.CardTypeCode ?? "null"}");
+            toStringOutput.Add($"CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
+            toStringOutput.Add($"CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"ExpiredCards = {(this.ExpiredCards == null ? "null" : this.ExpiredCards.ToString())}");
+            toStringOutput.Add($"ExpiryDate = {this.ExpiryDate ?? "null"}");
+            toStringOutput.Add($"PrintOnCard = {(this.PrintOnCard == null ? "null" : this.PrintOnCard.ToString())}");
+            toStringOutput.Add($"RenewalPendingCards = {(this.RenewalPendingCards == null ? "null" : this.RenewalPendingCards.ToString())}");
+            toStringOutput.Add($"ReplacedCards = {(this.ReplacedCards == null ? "null" : this.ReplacedCards.ToString())}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"TemporaryBlockByCustomer = {(this.TemporaryBlockByCustomer == null ? "null" : this.TemporaryBlockByCustomer.ToString())}");
+            toStringOutput.Add($"TemporaryBlockByShell = {(this.TemporaryBlockByShell == null ? "null" : this.TemporaryBlockByShell.ToString())}");
+            toStringOutput.Add($"TerminatedDate = {this.TerminatedDate ?? "null"}");
+            toStringOutput.Add($"TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
         }
     }
 }

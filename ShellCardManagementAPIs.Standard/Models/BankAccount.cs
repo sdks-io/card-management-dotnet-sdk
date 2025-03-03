@@ -665,19 +665,19 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.BankName = {this.BankName ?? "null"}");
-            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
-            toStringOutput.Add($"this.DateEffective = {this.DateEffective ?? "null"}");
-            toStringOutput.Add($"this.DateTerminated = {this.DateTerminated ?? "null"}");
-            toStringOutput.Add($"this.IBAN = {this.IBAN ?? "null"}");
-            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.CurrencySymbol = {this.CurrencySymbol ?? "null"}");
-            toStringOutput.Add($"this.CountryISOCode = {this.CountryISOCode ?? "null"}");
-            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
-            toStringOutput.Add($"this.SortCode = {this.SortCode ?? "null"}");
-            toStringOutput.Add($"this.SwiftCode = {this.SwiftCode ?? "null"}");
-            toStringOutput.Add($"this.BankType = {this.BankType ?? "null"}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"BankName = {this.BankName ?? "null"}");
+            toStringOutput.Add($"AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"DateEffective = {this.DateEffective ?? "null"}");
+            toStringOutput.Add($"DateTerminated = {this.DateTerminated ?? "null"}");
+            toStringOutput.Add($"IBAN = {this.IBAN ?? "null"}");
+            toStringOutput.Add($"CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"CurrencySymbol = {this.CurrencySymbol ?? "null"}");
+            toStringOutput.Add($"CountryISOCode = {this.CountryISOCode ?? "null"}");
+            toStringOutput.Add($"Country = {this.Country ?? "null"}");
+            toStringOutput.Add($"SortCode = {this.SortCode ?? "null"}");
+            toStringOutput.Add($"SwiftCode = {this.SwiftCode ?? "null"}");
+            toStringOutput.Add($"BankType = {this.BankType ?? "null"}");
         }
     }
 }

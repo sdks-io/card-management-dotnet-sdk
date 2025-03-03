@@ -403,17 +403,17 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ContactName = {this.ContactName ?? "null"}");
-            toStringOutput.Add($"this.ContactTitle = {this.ContactTitle ?? "null"}");
-            toStringOutput.Add($"this.CompanyName = {this.CompanyName ?? "null"}");
-            toStringOutput.Add($"this.AddressLine = {this.AddressLine ?? "null"}");
-            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
-            toStringOutput.Add($"this.City = {this.City ?? "null"}");
-            toStringOutput.Add($"this.RegionID = {(this.RegionID == null ? "null" : this.RegionID.ToString())}");
-            toStringOutput.Add($"this.CountryID = {(this.CountryID == null ? "null" : this.CountryID.ToString())}");
-            toStringOutput.Add($"this.PhoneNumber = {this.PhoneNumber ?? "null"}");
-            toStringOutput.Add($"this.EmailAddress = {this.EmailAddress ?? "null"}");
-            toStringOutput.Add($"this.SavePINReminder = {(this.SavePINReminder == null ? "null" : this.SavePINReminder.ToString())}");
+            toStringOutput.Add($"ContactName = {this.ContactName ?? "null"}");
+            toStringOutput.Add($"ContactTitle = {this.ContactTitle ?? "null"}");
+            toStringOutput.Add($"CompanyName = {this.CompanyName ?? "null"}");
+            toStringOutput.Add($"AddressLine = {this.AddressLine ?? "null"}");
+            toStringOutput.Add($"ZipCode = {this.ZipCode ?? "null"}");
+            toStringOutput.Add($"City = {this.City ?? "null"}");
+            toStringOutput.Add($"RegionID = {(this.RegionID == null ? "null" : this.RegionID.ToString())}");
+            toStringOutput.Add($"CountryID = {(this.CountryID == null ? "null" : this.CountryID.ToString())}");
+            toStringOutput.Add($"PhoneNumber = {this.PhoneNumber ?? "null"}");
+            toStringOutput.Add($"EmailAddress = {this.EmailAddress ?? "null"}");
+            toStringOutput.Add($"SavePINReminder = {(this.SavePINReminder == null ? "null" : this.SavePINReminder.ToString())}");
         }
     }
 }

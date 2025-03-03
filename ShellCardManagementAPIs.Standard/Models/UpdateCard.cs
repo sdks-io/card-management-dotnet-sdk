@@ -657,22 +657,22 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Caller = {this.Caller ?? "null"}");
-            toStringOutput.Add($"this.IsReplacementChargeable = {(this.IsReplacementChargeable == null ? "null" : this.IsReplacementChargeable.ToString())}");
-            toStringOutput.Add($"this.NotifyCaller = {(this.NotifyCaller == null ? "null" : this.NotifyCaller.ToString())}");
-            toStringOutput.Add($"this.NotifyCallerOnSync = {(this.NotifyCallerOnSync == null ? "null" : this.NotifyCallerOnSync.ToString())}");
-            toStringOutput.Add($"this.OrderCardReplacement = {(this.OrderCardReplacement == null ? "null" : this.OrderCardReplacement.ToString())}");
-            toStringOutput.Add($"this.CardSettings = {(this.CardSettings == null ? "null" : this.CardSettings.ToString())}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"Caller = {this.Caller ?? "null"}");
+            toStringOutput.Add($"IsReplacementChargeable = {(this.IsReplacementChargeable == null ? "null" : this.IsReplacementChargeable.ToString())}");
+            toStringOutput.Add($"NotifyCaller = {(this.NotifyCaller == null ? "null" : this.NotifyCaller.ToString())}");
+            toStringOutput.Add($"NotifyCallerOnSync = {(this.NotifyCallerOnSync == null ? "null" : this.NotifyCallerOnSync.ToString())}");
+            toStringOutput.Add($"OrderCardReplacement = {(this.OrderCardReplacement == null ? "null" : this.OrderCardReplacement.ToString())}");
+            toStringOutput.Add($"CardSettings = {(this.CardSettings == null ? "null" : this.CardSettings.ToString())}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"CardExpiryDate = {this.CardExpiryDate ?? "null"}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
         }
     }
 }

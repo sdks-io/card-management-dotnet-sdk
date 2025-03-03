@@ -218,17 +218,17 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.BundleCreationStatus = {(this.BundleCreationStatus == null ? "null" : this.BundleCreationStatus.ToString())}");
-            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
-            toStringOutput.Add($"this.DayTimeRestrictionStatus = {(this.DayTimeRestrictionStatus == null ? "null" : this.DayTimeRestrictionStatus.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {this.DayTimeRestrictionProfileId ?? "null"}");
-            toStringOutput.Add($"this.LocationRestrictionStatus = {(this.LocationRestrictionStatus == null ? "null" : this.LocationRestrictionStatus.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictionProfileId = {this.LocationRestrictionProfileId ?? "null"}");
-            toStringOutput.Add($"this.UsageRestrictionStatus = {(this.UsageRestrictionStatus == null ? "null" : this.UsageRestrictionStatus.ToString())}");
-            toStringOutput.Add($"this.ProductRestrictionStatus = {(this.ProductRestrictionStatus == null ? "null" : this.ProductRestrictionStatus.ToString())}");
-            toStringOutput.Add($"this.Cards = {(this.Cards == null ? "null" : this.Cards.ToString())}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"BundleCreationStatus = {(this.BundleCreationStatus == null ? "null" : this.BundleCreationStatus.ToString())}");
+            toStringOutput.Add($"BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"DayTimeRestrictionStatus = {(this.DayTimeRestrictionStatus == null ? "null" : this.DayTimeRestrictionStatus.ToString())}");
+            toStringOutput.Add($"DayTimeRestrictionProfileId = {this.DayTimeRestrictionProfileId ?? "null"}");
+            toStringOutput.Add($"LocationRestrictionStatus = {(this.LocationRestrictionStatus == null ? "null" : this.LocationRestrictionStatus.ToString())}");
+            toStringOutput.Add($"LocationRestrictionProfileId = {this.LocationRestrictionProfileId ?? "null"}");
+            toStringOutput.Add($"UsageRestrictionStatus = {(this.UsageRestrictionStatus == null ? "null" : this.UsageRestrictionStatus.ToString())}");
+            toStringOutput.Add($"ProductRestrictionStatus = {(this.ProductRestrictionStatus == null ? "null" : this.ProductRestrictionStatus.ToString())}");
+            toStringOutput.Add($"Cards = {(this.Cards == null ? "null" : this.Cards.ToString())}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

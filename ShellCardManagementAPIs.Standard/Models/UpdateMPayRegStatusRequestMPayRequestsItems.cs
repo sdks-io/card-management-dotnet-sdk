@@ -122,11 +122,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.GlobalRequestID = {this.GlobalRequestID ?? "null"}");
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.ApproverUserID = {this.ApproverUserID ?? "null"}");
-            toStringOutput.Add($"this.ApproverUserDisplayName = {this.ApproverUserDisplayName ?? "null"}");
-            toStringOutput.Add($"this.Reason = {this.Reason ?? "null"}");
+            toStringOutput.Add($"GlobalRequestID = {this.GlobalRequestID ?? "null"}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"ApproverUserID = {this.ApproverUserID ?? "null"}");
+            toStringOutput.Add($"ApproverUserDisplayName = {this.ApproverUserDisplayName ?? "null"}");
+            toStringOutput.Add($"Reason = {this.Reason ?? "null"}");
         }
     }
 }

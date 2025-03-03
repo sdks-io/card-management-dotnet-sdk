@@ -69,7 +69,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Filters = {(this.Filters == null ? "null" : this.Filters.ToString())}");
+            toStringOutput.Add($"Filters = {(this.Filters == null ? "null" : this.Filters.ToString())}");
         }
     }
 }

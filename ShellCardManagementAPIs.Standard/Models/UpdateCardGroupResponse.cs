@@ -128,12 +128,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
-            toStringOutput.Add($"this.UpdateCardGroupReference = {(this.UpdateCardGroupReference == null ? "null" : this.UpdateCardGroupReference.ToString())}");
-            toStringOutput.Add($"this.NewCardGroupReference = {(this.NewCardGroupReference == null ? "null" : this.NewCardGroupReference.ToString())}");
-            toStringOutput.Add($"this.MoveCardReferences = {(this.MoveCardReferences == null ? "null" : $"[{string.Join(", ", this.MoveCardReferences)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"MainReference = {(this.MainReference == null ? "null" : this.MainReference.ToString())}");
+            toStringOutput.Add($"UpdateCardGroupReference = {(this.UpdateCardGroupReference == null ? "null" : this.UpdateCardGroupReference.ToString())}");
+            toStringOutput.Add($"NewCardGroupReference = {(this.NewCardGroupReference == null ? "null" : this.NewCardGroupReference.ToString())}");
+            toStringOutput.Add($"MoveCardReferences = {(this.MoveCardReferences == null ? "null" : $"[{string.Join(", ", this.MoveCardReferences)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

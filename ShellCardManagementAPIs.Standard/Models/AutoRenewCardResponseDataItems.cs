@@ -200,9 +200,9 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AutoRenewReferenceId = {(this.AutoRenewReferenceId == null ? "null" : this.AutoRenewReferenceId.ToString())}");
-            toStringOutput.Add($"this.CardIdAndPAN = {this.CardIdAndPAN ?? "null"}");
-            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
+            toStringOutput.Add($"AutoRenewReferenceId = {(this.AutoRenewReferenceId == null ? "null" : this.AutoRenewReferenceId.ToString())}");
+            toStringOutput.Add($"CardIdAndPAN = {this.CardIdAndPAN ?? "null"}");
+            toStringOutput.Add($"PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
         }
     }
 }

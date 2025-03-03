@@ -940,25 +940,25 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AddressId = {(this.AddressId == null ? "null" : this.AddressId.ToString())}");
-            toStringOutput.Add($"this.AddressLine1 = {this.AddressLine1 ?? "null"}");
-            toStringOutput.Add($"this.AddressLine2 = {this.AddressLine2 ?? "null"}");
-            toStringOutput.Add($"this.AddressLine3 = {this.AddressLine3 ?? "null"}");
-            toStringOutput.Add($"this.City = {this.City ?? "null"}");
-            toStringOutput.Add($"this.CompanyName = {this.CompanyName ?? "null"}");
-            toStringOutput.Add($"this.ContactForeName = {this.ContactForeName ?? "null"}");
-            toStringOutput.Add($"this.ContactLastName = {this.ContactLastName ?? "null"}");
-            toStringOutput.Add($"this.ContactMiddleName = {this.ContactMiddleName ?? "null"}");
-            toStringOutput.Add($"this.ContactTitle = {this.ContactTitle ?? "null"}");
-            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
-            toStringOutput.Add($"this.CountryId = {(this.CountryId == null ? "null" : this.CountryId.ToString())}");
-            toStringOutput.Add($"this.CountryISOCode = {this.CountryISOCode ?? "null"}");
-            toStringOutput.Add($"this.Fax = {this.Fax ?? "null"}");
-            toStringOutput.Add($"this.Region = {this.Region ?? "null"}");
-            toStringOutput.Add($"this.RegionId = {(this.RegionId == null ? "null" : this.RegionId.ToString())}");
-            toStringOutput.Add($"this.Telephone = {this.Telephone ?? "null"}");
-            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
-            toStringOutput.Add($"this.AddressType = {(this.AddressType == null ? "null" : this.AddressType.ToString())}");
+            toStringOutput.Add($"AddressId = {(this.AddressId == null ? "null" : this.AddressId.ToString())}");
+            toStringOutput.Add($"AddressLine1 = {this.AddressLine1 ?? "null"}");
+            toStringOutput.Add($"AddressLine2 = {this.AddressLine2 ?? "null"}");
+            toStringOutput.Add($"AddressLine3 = {this.AddressLine3 ?? "null"}");
+            toStringOutput.Add($"City = {this.City ?? "null"}");
+            toStringOutput.Add($"CompanyName = {this.CompanyName ?? "null"}");
+            toStringOutput.Add($"ContactForeName = {this.ContactForeName ?? "null"}");
+            toStringOutput.Add($"ContactLastName = {this.ContactLastName ?? "null"}");
+            toStringOutput.Add($"ContactMiddleName = {this.ContactMiddleName ?? "null"}");
+            toStringOutput.Add($"ContactTitle = {this.ContactTitle ?? "null"}");
+            toStringOutput.Add($"Country = {this.Country ?? "null"}");
+            toStringOutput.Add($"CountryId = {(this.CountryId == null ? "null" : this.CountryId.ToString())}");
+            toStringOutput.Add($"CountryISOCode = {this.CountryISOCode ?? "null"}");
+            toStringOutput.Add($"Fax = {this.Fax ?? "null"}");
+            toStringOutput.Add($"Region = {this.Region ?? "null"}");
+            toStringOutput.Add($"RegionId = {(this.RegionId == null ? "null" : this.RegionId.ToString())}");
+            toStringOutput.Add($"Telephone = {this.Telephone ?? "null"}");
+            toStringOutput.Add($"ZipCode = {this.ZipCode ?? "null"}");
+            toStringOutput.Add($"AddressType = {(this.AddressType == null ? "null" : this.AddressType.ToString())}");
         }
     }
 }

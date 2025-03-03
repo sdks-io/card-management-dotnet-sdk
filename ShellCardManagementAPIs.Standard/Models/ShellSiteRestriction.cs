@@ -108,10 +108,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Country = {this.Country ?? "null"}");
-            toStringOutput.Add($"this.Sites = {(this.Sites == null ? "null" : $"[{string.Join(", ", this.Sites)} ]")}");
-            toStringOutput.Add($"this.SiteGroups = {(this.SiteGroups == null ? "null" : $"[{string.Join(", ", this.SiteGroups)} ]")}");
-            toStringOutput.Add($"this.Exclusive = {(this.Exclusive == null ? "null" : this.Exclusive.ToString())}");
+            toStringOutput.Add($"Country = {this.Country ?? "null"}");
+            toStringOutput.Add($"Sites = {(this.Sites == null ? "null" : $"[{string.Join(", ", this.Sites)} ]")}");
+            toStringOutput.Add($"SiteGroups = {(this.SiteGroups == null ? "null" : $"[{string.Join(", ", this.SiteGroups)} ]")}");
+            toStringOutput.Add($"Exclusive = {(this.Exclusive == null ? "null" : this.Exclusive.ToString())}");
         }
     }
 }

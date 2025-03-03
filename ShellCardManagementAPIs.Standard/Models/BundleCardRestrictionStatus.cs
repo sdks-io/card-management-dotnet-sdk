@@ -70,7 +70,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
         }
     }
 }

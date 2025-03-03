@@ -62,7 +62,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
             => await CreateApiCall<Models.OAuthToken>()
               .Server(Server.OAuthServer)
               .RequestBuilder(_requestBuilder => _requestBuilder
-                  .Setup(HttpMethod.Post, "/v1/oauth/token")
+                  .Setup(HttpMethod.Post, "/v2/oauth/token")
                   .Parameters(_parameters => _parameters
                       .AdditionalForms(_additionalForms => _additionalForms.Setup(fieldParameters))
                       .Form(_form => _form.Setup("grant_type", "client_credentials"))

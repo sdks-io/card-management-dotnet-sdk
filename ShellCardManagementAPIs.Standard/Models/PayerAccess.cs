@@ -447,15 +447,15 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
-            toStringOutput.Add($"this.ColcoId = {(this.ColcoId == null ? "null" : this.ColcoId.ToString())}");
-            toStringOutput.Add($"this.ColcoCode = {(this.ColcoCode == null ? "null" : this.ColcoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.PayerGroupId = {(this.PayerGroupId == null ? "null" : this.PayerGroupId.ToString())}");
-            toStringOutput.Add($"this.PayerGroup = {this.PayerGroup ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerName = {this.PayerName ?? "null"}");
+            toStringOutput.Add($"IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
+            toStringOutput.Add($"ColcoId = {(this.ColcoId == null ? "null" : this.ColcoId.ToString())}");
+            toStringOutput.Add($"ColcoCode = {(this.ColcoCode == null ? "null" : this.ColcoCode.ToString())}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"PayerGroupId = {(this.PayerGroupId == null ? "null" : this.PayerGroupId.ToString())}");
+            toStringOutput.Add($"PayerGroup = {this.PayerGroup ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PayerName = {this.PayerName ?? "null"}");
         }
     }
 }

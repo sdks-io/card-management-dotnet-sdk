@@ -38,5 +38,23 @@ namespace ShellCardManagementAPIs.Standard.Exceptions
         /// </summary>
         [JsonProperty("fault", NullValueHandling = NullValueHandling.Ignore)]
         public Models.Fault Fault { get; set; }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            var toStringOutput = new List<string>();
+            this.ToString(toStringOutput);
+            return $"FleetmanagementV1CustomerPayers400ErrorException : ({string.Join(", ", toStringOutput)})";
+        }
+
+        /// <summary>
+        /// ToString overload.
+        /// </summary>
+        /// <param name="toStringOutput">List of strings.</param>
+        protected void ToString(List<string> toStringOutput)
+        {
+            base.ToString(toStringOutput);
+            toStringOutput.Add($"Fault = {(this.Fault == null ? "null" : this.Fault.ToString())}");
+        }
     }
 }

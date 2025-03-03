@@ -9,13 +9,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>sdksio.CardManagementSDK</AssemblyName>
-    <Version>1.3.1.0</Version>
+    <Version>1.4.0.0</Version>
     <Authors>developer sdksio</Authors>
     <Owners>Shell Technical Support (API)</Owners>
     <Product>ShellCardManagementAPIs.Standard</Product>
     <Copyright>Copyright ©  2019</Copyright>
-    <AssemblyVersion>1.3.1.0</AssemblyVersion>
-    <FileVersion>1.3.1.0</FileVersion>
+    <AssemblyVersion>1.4.0.0</AssemblyVersion>
+    <FileVersion>1.4.0.0</FileVersion>
     <Description>The Shell Card Management API is REST-based and employs OAUTH 2.0,Basic and ApiKey authentication. The API endpoints accept JSON-encoded request bodies, return JSON-encoded responses and use standard HTTP response codes.
 All resources are located in the Shell Card Platform. The Shell Card Platform is the overall platform that encompasses all the internal Shell systems used to manage resources. The internal workings of the platform are not important when interacting with the API. However, it is worth noting that the platform uses a microservice architecture to communicate with various backend systems and some API calls are processed asynchronously. All endpoints use the POST verb for retrieving, updating, creating and deleting resources in the Shell Card Platform. The endpoints that retrieve resources from the Shell Card Platform allow flexible search parameters in the API request body.</Description>
     <LangVersion>7.3</LangVersion>
@@ -32,7 +32,7 @@ All resources are located in the Shell Card Platform. The Shell Card Platform is
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="APIMatic.Core" Version= "[0.4.5, 0.5.0)" />
+    <PackageReference Include="APIMatic.Core" Version= "[0.4.7, 0.5.0)" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <None Include="..\README.md" Pack="true" PackagePath="\"/>
     <None Include="..\LICENSE" Pack="true" PackagePath="\"/>

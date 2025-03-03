@@ -247,10 +247,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColCoId = {this.ColCoId ?? "null"}");
-            toStringOutput.Add($"this.ColCoCode = {this.ColCoCode ?? "null"}");
-            toStringOutput.Add($"this.ColCoCountryName = {this.ColCoCountryName ?? "null"}");
-            toStringOutput.Add($"this.IssuingCountryNumber = {this.IssuingCountryNumber ?? "null"}");
+            toStringOutput.Add($"ColCoId = {this.ColCoId ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {this.ColCoCode ?? "null"}");
+            toStringOutput.Add($"ColCoCountryName = {this.ColCoCountryName ?? "null"}");
+            toStringOutput.Add($"IssuingCountryNumber = {this.IssuingCountryNumber ?? "null"}");
         }
     }
 }

@@ -958,41 +958,41 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CanHavePIN = {(this.CanHavePIN == null ? "null" : this.CanHavePIN.ToString())}");
-            toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
-            toStringOutput.Add($"this.ColCoCurrencyCode = {this.ColCoCurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.CustomerCardTypeId = {(this.CustomerCardTypeId == null ? "null" : this.CustomerCardTypeId.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
-            toStringOutput.Add($"this.DefaultPurchaseCategoryId = {(this.DefaultPurchaseCategoryId == null ? "null" : this.DefaultPurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.EmbossAccountName = {this.EmbossAccountName ?? "null"}");
-            toStringOutput.Add($"this.ExpiryPeriod = {(this.ExpiryPeriod == null ? "null" : this.ExpiryPeriod.ToString())}");
-            toStringOutput.Add($"this.IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
-            toStringOutput.Add($"this.IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
-            toStringOutput.Add($"this.IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
-            toStringOutput.Add($"this.IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
-            toStringOutput.Add($"this.IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
-            toStringOutput.Add($"this.IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
-            toStringOutput.Add($"this.IsVirtual = {(this.IsVirtual == null ? "null" : this.IsVirtual.ToString())}");
-            toStringOutput.Add($"this.IsVisibleToCustomers = {(this.IsVisibleToCustomers == null ? "null" : this.IsVisibleToCustomers.ToString())}");
-            toStringOutput.Add($"this.IsActive = {(this.IsActive == null ? "null" : this.IsActive.ToString())}");
-            toStringOutput.Add($"this.IsCardAvailableForDownload = {(this.IsCardAvailableForDownload == null ? "null" : this.IsCardAvailableForDownload.ToString())}");
-            toStringOutput.Add($"this.IsCardVisibleToCustomers = {(this.IsCardVisibleToCustomers == null ? "null" : this.IsCardVisibleToCustomers.ToString())}");
-            toStringOutput.Add($"this.PANLength = {(this.PANLength == null ? "null" : this.PANLength.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategories = {(this.PurchaseCategories == null ? "null" : $"[{string.Join(", ", this.PurchaseCategories)} ]")}");
-            toStringOutput.Add($"this.TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
-            toStringOutput.Add($"this.TokenTypeName = {this.TokenTypeName ?? "null"}");
-            toStringOutput.Add($"this.UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.EMVContactless = {(this.EMVContactless == null ? "null" : this.EMVContactless.ToString())}");
-            toStringOutput.Add($"this.RFID = {(this.RFID == null ? "null" : this.RFID.ToString())}");
-            toStringOutput.Add($"this.PINChangeSupported = {(this.PINChangeSupported == null ? "null" : this.PINChangeSupported.ToString())}");
-            toStringOutput.Add($"this.RequirePIN = {(this.RequirePIN == null ? "null" : this.RequirePIN.ToString())}");
-            toStringOutput.Add($"this.OfflinePIN = {(this.OfflinePIN == null ? "null" : this.OfflinePIN.ToString())}");
-            toStringOutput.Add($"this.IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
-            toStringOutput.Add($"this.ApplicationsToShowNPIITokens = {(this.ApplicationsToShowNPIITokens == null ? "null" : this.ApplicationsToShowNPIITokens.ToString())}");
-            toStringOutput.Add($"this.MediumTypeID = {(this.MediumTypeID == null ? "null" : this.MediumTypeID.ToString())}");
-            toStringOutput.Add($"this.MediumType = {this.MediumType ?? "null"}");
-            toStringOutput.Add($"this.ColCoCurrencySymbol = {this.ColCoCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"CanHavePIN = {(this.CanHavePIN == null ? "null" : this.CanHavePIN.ToString())}");
+            toStringOutput.Add($"CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
+            toStringOutput.Add($"CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"ColCoCurrencyCode = {this.ColCoCurrencyCode ?? "null"}");
+            toStringOutput.Add($"CustomerCardTypeId = {(this.CustomerCardTypeId == null ? "null" : this.CustomerCardTypeId.ToString())}");
+            toStringOutput.Add($"DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
+            toStringOutput.Add($"DefaultPurchaseCategoryId = {(this.DefaultPurchaseCategoryId == null ? "null" : this.DefaultPurchaseCategoryId.ToString())}");
+            toStringOutput.Add($"EmbossAccountName = {this.EmbossAccountName ?? "null"}");
+            toStringOutput.Add($"ExpiryPeriod = {(this.ExpiryPeriod == null ? "null" : this.ExpiryPeriod.ToString())}");
+            toStringOutput.Add($"IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
+            toStringOutput.Add($"IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
+            toStringOutput.Add($"IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
+            toStringOutput.Add($"IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
+            toStringOutput.Add($"IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
+            toStringOutput.Add($"IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
+            toStringOutput.Add($"IsVirtual = {(this.IsVirtual == null ? "null" : this.IsVirtual.ToString())}");
+            toStringOutput.Add($"IsVisibleToCustomers = {(this.IsVisibleToCustomers == null ? "null" : this.IsVisibleToCustomers.ToString())}");
+            toStringOutput.Add($"IsActive = {(this.IsActive == null ? "null" : this.IsActive.ToString())}");
+            toStringOutput.Add($"IsCardAvailableForDownload = {(this.IsCardAvailableForDownload == null ? "null" : this.IsCardAvailableForDownload.ToString())}");
+            toStringOutput.Add($"IsCardVisibleToCustomers = {(this.IsCardVisibleToCustomers == null ? "null" : this.IsCardVisibleToCustomers.ToString())}");
+            toStringOutput.Add($"PANLength = {(this.PANLength == null ? "null" : this.PANLength.ToString())}");
+            toStringOutput.Add($"PurchaseCategories = {(this.PurchaseCategories == null ? "null" : $"[{string.Join(", ", this.PurchaseCategories)} ]")}");
+            toStringOutput.Add($"TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
+            toStringOutput.Add($"TokenTypeName = {this.TokenTypeName ?? "null"}");
+            toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
+            toStringOutput.Add($"EMVContactless = {(this.EMVContactless == null ? "null" : this.EMVContactless.ToString())}");
+            toStringOutput.Add($"RFID = {(this.RFID == null ? "null" : this.RFID.ToString())}");
+            toStringOutput.Add($"PINChangeSupported = {(this.PINChangeSupported == null ? "null" : this.PINChangeSupported.ToString())}");
+            toStringOutput.Add($"RequirePIN = {(this.RequirePIN == null ? "null" : this.RequirePIN.ToString())}");
+            toStringOutput.Add($"OfflinePIN = {(this.OfflinePIN == null ? "null" : this.OfflinePIN.ToString())}");
+            toStringOutput.Add($"IsDefault = {(this.IsDefault == null ? "null" : this.IsDefault.ToString())}");
+            toStringOutput.Add($"ApplicationsToShowNPIITokens = {(this.ApplicationsToShowNPIITokens == null ? "null" : this.ApplicationsToShowNPIITokens.ToString())}");
+            toStringOutput.Add($"MediumTypeID = {(this.MediumTypeID == null ? "null" : this.MediumTypeID.ToString())}");
+            toStringOutput.Add($"MediumType = {this.MediumType ?? "null"}");
+            toStringOutput.Add($"ColCoCurrencySymbol = {this.ColCoCurrencySymbol ?? "null"}");
         }
     }
 }

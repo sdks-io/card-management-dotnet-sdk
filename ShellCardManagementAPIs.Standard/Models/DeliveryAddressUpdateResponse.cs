@@ -102,10 +102,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.ServiceReference = {(this.ServiceReference == null ? "null" : this.ServiceReference.ToString())}");
-            toStringOutput.Add($"this.DeliveryAddressUpdateReferences = {(this.DeliveryAddressUpdateReferences == null ? "null" : this.DeliveryAddressUpdateReferences.ToString())}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"ServiceReference = {(this.ServiceReference == null ? "null" : this.ServiceReference.ToString())}");
+            toStringOutput.Add($"DeliveryAddressUpdateReferences = {(this.DeliveryAddressUpdateReferences == null ? "null" : this.DeliveryAddressUpdateReferences.ToString())}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
         }
     }
 }

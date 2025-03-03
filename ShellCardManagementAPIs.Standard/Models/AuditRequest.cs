@@ -627,20 +627,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.Accounts = {(this.Accounts == null ? "null" : this.Accounts.ToString())}");
-            toStringOutput.Add($"this.PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
-            toStringOutput.Add($"this.RequestedOperation = {(this.RequestedOperation == null ? "null" : $"[{string.Join(", ", this.RequestedOperation)} ]")}");
-            toStringOutput.Add($"this.SortOrder = {this.SortOrder ?? "null"}");
-            toStringOutput.Add($"this.SearchText = {this.SearchText ?? "null"}");
-            toStringOutput.Add($"this.CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
-            toStringOutput.Add($"this.FromDate = {this.FromDate ?? "null"}");
-            toStringOutput.Add($"this.ToDate = {this.ToDate ?? "null"}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"Accounts = {(this.Accounts == null ? "null" : this.Accounts.ToString())}");
+            toStringOutput.Add($"PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
+            toStringOutput.Add($"RequestedOperation = {(this.RequestedOperation == null ? "null" : $"[{string.Join(", ", this.RequestedOperation)} ]")}");
+            toStringOutput.Add($"SortOrder = {this.SortOrder ?? "null"}");
+            toStringOutput.Add($"SearchText = {this.SearchText ?? "null"}");
+            toStringOutput.Add($"CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
+            toStringOutput.Add($"FromDate = {this.FromDate ?? "null"}");
+            toStringOutput.Add($"ToDate = {this.ToDate ?? "null"}");
         }
     }
 }

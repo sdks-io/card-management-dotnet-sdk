@@ -524,41 +524,41 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.StatusId = {(this.StatusId == null ? "null" : this.StatusId.ToString())}");
-            toStringOutput.Add($"this.StatusDescription = {this.StatusDescription ?? "null"}");
-            toStringOutput.Add($"this.DriverName = {this.DriverName ?? "null"}");
-            toStringOutput.Add($"this.VRN = {this.VRN ?? "null"}");
-            toStringOutput.Add($"this.IssueDate = {this.IssueDate ?? "null"}");
-            toStringOutput.Add($"this.IssueNumber = {(this.IssueNumber == null ? "null" : this.IssueNumber.ToString())}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
-            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
-            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.ColCoCurrencyCode = {this.ColCoCurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.ColCoCurrencySymbol = {this.ColCoCurrencySymbol ?? "null"}");
-            toStringOutput.Add($"this.RestrictionCurrencyCode = {this.RestrictionCurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.RestrictionCurrencySymbol = {this.RestrictionCurrencySymbol ?? "null"}");
-            toStringOutput.Add($"this.PurchaseCategoryId = {this.PurchaseCategoryId ?? "null"}");
-            toStringOutput.Add($"this.PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
-            toStringOutput.Add($"this.PurchaseCategoryName = {this.PurchaseCategoryName ?? "null"}");
-            toStringOutput.Add($"this.IsSuperseded = {(this.IsSuperseded == null ? "null" : this.IsSuperseded.ToString())}");
-            toStringOutput.Add($"this.IsVirtualCard = {(this.IsVirtualCard == null ? "null" : this.IsVirtualCard.ToString())}");
-            toStringOutput.Add($"this.IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
-            toStringOutput.Add($"this.IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
-            toStringOutput.Add($"this.IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
-            toStringOutput.Add($"this.IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
-            toStringOutput.Add($"this.IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
-            toStringOutput.Add($"this.IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
-            toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.CardTypeCode = {this.CardTypeCode ?? "null"}");
-            toStringOutput.Add($"this.CardTypeName = {this.CardTypeName ?? "null"}");
-            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
-            toStringOutput.Add($"this.MediumTypeID = {(this.MediumTypeID == null ? "null" : this.MediumTypeID.ToString())}");
-            toStringOutput.Add($"this.MediumType = {this.MediumType ?? "null"}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"ExpiryDate = {this.ExpiryDate ?? "null"}");
+            toStringOutput.Add($"StatusId = {(this.StatusId == null ? "null" : this.StatusId.ToString())}");
+            toStringOutput.Add($"StatusDescription = {this.StatusDescription ?? "null"}");
+            toStringOutput.Add($"DriverName = {this.DriverName ?? "null"}");
+            toStringOutput.Add($"VRN = {this.VRN ?? "null"}");
+            toStringOutput.Add($"IssueDate = {this.IssueDate ?? "null"}");
+            toStringOutput.Add($"IssueNumber = {(this.IssueNumber == null ? "null" : this.IssueNumber.ToString())}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"AccountShortName = {this.AccountShortName ?? "null"}");
+            toStringOutput.Add($"CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"ColCoCurrencyCode = {this.ColCoCurrencyCode ?? "null"}");
+            toStringOutput.Add($"ColCoCurrencySymbol = {this.ColCoCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"RestrictionCurrencyCode = {this.RestrictionCurrencyCode ?? "null"}");
+            toStringOutput.Add($"RestrictionCurrencySymbol = {this.RestrictionCurrencySymbol ?? "null"}");
+            toStringOutput.Add($"PurchaseCategoryId = {this.PurchaseCategoryId ?? "null"}");
+            toStringOutput.Add($"PurchaseCategoryCode = {this.PurchaseCategoryCode ?? "null"}");
+            toStringOutput.Add($"PurchaseCategoryName = {this.PurchaseCategoryName ?? "null"}");
+            toStringOutput.Add($"IsSuperseded = {(this.IsSuperseded == null ? "null" : this.IsSuperseded.ToString())}");
+            toStringOutput.Add($"IsVirtualCard = {(this.IsVirtualCard == null ? "null" : this.IsVirtualCard.ToString())}");
+            toStringOutput.Add($"IsNational = {(this.IsNational == null ? "null" : this.IsNational.ToString())}");
+            toStringOutput.Add($"IsInternational = {(this.IsInternational == null ? "null" : this.IsInternational.ToString())}");
+            toStringOutput.Add($"IsCRT = {(this.IsCRT == null ? "null" : this.IsCRT.ToString())}");
+            toStringOutput.Add($"IsFleet = {(this.IsFleet == null ? "null" : this.IsFleet.ToString())}");
+            toStringOutput.Add($"IsShellSitesOnly = {(this.IsShellSitesOnly == null ? "null" : this.IsShellSitesOnly.ToString())}");
+            toStringOutput.Add($"IsPartnerSitesIncluded = {(this.IsPartnerSitesIncluded == null ? "null" : this.IsPartnerSitesIncluded.ToString())}");
+            toStringOutput.Add($"CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
+            toStringOutput.Add($"CardTypeCode = {this.CardTypeCode ?? "null"}");
+            toStringOutput.Add($"CardTypeName = {this.CardTypeName ?? "null"}");
+            toStringOutput.Add($"BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"MediumTypeID = {(this.MediumTypeID == null ? "null" : this.MediumTypeID.ToString())}");
+            toStringOutput.Add($"MediumType = {this.MediumType ?? "null"}");
         }
     }
 }

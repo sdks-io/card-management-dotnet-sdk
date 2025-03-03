@@ -312,15 +312,15 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ResetDayTimeRestriction = {(this.ResetDayTimeRestriction == null ? "null" : this.ResetDayTimeRestriction.ToString())}");
-            toStringOutput.Add($"this.ResetLocationRestriction = {(this.ResetLocationRestriction == null ? "null" : this.ResetLocationRestriction.ToString())}");
-            toStringOutput.Add($"this.ResetProductRestriction = {(this.ResetProductRestriction == null ? "null" : this.ResetProductRestriction.ToString())}");
+            toStringOutput.Add($"ResetDayTimeRestriction = {(this.ResetDayTimeRestriction == null ? "null" : this.ResetDayTimeRestriction.ToString())}");
+            toStringOutput.Add($"ResetLocationRestriction = {(this.ResetLocationRestriction == null ? "null" : this.ResetLocationRestriction.ToString())}");
+            toStringOutput.Add($"ResetProductRestriction = {(this.ResetProductRestriction == null ? "null" : this.ResetProductRestriction.ToString())}");
             toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictionProfileId = {this.DayTimeRestrictionProfileId ?? "null"}");
-            toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
+            toStringOutput.Add($"DayTimeRestrictionProfileId = {this.DayTimeRestrictionProfileId ?? "null"}");
+            toStringOutput.Add($"DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
             toStringOutput.Add($"ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictionProfileId = {this.LocationRestrictionProfileId ?? "null"}");
-            toStringOutput.Add($"this.LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
+            toStringOutput.Add($"LocationRestrictionProfileId = {this.LocationRestrictionProfileId ?? "null"}");
+            toStringOutput.Add($"LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
         }
     }
 }

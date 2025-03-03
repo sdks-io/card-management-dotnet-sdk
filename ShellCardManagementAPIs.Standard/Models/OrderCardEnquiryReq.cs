@@ -273,7 +273,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         public int? ReferenceNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets ReferenceType.
+        /// Type of the reference number provided.<br />
+        /// Mandatory if ReferenceNumber is provided. Else optional.<br />
+        /// Allowed Values:<br />
+        /// 1=Main Reference(Main Order Reference Number returned in the output of Card/OrderCard service. <br />
+        /// 2=Order Card Reference (Reference number for each individual card in the order submitted via Card/OrderCard service. <br />
+        /// 3=Bulk Order Card Reference (Reference number returned in the response of bulkcardinterface /UploadOrderCardTemplate. )
         /// </summary>
         [JsonProperty("ReferenceType", NullValueHandling = NullValueHandling.Ignore)]
         public Models.OrderCardEnquiryReqReferenceTypeEnum? ReferenceType { get; set; }
@@ -559,18 +564,18 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.ReferenceNumber = {(this.ReferenceNumber == null ? "null" : this.ReferenceNumber.ToString())}");
-            toStringOutput.Add($"this.ReferenceType = {(this.ReferenceType == null ? "null" : this.ReferenceType.ToString())}");
-            toStringOutput.Add($"this.FromDate = {this.FromDate ?? "null"}");
-            toStringOutput.Add($"this.ToDate = {this.ToDate ?? "null"}");
-            toStringOutput.Add($"this.OrderRequestId = {this.OrderRequestId ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"ReferenceNumber = {(this.ReferenceNumber == null ? "null" : this.ReferenceNumber.ToString())}");
+            toStringOutput.Add($"ReferenceType = {(this.ReferenceType == null ? "null" : this.ReferenceType.ToString())}");
+            toStringOutput.Add($"FromDate = {this.FromDate ?? "null"}");
+            toStringOutput.Add($"ToDate = {this.ToDate ?? "null"}");
+            toStringOutput.Add($"OrderRequestId = {this.OrderRequestId ?? "null"}");
         }
     }
 }

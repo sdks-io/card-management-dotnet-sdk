@@ -216,20 +216,20 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.CardId = {this.CardId ?? "null"}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.UsageRestrictionStatus = {this.UsageRestrictionStatus ?? "null"}");
-            toStringOutput.Add($"this.UsageRestrictionDescription = {this.UsageRestrictionDescription ?? "null"}");
-            toStringOutput.Add($"this.DayTimeRestrictionStatus = {this.DayTimeRestrictionStatus ?? "null"}");
-            toStringOutput.Add($"this.DayTimeRestrictionDescription = {this.DayTimeRestrictionDescription ?? "null"}");
-            toStringOutput.Add($"this.ProductRestrictionStatus = {this.ProductRestrictionStatus ?? "null"}");
-            toStringOutput.Add($"this.ProductRestrictionDescription = {this.ProductRestrictionDescription ?? "null"}");
-            toStringOutput.Add($"this.LocationRestrictionStatus = {this.LocationRestrictionStatus ?? "null"}");
-            toStringOutput.Add($"this.LocationRestrictionStatusDescription = {this.LocationRestrictionStatusDescription ?? "null"}");
-            toStringOutput.Add($"this.ValidationErrorCode = {this.ValidationErrorCode ?? "null"}");
-            toStringOutput.Add($"this.ValidationErrorDescription = {this.ValidationErrorDescription ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"CardId = {this.CardId ?? "null"}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"UsageRestrictionStatus = {this.UsageRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"UsageRestrictionDescription = {this.UsageRestrictionDescription ?? "null"}");
+            toStringOutput.Add($"DayTimeRestrictionStatus = {this.DayTimeRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"DayTimeRestrictionDescription = {this.DayTimeRestrictionDescription ?? "null"}");
+            toStringOutput.Add($"ProductRestrictionStatus = {this.ProductRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"ProductRestrictionDescription = {this.ProductRestrictionDescription ?? "null"}");
+            toStringOutput.Add($"LocationRestrictionStatus = {this.LocationRestrictionStatus ?? "null"}");
+            toStringOutput.Add($"LocationRestrictionStatusDescription = {this.LocationRestrictionStatusDescription ?? "null"}");
+            toStringOutput.Add($"ValidationErrorCode = {this.ValidationErrorCode ?? "null"}");
+            toStringOutput.Add($"ValidationErrorDescription = {this.ValidationErrorDescription ?? "null"}");
         }
     }
 }

@@ -791,23 +791,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.DailySpend = {(this.DailySpend == null ? "null" : this.DailySpend.ToString())}");
-            toStringOutput.Add($"this.WeeklySpend = {(this.WeeklySpend == null ? "null" : this.WeeklySpend.ToString())}");
-            toStringOutput.Add($"this.MonthlySpend = {(this.MonthlySpend == null ? "null" : this.MonthlySpend.ToString())}");
-            toStringOutput.Add($"this.PerTransactionSpend = {(this.PerTransactionSpend == null ? "null" : this.PerTransactionSpend.ToString())}");
-            toStringOutput.Add($"this.AnnualSpend = {(this.AnnualSpend == null ? "null" : this.AnnualSpend.ToString())}");
-            toStringOutput.Add($"this.LifeTimeSpend = {(this.LifeTimeSpend == null ? "null" : this.LifeTimeSpend.ToString())}");
-            toStringOutput.Add($"this.DailyVolume = {(this.DailyVolume == null ? "null" : this.DailyVolume.ToString())}");
-            toStringOutput.Add($"this.WeeklyVolume = {(this.WeeklyVolume == null ? "null" : this.WeeklyVolume.ToString())}");
-            toStringOutput.Add($"this.MonthlyVolume = {(this.MonthlyVolume == null ? "null" : this.MonthlyVolume.ToString())}");
-            toStringOutput.Add($"this.PerTransactionVolume = {(this.PerTransactionVolume == null ? "null" : this.PerTransactionVolume.ToString())}");
-            toStringOutput.Add($"this.AnnualVolume = {(this.AnnualVolume == null ? "null" : this.AnnualVolume.ToString())}");
-            toStringOutput.Add($"this.LifeTimeVolume = {(this.LifeTimeVolume == null ? "null" : this.LifeTimeVolume.ToString())}");
-            toStringOutput.Add($"this.DailyTransactionCount = {(this.DailyTransactionCount == null ? "null" : this.DailyTransactionCount.ToString())}");
-            toStringOutput.Add($"this.WeeklyTransactionCount = {(this.WeeklyTransactionCount == null ? "null" : this.WeeklyTransactionCount.ToString())}");
-            toStringOutput.Add($"this.MonthlyTransactionCount = {(this.MonthlyTransactionCount == null ? "null" : this.MonthlyTransactionCount.ToString())}");
-            toStringOutput.Add($"this.AnnualTransactionCount = {(this.AnnualTransactionCount == null ? "null" : this.AnnualTransactionCount.ToString())}");
-            toStringOutput.Add($"this.LifeTimeTransactionCount = {(this.LifeTimeTransactionCount == null ? "null" : this.LifeTimeTransactionCount.ToString())}");
+            toStringOutput.Add($"DailySpend = {(this.DailySpend == null ? "null" : this.DailySpend.ToString())}");
+            toStringOutput.Add($"WeeklySpend = {(this.WeeklySpend == null ? "null" : this.WeeklySpend.ToString())}");
+            toStringOutput.Add($"MonthlySpend = {(this.MonthlySpend == null ? "null" : this.MonthlySpend.ToString())}");
+            toStringOutput.Add($"PerTransactionSpend = {(this.PerTransactionSpend == null ? "null" : this.PerTransactionSpend.ToString())}");
+            toStringOutput.Add($"AnnualSpend = {(this.AnnualSpend == null ? "null" : this.AnnualSpend.ToString())}");
+            toStringOutput.Add($"LifeTimeSpend = {(this.LifeTimeSpend == null ? "null" : this.LifeTimeSpend.ToString())}");
+            toStringOutput.Add($"DailyVolume = {(this.DailyVolume == null ? "null" : this.DailyVolume.ToString())}");
+            toStringOutput.Add($"WeeklyVolume = {(this.WeeklyVolume == null ? "null" : this.WeeklyVolume.ToString())}");
+            toStringOutput.Add($"MonthlyVolume = {(this.MonthlyVolume == null ? "null" : this.MonthlyVolume.ToString())}");
+            toStringOutput.Add($"PerTransactionVolume = {(this.PerTransactionVolume == null ? "null" : this.PerTransactionVolume.ToString())}");
+            toStringOutput.Add($"AnnualVolume = {(this.AnnualVolume == null ? "null" : this.AnnualVolume.ToString())}");
+            toStringOutput.Add($"LifeTimeVolume = {(this.LifeTimeVolume == null ? "null" : this.LifeTimeVolume.ToString())}");
+            toStringOutput.Add($"DailyTransactionCount = {(this.DailyTransactionCount == null ? "null" : this.DailyTransactionCount.ToString())}");
+            toStringOutput.Add($"WeeklyTransactionCount = {(this.WeeklyTransactionCount == null ? "null" : this.WeeklyTransactionCount.ToString())}");
+            toStringOutput.Add($"MonthlyTransactionCount = {(this.MonthlyTransactionCount == null ? "null" : this.MonthlyTransactionCount.ToString())}");
+            toStringOutput.Add($"AnnualTransactionCount = {(this.AnnualTransactionCount == null ? "null" : this.AnnualTransactionCount.ToString())}");
+            toStringOutput.Add($"LifeTimeTransactionCount = {(this.LifeTimeTransactionCount == null ? "null" : this.LifeTimeTransactionCount.ToString())}");
         }
     }
 }

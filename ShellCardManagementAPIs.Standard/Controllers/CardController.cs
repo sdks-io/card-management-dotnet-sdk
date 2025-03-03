@@ -58,10 +58,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: requestbody.</param>
         /// <returns>Returns the Models.CardSearchResponse response from the API call.</returns>
-        public Models.CardSearchResponse Searchcard(
+        public Models.CardSearchResponse SearchCard(
                 string requestId,
                 Models.SearchCardRequest body = null)
-            => CoreHelper.RunTask(SearchcardAsync(requestId, body));
+            => CoreHelper.RunTask(SearchCardAsync(requestId, body));
 
         /// <summary>
         /// This API allows to search for Shell Cards in the Shell Card Platform. It provides flexible search criteria and supports paging.
@@ -89,7 +89,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: requestbody.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardSearchResponse response from the API call.</returns>
-        public async Task<Models.CardSearchResponse> SearchcardAsync(
+        public async Task<Models.CardSearchResponse> SearchCardAsync(
                 string requestId,
                 Models.SearchCardRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -127,10 +127,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: summary request body.</param>
         /// <returns>Returns the Models.CardSummaryResponse response from the API call.</returns>
-        public Models.CardSummaryResponse Cardsummary(
+        public Models.CardSummaryResponse CardSummary(
                 string requestId,
                 Models.CardSummaryRequest body = null)
-            => CoreHelper.RunTask(CardsummaryAsync(requestId, body));
+            => CoreHelper.RunTask(CardSummaryAsync(requestId, body));
 
         /// <summary>
         /// This API allows to search for fuel cards in the Shell Card Platform and returns a high-level summary count. It provides flexible search criteria.
@@ -151,7 +151,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: summary request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardSummaryResponse response from the API call.</returns>
-        public async Task<Models.CardSummaryResponse> CardsummaryAsync(
+        public async Task<Models.CardSummaryResponse> CardSummaryAsync(
                 string requestId,
                 Models.CardSummaryRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -204,10 +204,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Order card request body.</param>
         /// <returns>Returns the Models.OrderCardResponse response from the API call.</returns>
-        public Models.OrderCardResponse Cardordercard(
+        public Models.OrderCardResponse OrderCard(
                 string requestId,
                 Models.CardManagementV1OrdercardRequest body = null)
-            => CoreHelper.RunTask(CardordercardAsync(requestId, body));
+            => CoreHelper.RunTask(OrderCardAsync(requestId, body));
 
         /// <summary>
         /// <![CDATA[
@@ -243,7 +243,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Order card request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.OrderCardResponse response from the API call.</returns>
-        public async Task<Models.OrderCardResponse> CardordercardAsync(
+        public async Task<Models.OrderCardResponse> OrderCardAsync(
                 string requestId,
                 Models.CardManagementV1OrdercardRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -276,10 +276,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Order Card Enquiry request body.</param>
         /// <returns>Returns the Models.OrderCardEnquiryResponse response from the API call.</returns>
-        public Models.OrderCardEnquiryResponse Cardordercardenquiry(
+        public Models.OrderCardEnquiryResponse OrderCardEnquiry(
                 string requestId,
                 Models.OrderCardEnquiryRequest body = null)
-            => CoreHelper.RunTask(CardordercardenquiryAsync(requestId, body));
+            => CoreHelper.RunTask(OrderCardEnquiryAsync(requestId, body));
 
         /// <summary>
         /// This API retrieves the card order status from the Shell Card Platform based on the given reference numbers.
@@ -295,7 +295,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Order Card Enquiry request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.OrderCardEnquiryResponse response from the API call.</returns>
-        public async Task<Models.OrderCardEnquiryResponse> CardordercardenquiryAsync(
+        public async Task<Models.OrderCardEnquiryResponse> OrderCardEnquiryAsync(
                 string requestId,
                 Models.OrderCardEnquiryRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -343,10 +343,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <returns>Returns the Models.CancelCardResponse response from the API call.</returns>
-        public Models.CancelCardResponse Cardcancel(
+        public Models.CancelCardResponse CardCancel(
                 string requestId,
                 Models.CardManagementV1CancelRequest body = null)
-            => CoreHelper.RunTask(CardcancelAsync(requestId, body));
+            => CoreHelper.RunTask(CardCancelAsync(requestId, body));
 
         /// <summary>
         /// This API allows cancelling one or multiple cards (up to 500) within a single API call. This API allows updating of.
@@ -377,7 +377,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CancelCardResponse response from the API call.</returns>
-        public async Task<Models.CancelCardResponse> CardcancelAsync(
+        public async Task<Models.CancelCardResponse> CardCancelAsync(
                 string requestId,
                 Models.CardManagementV1CancelRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -437,10 +437,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <returns>Returns the Models.UpdateCardStatusResponse response from the API call.</returns>
-        public Models.UpdateCardStatusResponse Cardupdatestatus(
+        public Models.UpdateCardStatusResponse CardUpdateStatus(
                 string requestId,
                 Models.CardManagementV1UpdatestatusRequest body = null)
-            => CoreHelper.RunTask(CardupdatestatusAsync(requestId, body));
+            => CoreHelper.RunTask(CardUpdateStatusAsync(requestId, body));
 
         /// <summary>
         /// This API allows updating of the card status for one or more cards (up to 500) within a single API call.  If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing. .
@@ -483,7 +483,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Update status request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.UpdateCardStatusResponse response from the API call.</returns>
-        public async Task<Models.UpdateCardStatusResponse> CardupdatestatusAsync(
+        public async Task<Models.UpdateCardStatusResponse> CardUpdateStatusAsync(
                 string requestId,
                 Models.CardManagementV1UpdatestatusRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -563,11 +563,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Card details request body.</param>
         /// <returns>Returns the Models.CardDetailsResponse response from the API call.</returns>
-        public Models.CardDetailsResponse Carddetails(
+        public Models.CardDetailsResponse CardDetails(
                 string apikey,
                 string requestId,
                 Models.CardDetailsRequest body = null)
-            => CoreHelper.RunTask(CarddetailsAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(CardDetailsAsync(apikey, requestId, body));
 
         /// <summary>
         /// This API allows to fetch details of a single fuel card from the Shell Card Platform. If a **CardId** request parameter is provided, this will return a single card.  If a **PAN** request parameter is provided, this may result in multiple fuel cards matching the search criteria. The card details of the most recently issued card will be returned.
@@ -579,7 +579,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Card details request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardDetailsResponse response from the API call.</returns>
-        public async Task<Models.CardDetailsResponse> CarddetailsAsync(
+        public async Task<Models.CardDetailsResponse> CardDetailsAsync(
                 string apikey,
                 string requestId,
                 Models.CardDetailsRequest body = null,
@@ -698,10 +698,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: PIN reminder request body.</param>
         /// <returns>Returns the Models.PINReminderResponse response from the API call.</returns>
-        public Models.PINReminderResponse Cardpinreminder(
+        public Models.PINReminderResponse CardPinReminder(
                 string requestId,
                 Models.CardManagementV1PinreminderRequest body = null)
-            => CoreHelper.RunTask(CardpinreminderAsync(requestId, body));
+            => CoreHelper.RunTask(CardPinReminderAsync(requestId, body));
 
         /// <summary>
         /// This API allows requesting a PIN reminder for a fuel card. If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing. .
@@ -726,7 +726,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: PIN reminder request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.PINReminderResponse response from the API call.</returns>
-        public async Task<Models.PINReminderResponse> CardpinreminderAsync(
+        public async Task<Models.PINReminderResponse> CardPinReminderAsync(
                 string requestId,
                 Models.CardManagementV1PinreminderRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -841,10 +841,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Auto renew request body.</param>
         /// <returns>Returns the Models.AutoRenewCardResponse response from the API call.</returns>
-        public Models.AutoRenewCardResponse Autorenew(
+        public Models.AutoRenewCardResponse AutoRenew(
                 string requestId,
                 Models.AutoRenewCardRequest body = null)
-            => CoreHelper.RunTask(AutorenewAsync(requestId, body));
+            => CoreHelper.RunTask(AutoRenewAsync(requestId, body));
 
         /// <summary>
         /// This API allows to update the reissue indicator of a single card. If the API call succeeds, the API will return a reference number for tracking purposes and queue the request for asynchronous processing.
@@ -864,7 +864,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Auto renew request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.AutoRenewCardResponse response from the API call.</returns>
-        public async Task<Models.AutoRenewCardResponse> AutorenewAsync(
+        public async Task<Models.AutoRenewCardResponse> AutoRenewAsync(
                 string requestId,
                 Models.AutoRenewCardRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -893,10 +893,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Request body.</param>
         /// <returns>Returns the Models.UpdateMPayRegStatusResponse response from the API call.</returns>
-        public Models.UpdateMPayRegStatusResponse Updatemobilepaymentregistrationstatus(
+        public Models.UpdateMPayRegStatusResponse UpdateMobilePaymentRegistrationStatus(
                 string requestId,
                 Models.UpdateMPayRegStatusRequest body = null)
-            => CoreHelper.RunTask(UpdatemobilepaymentregistrationstatusAsync(requestId, body));
+            => CoreHelper.RunTask(UpdateMobilePaymentRegistrationStatusAsync(requestId, body));
 
         /// <summary>
         /// This operation allows  update the approval status of Mobile Payment Registration requests requiring for Fleet Manager approval.
@@ -908,7 +908,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.UpdateMPayRegStatusResponse response from the API call.</returns>
-        public async Task<Models.UpdateMPayRegStatusResponse> UpdatemobilepaymentregistrationstatusAsync(
+        public async Task<Models.UpdateMPayRegStatusResponse> UpdateMobilePaymentRegistrationStatusAsync(
                 string requestId,
                 Models.UpdateMPayRegStatusRequest body = null,
                 CancellationToken cancellationToken = default)
@@ -934,10 +934,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="fleet">Optional parameter: If the public key will be used a long time for multiple files this parameter will be true. If the parameter is true then public Key will be valid for 90 days. If the parameter is false then the key will be valid for one time. default value will be false..</param>
         /// <returns>Returns the Models.GeneratePINKeyResponse response from the API call.</returns>
-        public Models.GeneratePINKeyResponse Getkey(
+        public Models.GeneratePINKeyResponse GetKey(
                 string requestId,
                 bool? fleet = null)
-            => CoreHelper.RunTask(GetkeyAsync(requestId, fleet));
+            => CoreHelper.RunTask(GetKeyAsync(requestId, fleet));
 
         /// <summary>
         /// Get a new public key that will be used to encrypt data for selected PIN process when ordering new Shell Card. This encrypted data is used for further processing.
@@ -946,7 +946,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="fleet">Optional parameter: If the public key will be used a long time for multiple files this parameter will be true. If the parameter is true then public Key will be valid for 90 days. If the parameter is false then the key will be valid for one time. default value will be false..</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.GeneratePINKeyResponse response from the API call.</returns>
-        public async Task<Models.GeneratePINKeyResponse> GetkeyAsync(
+        public async Task<Models.GeneratePINKeyResponse> GetKeyAsync(
                 string requestId,
                 bool? fleet = null,
                 CancellationToken cancellationToken = default)
@@ -973,10 +973,10 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="apikey">Required parameter: This is the API key of the specific environment which needs to be passed by the client..</param>
         /// <param name="body">Optional parameter: Delivery Address Update Request Body.</param>
         /// <returns>Returns the Models.DeliveryAddressUpdateResponse response from the API call.</returns>
-        public Models.DeliveryAddressUpdateResponse Deliveryaddressupdate(
+        public Models.DeliveryAddressUpdateResponse DeliveryAddressUpdate(
                 string apikey,
                 Models.DeliveryAddressUpdateRequest body = null)
-            => CoreHelper.RunTask(DeliveryaddressupdateAsync(apikey, body));
+            => CoreHelper.RunTask(DeliveryAddressUpdateAsync(apikey, body));
 
         /// <summary>
         /// This API allows users to update the card’s delivery addresses (card delivery address used for card re-issue and PIN delivery address used when PIN reminder is requested).
@@ -987,7 +987,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Delivery Address Update Request Body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.DeliveryAddressUpdateResponse response from the API call.</returns>
-        public async Task<Models.DeliveryAddressUpdateResponse> DeliveryaddressupdateAsync(
+        public async Task<Models.DeliveryAddressUpdateResponse> DeliveryAddressUpdateAsync(
                 string apikey,
                 Models.DeliveryAddressUpdateRequest body = null,
                 CancellationToken cancellationToken = default)

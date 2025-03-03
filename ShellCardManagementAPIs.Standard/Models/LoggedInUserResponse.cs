@@ -876,31 +876,31 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.UserName = {this.UserName ?? "null"}");
-            toStringOutput.Add($"this.DisplayName = {this.DisplayName ?? "null"}");
-            toStringOutput.Add($"this.IdMSSOID = {this.IdMSSOID ?? "null"}");
-            toStringOutput.Add($"this.PreferredLanguage = {this.PreferredLanguage ?? "null"}");
-            toStringOutput.Add($"this.IsSuperAdmin = {(this.IsSuperAdmin == null ? "null" : this.IsSuperAdmin.ToString())}");
-            toStringOutput.Add($"this.DateFormat = {this.DateFormat ?? "null"}");
-            toStringOutput.Add($"this.TimeFormat = {this.TimeFormat ?? "null"}");
-            toStringOutput.Add($"this.WeekBegins = {(this.WeekBegins == null ? "null" : this.WeekBegins.ToString())}");
-            toStringOutput.Add($"this.DisplayWeek = {(this.DisplayWeek == null ? "null" : this.DisplayWeek.ToString())}");
-            toStringOutput.Add($"this.CSVSeparator = {this.CSVSeparator ?? "null"}");
-            toStringOutput.Add($"this.DecimalSeparator = {this.DecimalSeparator ?? "null"}");
-            toStringOutput.Add($"this.ReportFormat = {this.ReportFormat ?? "null"}");
-            toStringOutput.Add($"this.HasAPIAccess = {(this.HasAPIAccess == null ? "null" : this.HasAPIAccess.ToString())}");
-            toStringOutput.Add($"this.Roles = {(this.Roles == null ? "null" : $"[{string.Join(", ", this.Roles)} ]")}");
-            toStringOutput.Add($"this.Payers = {(this.Payers == null ? "null" : $"[{string.Join(", ", this.Payers)} ]")}");
-            toStringOutput.Add($"this.Accounts = {(this.Accounts == null ? "null" : $"[{string.Join(", ", this.Accounts)} ]")}");
-            toStringOutput.Add($"this.CollectingCompanies = {(this.CollectingCompanies == null ? "null" : $"[{string.Join(", ", this.CollectingCompanies)} ]")}");
-            toStringOutput.Add($"this.EIDAccessDetails = {(this.EIDAccessDetails == null ? "null" : $"[{string.Join(", ", this.EIDAccessDetails)} ]")}");
-            toStringOutput.Add($"this.UserClassificationBySystem = {this.UserClassificationBySystem ?? "null"}");
-            toStringOutput.Add($"this.UserClassificationByShell = {this.UserClassificationByShell ?? "null"}");
-            toStringOutput.Add($"this.PayerCount = {(this.PayerCount == null ? "null" : this.PayerCount.ToString())}");
-            toStringOutput.Add($"this.AccountCount = {(this.AccountCount == null ? "null" : this.AccountCount.ToString())}");
-            toStringOutput.Add($"this.CardCount = {(this.CardCount == null ? "null" : this.CardCount.ToString())}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"UserName = {this.UserName ?? "null"}");
+            toStringOutput.Add($"DisplayName = {this.DisplayName ?? "null"}");
+            toStringOutput.Add($"IdMSSOID = {this.IdMSSOID ?? "null"}");
+            toStringOutput.Add($"PreferredLanguage = {this.PreferredLanguage ?? "null"}");
+            toStringOutput.Add($"IsSuperAdmin = {(this.IsSuperAdmin == null ? "null" : this.IsSuperAdmin.ToString())}");
+            toStringOutput.Add($"DateFormat = {this.DateFormat ?? "null"}");
+            toStringOutput.Add($"TimeFormat = {this.TimeFormat ?? "null"}");
+            toStringOutput.Add($"WeekBegins = {(this.WeekBegins == null ? "null" : this.WeekBegins.ToString())}");
+            toStringOutput.Add($"DisplayWeek = {(this.DisplayWeek == null ? "null" : this.DisplayWeek.ToString())}");
+            toStringOutput.Add($"CSVSeparator = {this.CSVSeparator ?? "null"}");
+            toStringOutput.Add($"DecimalSeparator = {this.DecimalSeparator ?? "null"}");
+            toStringOutput.Add($"ReportFormat = {this.ReportFormat ?? "null"}");
+            toStringOutput.Add($"HasAPIAccess = {(this.HasAPIAccess == null ? "null" : this.HasAPIAccess.ToString())}");
+            toStringOutput.Add($"Roles = {(this.Roles == null ? "null" : $"[{string.Join(", ", this.Roles)} ]")}");
+            toStringOutput.Add($"Payers = {(this.Payers == null ? "null" : $"[{string.Join(", ", this.Payers)} ]")}");
+            toStringOutput.Add($"Accounts = {(this.Accounts == null ? "null" : $"[{string.Join(", ", this.Accounts)} ]")}");
+            toStringOutput.Add($"CollectingCompanies = {(this.CollectingCompanies == null ? "null" : $"[{string.Join(", ", this.CollectingCompanies)} ]")}");
+            toStringOutput.Add($"EIDAccessDetails = {(this.EIDAccessDetails == null ? "null" : $"[{string.Join(", ", this.EIDAccessDetails)} ]")}");
+            toStringOutput.Add($"UserClassificationBySystem = {this.UserClassificationBySystem ?? "null"}");
+            toStringOutput.Add($"UserClassificationByShell = {this.UserClassificationByShell ?? "null"}");
+            toStringOutput.Add($"PayerCount = {(this.PayerCount == null ? "null" : this.PayerCount.ToString())}");
+            toStringOutput.Add($"AccountCount = {(this.AccountCount == null ? "null" : this.AccountCount.ToString())}");
+            toStringOutput.Add($"CardCount = {(this.CardCount == null ? "null" : this.CardCount.ToString())}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
         }
     }
 }

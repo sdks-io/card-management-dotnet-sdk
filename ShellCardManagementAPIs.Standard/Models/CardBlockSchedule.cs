@@ -156,8 +156,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.FromDate = {this.FromDate ?? "null"}");
-            toStringOutput.Add($"this.ToDate = {this.ToDate ?? "null"}");
+            toStringOutput.Add($"FromDate = {this.FromDate ?? "null"}");
+            toStringOutput.Add($"ToDate = {this.ToDate ?? "null"}");
         }
     }
 }

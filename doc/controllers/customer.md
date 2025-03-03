@@ -12,25 +12,25 @@ CustomerController customerController = client.CustomerController;
 
 ## Methods
 
-* [Loggedinuser](../../doc/controllers/customer.md#loggedinuser)
+* [Loggedin User](../../doc/controllers/customer.md#loggedin-user)
 * [Payers](../../doc/controllers/customer.md#payers)
 * [Customer](../../doc/controllers/customer.md#customer)
 * [Accounts](../../doc/controllers/customer.md#accounts)
 * [Card Type](../../doc/controllers/customer.md#card-type)
-* [Cardgroups](../../doc/controllers/customer.md#cardgroups)
-* [Auditreport](../../doc/controllers/customer.md#auditreport)
-* [Createcardgroup](../../doc/controllers/customer.md#createcardgroup)
-* [Updatecardgroup](../../doc/controllers/customer.md#updatecardgroup)
+* [Card Groups](../../doc/controllers/customer.md#card-groups)
+* [Audit Report](../../doc/controllers/customer.md#audit-report)
+* [Create Card Group](../../doc/controllers/customer.md#create-card-group)
+* [Update Card Group](../../doc/controllers/customer.md#update-card-group)
 
 
-# Loggedinuser
+# Loggedin User
 
 This API allows querying the user data of the logged in user.</br>
 This API will return the user access details such as payers and/or accounts. </br>
 This API will also validate that logged in user has access to the requested API, on failure it will return HasAPIAccess flag as false in response.</br>
 
 ```csharp
-LoggedinuserAsync(
+LoggedinUserAsync(
     string apikey,
     string requestId,
     Models.FleetmanagementV1UserLoggedinuserRequest body = null)
@@ -64,7 +64,7 @@ FleetmanagementV1UserLoggedinuserRequest body = new FleetmanagementV1UserLoggedi
 
 try
 {
-    LoggedInUserResponse result = await customerController.LoggedinuserAsync(
+    LoggedInUserResponse result = await customerController.LoggedinUserAsync(
         apikey,
         requestId,
         body
@@ -932,7 +932,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Cardgroups
+# Card Groups
 
 This operation allows querying the card group details . It provides flexible search criteria and supports paging.\
 
@@ -943,7 +943,7 @@ When the card group type is configured as ‘Horizontal’ in cards platform, th
 Accounts with cancelled status will not be considered for cardgroups search for the configured (E.g., SFH) set of client apps.
 
 ```csharp
-CardgroupsAsync(
+CardGroupsAsync(
     string apikey,
     string requestId,
     Models.CardGroupRequest body = null)
@@ -988,7 +988,7 @@ CardGroupRequest body = new CardGroupRequest
 
 try
 {
-    CardGroupResponse result = await customerController.CardgroupsAsync(
+    CardGroupResponse result = await customerController.CardGroupsAsync(
         apikey,
         requestId,
         body
@@ -1053,7 +1053,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Auditreport
+# Audit Report
 
 This operation allows users to fetch audit data of account or card operations performed by users of a given customer
 The audit data includes details of below API operations
@@ -1076,7 +1076,7 @@ The audit data includes details of below API operations
 * Delivery Address Update.
 
 ```csharp
-AuditreportAsync(
+AuditReportAsync(
     string apikey,
     string requestId,
     Models.AuditRequest body = null)
@@ -1126,7 +1126,7 @@ AuditRequest body = new AuditRequest
 
 try
 {
-    AuditResponse result = await customerController.AuditreportAsync(
+    AuditResponse result = await customerController.AuditReportAsync(
         apikey,
         requestId,
         body
@@ -1200,7 +1200,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Createcardgroup
+# Create Card Group
 
 This API allows creating a new Card Group in the Shell Cards Platform. It will
 also allow moving of cards (up to 500 cards) into the newly created
@@ -1216,7 +1216,7 @@ card-group.
   successfully
 
 ```csharp
-CreatecardgroupAsync(
+CreateCardGroupAsync(
     string apikey,
     string requestId,
     Models.CreateCardGroupRequest body = null)
@@ -1263,7 +1263,7 @@ CreateCardGroupRequest body = new CreateCardGroupRequest
 
 try
 {
-    CreateCardGroupResponse result = await customerController.CreatecardgroupAsync(
+    CreateCardGroupResponse result = await customerController.CreateCardGroupAsync(
         apikey,
         requestId,
         body
@@ -1315,7 +1315,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Updatecardgroup
+# Update Card Group
 
 This API allows updating or removing a Card Group in the Shell Cards Platform.
 
@@ -1325,7 +1325,7 @@ The request for updating or removing of the card group, creationg of a new card 
 validations.
 
 ```csharp
-UpdatecardgroupAsync(
+UpdateCardGroupAsync(
     string apikey,
     string requestId,
     Models.UpdateCardGroupRequest body = null)
@@ -1370,7 +1370,7 @@ UpdateCardGroupRequest body = new UpdateCardGroupRequest
 
 try
 {
-    UpdateCardGroupResponse result = await customerController.UpdatecardgroupAsync(
+    UpdateCardGroupResponse result = await customerController.UpdateCardGroupAsync(
         apikey,
         requestId,
         body

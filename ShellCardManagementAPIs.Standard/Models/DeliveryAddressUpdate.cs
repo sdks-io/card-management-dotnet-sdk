@@ -123,11 +123,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.UseCustomerDefaultAddress = {this.UseCustomerDefaultAddress}");
-            toStringOutput.Add($"this.UpdateCardRenewalAddress = {(this.UpdateCardRenewalAddress == null ? "null" : this.UpdateCardRenewalAddress.ToString())}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"CardExpiryDate = {this.CardExpiryDate ?? "null"}");
+            toStringOutput.Add($"UseCustomerDefaultAddress = {this.UseCustomerDefaultAddress}");
+            toStringOutput.Add($"UpdateCardRenewalAddress = {(this.UpdateCardRenewalAddress == null ? "null" : this.UpdateCardRenewalAddress.ToString())}");
         }
     }
 }

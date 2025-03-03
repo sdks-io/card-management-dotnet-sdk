@@ -133,12 +133,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Payers = {(this.Payers == null ? "null" : $"[{string.Join(", ", this.Payers)} ]")}");
-            toStringOutput.Add($"this.ReturnBasicDetailsOnly = {(this.ReturnBasicDetailsOnly == null ? "null" : this.ReturnBasicDetailsOnly.ToString())}");
-            toStringOutput.Add($"this.IncludeAddresses = {(this.IncludeAddresses == null ? "null" : this.IncludeAddresses.ToString())}");
-            toStringOutput.Add($"this.IncludeBonusParameters = {(this.IncludeBonusParameters == null ? "null" : this.IncludeBonusParameters.ToString())}");
-            toStringOutput.Add($"this.CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
-            toStringOutput.Add($"this.PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
+            toStringOutput.Add($"Payers = {(this.Payers == null ? "null" : $"[{string.Join(", ", this.Payers)} ]")}");
+            toStringOutput.Add($"ReturnBasicDetailsOnly = {(this.ReturnBasicDetailsOnly == null ? "null" : this.ReturnBasicDetailsOnly.ToString())}");
+            toStringOutput.Add($"IncludeAddresses = {(this.IncludeAddresses == null ? "null" : this.IncludeAddresses.ToString())}");
+            toStringOutput.Add($"IncludeBonusParameters = {(this.IncludeBonusParameters == null ? "null" : this.IncludeBonusParameters.ToString())}");
+            toStringOutput.Add($"CurrentPage = {(this.CurrentPage == null ? "null" : this.CurrentPage.ToString())}");
+            toStringOutput.Add($"PageSize = {(this.PageSize == null ? "null" : this.PageSize.ToString())}");
         }
     }
 }

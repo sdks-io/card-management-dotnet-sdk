@@ -84,8 +84,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.IsTimeSupported = {(this.IsTimeSupported == null ? "null" : this.IsTimeSupported.ToString())}");
-            toStringOutput.Add($"this.ScheduleCardBlockCards = {(this.ScheduleCardBlockCards == null ? "null" : $"[{string.Join(", ", this.ScheduleCardBlockCards)} ]")}");
+            toStringOutput.Add($"IsTimeSupported = {(this.IsTimeSupported == null ? "null" : this.IsTimeSupported.ToString())}");
+            toStringOutput.Add($"ScheduleCardBlockCards = {(this.ScheduleCardBlockCards == null ? "null" : $"[{string.Join(", ", this.ScheduleCardBlockCards)} ]")}");
         }
     }
 }

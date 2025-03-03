@@ -206,12 +206,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.DayTimeRestrictionAction = {this.DayTimeRestrictionAction ?? "null"}");
-            toStringOutput.Add($"this.LocationRestrictionAction = {this.LocationRestrictionAction ?? "null"}");
+            toStringOutput.Add($"DayTimeRestrictionAction = {this.DayTimeRestrictionAction ?? "null"}");
+            toStringOutput.Add($"LocationRestrictionAction = {this.LocationRestrictionAction ?? "null"}");
             toStringOutput.Add($"UsageRestrictions = {(this.UsageRestrictions == null ? "null" : this.UsageRestrictions.ToString())}");
-            toStringOutput.Add($"this.DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
+            toStringOutput.Add($"DayTimeRestrictions = {(this.DayTimeRestrictions == null ? "null" : this.DayTimeRestrictions.ToString())}");
             toStringOutput.Add($"ProductRestrictions = {(this.ProductRestrictions == null ? "null" : this.ProductRestrictions.ToString())}");
-            toStringOutput.Add($"this.LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
+            toStringOutput.Add($"LocationRestrictions = {(this.LocationRestrictions == null ? "null" : this.LocationRestrictions.ToString())}");
         }
     }
 }

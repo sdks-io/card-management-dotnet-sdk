@@ -724,23 +724,23 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
-            toStringOutput.Add($"this.ClientReferenceId = {this.ClientReferenceId ?? "null"}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.TokenTypeID = {(this.TokenTypeID == null ? "null" : this.TokenTypeID.ToString())}");
-            toStringOutput.Add($"this.TokenTypeName = {this.TokenTypeName ?? "null"}");
-            toStringOutput.Add($"this.CreationDate = {this.CreationDate ?? "null"}");
-            toStringOutput.Add($"this.EffectiveDate = {this.EffectiveDate ?? "null"}");
-            toStringOutput.Add($"this.IncludeBundleDetails = {(this.IncludeBundleDetails == null ? "null" : this.IncludeBundleDetails.ToString())}");
-            toStringOutput.Add($"this.IncludeIntermediateStatus = {(this.IncludeIntermediateStatus == null ? "null" : this.IncludeIntermediateStatus.ToString())}");
-            toStringOutput.Add($"this.IncludeScheduledCardBlocks = {(this.IncludeScheduledCardBlocks == null ? "null" : this.IncludeScheduledCardBlocks.ToString())}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"ColCoCountryCode = {this.ColCoCountryCode ?? "null"}");
+            toStringOutput.Add($"ClientReferenceId = {this.ClientReferenceId ?? "null"}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"TokenTypeID = {(this.TokenTypeID == null ? "null" : this.TokenTypeID.ToString())}");
+            toStringOutput.Add($"TokenTypeName = {this.TokenTypeName ?? "null"}");
+            toStringOutput.Add($"CreationDate = {this.CreationDate ?? "null"}");
+            toStringOutput.Add($"EffectiveDate = {this.EffectiveDate ?? "null"}");
+            toStringOutput.Add($"IncludeBundleDetails = {(this.IncludeBundleDetails == null ? "null" : this.IncludeBundleDetails.ToString())}");
+            toStringOutput.Add($"IncludeIntermediateStatus = {(this.IncludeIntermediateStatus == null ? "null" : this.IncludeIntermediateStatus.ToString())}");
+            toStringOutput.Add($"IncludeScheduledCardBlocks = {(this.IncludeScheduledCardBlocks == null ? "null" : this.IncludeScheduledCardBlocks.ToString())}");
         }
     }
 }

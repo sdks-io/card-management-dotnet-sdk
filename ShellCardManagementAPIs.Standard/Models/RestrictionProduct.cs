@@ -82,8 +82,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.GlobalProductCode = {this.GlobalProductCode ?? "null"}");
-            toStringOutput.Add($"this.Description = {this.Description ?? "null"}");
+            toStringOutput.Add($"GlobalProductCode = {this.GlobalProductCode ?? "null"}");
+            toStringOutput.Add($"Description = {this.Description ?? "null"}");
         }
     }
 }

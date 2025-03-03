@@ -69,7 +69,7 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardDetails = {(this.CardDetails == null ? "null" : $"[{string.Join(", ", this.CardDetails)} ]")}");
+            toStringOutput.Add($"CardDetails = {(this.CardDetails == null ? "null" : $"[{string.Join(", ", this.CardDetails)} ]")}");
         }
     }
 }

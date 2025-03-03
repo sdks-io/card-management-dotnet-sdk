@@ -12,24 +12,24 @@ CardController cardController = client.CardController;
 
 ## Methods
 
-* [Searchcard](../../doc/controllers/card.md#searchcard)
-* [Cardsummary](../../doc/controllers/card.md#cardsummary)
-* [Cardordercard](../../doc/controllers/card.md#cardordercard)
-* [Cardordercardenquiry](../../doc/controllers/card.md#cardordercardenquiry)
-* [Cardcancel](../../doc/controllers/card.md#cardcancel)
-* [Cardupdatestatus](../../doc/controllers/card.md#cardupdatestatus)
+* [Search Card](../../doc/controllers/card.md#search-card)
+* [Card Summary](../../doc/controllers/card.md#card-summary)
+* [Order Card](../../doc/controllers/card.md#order-card)
+* [Order Card Enquiry](../../doc/controllers/card.md#order-card-enquiry)
+* [Card Cancel](../../doc/controllers/card.md#card-cancel)
+* [Card Update Status](../../doc/controllers/card.md#card-update-status)
 * [Purchase Category](../../doc/controllers/card.md#purchase-category)
-* [Carddetails](../../doc/controllers/card.md#carddetails)
+* [Card Details](../../doc/controllers/card.md#card-details)
 * [Card Move](../../doc/controllers/card.md#card-move)
-* [Cardpinreminder](../../doc/controllers/card.md#cardpinreminder)
+* [Card Pin Reminder](../../doc/controllers/card.md#card-pin-reminder)
 * [Schedule Card Block](../../doc/controllers/card.md#schedule-card-block)
-* [Autorenew](../../doc/controllers/card.md#autorenew)
-* [Updatemobilepaymentregistrationstatus](../../doc/controllers/card.md#updatemobilepaymentregistrationstatus)
-* [Getkey](../../doc/controllers/card.md#getkey)
-* [Deliveryaddressupdate](../../doc/controllers/card.md#deliveryaddressupdate)
+* [Auto Renew](../../doc/controllers/card.md#auto-renew)
+* [Update Mobile Payment Registration Status](../../doc/controllers/card.md#update-mobile-payment-registration-status)
+* [Get Key](../../doc/controllers/card.md#get-key)
+* [Delivery Address Update](../../doc/controllers/card.md#delivery-address-update)
 
 
-# Searchcard
+# Search Card
 
 This API allows to search for Shell Cards in the Shell Card Platform. It provides flexible search criteria and supports paging.
 
@@ -72,7 +72,7 @@ This API allows to search for Shell Cards in the Shell Card Platform. It provide
 * Search cards by excluding card bundle Id
 
 ```csharp
-SearchcardAsync(
+SearchCardAsync(
     string requestId,
     Models.SearchCardRequest body = null)
 ```
@@ -170,7 +170,7 @@ SearchCardRequest body = new SearchCardRequest
 
 try
 {
-    CardSearchResponse result = await cardController.SearchcardAsync(
+    CardSearchResponse result = await cardController.SearchCardAsync(
         requestId,
         body
     );
@@ -269,7 +269,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
 
 
-# Cardsummary
+# Card Summary
 
 This API allows to search for fuel cards in the Shell Card Platform and returns a high-level summary count. It provides flexible search criteria.
 
@@ -289,7 +289,7 @@ This API allows to search for fuel cards in the Shell Card Platform and returns 
 * Search cards by included/excluded list of cards
 
 ```csharp
-CardsummaryAsync(
+CardSummaryAsync(
     string requestId,
     Models.CardSummaryRequest body = null)
 ```
@@ -377,7 +377,7 @@ CardSummaryRequest body = new CardSummaryRequest
 
 try
 {
-    CardSummaryResponse result = await cardController.CardsummaryAsync(
+    CardSummaryResponse result = await cardController.CardSummaryAsync(
         requestId,
         body
     );
@@ -425,7 +425,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | [`ErrorObjectException`](../../doc/models/error-object-exception.md) |
 
 
-# Cardordercard
+# Order Card
 
 This API allows ordering one or more fuel cards (up to 50). If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing.
 
@@ -463,7 +463,7 @@ This API allows ordering one or more fuel cards (up to 50). If the API call succ
 * Individual reference numbers (**OrderCardReference**) for each new card
 
 ```csharp
-CardordercardAsync(
+OrderCardAsync(
     string requestId,
     Models.CardManagementV1OrdercardRequest body = null)
 ```
@@ -573,7 +573,7 @@ CardManagementV1OrdercardRequest body = new CardManagementV1OrdercardRequest
 
 try
 {
-    OrderCardResponse result = await cardController.CardordercardAsync(
+    OrderCardResponse result = await cardController.OrderCardAsync(
         requestId,
         body
     );
@@ -612,7 +612,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | `ApiException` |
 
 
-# Cardordercardenquiry
+# Order Card Enquiry
 
 This API retrieves the card order status from the Shell Card Platform based on the given reference numbers.
 
@@ -631,7 +631,7 @@ This API retrieves the card order status from the Shell Card Platform based on t
     * Get order status by Card Reference (individual card reference belonging to an order reference)
 
 ```csharp
-CardordercardenquiryAsync(
+OrderCardEnquiryAsync(
     string requestId,
     Models.OrderCardEnquiryRequest body = null)
 ```
@@ -672,7 +672,7 @@ OrderCardEnquiryRequest body = new OrderCardEnquiryRequest
 
 try
 {
-    OrderCardEnquiryResponse result = await cardController.CardordercardenquiryAsync(
+    OrderCardEnquiryResponse result = await cardController.OrderCardEnquiryAsync(
         requestId,
         body
     );
@@ -744,7 +744,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | `ApiException` |
 
 
-# Cardcancel
+# Card Cancel
 
 This API allows cancelling one or multiple cards (up to 500) within a single API call. This API allows updating of
 the card to the following status-
@@ -780,7 +780,7 @@ A permanent block (cancelled) request for the card will be queued in Shell Card 
 When a card is requested to be Blocked permanently (cancelled) for which a request has already been submitted to report as Damaged and the damaged card active period is not yet completed, the damaged card request will be marked as superseded and the new Block (cancelled) request will be processed.
 
 ```csharp
-CardcancelAsync(
+CardCancelAsync(
     string requestId,
     Models.CardManagementV1CancelRequest body = null)
 ```
@@ -867,7 +867,7 @@ CardManagementV1CancelRequest body = new CardManagementV1CancelRequest
 
 try
 {
-    CancelCardResponse result = await cardController.CardcancelAsync(
+    CancelCardResponse result = await cardController.CardCancelAsync(
         requestId,
         body
     );
@@ -916,7 +916,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | `ApiException` |
 
 
-# Cardupdatestatus
+# Card Update Status
 
 This API allows updating of the card status for one or more cards (up to 500) within a single API call.  If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing.
 
@@ -965,7 +965,7 @@ This API allows updating of the card status for one or more cards (up to 500) wi
   * If during the damage card active period another request is made to set the card to Temporarily Blocked or Blocked permanently (cancelled), then the damaged card request will be marked as superseded and the new Temporary Block or Block (cancelled) will be processed.
 
 ```csharp
-CardupdatestatusAsync(
+CardUpdateStatusAsync(
     string requestId,
     Models.CardManagementV1UpdatestatusRequest body = null)
 ```
@@ -1055,7 +1055,7 @@ CardManagementV1UpdatestatusRequest body = new CardManagementV1UpdatestatusReque
 
 try
 {
-    UpdateCardStatusResponse result = await cardController.CardupdatestatusAsync(
+    UpdateCardStatusResponse result = await cardController.CardUpdateStatusAsync(
         requestId,
         body
     );
@@ -1216,7 +1216,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Carddetails
+# Card Details
 
 This API allows to fetch details of a single fuel card from the Shell Card Platform. If a **CardId** request parameter is provided, this will return a single card.  If a **PAN** request parameter is provided, this may result in multiple fuel cards matching the search criteria. The card details of the most recently issued card will be returned.
 
@@ -1225,7 +1225,7 @@ This API allows to fetch details of a single fuel card from the Shell Card Platf
 * Get card by card id or PAN
 
 ```csharp
-CarddetailsAsync(
+CardDetailsAsync(
     string apikey,
     string requestId,
     Models.CardDetailsRequest body = null)
@@ -1271,7 +1271,7 @@ CardDetailsRequest body = new CardDetailsRequest
 
 try
 {
-    CardDetailsResponse result = await cardController.CarddetailsAsync(
+    CardDetailsResponse result = await cardController.CardDetailsAsync(
         apikey,
         requestId,
         body
@@ -1558,7 +1558,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Cardpinreminder
+# Card Pin Reminder
 
 This API allows requesting a PIN reminder for a fuel card. If the API call succeeds, the API will return a reference number and queue the request for asynchronous processing.
 
@@ -1585,7 +1585,7 @@ This API allows requesting a PIN reminder for a fuel card. If the API call succe
 * A PIN reminder request has not been successfully processed in the last 48 hours for the card
 
 ```csharp
-CardpinreminderAsync(
+CardPinReminderAsync(
     string requestId,
     Models.CardManagementV1PinreminderRequest body = null)
 ```
@@ -1639,7 +1639,7 @@ CardManagementV1PinreminderRequest body = new CardManagementV1PinreminderRequest
 
 try
 {
-    PINReminderResponse result = await cardController.CardpinreminderAsync(
+    PINReminderResponse result = await cardController.CardPinReminderAsync(
         requestId,
         body
     );
@@ -1804,7 +1804,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | `ApiException` |
 
 
-# Autorenew
+# Auto Renew
 
 This API allows to update the reissue indicator of a single card. If the API call succeeds, the API will return a reference number for tracking purposes and queue the request for asynchronous processing.
 
@@ -1827,7 +1827,7 @@ This API allows to update the reissue indicator of a single card. If the API cal
 * Providing a **PAN** request paramter may result in multiple fuel cards being located in the Shell Card Platform. The card details of the most recently issued card will be considered.
 
 ```csharp
-AutorenewAsync(
+AutoRenewAsync(
     string requestId,
     Models.AutoRenewCardRequest body = null)
 ```
@@ -1869,7 +1869,7 @@ AutoRenewCardRequest body = new AutoRenewCardRequest
 
 try
 {
-    AutoRenewCardResponse result = await cardController.AutorenewAsync(
+    AutoRenewCardResponse result = await cardController.AutoRenewAsync(
         requestId,
         body
     );
@@ -1909,7 +1909,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | `ApiException` |
 
 
-# Updatemobilepaymentregistrationstatus
+# Update Mobile Payment Registration Status
 
 This operation allows  update the approval status of Mobile Payment Registration requests requiring for Fleet Manager approval.
 If the approval status is:
@@ -1918,7 +1918,7 @@ If the approval status is:
 * “Rejected” then status will be updated to “CI” (Failed) with appropriate error message.
 
 ```csharp
-UpdatemobilepaymentregistrationstatusAsync(
+UpdateMobilePaymentRegistrationStatusAsync(
     string requestId,
     Models.UpdateMPayRegStatusRequest body = null)
 ```
@@ -1959,7 +1959,7 @@ UpdateMPayRegStatusRequest body = new UpdateMPayRegStatusRequest
 
 try
 {
-    UpdateMPayRegStatusResponse result = await cardController.UpdatemobilepaymentregistrationstatusAsync(
+    UpdateMPayRegStatusResponse result = await cardController.UpdateMobilePaymentRegistrationStatusAsync(
         requestId,
         body
     );
@@ -1991,12 +1991,12 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition that  prevented it from fulfilling the request. | `ApiException` |
 
 
-# Getkey
+# Get Key
 
 Get a new public key that will be used to encrypt data for selected PIN process when ordering new Shell Card. This encrypted data is used for further processing.
 
 ```csharp
-GetkeyAsync(
+GetKeyAsync(
     string requestId,
     bool? fleet = null)
 ```
@@ -2018,7 +2018,7 @@ GetkeyAsync(
 string requestId = "RequestId8";
 try
 {
-    GeneratePINKeyResponse result = await cardController.GetkeyAsync(requestId);
+    GeneratePINKeyResponse result = await cardController.GetKeyAsync(requestId);
 }
 catch (ApiException e)
 {
@@ -2047,7 +2047,7 @@ catch (ApiException e)
 | 500 | The server encountered an unexpected condition the prevented it from fulfilling the request. | `ApiException` |
 
 
-# Deliveryaddressupdate
+# Delivery Address Update
 
 This API allows users to update the card’s delivery addresses (card delivery address used for card re-issue and PIN delivery address used when PIN reminder is requested)
 
@@ -2056,7 +2056,7 @@ This API allows users to update the card’s delivery addresses (card delivery a
 * card delivery address update
 
 ```csharp
-DeliveryaddressupdateAsync(
+DeliveryAddressUpdateAsync(
     string apikey,
     Models.DeliveryAddressUpdateRequest body = null)
 ```
@@ -2111,7 +2111,7 @@ DeliveryAddressUpdateRequest body = new DeliveryAddressUpdateRequest
 
 try
 {
-    DeliveryAddressUpdateResponse result = await cardController.DeliveryaddressupdateAsync(
+    DeliveryAddressUpdateResponse result = await cardController.DeliveryAddressUpdateAsync(
         apikey,
         body
     );

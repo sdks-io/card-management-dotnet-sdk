@@ -126,12 +126,12 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.RoleName = {this.RoleName ?? "null"}");
-            toStringOutput.Add($"this.IsCustomerAdmin = {(this.IsCustomerAdmin == null ? "null" : this.IsCustomerAdmin.ToString())}");
-            toStringOutput.Add($"this.IsCustomerUser = {(this.IsCustomerUser == null ? "null" : this.IsCustomerUser.ToString())}");
-            toStringOutput.Add($"this.IsShellAdmin = {(this.IsShellAdmin == null ? "null" : this.IsShellAdmin.ToString())}");
-            toStringOutput.Add($"this.IsServiceAccount = {(this.IsServiceAccount == null ? "null" : this.IsServiceAccount.ToString())}");
-            toStringOutput.Add($"this.IsUserAdmin = {(this.IsUserAdmin == null ? "null" : this.IsUserAdmin.ToString())}");
+            toStringOutput.Add($"RoleName = {this.RoleName ?? "null"}");
+            toStringOutput.Add($"IsCustomerAdmin = {(this.IsCustomerAdmin == null ? "null" : this.IsCustomerAdmin.ToString())}");
+            toStringOutput.Add($"IsCustomerUser = {(this.IsCustomerUser == null ? "null" : this.IsCustomerUser.ToString())}");
+            toStringOutput.Add($"IsShellAdmin = {(this.IsShellAdmin == null ? "null" : this.IsShellAdmin.ToString())}");
+            toStringOutput.Add($"IsServiceAccount = {(this.IsServiceAccount == null ? "null" : this.IsServiceAccount.ToString())}");
+            toStringOutput.Add($"IsUserAdmin = {(this.IsUserAdmin == null ? "null" : this.IsUserAdmin.ToString())}");
         }
     }
 }

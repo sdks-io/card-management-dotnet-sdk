@@ -290,16 +290,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.Level = {this.Level ?? "null"}");
-            toStringOutput.Add($"this.Monday = {(this.Monday == null ? "null" : this.Monday.ToString())}");
-            toStringOutput.Add($"this.Tuesday = {(this.Tuesday == null ? "null" : this.Tuesday.ToString())}");
-            toStringOutput.Add($"this.Wednesday = {(this.Wednesday == null ? "null" : this.Wednesday.ToString())}");
-            toStringOutput.Add($"this.Thursday = {(this.Thursday == null ? "null" : this.Thursday.ToString())}");
-            toStringOutput.Add($"this.Friday = {(this.Friday == null ? "null" : this.Friday.ToString())}");
-            toStringOutput.Add($"this.Saturday = {(this.Saturday == null ? "null" : this.Saturday.ToString())}");
-            toStringOutput.Add($"this.Sunday = {(this.Sunday == null ? "null" : this.Sunday.ToString())}");
-            toStringOutput.Add($"this.TimeFrom = {this.TimeFrom ?? "null"}");
-            toStringOutput.Add($"this.TimeTo = {this.TimeTo ?? "null"}");
+            toStringOutput.Add($"Level = {this.Level ?? "null"}");
+            toStringOutput.Add($"Monday = {(this.Monday == null ? "null" : this.Monday.ToString())}");
+            toStringOutput.Add($"Tuesday = {(this.Tuesday == null ? "null" : this.Tuesday.ToString())}");
+            toStringOutput.Add($"Wednesday = {(this.Wednesday == null ? "null" : this.Wednesday.ToString())}");
+            toStringOutput.Add($"Thursday = {(this.Thursday == null ? "null" : this.Thursday.ToString())}");
+            toStringOutput.Add($"Friday = {(this.Friday == null ? "null" : this.Friday.ToString())}");
+            toStringOutput.Add($"Saturday = {(this.Saturday == null ? "null" : this.Saturday.ToString())}");
+            toStringOutput.Add($"Sunday = {(this.Sunday == null ? "null" : this.Sunday.ToString())}");
+            toStringOutput.Add($"TimeFrom = {this.TimeFrom ?? "null"}");
+            toStringOutput.Add($"TimeTo = {this.TimeTo ?? "null"}");
         }
     }
 }

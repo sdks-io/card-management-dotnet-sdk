@@ -366,11 +366,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Summary of Bundle request body.</param>
         /// <returns>Returns the Models.SummaryofbundleResponse response from the API call.</returns>
-        public Models.SummaryofbundleResponse Summaryofbundles(
+        public Models.SummaryofbundleResponse SummaryOfBundles(
                 string apikey,
                 string requestId,
                 Models.SummaryofbundlerRequest body = null)
-            => CoreHelper.RunTask(SummaryofbundlesAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(SummaryOfBundlesAsync(apikey, requestId, body));
 
         /// <summary>
         /// This API allows clients to get a summary of card bundles associated with Payer/Account. This API will return the basic bundle details including card and restriction details. Optionally the API will also include a count of cards that are not associated with the bundle but returned by the search criteria.
@@ -383,7 +383,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Summary of Bundle request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.SummaryofbundleResponse response from the API call.</returns>
-        public async Task<Models.SummaryofbundleResponse> SummaryofbundlesAsync(
+        public async Task<Models.SummaryofbundleResponse> SummaryOfBundlesAsync(
                 string apikey,
                 string requestId,
                 Models.SummaryofbundlerRequest body = null,
@@ -508,11 +508,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Bundle Details Request body.</param>
         /// <returns>Returns the Models.BundleDetailsResponse response from the API call.</returns>
-        public Models.BundleDetailsResponse Bundledetails(
+        public Models.BundleDetailsResponse BundleDetails(
                 string apikey,
                 string requestId,
                 Models.BudleDetailsRequest body = null)
-            => CoreHelper.RunTask(BundledetailsAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(BundleDetailsAsync(apikey, requestId, body));
 
         /// <summary>
         /// This API allows to get the details of a specific card bundle. It returns the bundle basic details along with the cards in the bundle and restrictions applied on them.
@@ -522,7 +522,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Bundle Details Request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.BundleDetailsResponse response from the API call.</returns>
-        public async Task<Models.BundleDetailsResponse> BundledetailsAsync(
+        public async Task<Models.BundleDetailsResponse> BundleDetailsAsync(
                 string apikey,
                 string requestId,
                 Models.BudleDetailsRequest body = null,

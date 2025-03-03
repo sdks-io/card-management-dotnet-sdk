@@ -194,13 +194,13 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.CardExpiryDate = {this.CardExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.PINAdviceType = {this.PINAdviceType}");
-            toStringOutput.Add($"this.PINContactType = {(this.PINContactType == null ? "null" : this.PINContactType.ToString())}");
-            toStringOutput.Add($"this.PINDeliverTo = {(this.PINDeliverTo == null ? "null" : this.PINDeliverTo.ToString())}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"PANID = {(this.PANID == null ? "null" : this.PANID.ToString())}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"CardExpiryDate = {this.CardExpiryDate ?? "null"}");
+            toStringOutput.Add($"PINAdviceType = {this.PINAdviceType}");
+            toStringOutput.Add($"PINContactType = {(this.PINContactType == null ? "null" : this.PINContactType.ToString())}");
+            toStringOutput.Add($"PINDeliverTo = {(this.PINDeliverTo == null ? "null" : this.PINDeliverTo.ToString())}");
         }
     }
 }

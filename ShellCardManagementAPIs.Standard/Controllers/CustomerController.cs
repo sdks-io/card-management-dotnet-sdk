@@ -44,11 +44,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Logged in user request body.</param>
         /// <returns>Returns the Models.LoggedInUserResponse response from the API call.</returns>
-        public Models.LoggedInUserResponse Loggedinuser(
+        public Models.LoggedInUserResponse LoggedinUser(
                 string apikey,
                 string requestId,
                 Models.FleetmanagementV1UserLoggedinuserRequest body = null)
-            => CoreHelper.RunTask(LoggedinuserAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(LoggedinUserAsync(apikey, requestId, body));
 
         /// <summary>
         /// <![CDATA[
@@ -62,7 +62,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Logged in user request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.LoggedInUserResponse response from the API call.</returns>
-        public async Task<Models.LoggedInUserResponse> LoggedinuserAsync(
+        public async Task<Models.LoggedInUserResponse> LoggedinUserAsync(
                 string apikey,
                 string requestId,
                 Models.FleetmanagementV1UserLoggedinuserRequest body = null,
@@ -286,11 +286,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: Request Body.</param>
         /// <returns>Returns the Models.CardGroupResponse response from the API call.</returns>
-        public Models.CardGroupResponse Cardgroups(
+        public Models.CardGroupResponse CardGroups(
                 string apikey,
                 string requestId,
                 Models.CardGroupRequest body = null)
-            => CoreHelper.RunTask(CardgroupsAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(CardGroupsAsync(apikey, requestId, body));
 
         /// <summary>
         /// This operation allows querying the card group details . It provides flexible search criteria and supports paging.\.
@@ -303,7 +303,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: Request Body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CardGroupResponse response from the API call.</returns>
-        public async Task<Models.CardGroupResponse> CardgroupsAsync(
+        public async Task<Models.CardGroupResponse> CardGroupsAsync(
                 string apikey,
                 string requestId,
                 Models.CardGroupRequest body = null,
@@ -351,11 +351,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: request body.</param>
         /// <returns>Returns the Models.AuditResponse response from the API call.</returns>
-        public Models.AuditResponse Auditreport(
+        public Models.AuditResponse AuditReport(
                 string apikey,
                 string requestId,
                 Models.AuditRequest body = null)
-            => CoreHelper.RunTask(AuditreportAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(AuditReportAsync(apikey, requestId, body));
 
         /// <summary>
         /// <![CDATA[
@@ -384,7 +384,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.AuditResponse response from the API call.</returns>
-        public async Task<Models.AuditResponse> AuditreportAsync(
+        public async Task<Models.AuditResponse> AuditReportAsync(
                 string apikey,
                 string requestId,
                 Models.AuditRequest body = null,
@@ -422,11 +422,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: CreateCardGroup request body.</param>
         /// <returns>Returns the Models.CreateCardGroupResponse response from the API call.</returns>
-        public Models.CreateCardGroupResponse Createcardgroup(
+        public Models.CreateCardGroupResponse CreateCardGroup(
                 string apikey,
                 string requestId,
                 Models.CreateCardGroupRequest body = null)
-            => CoreHelper.RunTask(CreatecardgroupAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(CreateCardGroupAsync(apikey, requestId, body));
 
         /// <summary>
         /// This API allows creating a new Card Group in the Shell Cards Platform. It will.
@@ -445,7 +445,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: CreateCardGroup request body.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.CreateCardGroupResponse response from the API call.</returns>
-        public async Task<Models.CreateCardGroupResponse> CreatecardgroupAsync(
+        public async Task<Models.CreateCardGroupResponse> CreateCardGroupAsync(
                 string apikey,
                 string requestId,
                 Models.CreateCardGroupRequest body = null,
@@ -477,11 +477,11 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="requestId">Required parameter: Mandatory UUID (according to RFC 4122 standards) for requests and responses. This will be played back in the response from the request..</param>
         /// <param name="body">Optional parameter: request body of customer card group.</param>
         /// <returns>Returns the Models.UpdateCardGroupResponse response from the API call.</returns>
-        public Models.UpdateCardGroupResponse Updatecardgroup(
+        public Models.UpdateCardGroupResponse UpdateCardGroup(
                 string apikey,
                 string requestId,
                 Models.UpdateCardGroupRequest body = null)
-            => CoreHelper.RunTask(UpdatecardgroupAsync(apikey, requestId, body));
+            => CoreHelper.RunTask(UpdateCardGroupAsync(apikey, requestId, body));
 
         /// <summary>
         /// This API allows updating or removing a Card Group in the Shell Cards Platform.
@@ -494,7 +494,7 @@ namespace ShellCardManagementAPIs.Standard.Controllers
         /// <param name="body">Optional parameter: request body of customer card group.</param>
         /// <param name="cancellationToken"> cancellationToken. </param>
         /// <returns>Returns the Models.UpdateCardGroupResponse response from the API call.</returns>
-        public async Task<Models.UpdateCardGroupResponse> UpdatecardgroupAsync(
+        public async Task<Models.UpdateCardGroupResponse> UpdateCardGroupAsync(
                 string apikey,
                 string requestId,
                 Models.UpdateCardGroupRequest body = null,

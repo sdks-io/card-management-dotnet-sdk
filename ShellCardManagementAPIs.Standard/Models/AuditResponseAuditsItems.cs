@@ -1504,37 +1504,37 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation1 = {this.AdditionalInformation1 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation2 = {this.AdditionalInformation2 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation3 = {this.AdditionalInformation3 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation4 = {this.AdditionalInformation4 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation5 = {this.AdditionalInformation5 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation6 = {this.AdditionalInformation6 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation7 = {this.AdditionalInformation7 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation8 = {this.AdditionalInformation8 ?? "null"}");
-            toStringOutput.Add($"this.AdditionalInformation9 = {this.AdditionalInformation9 ?? "null"}");
-            toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
-            toStringOutput.Add($"this.CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.ErrorCode = {this.ErrorCode ?? "null"}");
-            toStringOutput.Add($"this.ErrorString = {this.ErrorString ?? "null"}");
-            toStringOutput.Add($"this.GlobalRequestID = {this.GlobalRequestID ?? "null"}");
-            toStringOutput.Add($"this.PAN = {this.PAN ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.ProcessedOn = {this.ProcessedOn ?? "null"}");
-            toStringOutput.Add($"this.RequestedBy = {this.RequestedBy ?? "null"}");
-            toStringOutput.Add($"this.RequestedOperation = {this.RequestedOperation ?? "null"}");
-            toStringOutput.Add($"this.RequestReference = {(this.RequestReference == null ? "null" : this.RequestReference.ToString())}");
-            toStringOutput.Add($"this.RequestType = {this.RequestType ?? "null"}");
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.SubmittedOn = {this.SubmittedOn ?? "null"}");
-            toStringOutput.Add($"this.SubRequestReference = {(this.SubRequestReference == null ? "null" : this.SubRequestReference.ToString())}");
-            toStringOutput.Add($"this.UserDisplayName = {this.UserDisplayName ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation1 = {this.AdditionalInformation1 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation2 = {this.AdditionalInformation2 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation3 = {this.AdditionalInformation3 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation4 = {this.AdditionalInformation4 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation5 = {this.AdditionalInformation5 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation6 = {this.AdditionalInformation6 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation7 = {this.AdditionalInformation7 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation8 = {this.AdditionalInformation8 ?? "null"}");
+            toStringOutput.Add($"AdditionalInformation9 = {this.AdditionalInformation9 ?? "null"}");
+            toStringOutput.Add($"CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
+            toStringOutput.Add($"CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"CardId = {(this.CardId == null ? "null" : this.CardId.ToString())}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"ErrorCode = {this.ErrorCode ?? "null"}");
+            toStringOutput.Add($"ErrorString = {this.ErrorString ?? "null"}");
+            toStringOutput.Add($"GlobalRequestID = {this.GlobalRequestID ?? "null"}");
+            toStringOutput.Add($"PAN = {this.PAN ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"ProcessedOn = {this.ProcessedOn ?? "null"}");
+            toStringOutput.Add($"RequestedBy = {this.RequestedBy ?? "null"}");
+            toStringOutput.Add($"RequestedOperation = {this.RequestedOperation ?? "null"}");
+            toStringOutput.Add($"RequestReference = {(this.RequestReference == null ? "null" : this.RequestReference.ToString())}");
+            toStringOutput.Add($"RequestType = {this.RequestType ?? "null"}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"SubmittedOn = {this.SubmittedOn ?? "null"}");
+            toStringOutput.Add($"SubRequestReference = {(this.SubRequestReference == null ? "null" : this.SubRequestReference.ToString())}");
+            toStringOutput.Add($"UserDisplayName = {this.UserDisplayName ?? "null"}");
         }
     }
 }

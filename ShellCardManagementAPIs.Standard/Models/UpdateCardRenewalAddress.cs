@@ -187,16 +187,16 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ContactName = {this.ContactName ?? "null"}");
-            toStringOutput.Add($"this.ContactTitle = {this.ContactTitle ?? "null"}");
-            toStringOutput.Add($"this.CompanyName = {this.CompanyName ?? "null"}");
-            toStringOutput.Add($"this.AddressLine = {this.AddressLine ?? "null"}");
-            toStringOutput.Add($"this.ZipCode = {this.ZipCode ?? "null"}");
-            toStringOutput.Add($"this.City = {this.City ?? "null"}");
-            toStringOutput.Add($"this.RegionID = {(this.RegionID == null ? "null" : this.RegionID.ToString())}");
-            toStringOutput.Add($"this.CountryID = {this.CountryID}");
-            toStringOutput.Add($"this.EmailAddress = {this.EmailAddress ?? "null"}");
-            toStringOutput.Add($"this.PhoneNumber = {this.PhoneNumber ?? "null"}");
+            toStringOutput.Add($"ContactName = {this.ContactName ?? "null"}");
+            toStringOutput.Add($"ContactTitle = {this.ContactTitle ?? "null"}");
+            toStringOutput.Add($"CompanyName = {this.CompanyName ?? "null"}");
+            toStringOutput.Add($"AddressLine = {this.AddressLine ?? "null"}");
+            toStringOutput.Add($"ZipCode = {this.ZipCode ?? "null"}");
+            toStringOutput.Add($"City = {this.City ?? "null"}");
+            toStringOutput.Add($"RegionID = {(this.RegionID == null ? "null" : this.RegionID.ToString())}");
+            toStringOutput.Add($"CountryID = {this.CountryID}");
+            toStringOutput.Add($"EmailAddress = {this.EmailAddress ?? "null"}");
+            toStringOutput.Add($"PhoneNumber = {this.PhoneNumber ?? "null"}");
         }
     }
 }

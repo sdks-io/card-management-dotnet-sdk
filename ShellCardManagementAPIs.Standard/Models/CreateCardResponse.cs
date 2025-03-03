@@ -154,8 +154,8 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.DriverAndVRN = {this.DriverAndVRN ?? "null"}");
-            toStringOutput.Add($"this.OrderCardReference = {(this.OrderCardReference == null ? "null" : this.OrderCardReference.ToString())}");
+            toStringOutput.Add($"DriverAndVRN = {this.DriverAndVRN ?? "null"}");
+            toStringOutput.Add($"OrderCardReference = {(this.OrderCardReference == null ? "null" : this.OrderCardReference.ToString())}");
         }
     }
 }

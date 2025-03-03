@@ -1107,35 +1107,35 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountName = {this.AccountName ?? "null"}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountShortName = {this.AccountShortName ?? "null"}");
-            toStringOutput.Add($"this.AccountTradingName = {this.AccountTradingName ?? "null"}");
-            toStringOutput.Add($"this.AllowFleetIdInput = {(this.AllowFleetIdInput == null ? "null" : this.AllowFleetIdInput.ToString())}");
-            toStringOutput.Add($"this.Band = {this.Band ?? "null"}");
-            toStringOutput.Add($"this.BillingAddress = {(this.BillingAddress == null ? "null" : this.BillingAddress.ToString())}");
-            toStringOutput.Add($"this.CardGroupPosition = {this.CardGroupPosition ?? "null"}");
-            toStringOutput.Add($"this.CorrespondenceAddress = {(this.CorrespondenceAddress == null ? "null" : this.CorrespondenceAddress.ToString())}");
-            toStringOutput.Add($"this.DeliveryAddresses = {(this.DeliveryAddresses == null ? "null" : $"[{string.Join(", ", this.DeliveryAddresses)} ]")}");
-            toStringOutput.Add($"this.FleetPin = {(this.FleetPin == null ? "null" : this.FleetPin.ToString())}");
-            toStringOutput.Add($"this.FullName = {this.FullName ?? "null"}");
-            toStringOutput.Add($"this.InvoiceCustomerId = {(this.InvoiceCustomerId == null ? "null" : this.InvoiceCustomerId.ToString())}");
-            toStringOutput.Add($"this.InvoiceCustomerShortName = {this.InvoiceCustomerShortName ?? "null"}");
-            toStringOutput.Add($"this.IsInvoicePoint = {(this.IsInvoicePoint == null ? "null" : this.IsInvoicePoint.ToString())}");
-            toStringOutput.Add($"this.MarketingSegmentation = {this.MarketingSegmentation ?? "null"}");
-            toStringOutput.Add($"this.VATNumber = {this.VATNumber ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerName = {this.PayerName ?? "null"}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.SelfSelectedPin = {(this.SelfSelectedPin == null ? "null" : this.SelfSelectedPin.ToString())}");
-            toStringOutput.Add($"this.Status = {this.Status ?? "null"}");
-            toStringOutput.Add($"this.DefaultPINAdviceType = {(this.DefaultPINAdviceType == null ? "null" : this.DefaultPINAdviceType.ToString())}");
-            toStringOutput.Add($"this.PINAdviceTypes = {(this.PINAdviceTypes == null ? "null" : $"[{string.Join(", ", this.PINAdviceTypes)} ]")}");
-            toStringOutput.Add($"this.Error = {(this.Error == null ? "null" : this.Error.ToString())}");
-            toStringOutput.Add($"this.RequestId = {this.RequestId ?? "null"}");
-            toStringOutput.Add($"this.PINChangeAllowedByCardholder = {(this.PINChangeAllowedByCardholder == null ? "null" : this.PINChangeAllowedByCardholder.ToString())}");
-            toStringOutput.Add($"this.PINChangeAllowedFromFleetPIN = {(this.PINChangeAllowedFromFleetPIN == null ? "null" : this.PINChangeAllowedFromFleetPIN.ToString())}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountName = {this.AccountName ?? "null"}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"AccountShortName = {this.AccountShortName ?? "null"}");
+            toStringOutput.Add($"AccountTradingName = {this.AccountTradingName ?? "null"}");
+            toStringOutput.Add($"AllowFleetIdInput = {(this.AllowFleetIdInput == null ? "null" : this.AllowFleetIdInput.ToString())}");
+            toStringOutput.Add($"Band = {this.Band ?? "null"}");
+            toStringOutput.Add($"BillingAddress = {(this.BillingAddress == null ? "null" : this.BillingAddress.ToString())}");
+            toStringOutput.Add($"CardGroupPosition = {this.CardGroupPosition ?? "null"}");
+            toStringOutput.Add($"CorrespondenceAddress = {(this.CorrespondenceAddress == null ? "null" : this.CorrespondenceAddress.ToString())}");
+            toStringOutput.Add($"DeliveryAddresses = {(this.DeliveryAddresses == null ? "null" : $"[{string.Join(", ", this.DeliveryAddresses)} ]")}");
+            toStringOutput.Add($"FleetPin = {(this.FleetPin == null ? "null" : this.FleetPin.ToString())}");
+            toStringOutput.Add($"FullName = {this.FullName ?? "null"}");
+            toStringOutput.Add($"InvoiceCustomerId = {(this.InvoiceCustomerId == null ? "null" : this.InvoiceCustomerId.ToString())}");
+            toStringOutput.Add($"InvoiceCustomerShortName = {this.InvoiceCustomerShortName ?? "null"}");
+            toStringOutput.Add($"IsInvoicePoint = {(this.IsInvoicePoint == null ? "null" : this.IsInvoicePoint.ToString())}");
+            toStringOutput.Add($"MarketingSegmentation = {this.MarketingSegmentation ?? "null"}");
+            toStringOutput.Add($"VATNumber = {this.VATNumber ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerName = {this.PayerName ?? "null"}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"SelfSelectedPin = {(this.SelfSelectedPin == null ? "null" : this.SelfSelectedPin.ToString())}");
+            toStringOutput.Add($"Status = {this.Status ?? "null"}");
+            toStringOutput.Add($"DefaultPINAdviceType = {(this.DefaultPINAdviceType == null ? "null" : this.DefaultPINAdviceType.ToString())}");
+            toStringOutput.Add($"PINAdviceTypes = {(this.PINAdviceTypes == null ? "null" : $"[{string.Join(", ", this.PINAdviceTypes)} ]")}");
+            toStringOutput.Add($"Error = {(this.Error == null ? "null" : this.Error.ToString())}");
+            toStringOutput.Add($"RequestId = {this.RequestId ?? "null"}");
+            toStringOutput.Add($"PINChangeAllowedByCardholder = {(this.PINChangeAllowedByCardholder == null ? "null" : this.PINChangeAllowedByCardholder.ToString())}");
+            toStringOutput.Add($"PINChangeAllowedFromFleetPIN = {(this.PINChangeAllowedFromFleetPIN == null ? "null" : this.PINChangeAllowedFromFleetPIN.ToString())}");
         }
     }
 }

@@ -941,7 +941,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         }
 
         /// <summary>
-        /// Gets or sets AutoRenew.
+        /// Whether to reissue card automatically when nearing the expiry.
+        /// Allowed values: -
+        /// 1.    As per card type setting (Default).
+        /// 2.    Card will be Reissued when nearing its expiry date.
+        /// 3.    Card will not be Reissued.
         /// </summary>
         [JsonProperty("AutoRenew", NullValueHandling = NullValueHandling.Ignore)]
         public Models.CardDetailAutoRenewEnum? AutoRenew { get; set; }
@@ -1455,45 +1459,45 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
-            toStringOutput.Add($"this.AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
-            toStringOutput.Add($"this.AccountNumber = {this.AccountNumber ?? "null"}");
-            toStringOutput.Add($"this.ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
-            toStringOutput.Add($"this.ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
-            toStringOutput.Add($"this.CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
-            toStringOutput.Add($"this.TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
-            toStringOutput.Add($"this.EmbossText = {this.EmbossText ?? "null"}");
-            toStringOutput.Add($"this.VRN = {this.VRN ?? "null"}");
-            toStringOutput.Add($"this.DriverName = {this.DriverName ?? "null"}");
-            toStringOutput.Add($"this.OdometerInputRequired = {(this.OdometerInputRequired == null ? "null" : this.OdometerInputRequired.ToString())}");
-            toStringOutput.Add($"this.FleetIdInputRequired = {(this.FleetIdInputRequired == null ? "null" : this.FleetIdInputRequired.ToString())}");
-            toStringOutput.Add($"this.PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
-            toStringOutput.Add($"this.SelfSelectedEncryptedPIN = {this.SelfSelectedEncryptedPIN ?? "null"}");
-            toStringOutput.Add($"this.SelfSelectedPINKeyID = {this.SelfSelectedPINKeyID ?? "null"}");
-            toStringOutput.Add($"this.SelfSelectedPINSessionKey = {this.SelfSelectedPINSessionKey ?? "null"}");
-            toStringOutput.Add($"this.CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
-            toStringOutput.Add($"this.CardGroupName = {this.CardGroupName ?? "null"}");
-            toStringOutput.Add($"this.IsNewCardGroup = {(this.IsNewCardGroup == null ? "null" : this.IsNewCardGroup.ToString())}");
-            toStringOutput.Add($"this.EmbossCardGroup = {(this.EmbossCardGroup == null ? "null" : this.EmbossCardGroup.ToString())}");
-            toStringOutput.Add($"this.CardDeliveryType = {(this.CardDeliveryType == null ? "null" : this.CardDeliveryType.ToString())}");
-            toStringOutput.Add($"this.CardContact = {(this.CardContact == null ? "null" : this.CardContact.ToString())}");
-            toStringOutput.Add($"this.PINDeliveryAddressType = {(this.PINDeliveryAddressType == null ? "null" : this.PINDeliveryAddressType.ToString())}");
-            toStringOutput.Add($"this.PINAdviceType = {(this.PINAdviceType == null ? "null" : this.PINAdviceType.ToString())}");
-            toStringOutput.Add($"this.PINContact = {(this.PINContact == null ? "null" : this.PINContact.ToString())}");
-            toStringOutput.Add($"this.NotifyCaller = {(this.NotifyCaller == null ? "null" : this.NotifyCaller.ToString())}");
-            toStringOutput.Add($"this.Caller = {this.Caller ?? "null"}");
-            toStringOutput.Add($"this.NotifyCallerOnSync = {(this.NotifyCallerOnSync == null ? "null" : this.NotifyCallerOnSync.ToString())}");
-            toStringOutput.Add($"this.ValidateFleetId = {(this.ValidateFleetId == null ? "null" : this.ValidateFleetId.ToString())}");
-            toStringOutput.Add($"this.FleetOption = {this.FleetOption ?? "null"}");
-            toStringOutput.Add($"this.BundleId = {this.BundleId ?? "null"}");
-            toStringOutput.Add($"this.UsageRestrictionAction = {this.UsageRestrictionAction ?? "null"}");
-            toStringOutput.Add($"this.ProductRestrictionAction = {this.ProductRestrictionAction ?? "null"}");
-            toStringOutput.Add($"this.Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
-            toStringOutput.Add($"this.ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
-            toStringOutput.Add($"this.ExpiryDate = {this.ExpiryDate ?? "null"}");
-            toStringOutput.Add($"this.ClientReferenceId = {this.ClientReferenceId ?? "null"}");
-            toStringOutput.Add($"this.AutoRenew = {(this.AutoRenew == null ? "null" : this.AutoRenew.ToString())}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"AccountId = {(this.AccountId == null ? "null" : this.AccountId.ToString())}");
+            toStringOutput.Add($"AccountNumber = {this.AccountNumber ?? "null"}");
+            toStringOutput.Add($"ColCoCode = {(this.ColCoCode == null ? "null" : this.ColCoCode.ToString())}");
+            toStringOutput.Add($"ColCoId = {(this.ColCoId == null ? "null" : this.ColCoId.ToString())}");
+            toStringOutput.Add($"CardTypeId = {(this.CardTypeId == null ? "null" : this.CardTypeId.ToString())}");
+            toStringOutput.Add($"TokenTypeId = {(this.TokenTypeId == null ? "null" : this.TokenTypeId.ToString())}");
+            toStringOutput.Add($"EmbossText = {this.EmbossText ?? "null"}");
+            toStringOutput.Add($"VRN = {this.VRN ?? "null"}");
+            toStringOutput.Add($"DriverName = {this.DriverName ?? "null"}");
+            toStringOutput.Add($"OdometerInputRequired = {(this.OdometerInputRequired == null ? "null" : this.OdometerInputRequired.ToString())}");
+            toStringOutput.Add($"FleetIdInputRequired = {(this.FleetIdInputRequired == null ? "null" : this.FleetIdInputRequired.ToString())}");
+            toStringOutput.Add($"PurchaseCategoryId = {(this.PurchaseCategoryId == null ? "null" : this.PurchaseCategoryId.ToString())}");
+            toStringOutput.Add($"SelfSelectedEncryptedPIN = {this.SelfSelectedEncryptedPIN ?? "null"}");
+            toStringOutput.Add($"SelfSelectedPINKeyID = {this.SelfSelectedPINKeyID ?? "null"}");
+            toStringOutput.Add($"SelfSelectedPINSessionKey = {this.SelfSelectedPINSessionKey ?? "null"}");
+            toStringOutput.Add($"CardGroupId = {(this.CardGroupId == null ? "null" : this.CardGroupId.ToString())}");
+            toStringOutput.Add($"CardGroupName = {this.CardGroupName ?? "null"}");
+            toStringOutput.Add($"IsNewCardGroup = {(this.IsNewCardGroup == null ? "null" : this.IsNewCardGroup.ToString())}");
+            toStringOutput.Add($"EmbossCardGroup = {(this.EmbossCardGroup == null ? "null" : this.EmbossCardGroup.ToString())}");
+            toStringOutput.Add($"CardDeliveryType = {(this.CardDeliveryType == null ? "null" : this.CardDeliveryType.ToString())}");
+            toStringOutput.Add($"CardContact = {(this.CardContact == null ? "null" : this.CardContact.ToString())}");
+            toStringOutput.Add($"PINDeliveryAddressType = {(this.PINDeliveryAddressType == null ? "null" : this.PINDeliveryAddressType.ToString())}");
+            toStringOutput.Add($"PINAdviceType = {(this.PINAdviceType == null ? "null" : this.PINAdviceType.ToString())}");
+            toStringOutput.Add($"PINContact = {(this.PINContact == null ? "null" : this.PINContact.ToString())}");
+            toStringOutput.Add($"NotifyCaller = {(this.NotifyCaller == null ? "null" : this.NotifyCaller.ToString())}");
+            toStringOutput.Add($"Caller = {this.Caller ?? "null"}");
+            toStringOutput.Add($"NotifyCallerOnSync = {(this.NotifyCallerOnSync == null ? "null" : this.NotifyCallerOnSync.ToString())}");
+            toStringOutput.Add($"ValidateFleetId = {(this.ValidateFleetId == null ? "null" : this.ValidateFleetId.ToString())}");
+            toStringOutput.Add($"FleetOption = {this.FleetOption ?? "null"}");
+            toStringOutput.Add($"BundleId = {this.BundleId ?? "null"}");
+            toStringOutput.Add($"UsageRestrictionAction = {this.UsageRestrictionAction ?? "null"}");
+            toStringOutput.Add($"ProductRestrictionAction = {this.ProductRestrictionAction ?? "null"}");
+            toStringOutput.Add($"Products = {(this.Products == null ? "null" : $"[{string.Join(", ", this.Products)} ]")}");
+            toStringOutput.Add($"ProductGroups = {(this.ProductGroups == null ? "null" : $"[{string.Join(", ", this.ProductGroups)} ]")}");
+            toStringOutput.Add($"ExpiryDate = {this.ExpiryDate ?? "null"}");
+            toStringOutput.Add($"ClientReferenceId = {this.ClientReferenceId ?? "null"}");
+            toStringOutput.Add($"AutoRenew = {(this.AutoRenew == null ? "null" : this.AutoRenew.ToString())}");
         }
     }
 }

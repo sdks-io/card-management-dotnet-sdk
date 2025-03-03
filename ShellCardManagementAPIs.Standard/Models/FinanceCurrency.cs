@@ -246,10 +246,10 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.CurrencyCode = {this.CurrencyCode ?? "null"}");
-            toStringOutput.Add($"this.CurrencySymbol = {this.CurrencySymbol ?? "null"}");
-            toStringOutput.Add($"this.InvoiceExchangeRate = {(this.InvoiceExchangeRate == null ? "null" : this.InvoiceExchangeRate.ToString())}");
-            toStringOutput.Add($"this.CreditLimitExchangeRate = {(this.CreditLimitExchangeRate == null ? "null" : this.CreditLimitExchangeRate.ToString())}");
+            toStringOutput.Add($"CurrencyCode = {this.CurrencyCode ?? "null"}");
+            toStringOutput.Add($"CurrencySymbol = {this.CurrencySymbol ?? "null"}");
+            toStringOutput.Add($"InvoiceExchangeRate = {(this.InvoiceExchangeRate == null ? "null" : this.InvoiceExchangeRate.ToString())}");
+            toStringOutput.Add($"CreditLimitExchangeRate = {(this.CreditLimitExchangeRate == null ? "null" : this.CreditLimitExchangeRate.ToString())}");
         }
     }
 }

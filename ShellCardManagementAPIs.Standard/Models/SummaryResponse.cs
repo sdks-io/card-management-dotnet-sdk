@@ -614,18 +614,18 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.ActiveCards = {(this.ActiveCards == null ? "null" : this.ActiveCards.ToString())}");
-            toStringOutput.Add($"this.BlockedCards = {(this.BlockedCards == null ? "null" : this.BlockedCards.ToString())}");
-            toStringOutput.Add($"this.CancelledCards = {(this.CancelledCards == null ? "null" : this.CancelledCards.ToString())}");
-            toStringOutput.Add($"this.ExpiredCards = {(this.ExpiredCards == null ? "null" : this.ExpiredCards.ToString())}");
-            toStringOutput.Add($"this.ExpiringCards = {(this.ExpiringCards == null ? "null" : this.ExpiringCards.ToString())}");
-            toStringOutput.Add($"this.FraudCards = {(this.FraudCards == null ? "null" : this.FraudCards.ToString())}");
-            toStringOutput.Add($"this.NewCards = {(this.NewCards == null ? "null" : this.NewCards.ToString())}");
-            toStringOutput.Add($"this.RenewalPendingCards = {(this.RenewalPendingCards == null ? "null" : this.RenewalPendingCards.ToString())}");
-            toStringOutput.Add($"this.ReplacedCards = {(this.ReplacedCards == null ? "null" : this.ReplacedCards.ToString())}");
-            toStringOutput.Add($"this.TemporaryBlockByCustomer = {(this.TemporaryBlockByCustomer == null ? "null" : this.TemporaryBlockByCustomer.ToString())}");
-            toStringOutput.Add($"this.TemporaryBlockByShell = {(this.TemporaryBlockByShell == null ? "null" : this.TemporaryBlockByShell.ToString())}");
-            toStringOutput.Add($"this.TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
+            toStringOutput.Add($"ActiveCards = {(this.ActiveCards == null ? "null" : this.ActiveCards.ToString())}");
+            toStringOutput.Add($"BlockedCards = {(this.BlockedCards == null ? "null" : this.BlockedCards.ToString())}");
+            toStringOutput.Add($"CancelledCards = {(this.CancelledCards == null ? "null" : this.CancelledCards.ToString())}");
+            toStringOutput.Add($"ExpiredCards = {(this.ExpiredCards == null ? "null" : this.ExpiredCards.ToString())}");
+            toStringOutput.Add($"ExpiringCards = {(this.ExpiringCards == null ? "null" : this.ExpiringCards.ToString())}");
+            toStringOutput.Add($"FraudCards = {(this.FraudCards == null ? "null" : this.FraudCards.ToString())}");
+            toStringOutput.Add($"NewCards = {(this.NewCards == null ? "null" : this.NewCards.ToString())}");
+            toStringOutput.Add($"RenewalPendingCards = {(this.RenewalPendingCards == null ? "null" : this.RenewalPendingCards.ToString())}");
+            toStringOutput.Add($"ReplacedCards = {(this.ReplacedCards == null ? "null" : this.ReplacedCards.ToString())}");
+            toStringOutput.Add($"TemporaryBlockByCustomer = {(this.TemporaryBlockByCustomer == null ? "null" : this.TemporaryBlockByCustomer.ToString())}");
+            toStringOutput.Add($"TemporaryBlockByShell = {(this.TemporaryBlockByShell == null ? "null" : this.TemporaryBlockByShell.ToString())}");
+            toStringOutput.Add($"TotalCards = {(this.TotalCards == null ? "null" : this.TotalCards.ToString())}");
         }
     }
 }

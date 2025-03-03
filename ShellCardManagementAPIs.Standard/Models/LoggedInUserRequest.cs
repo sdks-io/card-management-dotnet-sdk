@@ -233,11 +233,11 @@ namespace ShellCardManagementAPIs.Standard.Models
         /// <param name="toStringOutput">List of strings.</param>
         protected void ToString(List<string> toStringOutput)
         {
-            toStringOutput.Add($"this.IncludePayerGroup = {(this.IncludePayerGroup == null ? "null" : this.IncludePayerGroup.ToString())}");
-            toStringOutput.Add($"this.IncludeEIDDetails = {(this.IncludeEIDDetails == null ? "null" : this.IncludeEIDDetails.ToString())}");
-            toStringOutput.Add($"this.RequestedAPIName = {this.RequestedAPIName ?? "null"}");
-            toStringOutput.Add($"this.PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
-            toStringOutput.Add($"this.PayerNumber = {this.PayerNumber ?? "null"}");
+            toStringOutput.Add($"IncludePayerGroup = {(this.IncludePayerGroup == null ? "null" : this.IncludePayerGroup.ToString())}");
+            toStringOutput.Add($"IncludeEIDDetails = {(this.IncludeEIDDetails == null ? "null" : this.IncludeEIDDetails.ToString())}");
+            toStringOutput.Add($"RequestedAPIName = {this.RequestedAPIName ?? "null"}");
+            toStringOutput.Add($"PayerId = {(this.PayerId == null ? "null" : this.PayerId.ToString())}");
+            toStringOutput.Add($"PayerNumber = {this.PayerNumber ?? "null"}");
         }
     }
 }
